@@ -1,26 +1,498 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ==========================================================================
+   24zdorovie — design tokens
+   Стиль: «свежий органик» — тёплая бумага, мятно-зелёный акцент, много воздуха.
+   ========================================================================== */
+
+@theme {
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-playfair), ui-serif, Georgia, "Times New Roman", serif;
+
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-tint: var(--brand-tint);
+  --color-accent: var(--accent, var(--brand));
+  --color-accent-tint: var(--accent-tint, var(--brand-tint));
+
+  --radius-card: 1.25rem;
+
+  --shadow-soft: 0 1px 2px rgb(20 32 26 / 0.04), 0 8px 24px -12px rgb(20 32 26 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(20 32 26 / 0.05), 0 18px 40px -16px rgb(20 32 26 / 0.22);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  --paper: #fbfaf6;
+  --surface: #ffffff;
+  --surface-2: #f4f3ee;
+  --ink: #14201a;
+  --ink-soft: #4d5c54;
+  --ink-faint: #7d8b83;
+  --line: #e6e4db;
+  --brand: #1fa268;
+  --brand-strong: #136844;
+  --brand-tint: #eefbf3;
+  --selection: #cdf3de;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --paper: #0e1512;
+  --surface: #141d19;
+  --surface-2: #1a2621;
+  --ink: #e9efea;
+  --ink-soft: #a8b8b0;
+  --ink-faint: #7d8e85;
+  --line: #26332d;
+  --brand: #4ecb92;
+  --brand-strong: #7fdcaf;
+  --brand-tint: #16281f;
+  --selection: #1d4634;
+  color-scheme: dark;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme="light"]) {
+    --paper: #0e1512;
+    --surface: #141d19;
+    --surface-2: #1a2621;
+    --ink: #e9efea;
+    --ink-soft: #a8b8b0;
+    --ink-faint: #7d8e85;
+    --line: #26332d;
+    --brand: #4ecb92;
+    --brand-strong: #7fdcaf;
+    --brand-tint: #16281f;
+    --selection: #1d4634;
+    color-scheme: dark;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Акценты рубрик: [data-accent="leaf"] задаёт --accent/--accent-tint для потомков.
+ *
+ * Базовый тон хранится отдельно, в --accent-base, и только из него считается
+ * --accent. Так сделано не для красоты: определить --accent через var(--accent)
+ * на том же элементе нельзя — по спецификации это цикл, и переменная молча
+ * становится пустой (guaranteed-invalid). Именно так тёмная тема какое-то время
+ * оставалась вообще без акцентных цветов, причём без единой ошибки в консоли.
+ */
+[data-accent="leaf"] { --accent-base: #1fa268; --accent-tint: #e6f7ee; }
+[data-accent="citrus"] { --accent-base: #b8790a; --accent-tint: #fdf3dd; }
+[data-accent="berry"] { --accent-base: #b8447a; --accent-tint: #fceaf3; }
+[data-accent="ocean"] { --accent-base: #1f7fa2; --accent-tint: #e2f3f9; }
+[data-accent="clay"] { --accent-base: #b35a3c; --accent-tint: #fbeae3; }
+[data-accent="lavender"] { --accent-base: #6f5bc4; --accent-tint: #eeebfb; }
+[data-accent="amber"] { --accent-base: #a97318; --accent-tint: #fbf0da; }
+[data-accent="moss"] { --accent-base: #55771f; --accent-tint: #eef5e0; }
+
+[data-accent] { --accent: var(--accent-base); }
+
+/* Ссылка на var(--accent) внутри --accent-tint законна: это другое свойство,
+ * а не самоссылка, и берётся уже осветлённое значение из строки выше. */
+:root[data-theme="dark"] [data-accent] {
+  --accent: color-mix(in oklab, var(--accent-base) 68%, #ffffff);
+  --accent-tint: color-mix(in oklab, var(--accent) 16%, #0e1512);
 }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-accent] {
+    --accent: color-mix(in oklab, var(--accent-base) 68%, #ffffff);
+    --accent-tint: color-mix(in oklab, var(--accent) 16%, #0e1512);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--selection);
+    color: var(--ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+  p, li { text-wrap: pretty; }
+  img { max-width: 100%; height: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+   Компоненты-примитивы
+   ========================================================================== */
+
+@layer components {
+  .container-page {
+    width: 100%;
+    margin-inline: auto;
+    max-width: 78rem;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-page { padding-inline: 2rem; }
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .card-hover {
+    transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+  }
+  .card-hover:hover {
+    box-shadow: var(--shadow-lift);
+    transform: translateY(-3px);
+    border-color: color-mix(in oklab, var(--accent, var(--brand)) 35%, var(--line));
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    padding: 0.75rem 1.4rem;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+  }
+  .btn:active { transform: scale(0.98); }
+
+  .btn-primary {
+    background: var(--brand);
+    color: #fff;
+  }
+  :root[data-theme="dark"] .btn-primary { color: #0e1512; }
+  .btn-primary:hover { background: var(--brand-strong); }
+  :root[data-theme="dark"] .btn-primary:hover { background: var(--brand-strong); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--line);
+  }
+  .btn-ghost:hover {
+    background: var(--surface-2);
+    border-color: color-mix(in oklab, var(--brand) 40%, var(--line));
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-radius: 999px;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    background: var(--accent-tint, var(--brand-tint));
+    color: var(--accent, var(--brand-strong));
+    white-space: nowrap;
+  }
+
+  .kicker {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-strong);
+  }
+
+  .link-underline {
+    background-image: linear-gradient(var(--brand), var(--brand));
+    background-size: 0% 1.5px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.3s ease;
+  }
+  .link-underline:hover { background-size: 100% 1.5px; }
+
+  /* Горизонтальная лента карточек.
+   * Отрицательные margin компенсируют padding .container-page: лента
+   * доезжает до края экрана, а первая карточка остаётся на сетке текста.
+   * Скролл — нативный, без JS: сайт собирается статикой (output: export). */
+  .rail {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: 1.25rem;
+    padding-inline: 1.25rem;
+    margin-inline: -1.25rem;
+    padding-block: 0.35rem 1.1rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) transparent;
+  }
+  @media (min-width: 768px) {
+    .rail {
+      scroll-padding-inline: 2rem;
+      padding-inline: 2rem;
+      margin-inline: -2rem;
+    }
+  }
+  .rail::-webkit-scrollbar { height: 8px; }
+  .rail::-webkit-scrollbar-track { background: transparent; }
+  .rail::-webkit-scrollbar-thumb {
+    background: var(--line);
+    border-radius: 999px;
+  }
+  .rail:hover::-webkit-scrollbar-thumb { background: color-mix(in oklab, var(--brand) 45%, var(--line)); }
+
+  /* Лента без полосы прокрутки — для коротких «таблеток» рубрик,
+   * где обрезанный элемент у края и так намекает, что можно листать. */
+  .rail-bare {
+    scrollbar-width: none;
+    padding-block: 0.35rem;
+  }
+  .rail-bare::-webkit-scrollbar { display: none; }
+
+  .rail-item {
+    flex: 0 0 clamp(15rem, 78vw, 20.5rem);
+    scroll-snap-align: start;
+  }
+  .rail-item > * { height: 100%; }
+}
+
+/* ==========================================================================
+   Бегущая строка тем (TopicsMarquee)
+   Правила намеренно вне @layer: блок prefers-reduced-motion выше тоже
+   не в слое, а нестилевые слои проигрывают неслоёным при любой
+   специфичности — иначе отключить анимацию отсюда было бы нечем.
+   ========================================================================== */
+
+.marquee {
+  overflow: hidden;
+  /* Края растворяются, чтобы заголовки не обрубались о границу экрана */
+  mask-image: linear-gradient(90deg, transparent, #000 3rem, #000 calc(100% - 3rem), transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 3rem, #000 calc(100% - 3rem), transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll var(--marquee-duration, 60s) linear infinite;
+}
+
+/* Навёл курсор или дошёл табом до ссылки — строка останавливается */
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-inline-end: 1.5rem;
+}
+
+/* Точка-разделитель висит на каждом элементе, включая последний:
+ * на стыке двух копий списка ритм не сбивается. */
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.marquee-item::after {
+  content: "·";
+  color: var(--ink-faint);
+}
+
+@keyframes marquee-scroll {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Вместо движения — обычная прокрутка пальцем или колесом */
+  .marquee { overflow-x: auto; }
+  .marquee-track { animation: none; }
+  .marquee-row[aria-hidden] { display: none; }
+}
+
+/* Декоративное органическое свечение под hero */
+.organic-blob {
+  position: absolute;
+  border-radius: 50% 42% 58% 40% / 45% 55% 42% 58%;
+  filter: blur(60px);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ==========================================================================
+   Типографика статьи (.prose)
+   ========================================================================== */
+
+.prose {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--ink);
+}
+@media (min-width: 768px) {
+  .prose { font-size: 1.125rem; line-height: 1.78; }
+}
+
+.prose > * + * { margin-top: 1.25em; }
+
+.prose h2 {
+  font-size: 1.75rem;
+  margin-top: 2.2em;
+  margin-bottom: 0.55em;
+  scroll-margin-top: 6rem;
+}
+.prose h3 {
+  font-size: 1.3125rem;
+  margin-top: 1.9em;
+  margin-bottom: 0.45em;
+  scroll-margin-top: 6rem;
+}
+@media (min-width: 768px) {
+  .prose h2 { font-size: 2rem; }
+  .prose h3 { font-size: 1.4375rem; }
+}
+
+.prose a {
+  color: var(--brand-strong);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in oklab, var(--brand) 45%, transparent);
+  transition: text-decoration-color 0.15s ease;
+}
+.prose a:hover { text-decoration-color: var(--brand); }
+
+.prose strong { font-weight: 700; }
+
+.prose ul, .prose ol { padding-left: 1.35em; }
+.prose ul { list-style: none; }
+.prose ul > li { position: relative; padding-left: 0.35em; }
+.prose ul > li::before {
+  content: "";
+  position: absolute;
+  left: -0.85em;
+  top: 0.72em;
+  width: 0.4em;
+  height: 0.4em;
+  border-radius: 999px;
+  background: var(--brand);
+}
+.prose ol { list-style: decimal; }
+.prose ol > li::marker { color: var(--brand-strong); font-weight: 700; }
+.prose li + li { margin-top: 0.5em; }
+.prose li > ul, .prose li > ol { margin-top: 0.5em; }
+
+.prose blockquote {
+  border-left: 3px solid var(--brand);
+  padding: 0.25em 0 0.25em 1.25em;
+  font-family: var(--font-display);
+  font-size: 1.12em;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.prose img { border-radius: 1rem; border: 1px solid var(--line); }
+.prose figcaption {
+  margin-top: 0.6em;
+  font-size: 0.875rem;
+  color: var(--ink-faint);
+  text-align: center;
+}
+
+.prose code {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 0.375rem;
+  padding: 0.12em 0.4em;
+  font-size: 0.875em;
+}
+.prose pre {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 0.875rem;
+  padding: 1rem 1.15rem;
+  overflow-x: auto;
+  font-size: 0.9rem;
+}
+.prose pre code { background: none; border: none; padding: 0; }
+
+.prose hr {
+  border: none;
+  height: 1px;
+  background: var(--line);
+  margin-block: 2.5em;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.prose th, .prose td {
+  border-bottom: 1px solid var(--line);
+  padding: 0.7em 0.85em;
+  text-align: left;
+}
+.prose th {
+  background: var(--surface-2);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* Якорные ссылки заголовков (rehype-autolink-headings) */
+.prose .heading-anchor {
+  color: var(--ink-faint);
+  text-decoration: none;
+  opacity: 0;
+  margin-left: 0.35em;
+  font-weight: 400;
+  transition: opacity 0.15s ease;
+}
+.prose h2:hover .heading-anchor,
+.prose h3:hover .heading-anchor,
+.prose .heading-anchor:focus-visible { opacity: 1; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.animate-rise { animation: rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }

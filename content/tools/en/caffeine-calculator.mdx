@@ -1,0 +1,85 @@
+---
+title: "Caffeine Calculator: How Long Will Caffeine Keep You Awake?"
+description: "Enter your dose and bedtime to see how much caffeine is still in your body when you lie down, and the latest hour you can drink it. Calibrated to a 2023 meta-analysis."
+updated: "2026-07-31"
+lede: "For a standard 5-hour half-life, 200 mg of caffeine — a large coffee, a double espresso or two energy drinks — needs about 13 to 14 hours to fall below the level at which studies can still detect an effect on sleep. Drunk at 2 pm, it is still working at midnight."
+faq:
+  - q: "How long will 200 mg of caffeine keep you awake?"
+    a: "Around 13–14 hours for a typical adult. After 5 hours you still have 100 mg on board — a full cup of coffee's worth — and after 10 hours, 50 mg. The 2023 meta-analysis by Gardiner and colleagues found that doses of 217 mg needed to be taken 13.2 hours before bed to avoid measurable disruption to sleep. That does not mean you lie awake for 13 hours; it means the dose is still shortening your deep sleep at the point you go to bed."
+  - q: "Is caffeine's half-life really 5 hours?"
+    a: "Five hours is the population average, not your number. The reported range in healthy adults is 2 to 10 hours, driven mostly by the CYP1A2 gene. Smoking nearly halves the half-life, hormonal contraceptives roughly double it, and by the third trimester of pregnancy it can exceed 15 hours. The calculator lets you pick the closest profile, but only a genuine test would give you your own figure."
+  - q: "Where does the 30 mg threshold come from?"
+    a: "It is reverse-engineered from the evidence rather than picked by feel. The 2023 meta-analysis puts the practical cut-off at 8.8 hours for 100 mg and 13.2 hours for 217 mg. Run both through a 5-hour half-life and the amount left at bedtime is 29.5 mg and 34.8 mg — essentially the same number. So a single 30 mg threshold reproduces both published cut-offs."
+  - q: "I sleep fine after an evening coffee. Does that mean it does not affect me?"
+    a: "It means it does not affect how quickly you fall asleep, which is the one part of sleep you can actually perceive. Controlled studies consistently show reduced slow-wave sleep and lower delta power in people who report no difference at all. Your sense of how you slept is a poor instrument for measuring how you slept."
+  - q: "How much caffeine is safe in a day?"
+    a: "EFSA considers up to 400 mg a day safe for healthy adults, and up to 200 mg in a single dose. During pregnancy and breastfeeding the limit is 200 mg a day in total. For children and adolescents the reference point is roughly 3 mg per kg of body weight."
+  - q: "Does the calculator account for tolerance?"
+    a: "No, and no calculator honestly can. Tolerance to the alerting effect develops within days, but tolerance to the sleep-disrupting effect is much less complete — which is why habitual drinkers still show measurably worse sleep architecture. Assume the pharmacokinetics apply to you regardless of how many years you have been drinking coffee."
+sources:
+  - title: "Gardiner C, et al. The effect of caffeine on subsequent sleep: A systematic review and meta-analysis. Sleep Medicine Reviews, 2023"
+    url: "https://pubmed.ncbi.nlm.nih.gov/36870101/"
+  - title: "EFSA Panel on Dietetic Products, Nutrition and Allergies. Scientific Opinion on the safety of caffeine. EFSA Journal, 2015"
+    url: "https://doi.org/10.2903/j.efsa.2015.4102"
+  - title: "Drake C, Roehrs T, Shambroom J, Roth T. Caffeine effects on sleep taken 0, 3, or 6 hours before going to bed. Journal of Clinical Sleep Medicine, 2013"
+    url: "https://pubmed.ncbi.nlm.nih.gov/24235903/"
+  - title: "Nehlig A. Interindividual Differences in Caffeine Metabolism and Factors Driving Caffeine Consumption. Pharmacological Reviews, 2018"
+    url: "https://pubmed.ncbi.nlm.nih.gov/29514871/"
+  - title: "Institute of Medicine. Caffeine for the Sustainment of Mental Task Performance: pharmacology of caffeine"
+    url: "https://www.ncbi.nlm.nih.gov/books/NBK223808/"
+---
+
+## The model behind the number
+
+Caffeine is almost completely absorbed from the gut, peaks in the blood 30 to 60 minutes after you drink it, and is then cleared at a constant proportional rate. That last property is what makes the arithmetic simple: every half-life, whatever is left gets halved again.
+
+The calculator uses the standard one-compartment decay:
+
+**Remaining = dose × 0.5 ^ (hours ÷ half-life)**
+
+At a 5-hour half-life, 200 mg becomes 100 mg after five hours, 50 mg after ten, and 25 mg after fifteen. There is no point at which caffeine abruptly "wears off" — the phrase describes the moment you stop noticing it, which arrives long before the molecule is gone.
+
+<Callout type="info" title="Why the peak does not matter here">
+  Absorption is fast enough relative to clearance that ignoring it changes the bedtime figure by only a few milligrams. The simplification costs accuracy in the first hour and almost nothing after that.
+</Callout>
+
+## Why 30 mg is the cut-off
+
+Most caffeine calculators pick a threshold that sounds sensible and never justify it. This one derives it.
+
+The 2023 meta-analysis by Gardiner and colleagues pooled controlled trials to answer a practical question: how many hours before bed does a given dose need to be taken so that sleep is not measurably affected? Two of their answers are 8.8 hours for 100 mg and 13.2 hours for 217 mg.
+
+Put both through the decay equation with a 5-hour half-life and you get the amount still circulating at those cut-offs:
+
+<DataTable
+  head={["Dose", "Published cut-off", "Still in the body at that point"]}
+  rows={[["100 mg", "8.8 h before bed", "29.5 mg"], ["217 mg", "13.2 h before bed", "34.8 mg"]]}
+  caption="Both empirical cut-offs land on the same residual amount"
+/>
+
+Two very different doses and two very different cut-off times converge on roughly 30 mg. That is the threshold the calculator uses, which is why its answers track the published guidance instead of competing with it.
+
+## What changes your half-life
+
+The five-hour figure is a population average that hides a very wide spread. The reported range in healthy adults is 2 to 10 hours, and the main driver is the CYP1A2 gene, which controls the liver enzyme responsible for about 95% of caffeine clearance.
+
+- **Smoking** induces that same enzyme and cuts the half-life to roughly 3 hours. Quitting reverses it within about a week — which is one reason newly ex-smokers often feel jittery on their usual coffee.
+- **Combined hormonal contraceptives** inhibit it, roughly doubling the half-life to around 7–10 hours.
+- **Pregnancy** slows clearance progressively; by the third trimester half-lives above 15 hours have been recorded.
+- **Liver disease** and some medications — including certain antibiotics and antidepressants — extend it further.
+
+<ReadAlso href="/en/sleep/caffeine-and-sleep" title="Caffeine and Sleep: When to Stop Drinking Coffee" />
+
+## The 200 mg question specifically
+
+"How long will 200 mg keep me awake" is the most common version of this question, and it deserves a precise answer, because the honest one is not the one people expect.
+
+At a 5-hour half-life, 200 mg falls below 30 mg after **13.7 hours**. Drink it at 2 pm and it is still above the threshold at midnight. Drink it at 9 am and you are clear by around 10:45 pm.
+
+But "keep you awake" is the wrong frame. You will very likely fall asleep. The 2013 study by Drake and colleagues gave people 400 mg at bedtime, three hours before bed and six hours before bed, and measured sleep objectively. All three conditions disrupted sleep — including the dose taken six hours ahead, which participants did not perceive as having any effect at all. What caffeine takes from you at that distance is not consciousness. It is deep sleep.
+
+## What the calculator does not know
+
+It does not know your genotype, so the half-life you pick is a category rather than a measurement. It does not model tolerance, adenosine receptor upregulation, or the interaction with alcohol. It assumes a single dose rather than a day of sipping — for several drinks, add up the doses and use the time of the last one, which slightly understates the total.
+
+And it says nothing about whether caffeine is a problem for you. If you sleep seven to eight hours, wake unprompted and function without a morning dose to feel normal, the number in this calculator is a curiosity. If you need coffee to start and cannot switch off at night, it is the loop worth breaking — and moving the cut-off earlier is the cheapest intervention available.

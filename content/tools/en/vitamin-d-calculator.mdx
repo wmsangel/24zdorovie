@@ -1,0 +1,116 @@
+---
+title: "Vitamin D Calculator: Dose by Body Weight and Blood Level"
+description: "Work out your vitamin D dose from body mass and your 25(OH)D result: a preventive dose, a loading schedule from the van Groningen formula, and where your level lands in three months."
+updated: "2026-08-10"
+lede: "The preventive vitamin D dose for an adult is 800–2000 IU a day, and it needs no blood test. If 25(OH)D has been measured and sits below 75 nmol/L (30 ng/mL), the dose is scaled to body mass: 40 × (75 − your level) × weight in kilograms in total, spread across 8 weeks. In obesity the same dose raises the level 2–3 times less — vitamin D partitions into fat tissue. The ceiling for long-term unsupervised use is 4000 IU a day."
+faq:
+  - q: "How much vitamin D should I take without a blood test?"
+    a: "800–2000 IU a day for an adult. That covers the requirement of the great majority of people outside the sunny months, sits well inside the safe limit and needs no lab monitoring. Above a BMI of 30 the reference shifts to 2000–4000 IU."
+  - q: "How do I calculate the dose for a confirmed deficiency?"
+    a: "With the van Groningen formula (2010): total dose in IU = 40 × (75 − current 25(OH)D in nmol/L) × body weight in kg. That total is spread over 8 weeks of daily dosing, or given as weekly 50,000 IU doses. It is the only validated schedule where weight is a multiplier rather than a footnote — and weight matters more than anything else here."
+  - q: "How much does 1000 IU raise the blood level?"
+    a: "Roughly 10 nmol/L (4 ng/mL) once the level plateaus, with a real-world spread of 7 to 17. The higher your starting point, the smaller the rise, and the more fat tissue you carry, the weaker the response: in obesity the same dose delivers 2–3 times less."
+  - q: "When should I re-test?"
+    a: "8–12 weeks after starting — any earlier and the level has not plateaued, so the number tells you nothing. Draw the blood before the next dose, otherwise the result reads high."
+  - q: "What counts as a normal 25(OH)D level?"
+    a: "The Institute of Medicine treats 50 nmol/L (20 ng/mL) as sufficient — enough for bone health in 97.5% of the population. The Endocrine Society aims at 75 nmol/L (30 ng/mL). The comfortable band is 75–125 nmol/L (30–50 ng/mL); chasing 150–200 nmol/L buys nothing that has been demonstrated."
+  - q: "Why does excess weight call for a bigger dose?"
+    a: "Vitamin D is fat-soluble and is stored in adipose tissue, so less of the same dose reaches the bloodstream. In Ekwaru's 2014 analysis, people with obesity needed 2–3 times more vitamin D for the same rise in 25(OH)D. The calculator scales the dose by 1.5–2.5× depending on BMI."
+  - q: "Can you overdose on vitamin D?"
+    a: "Yes, though not on preventive doses. Toxicity develops on sustained intakes above 10,000 IU a day, or after single mega-doses, and shows up as hypercalcaemia: nausea, thirst, heavy urination, weakness, confusion. A level above 250 nmol/L (100 ng/mL) is considered potentially toxic."
+  - q: "Does the calculator account for sunlight?"
+    a: "No, deliberately. Skin synthesis depends on sun angle, skin type, age and sunscreen — no questionnaire can predict it. Above the 40th parallel, UVB barely reaches the ground from November to March. Only a 25(OH)D test shows what the sun contributed, because the result already includes both sun and food."
+sources:
+  - title: "van Groningen L, et al. Cholecalciferol loading dose guideline for vitamin D-deficient adults. Eur J Endocrinol, 2010"
+    url: "https://pubmed.ncbi.nlm.nih.gov/20139241/"
+  - title: "Ekwaru JP, et al. The importance of body weight for the dose response relationship of oral vitamin D supplementation and serum 25-hydroxyvitamin D in healthy volunteers. PLoS One, 2014"
+    url: "https://pubmed.ncbi.nlm.nih.gov/25333384/"
+  - title: "Holick MF, et al. Evaluation, Treatment, and Prevention of Vitamin D Deficiency: an Endocrine Society Clinical Practice Guideline. J Clin Endocrinol Metab, 2011"
+    url: "https://pubmed.ncbi.nlm.nih.gov/21646368/"
+  - title: "Institute of Medicine. Dietary Reference Intakes for Calcium and Vitamin D, 2011"
+    url: "https://www.ncbi.nlm.nih.gov/books/NBK56070/"
+  - title: "EFSA Panel on Dietetic Products. Scientific Opinion on the Tolerable Upper Intake Level of vitamin D. EFSA Journal, 2012"
+    url: "https://www.efsa.europa.eu/en/efsajournal/pub/2813"
+  - title: "NIH Office of Dietary Supplements. Vitamin D — Health Professional Fact Sheet"
+    url: "https://ods.od.nih.gov/factsheets/VitaminD-HealthProfessional/"
+  - title: "Heaney RP, et al. Human serum 25-hydroxycholecalciferol response to extended oral dosing with cholecalciferol. Am J Clin Nutr, 2003"
+    url: "https://pubmed.ncbi.nlm.nih.gov/12499343/"
+---
+
+## How the calculation works
+
+The calculator answers two different questions that conversations about vitamin D usually mash into one.
+
+**Without a blood test** it gives a preventive dose: 1500–2000 IU a day for an adult, adjusted for body mass. That is not treatment — it is the intake at which a deficiency simply does not develop, and it needs no lab monitoring.
+
+**With a blood test** the second mode kicks in. The dose is calculated from the distance between your 25(OH)D and the 75 nmol/L target, and if you are deficient, a loading schedule is added from the van Groningen formula:
+
+> total dose (IU) = 40 × (75 − current level in nmol/L) × body weight (kg)
+
+It is the only validated schedule in which weight is a multiplier rather than a footnote. A 60 kg person at 30 nmol/L needs about 108,000 IU for the course; a 110 kg person at the same level needs nearly twice that.
+
+<Callout type="info" title="Why the calculator asks what you already take">
+  A 25(OH)D result reflects everything at once: sun, food, and any supplement already being taken. Ignore that and the new dose stacks on top of one that is already working, inflating the apparent requirement. The calculator subtracts the contribution of your current intake and works from the underlying level.
+</Callout>
+
+## What body mass changes
+
+Vitamin D is fat-soluble: it leaves the bloodstream for adipose tissue and returns slowly. The practical consequence is that the same dose raises 25(OH)D less the more fat mass you carry.
+
+<DataTable
+  head={["BMI", "Dose multiplier", "Rise per 1000 IU/day"]}
+  rows={[
+    ["Under 25", "×1", "about 10 nmol/L (4 ng/mL)"],
+    ["25–30", "×1.5", "about 7 nmol/L (2.7 ng/mL)"],
+    ["30–35", "×2", "about 5 nmol/L (2 ng/mL)"],
+    ["Over 35", "×2.5", "about 4 nmol/L (1.6 ng/mL)"],
+  ]}
+  caption="From Ekwaru et al., PLoS One, 2014: people with obesity need 2–3 times more vitamin D for the same result"
+/>
+
+This is also where the familiar complaint comes from — "I take 2000 IU and my test still reads 40 nmol/L". Usually that is not a counterfeit product or a malabsorption problem. It is body weight.
+
+<ReadAlso href="/en/supplements/vitamin-d-dosage" title="Vitamin D: doses, blood levels and who actually needs it" />
+
+## Reading the result
+
+<DataTable
+  head={["25(OH)D, nmol/L", "ng/mL", "Interpretation", "What to do"]}
+  rows={[
+    ["Under 25", "Under 10", "Severe deficiency", "Correct under medical supervision"],
+    ["25–50", "10–20", "Deficiency", "Loading dose, re-test in 8–12 weeks"],
+    ["50–75", "20–30", "Insufficiency", "Maintenance dose, no loading needed"],
+    ["75–125", "30–50", "Target range", "Hold it with a maintenance dose"],
+    ["125–250", "50–100", "Above target", "Lower the dose"],
+    ["Over 250", "Over 100", "Potentially toxic", "Stop and see a doctor"],
+  ]}
+  caption="Thresholds from the Endocrine Society and NIH ODS. The IOM sets its floor lower, at 50 nmol/L"
+/>
+
+The first thing to check on the report is the units. Labs use both ng/mL and nmol/L, and the factor between them is 2.5. A value of "40" means the target range on one form and insufficiency on another.
+
+## When a test is actually worth it
+
+In 2021 the US Preventive Services Task Force found insufficient evidence for screening asymptomatic adults. For a healthy person it is cheaper to take a preventive dose than to draw blood.
+
+Testing is worth it if you fall into a risk group: obesity, darker skin at northern latitudes, age over 70, intestinal disease with malabsorption, kidney or liver disease, anticonvulsants or glucocorticoids, osteoporosis or low-trauma fractures. The second reason is a calculated dose well above preventive — then you want both a starting point and a follow-up.
+
+<ReadAlso href="/en/longevity/health-checkups-by-age" title="Health check-ups by age: which tests are worth it" />
+
+## What the calculator does not do
+
+It does not account for sunlight, and that is a deliberate choice. Skin synthesis depends on the angle of the sun rather than time spent outdoors: above the 40th parallel, UVB barely reaches the ground from November to March. SPF 30 cuts synthesis by more than 95%, darker skin needs 3–6 times longer, and past 65 the skin's capacity falls roughly fourfold. No questionnaire can predict that contribution — but a 25(OH)D test contains all of it.
+
+It does not dose children, pregnancy or breastfeeding: those have their own ranges and their own risks, and belong with a clinician.
+
+And it does not apply where vitamin D metabolism is itself disturbed: sarcoidosis and other granulomatous disease, primary hyperparathyroidism, hypercalcaemia, severe renal failure, calcium kidney stones. In those conditions ordinary doses can be harmful.
+
+<ReadAlso href="/en/nutrition/calcium-daily-needs" title="Calcium: how much you need and how to get it without dairy" />
+
+## Taking it in practice
+
+Choose D3 (cholecalciferol): it raises 25(OH)D more effectively than D2 and holds it longer, with a 1.5–2× difference at the same dose. The format — drops, capsules, tablets — barely matters for absorption; taking it with a meal containing fat is simply more convenient.
+
+Daily dosing beats infrequent large doses. Single mega-doses of 300,000–600,000 IU, sometimes offered as a whole-season fix, paradoxically increased falls and fractures in several trials in older adults.
+
+And the dose is not a competition. The difference between 2000 and 10,000 IU a day is not in how fast you get there — it is in the risk.

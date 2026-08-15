@@ -39,3 +39,25 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# сборочные архивы
+*.tar.gz
+
+# заливка на хостинг: доступы к cPanel и слепок того, что уже на сервере
+scripts/.deploy.env
+.deploy-state.json
+
+# автопостинг в Telegram: секреты, состояние очереди и лог
+scripts/.tg.env
+.tg-state.json
+.tg-state.json.tmp
+tg-daily.log
+
+# IDE
+/.idea/
+
+# локальные выгрузки Cloudflare-трафика (npm run traffic)
+/temp/
+
+# локальные настройки Claude Code (разрешения — машинно-специфичны)
+.claude/settings.local.json

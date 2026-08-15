@@ -1,0 +1,218 @@
+---
+title: "Biological Age Tests: What They Measure, Are They Worth It"
+description: "Epigenetic clocks are a genuine scientific advance, but consumer tests have a reliability problem: rerunning the same sample can shift the answer by years."
+date: "2026-07-29"
+category: "longevity"
+cover: "/covers/biological-age.jpg"
+coverAlt: "Laboratory test tubes"
+coverCredit:
+  author: "Centers for Disease Control and Prevention"
+  url: "https://www.rawpixel.com/image/2288547/free-photo-image-laboratory-scientist-medical-technology"
+  source: "Rawpixel"
+  license: "CC CC0 1.0"
+tags: ["biological age", "epigenetic clocks", "dna methylation", "aging", "longevity", "telomeres", "biomarkers"]
+author: "24zdorovie Editorial"
+translationKey: "biological-age"
+faq:
+  - q: "Is a consumer biological age test worth buying?"
+    a: "As a research instrument, epigenetic clocks are real and useful. As a product sold to one person, they are premature. The core issue is technical reliability: many commercial tests cannot separate a genuine change in you from measurement noise. Your money buys more information in a lipid panel, an HbA1c and a fitness test."
+  - q: "Why did my second test give a different number?"
+    a: "Because methylation measurement is noisy. Higgins-Chen and colleagues reported in Nature Aging in 2022 that technical noise produced deviations of up to nine years between replicates for six prominent epigenetic clocks. A gap between two of your results may carry no biological meaning at all."
+  - q: "Which clock is the most predictive?"
+    a: "GrimAge and DunedinPACE. GrimAge was trained to predict time to death using methylation surrogates for seven plasma proteins plus smoking pack-years. DunedinPACE was trained on the rate of decline in 19 organ-system indicators measured over two decades. Both outperform first-generation clocks trained on chronological age."
+  - q: "What about telomere length tests?"
+    a: "Telomere shortening is real biology, but for an individual the test is close to useless. Variation between healthy people of the same age is enormous, commercial assays reproduce poorly, and no intervention has been shown to improve health outcomes by lengthening telomeres."
+  - q: "My result says I am five years younger than my age. Is that good news?"
+    a: "It is a weak signal at best. No trial has shown that deliberately improving a clock score improves the outcomes that matter — lifespan, heart attacks, dementia. The score is a surrogate endpoint, not the goal itself."
+  - q: "How much does a biological age test cost?"
+    a: "A one-off consumer epigenetic kit typically runs $200–500, subscription plans $300–600 a year, telomere tests $90–300, and longevity clinic panels that bundle a clock $500–3,000 and up. Price does not track accuracy: expensive and cheap epigenetic tests generally use the same methylation array, and the higher price buys a longer report rather than a more reliable measurement. For comparison, the panel with real outcome evidence — lipids, HbA1c, CRP, blood count — usually costs under $80."
+  - q: "Are biological age subscriptions worth it?"
+    a: "Rarely. Quarterly retesting only makes sense if the measured quantity changes meaningfully over a quarter and the instrument can detect that change. With technical noise reaching nine years between replicates of the same sample, a three-month cadence mostly sells you a trend line drawn through measurement error."
+  - q: "What should I track instead?"
+    a: "Blood pressure, lipids, HbA1c, waist circumference, VO2max, grip strength and gait speed. Each is cheap, reproducible, validated against hard outcomes, and — crucially — attached to an intervention that is known to work."
+sources:
+  - title: "Horvath S. DNA methylation age of human tissues and cell types. Genome Biology, 2013"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4015143/"
+  - title: "Hannum G, et al. Genome-wide methylation profiles reveal quantitative views of human aging rates. Molecular Cell, 2013"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3780611/"
+  - title: "Levine ME, et al. An epigenetic biomarker of aging for lifespan and healthspan (DNAm PhenoAge). Aging (Albany NY), 2018"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5940111/"
+  - title: "Lu AT, et al. DNA methylation GrimAge strongly predicts lifespan and healthspan. Aging (Albany NY), 2019"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6366976/"
+  - title: "Belsky DW, et al. DunedinPACE, a DNA methylation biomarker of the pace of aging. eLife, 2022"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8853656/"
+  - title: "Higgins-Chen AT, et al. A computational solution for bolstering reliability of epigenetic clocks. Nature Aging, 2022"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9586209/"
+---
+
+A biological age test does not measure age. It reads chemical tags on your DNA at a few hundred specific positions and feeds them into a statistical model that returns a single number expressed in years. The science behind those models is real and has taught us a great deal about ageing. The consumer product built on top of it is not ready, and the reason is less about biology than about metrology: run the same blood sample twice and the answer can move by years, which means the cheerful "I reversed three years" after a good winter of training is often just the instrument talking to itself.
+
+<KeyPoints
+  title="The short version"
+  items={[
+    "Epigenetic clocks read DNA methylation at hundreds of sites and convert the pattern into a number of years",
+    "First-generation clocks (Horvath, Hannum) were trained to guess chronological age, which limits what they can say about health",
+    "PhenoAge and GrimAge were trained on clinical markers and mortality, and predict outcomes considerably better",
+    "DunedinPACE estimates a rate rather than an age: how many biological years you accumulate per calendar year",
+    "Technical noise alone produced deviations of up to nine years between replicates for six prominent clocks",
+    "No trial has shown that moving a clock score moves real outcomes, so the score is a surrogate endpoint",
+    "Blood pressure, lipids, HbA1c, waist, VO2max, grip strength and gait speed remain the practical measurements",
+  ]}
+/>
+
+## Methylation, without the jargon
+
+Every cell in your body carries the same genome, yet a liver cell and a neuron behave nothing alike. The difference lives in annotations layered on top of the sequence: which genes are switched on, which are muted, and how firmly. One of the most important annotations is a methyl group — a tiny chemical tag attached to a cytosine sitting next to a guanine. Those positions are called CpG sites, and the human genome has roughly 28 million of them.
+
+The rough rule is that heavier methylation in a gene's regulatory region means a quieter gene. Methylation is not damage and not mutation: the letters of the genome are untouched. It is a volume control, and it moves — with cell type, with age, with smoking, with inflammation, and with which cells happened to end up in the tube of blood you sent off.
+
+The observation that launched the field is that these changes are not random. As people get older, some CpG sites reliably gain tags and others reliably lose them, consistently enough that a model can look at the pattern and estimate how old someone is. That is all an epigenetic clock does: take a few hundred selected sites, weight them, output a number.
+
+Which means the number is not a reading from a device that detects some underlying essence of ageing. It is the output of a regression model, and a regression model returns whatever it was trained to return. Everything that follows — why some clocks are more useful than others — comes down to what each one was asked to predict.
+
+## Three generations of clocks
+
+### Generation one: predicting the birth certificate
+
+Two 2013 papers defined the field. Steve Horvath published a model built on 353 CpG sites and trained across dozens of tissues and cell types, which is why it works almost anywhere in the body rather than only in blood. Gregory Hannum's group published a blood-based model at nearly the same time.
+
+Both were trained to predict chronological age, and both do it impressively well, typically within a few years. The commercial idea grew from the residual: if the model says 47 and your passport says 42, those five extra years are supposedly accelerated ageing. That interpretation is not baseless — the residual does show modest associations with mortality and disease.
+
+But there is a built-in ceiling. The training procedure explicitly minimises the gap between prediction and chronological age. Anything that makes you differ from your age-matched peers is, from the model's perspective, prediction error to be squeezed out. A clock trained on chronological age is optimised against the very signal we want it to carry.
+
+<ReadAlso href="/en/longevity/horvath-clock" title="The Horvath Clock: What It Is and What the Test Can Tell You" />
+
+### Generation two: train on health instead
+
+The obvious fix is to stop using the birth certificate as the target. In 2018 Morgan Levine and colleagues built DNAm PhenoAge in two stages. First they combined clinical measures — albumin, creatinine, glucose, C-reactive protein, blood indices and others — with chronological age into a composite "phenotypic age" that captures mortality risk. Then they trained a methylation model to predict that composite. The result substantially outperformed earlier measures for all-cause mortality, cancers, healthspan, physical functioning and Alzheimer's disease.
+
+In 2019 Ake Lu and colleagues took the idea further with GrimAge. They first used methylation to estimate plasma levels of seven ageing-related proteins, added a methylation-based estimate of smoking pack-years, and combined those surrogates into a predictor of lifespan. Its association with time to death, time to coronary heart disease and time to cancer stands out among epigenetic clocks — though the smoking component means that for smokers, a substantial part of what GrimAge "discovers" is something they already knew.
+
+### A different question: how fast, not how old
+
+DunedinPACE, published by Daniel Belsky and colleagues in 2022, answers something else entirely. It comes out of the Dunedin cohort of New Zealanders born in 1972–1973, followed for decades, in whom 19 indicators of organ-system integrity were measured repeatedly. That let the researchers estimate, for each individual, how quickly those systems were deteriorating — a personal rate of ageing measured over twenty years — and then compress that trajectory into a single blood test.
+
+The output is a pace, not an age. Roughly 1.0 means one year of biological ageing per calendar year; 1.2 means twenty per cent faster; 0.85 means slower. Notably, the authors deliberately restricted the input data to exclude probes with poor test–retest reliability. The field's reliability problem was recognised from inside.
+
+<DataTable
+  head={["Clock", "What it outputs", "What it was trained on", "Practical value to an individual"]}
+  rows={[
+    ["Horvath (2013)", "Age in years, almost any tissue", "Chronological age, 353 CpG sites", "Scientifically foundational, weak basis for personal decisions"],
+    ["Hannum (2013)", "Age in years from blood", "Chronological age in adults", "Accurate at guessing your birthday, limited health signal"],
+    ["PhenoAge (2018)", "Phenotypic age in years", "Composite of clinical markers reflecting mortality risk", "Stronger link to outcomes; interpreting one person's number is still contested"],
+    ["GrimAge (2019)", "Lifespan estimate in years", "Surrogates for 7 plasma proteins plus smoking pack-years", "Best mortality prediction; heavily influenced by smoking history"],
+    ["DunedinPACE (2022)", "Rate of ageing, 1.0 is average", "Decline in 19 organ-system indicators over 20 years", "Conceptually closest to tracking change, but no intervention evidence"],
+  ]}
+  caption="Key papers: Horvath 2013, Hannum 2013, Levine 2018, Lu 2019, Belsky 2022"
+/>
+
+## The reliability problem sits at the centre
+
+For a test to be useful to a population, it needs to correlate with outcomes across many people. For a test to be useful to you, it needs something stricter: measure the same material twice and get roughly the same answer. Without that, the difference between your two results is uninterpretable, because you cannot tell whether you changed or the assay did.
+
+In 2022 Albert Higgins-Chen and colleagues addressed this directly in Nature Aging, and the phrasing in their own abstract is blunt: methylation data can be surprisingly unreliable, and technical noise produced deviations of up to nine years between replicates for six prominent epigenetic clocks. Replicates — essentially the same material run twice.
+
+Hold that against the marketing. A test that promises to detect the three years you clawed back through sleep, exercise and diet is claiming a resolution finer than its own demonstrated error. The effect being sold is smaller than the noise floor.
+
+<Callout type="warning" title="One question worth asking before you pay">
+  Ask the provider for the test–retest reliability of the specific clock version they run — usually reported as an intraclass correlation coefficient — and the typical replicate-to-replicate spread in years. Without those two numbers you have no scale against which to judge the difference between your first and second report, so any change you see is uninterpretable by construction. A provider who cannot supply them has answered the question anyway.
+</Callout>
+
+The important part of that paper is constructive, not dismissive. The authors showed that computing principal components across CpG-level data before feeding the model largely fixes the problem: retrained principal-component versions of the same six clocks agree between most replicates within about 1.5 years. That is a different instrument, and it matters enormously for clinical trials of ageing interventions. But the method is recent and not every commercial service has adopted it, which is precisely why asking which version you are buying is a reasonable thing to do.
+
+Technical noise is compounded by biological noise. The clocks read a mixture of white blood cells, and the proportions of that mixture shift with a cold, a bad week of sleep, a hard training block or seasonal allergy. Sample before a holiday and after it and part of what you have measured is your immune state, not your rate of ageing.
+
+## Why "I got younger" is a claim about the test
+
+Suppose the reliability issue were solved and the number were trustworthy. A deeper problem remains: nobody has shown what a change in it means.
+
+Every clock described above was validated as a prognostic marker. People with worse scores die earlier and get sick more often, on average, in observational data. It does not follow that pushing the score down pushes the risk down. This is the classic surrogate endpoint trap: a marker can travel alongside a process without being a lever on it.
+
+<Callout type="science" title="Surrogates have burned medicine before">
+  Medicine has repeatedly found drugs that beautifully corrected a marker which reliably predicted death, then discovered in randomised trials that patients did worse. The marker was a passenger, not a steering wheel. Epigenetic clocks currently occupy exactly that position: strong prediction, no demonstration that an intervention-induced shift carries through to hard outcomes. Until trials with real endpoints exist, "I reversed my biological age" is a statement about a number, not about a person.
+</Callout>
+
+There is also a purely statistical route to self-deception: regression to the mean. People tend to retest after a bad first result, having also changed their habits. Extreme values drift back toward the middle on repeat measurement even when nothing whatsoever has changed — and the improvement is easy to credit to the new routine.
+
+Finally, the number does something to you. Telling a healthy 44-year-old that they are biologically 52 is not neutral information. It may prompt useful changes, or it may launch a cascade of unnecessary scans, panels and supplements. That mechanism is familiar from screening in general: testing an asymptomatic person can generate harm entirely on its own.
+
+<ReadAlso href="/en/longevity/health-checkups-by-age" title="Health Check-Ups by Age: Which Tests Are Worth It" />
+
+## Telomeres and the other contenders
+
+**Telomeres** are repetitive caps on chromosome ends that shorten as cells divide. It is an elegant image of a biological clock, and at population level the association with age and disease is genuine. For an individual it is close to useless, for three reasons. The spread of telomere length among healthy people of the same age dwarfs the age-related trend, so your value tells you little about you. Commercial assays reproduce poorly — the same disease as the epigenetic clocks, in a more advanced stage. And there is no lever: no intervention has been shown to improve health outcomes by lengthening telomeres, whatever the supplement aisle implies.
+
+**Blood biomarkers and composite indices.** An older and more modest idea: take ordinary lab results — albumin, creatinine, CRP, glucose, blood counts, lung function — and collapse them into one biological age figure. This is, as noted, exactly how the clinical phenotype underlying PhenoAge was constructed. The approach is honest in that every input is cheap, interpretable and attached to an intervention with evidence behind it. Its weakness is that summing understandable numbers does not produce a more accurate number, and the tidy single score hides which input is actually off. If your CRP is elevated, the useful information is "your CRP is elevated", not "your biological age is 49".
+
+## What these tests cost
+
+After "does it work", the next question is what it costs — and here the market is wider than most people expect, because "biological age test" covers products that differ tenfold in price and considerably more in what they actually run.
+
+<DataTable
+  head={["What you're buying", "Typical price", "What actually happens"]}
+  rows={[
+    ["Consumer epigenetic clock, one-off kit", "$200–500", "Saliva or blood spot posted to a lab, run on a methylation array, several clock scores returned"],
+    ["Epigenetic clock on subscription", "$100–200 per retest, $300–600 a year", "The same test on a schedule — usually quarterly — with a dashboard and trend line"],
+    ["Telomere length test", "$90–300", "qPCR estimate of average telomere length in white blood cells"],
+    ["Blood-biomarker 'biological age' index", "$150–350", "An ordinary lab panel collapsed into a single age-like score"],
+    ["Longevity clinic panel including a clock", "$500–3,000+", "Broad bloodwork, sometimes imaging and fitness testing, with a clock bundled in"],
+    ["A standard clinical panel", "$30–80, often covered by insurance or a GP", "Lipids, HbA1c, CRP, blood count, blood pressure — the inputs with outcome evidence"]
+  ]}
+  caption="Ranges across major markets as of August 2026; consumer pricing in this category moves fast and discounting is heavy"
+/>
+
+Three things are worth knowing before reading those numbers as a quality ladder.
+
+**Price does not track accuracy.** The expensive and the cheap epigenetic tests typically run the same commodity methylation array. What the higher price usually buys is a longer report, more clock variants, a nicer dashboard and a coaching call — not a more reliable measurement. The reliability problem described above is a property of the platform and the clock algorithm, and paying more does not fix it.
+
+**The subscription model deserves particular scepticism.** Selling quarterly retests only makes sense if the thing being measured changes meaningfully over a quarter and the instrument can detect that change. Neither holds. Set the retest interval against the technical noise Higgins-Chen and colleagues documented — deviations of up to nine years between replicates of the same sample — and a three-month cadence is, in most cases, a paid subscription to measurement noise with a trend line drawn through it.
+
+**Bundled clinic panels hide the cheap part.** In a $2,000 longevity workup, the components with the strongest evidence — lipids, HbA1c, blood pressure, a fitness assessment — are the ones that would have cost under a hundred anywhere else. The clock is the expensive garnish, and it is also the only item on the list without an intervention attached to it.
+
+<Callout type="warning" title="What the price does not include">
+  These are consumer wellness products, not diagnostics. In most jurisdictions they undergo no regulatory review of analytical or clinical validity, the result carries no clinical meaning a doctor can act on, and there is no clinician obliged to interpret it or follow it up. If a number comes back alarming, the follow-up investigation is a separate cost — and it usually consists of the ordinary tests you could have started with.
+</Callout>
+
+The comparison that settles it for most people is not "is $400 a lot of money" but "what else does $400 buy". A full lipid panel, HbA1c, CRP, a thyroid check and a blood count, in most countries, come to a fraction of a single epigenetic kit — and every one of those numbers is reproducible, interpretable, and attached to a treatment that has been shown to change outcomes. A VO2max test, or a year of the gym membership that would improve it, sits in the same price band and has considerably better evidence behind it.
+
+None of which makes the science worthless. If you are curious, can afford it, and treat the result as an expensive novelty rather than a health decision, there is no harm in it. The harm starts when the number substitutes for the measurements that would actually have told you something.
+
+## What to measure instead
+
+The irony is that the measurements most tightly tied to how you are actually ageing are cheap, available and validated over decades.
+
+**Blood pressure.** The best value in medicine: instant, free, and hypertension remains the leading modifiable risk factor for stroke and heart attack while producing no symptoms whatsoever.
+
+**Lipids and HbA1c.** Two tests that, combined with age, blood pressure and smoking status, produce a ten-year cardiovascular risk estimate — a single number backed by decades of randomised evidence and connected to treatments that work.
+
+**Waist circumference.** A crude but durable marker of visceral fat that the bathroom scale misses entirely. Requires a tape measure.
+
+**VO2max.** Maximal oxygen uptake is among the strongest known predictors of all-cause mortality, and unlike a methylation score it is directly trainable. Outcome link and lever, both present.
+
+<ReadAlso href="/en/longevity/vo2max-and-lifespan" title="VO2max and Lifespan: What the Evidence Shows" />
+
+**Grip strength.** A hand dynamometer is inexpensive, and grip predicts mortality and later-life independence better than many laboratory panels. It responds to resistance training.
+
+**Gait speed.** Walk four metres at your normal pace and time it. One of the most robust functional markers of ageing, and it requires a corridor.
+
+<ReadAlso href="/en/fitness/strength-training-for-beginners" title="Strength Training for Beginners: How to Start" />
+
+Notice the property shared across that list. For each item we know not only that it tracks with outcomes, but what to do when the value is poor, and that doing it improves outcomes. Epigenetic clocks currently have only the first half of that pair.
+
+There is also a middle path worth knowing about. The blood-chemistry version of PhenoAge — the formula that came before the methylation clock of the same name — runs on an ordinary panel with no sequencing at all. It gives you a biological age figure with a mortality validation behind it, and, unlike a consumer kit, it shows you which individual markers produced the number:
+
+<BiologicalAgeCalculator locale="en" />
+
+<ReadAlso href="/en/tools/biological-age-calculator" title="Biological Age Test: Calculate PhenoAge From Blood Work" />
+
+<Callout type="tip" title="If you are going to buy one anyway">
+  Treat it as a curiosity, not a diagnosis. Sample when you are in a stable state, not after illness, long-haul travel or a marathon. Find out which clock version the lab runs and whether it publishes reproducibility data. Do not start or stop medication or supplements because of the result. Do not compare reports from different providers — they compute different quantities with different models. And decide in advance what you would do under each possible outcome. If the answer is the same either way — move more, sleep properly, do not smoke — the test adds nothing you did not already know.
+</Callout>
+
+## The verdict
+
+Epigenetic clocks are a real scientific achievement. They gave ageing research something it did not previously have: a quantitative, lifestyle-sensitive, outcome-linked measure that can be applied to a living person. In trials of geroprotective compounds, in epidemiology, in studying the biological imprint of childhood adversity or air pollution, they are among the most valuable tools available — and the Higgins-Chen work shows their reliability can be dramatically improved rather than merely lamented.
+
+But there is a gap between "useful for studying groups" and "useful to you", and this technology has not yet crossed it. While rerunning one sample can shift the answer by years, while no evidence connects a shifted score to better health, and while the interpretation depends on which model version your provider happens to license, buying the test purchases an interesting fact rather than a medical decision.
+
+The reasonable stance is to follow the field with genuine interest and to run your own health on measurements that carry both predictive power and a lever. Blood pressure, lipids, HbA1c, waist, fitness, strength and walking speed are duller than epigenetics. They are also the ones that currently answer the question people are really asking when they buy a biological age test: what should I do to age more slowly.

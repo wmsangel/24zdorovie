@@ -1,0 +1,95 @@
+---
+title: "Daily Water Intake Calculator"
+description: "Work out how much to drink given your weight, age, training and the heat. Shown alongside the official EFSA reference and why no precise water requirement exists."
+updated: "2026-08-03"
+lede: "A reasonable adult benchmark is 30–35 ml of water per kilogram of body mass a day, food included. For a 75 kg person that is roughly 2.5 L in total, of which about 2 L needs drinking: a fifth arrives with vegetables, soups and porridge. Training adds 0.4–1.2 L per hour and heat up to a litre more. Even so, thirst regulates intake more precisely than any formula."
+faq:
+  - q: "How much water should I drink a day?"
+    a: "EFSA recommends 2.5 L of total water a day for men and 2 L for women — food included, so what you actually drink is roughly 20–25% less. The US Institute of Medicine gives noticeably more: 3.7 and 2.7 L. Both figures are medians of what healthy people drink, not a measured physiological requirement."
+  - q: "Where does the eight glasses rule come from?"
+    a: "Nowhere — it has no source in the research literature. The most plausible origin is a 1945 recommendation of about 2.5 L of fluid a day, whose very next sentence noted that most of that quantity is contained in prepared food. The second sentence got lost in retelling, and the rule has lived on its own ever since."
+  - q: "Do tea and coffee count?"
+    a: "Yes. At habitual doses the diuretic effect of caffeine does not exceed the fluid volume you drank: in controlled trials the daily water balance of people drinking coffee matched that of people drinking water. The one exception is very large caffeine doses in someone unaccustomed to it."
+  - q: "How do I know whether I am drinking enough?"
+    a: "Urine colour and thirst. Pale yellow through the day is normal; the first morning sample is always darker and means nothing. In a healthy adult with access to water, thirst fires well before any meaningful deficit — it is more reliable than the feeling that you probably have not drunk much."
+  - q: "Should I drink before I feel thirsty?"
+    a: "In ordinary life, no — drink to thirst rather than ahead of it. Pre-emptive drinking makes sense in specific situations: prolonged effort in heat, older age where thirst is blunted, certain medical conditions. A healthy adult at a desk does not need to put away a litre in advance."
+  - q: "Can you drink too much water?"
+    a: "Yes, and it is dangerous. The kidneys clear roughly 0.8–1 L an hour; sustained excess dilutes blood sodium and causes hyponatraemia. Fatal cases are documented in marathon runners and in drinking contests. That is why the calculator warns you when the implied pace approaches that ceiling."
+  - q: "How much should I drink during exercise?"
+    a: "Around 400–800 ml per hour of moderate work, though sweat rates vary enormously between people: from 0.3 to 2.4 L an hour. Only weighing yourself before and after training gives the real figure — every kilogram lost is roughly a litre of fluid. Beyond an hour in the heat, sodium needs to go in with the water."
+sources:
+  - title: "EFSA Panel on Dietetic Products, Nutrition and Allergies. Scientific Opinion on Dietary Reference Values for water. EFSA Journal, 2010"
+    url: "https://www.efsa.europa.eu/en/efsajournal/pub/1459"
+  - title: "Institute of Medicine. Dietary Reference Intakes for Water, Potassium, Sodium, Chloride, and Sulfate, 2005"
+    url: "https://nap.nationalacademies.org/catalog/10925/"
+  - title: "Valtin H. Drink at least eight glasses of water a day. Really? Am J Physiol, 2002"
+    url: "https://pubmed.ncbi.nlm.nih.gov/12376390/"
+  - title: "Armstrong LE, et al. Urinary indices of hydration status. Int J Sport Nutr, 1994"
+    url: "https://pubmed.ncbi.nlm.nih.gov/7987361/"
+  - title: "Almond CSD, et al. Hyponatremia among runners in the Boston Marathon. NEJM, 2005"
+    url: "https://pubmed.ncbi.nlm.nih.gov/15829535/"
+  - title: "Killer SC, Blannin AK, Jeukendrup AE. No evidence of dehydration with moderate daily coffee intake. PLoS One, 2014"
+    url: "https://pubmed.ncbi.nlm.nih.gov/24416202/"
+  - title: "Barnes KA, et al. Normative data for sweating rate, sweat sodium concentration, and sweat sodium loss in athletes. Sports Med, 2019"
+    url: "https://pubmed.ncbi.nlm.nih.gov/31230667/"
+---
+
+## How the calculation works
+
+The baseline comes from body mass: 30–35 ml per kilogram a day, adjusted for age. The per-kilogram figure falls over the years as total body water declines and the kidneys concentrate urine less effectively.
+
+Two allowances are added on top. **Training**, priced at average sweat rates: 400 ml per hour for light work, 700 for moderate, 1200 for hard. **Heat**, up to a litre above 32 °C.
+
+The result is total water for the day. To get what you actually need to drink, the share arriving in food is subtracted: EFSA puts it at 20–30%, and the calculator uses 22%.
+
+<Callout type="info" title="Why the EFSA figure always sits beside the result">
+  Calculating from body mass is convenient, but it is a clinical rule of thumb rather than a measured physiological requirement. The EFSA reference is derived differently — as the median of what healthy people actually drink. The gap between the two approaches, and more starkly between EFSA and the US IOM (2.5 L against 3.7 L for men), is the honest measure of how precise any water target can be.
+</Callout>
+
+## The eight glasses rule
+
+The most famous advice about water has no source. Heinz Valtin, a kidney physiologist, went looking in 2002 for the study it might have come from and found none.
+
+The most plausible origin is a 1945 US National Research Council recommendation: about 2.5 litres of fluid a day for an adult. The next sentence in the same document said most of that quantity is contained in prepared food. In retelling, the second sentence disappeared and the first turned into eight glasses on top of meals.
+
+<ReadAlso href="/en/nutrition/how-much-water-per-day" title="How Much Water Per Day: The Real Numbers and the Myths" />
+
+## What actually counts
+
+<DataTable
+  head={["Source", "Contribution to balance", "Notes"]}
+  rows={[
+    ["Water, tea, coffee", "Fully", "Caffeine at habitual doses does not break the balance"],
+    ["Soups, vegetables, fruit", "20–30% of daily water", "Cucumber and watermelon are over 90% water"],
+    ["Milk, kefir", "Fully", "Plus protein and calcium"],
+    ["Sweetened drinks", "Technically yes", "But they bring sugar you would rather not bring"],
+    ["Alcohol", "Negative", "Suppresses vasopressin and increases urine output"],
+    ["Metabolic water", "250–350 ml", "Produced by oxidising fats and carbohydrates"],
+  ]}
+  caption="Coffee and tea do count — this is the most persistent error in conversations about hydration"
+/>
+
+## The signs worth watching
+
+The most practical is urine colour. It tracks concentration better than any subjective sensation except thirst: pale yellow through the day is normal, deep amber signals a deficit. The first sample of the morning is always darker and cannot be judged. B vitamins and beetroot colour urine regardless of hydration.
+
+The second is thirst itself. It is often dismissed as a late signal, which overstates the case: hypothalamic osmoreceptors respond to a 1–2% shift in plasma osmolality, long before anything clinically meaningful. The exception is older people, in whom thirst genuinely blunts with age — there, drinking ahead of it is justified.
+
+Headache, dry mouth and fatigue are unreliable markers: they have countless causes, and attributing them to dehydration by default is a mistake.
+
+<ReadAlso href="/en/nutrition/electrolytes-when-you-need-them" title="Electrolytes: When You Genuinely Need Them and When It Is Marketing" />
+
+## When water becomes too much
+
+Hyponatraemia is the state in which blood sodium is diluted by excess fluid. Cells — including brain cells — take on water, and in severe cases cerebral oedema follows. Among Boston Marathon participants studied in 2005, 13% of finishers were hyponatraemic, and the leading risk factor was drinking too much along the course.
+
+The practical conclusion: there is no need to drink beyond thirst during prolonged efforts, and past an hour in the heat sodium should go in alongside the water — via a sports drink, salt capsules, or simply salty food.
+
+<ReadAlso href="/en/nutrition/salt-how-much-per-day" title="Salt: How Much You Need and Where It Hides" />
+
+## Who this calculation does not fit
+
+Heart failure, chronic kidney disease, cirrhosis, diuretic therapy, syndrome of inappropriate ADH secretion — in all of these fluid is deliberately restricted and the target comes from a doctor. It can be considerably lower than the calculated figure, sometimes 1–1.5 L a day.
+
+Kidney stones are the opposite case: there the target urine volume is deliberately raised, usually above 2 L a day, and drinking becomes part of the treatment.

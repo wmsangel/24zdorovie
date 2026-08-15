@@ -1,0 +1,97 @@
+---
+title: "BMI and Body Composition Calculator"
+description: "Work out your body mass index, waist-to-height ratio and body fat from a tape measure. With WHO Asian cut-offs and an honest account of where BMI fails and why your waist matters more."
+updated: "2026-08-03"
+lede: "Body mass index is your weight in kilograms divided by your height in metres squared. The healthy adult range is 18.5 to 24.9; at 175 cm that means 56.7–76.3 kg. But BMI cannot tell muscle from fat and knows nothing about where that fat sits, which is why waist circumference predicts risk better: it should be less than half your height."
+faq:
+  - q: "What is a normal BMI?"
+    a: "Between 18.5 and 24.9. Below 18.5 is underweight, 25–29.9 is overweight, and 30 or above is obesity, split into three classes. For people of South and East Asian descent the cut-offs are lower — overweight from 23, obesity from 27.5 — because at the same index they carry more body fat and a higher risk of type 2 diabetes."
+  - q: "Why does BMI get it wrong?"
+    a: "It counts kilograms without asking what they are made of. In someone carrying a lot of muscle a BMI of 27 is normal, not overweight. A sedentary 70-year-old with a BMI of 23 may hold more fat than a 30-year-old at 27. BMI works for populations, where these cases cancel out, and works poorly for the individual in front of you."
+  - q: "Which matters more, BMI or waist circumference?"
+    a: "Waist. It reflects visceral fat — the metabolically active kind packed around your organs — and that is what drives insulin resistance, dyslipidaemia and cardiovascular events. In meta-analyses waist-to-height ratio outperforms BMI at predicting risk, and since 2022 it sits in the NICE guidance."
+  - q: "What waist circumference is healthy?"
+    a: "Under 94 cm for men and under 80 cm for women. Above 102 and 88 cm respectively marks high risk. There is also a rule that needs no sex or height adjustment: keep your waist under half your height. At 170 cm that is 85 cm."
+  - q: "How accurate is the body fat estimate?"
+    a: "The US Navy circumference method typically lands within 3–4 percentage points of DXA, and drifts further at the extremes. That is too coarse for a single verdict but fine for tracking: if the number falls over two months, your waist genuinely shrank. Only DXA gives you the absolute figure."
+  - q: "Is a BMI of 27 obesity?"
+    a: "No, that is overweight. Obesity starts at 30. But landing in 25–29.9 says little on its own: the band holds both heavily muscled people and people with pronounced abdominal fat. What separates them is not BMI but a tape measure."
+  - q: "Should I lose weight if my BMI is fine but my waist is not?"
+    a: "Probably — or more precisely, you should change your body composition. That combination is described as metabolically obese normal weight, and its cardiometabolic risk sits closer to overweight than to healthy. Work on the waist rather than the scale: resistance training and a modest deficit move it while your weight barely changes."
+sources:
+  - title: "WHO. Obesity: preventing and managing the global epidemic. WHO Technical Report Series 894, 2000"
+    url: "https://www.who.int/publications/i/item/WHO-TRS-894"
+  - title: "WHO expert consultation. Appropriate body-mass index for Asian populations. The Lancet, 2004"
+    url: "https://pubmed.ncbi.nlm.nih.gov/14726171/"
+  - title: "Ashwell M, Gunn P, Gibson S. Waist-to-height ratio is a better screening tool than waist circumference and BMI. Obes Rev, 2012"
+    url: "https://pubmed.ncbi.nlm.nih.gov/22106927/"
+  - title: "WHO. Waist circumference and waist-hip ratio: report of a WHO expert consultation, 2008"
+    url: "https://www.who.int/publications/i/item/9789241501491"
+  - title: "Hodgdon JA, Beckett MB. Prediction of percent body fat for U.S. Navy men and women from body circumferences and height. Naval Health Research Center, 1984"
+    url: "https://apps.dtic.mil/sti/citations/ADA143890"
+  - title: "Global BMI Mortality Collaboration. Body-mass index and all-cause mortality. The Lancet, 2016"
+    url: "https://pubmed.ncbi.nlm.nih.gov/27423262/"
+  - title: "Ruderman N, et al. The metabolically obese, normal-weight individual revisited. Diabetes, 1998"
+    url: "https://pubmed.ncbi.nlm.nih.gov/9588440/"
+---
+
+## How the calculation works
+
+The calculator produces four different numbers, and they answer four different questions.
+
+**Body mass index** is weight divided by height in metres squared. It answers "how much of me is there relative to my height". Quetelet devised it in 1832 as a statistical tool for describing populations, and it was never meant as an individual measure of health.
+
+**Waist circumference** answers where the fat actually sits. The absolute thresholds are 94 and 102 cm in men, 80 and 88 cm in women.
+
+**Waist-to-height ratio** is the same waist adjusted for height: 90 cm means something different on a 195 cm frame and on a 160 cm one. The threshold is identical for everyone and easy to remember — keep your waist under half your height.
+
+**Body fat from circumferences** is estimated with the US Navy method from neck, waist and, for women, hips. It is the only one of the four that tries to say what those kilograms are made of.
+
+<Callout type="info" title="Why waist outranks BMI in the verdict">
+  As soon as you enter a waist measurement, the calculator builds its verdict around it. The reason is simple: fat under the skin of your hips and fat wrapped around your liver and intestines behave differently. The second kind is metabolically active, releases free fatty acids straight into the portal vein and drives insulin resistance. BMI cannot distinguish them at all.
+</Callout>
+
+## Where BMI fails
+
+It errs in both directions, and both matter clinically.
+
+**Overstating risk in muscular people.** Muscle is denser than fat. A rugby player, or anyone three years into serious lifting, reaches a BMI of 27–29 at 12% body fat. The formula files them as overweight while they are metabolically healthier than most people at 22.
+
+**Understating it in older and sedentary people.** After 60, muscle leaves and fat takes its place. The weight holds, the BMI holds, the composition changes entirely. There is a name for this — sarcopenic obesity — and it carries a worse prognosis than obesity alone.
+
+Then there is a third group: normal weight, large belly. They are described as metabolically obese normal weight — BMI 23, waist 96 cm, insulin resistance and triglycerides in the range you would expect at obesity. BMI never sees them. A tape measure sees them immediately.
+
+<ReadAlso href="/en/weight/bmi-and-body-composition" title="BMI and Body Composition: What the Index Shows and What It Misses" />
+
+## How to measure properly
+
+Accuracy of the circumferences decides everything: a 2 cm error at the waist shifts the estimated body fat by roughly a percentage point.
+
+<DataTable
+  head={["What", "Where", "How"]}
+  rows={[
+    ["Waist", "At the navel, standing", "Morning, before eating, tape horizontal, do not pull the stomach in"],
+    ["Hips", "At the widest point of the buttocks", "Feet together, tape parallel to the floor"],
+    ["Neck", "Just below the larynx", "Tape angled slightly forward, shoulders relaxed"],
+    ["Height", "No shoes, back against a wall", "In the morning: you lose 1–2 cm by evening"],
+  ]}
+  caption="The tape should touch the skin without compressing it. Measuring the same way every time matters more than measuring perfectly"
+/>
+
+## What to do with the result
+
+If everything sits in the healthy range: nothing. A stable weight and a waist that does not creep up year on year is itself a decent marker.
+
+If the numbers are outside it, the direction is more useful than the value. A waist that dropped 4 cm over three months at the same body weight beats losing 4 kg of unspecified origin. That is why the calculator also shows fat-free mass index — it tells you how much muscle sits beneath the fat and stops you mistaking wasting for fat loss.
+
+A scale that refuses to move while your waist shrinks is the normal course of events in the first months of resistance training, not a reason to stop.
+
+<ReadAlso href="/en/weight/visceral-fat" title="Visceral Fat: Why It Is Dangerous and What Actually Removes It" />
+
+## What the calculator does not know
+
+It does not know your age in the sense of body composition — a BMI of 24 means different amounts of muscle at 25 and at 70. It knows nothing of ethnicity beyond the coarse Asian adjustment. It does not apply in pregnancy, in children and adolescents (who need age-specific percentile curves), in strength athletes, or in anyone with oedema or ascites, where retained fluid counts as body mass.
+
+Above all: none of the four numbers diagnoses anything. Obesity is a clinical diagnosis, made alongside blood pressure, glucose, lipids and history — never from a single figure.
+
+<ReadAlso href="/en/longevity/health-checkups-by-age" title="Health Check-ups by Age: Which Tests Are Actually Worth Doing" />

@@ -1,0 +1,156 @@
+# ============================================================
+#  24zdorovie.com — конфигурация Apache для статического экспорта
+#
+#  Заменяет то, что в серверной сборке делали next.config.ts
+#  (headers, redirects) и src/proxy.ts (выбор локали).
+#  Файл кладётся в корень public_html вместе с содержимым out/.
+# ============================================================
+
+# ---------- Кодировка ----------
+AddDefaultCharset UTF-8
+
+# ---------- Заголовки безопасности ----------
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-DNS-Prefetch-Control "on"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+
+  # HSTS включаем только после того, как HTTPS точно работает на всех поддоменах.
+  # Откатить тяжело: браузер помнит заголовок весь max-age.
+  # Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+
+  # Сгенерированные при сборке ассеты неизменяемы — кэшируем максимально
+  <FilesMatch "\.(js|css|woff2?|avif|webp|png|jpe?g|svg|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # HTML пересобирается при каждой публикации — держим короткий кэш
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+
+  # RSS и sitemap обновляются вместе с контентом
+  <FilesMatch "\.(xml|txt)$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
+</IfModule>
+
+# ---------- Сжатие ----------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE application/rss+xml image/svg+xml
+</IfModule>
+
+# ---------- MIME ----------
+<IfModule mod_mime.c>
+  AddType application/rss+xml .xml
+  AddType image/avif .avif
+  AddType font/woff2 .woff2
+  AddType application/manifest+json .webmanifest
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # ---------- HTTPS ----------
+  # Cloudflare передаёт исходную схему в X-Forwarded-Proto; проверяем оба варианта,
+  # иначе при проксировании получается бесконечный редирект
+  RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^(.*)$ https://24zdorovie.com/$1 [R=301,L]
+
+  # ---------- Канонический хост: без www ----------
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+  # ---------- Старые адреса фида ----------
+  RewriteRule ^rss/?$ /rss/ru.xml [R=301,L]
+  RewriteRule ^feed/?$ /rss/ru.xml [R=301,L]
+
+  # ---------- Теги: пробел в слаге заменён дефисом ----------
+  # До августа 2026 слаг тега совпадал с самим тегом, поэтому составные
+  # уходили в URL как /ru/tag/силовые%20тренировки/. Такие адреса уже
+  # в индексе Google и в чужих ссылках — уводим их на новый вид.
+  #
+  # Пробел в паттерне пишется как \s: mod_rewrite сравнивает уже
+  # раскодированный путь, так что %20 сюда приходит пробелом.
+  # Завершающий слэш обязателен в паттерне — без него `[^/]*$` до конца
+  # строки не доходит и правило молча не срабатывает.
+  # У наших тегов пробел максимум один, но правило переживёт и два —
+  # второй редирект сработает на следующем запросе.
+  RewriteRule ^(ru|en)/tag/([^/]*?)\s+([^/]*?)/?$ /$1/tag/$2-$3/ [R=301,L]
+
+  # Заодно слаг стал строчным, и теги-аббревиатуры сменили адрес.
+  # Привести регистр общим правилом нельзя: tolower в mod_rewrite живёт
+  # в RewriteMap, а тот в .htaccess недоступен. Случаи разовые и все здесь —
+  # новые адреса строчные по построению, так что список не будет расти.
+  RewriteRule ^ru/tag/ADF/?$ /ru/tag/adf/ [R=301,L]
+  RewriteRule ^ru/tag/NEAT/?$ /ru/tag/neat/ [R=301,L]
+  RewriteRule ^ru/tag/ИМТ/?$ /ru/tag/имт/ [R=301,L]
+  RewriteRule ^en/tag/BMI/?$ /en/tag/bmi/ [R=301,L]
+  RewriteRule ^en/tag/CBT-I/?$ /en/tag/cbt-i/ [R=301,L]
+  RewriteRule ^en/tag/DHA/?$ /en/tag/dha/ [R=301,L]
+  RewriteRule ^en/tag/EPA/?$ /en/tag/epa/ [R=301,L]
+  RewriteRule ^en/tag/TDEE/?$ /en/tag/tdee/ [R=301,L]
+
+  # ---------- Выбор локали для корня ----------
+  # Аналог proxy.ts. Приоритет: явный выбор пользователя → язык браузера → русский.
+  #
+  # Куку `locale` ставит переключатель языка в шапке (src/components/Header.tsx).
+  # Только здесь, на корне: ниже, в правиле для путей без префикса локали,
+  # редирект постоянный (301) и браузер его кэширует — там ветвление по куке
+  # дало бы залипший чужой язык, который нечем сбросить.
+  RewriteCond %{HTTP_COOKIE} (^|;\s*)locale=en(\s*;|$) [NC]
+  RewriteRule ^$ /en/ [R=302,L,E=LOCALE_PICK:1]
+
+  RewriteCond %{HTTP_COOKIE} (^|;\s*)locale=ru(\s*;|$) [NC]
+  RewriteRule ^$ /ru/ [R=302,L,E=LOCALE_PICK:1]
+
+  # Английский — если браузер ставит en первым в списке. Наличие ru
+  # дальше по списку роли не играет: у пользователя может быть
+  # `en-US,en;q=0.9,ru;q=0.8`, и он просит именно английский.
+  RewriteCond %{HTTP:Accept-Language} ^en [NC]
+  RewriteRule ^$ /en/ [R=302,L,E=LOCALE_PICK:1]
+
+  RewriteRule ^$ /ru/ [R=302,L,E=LOCALE_PICK:1]
+
+  # Ответ на `/` зависит от куки и Accept-Language, то есть у разных людей он
+  # разный — общий кэш (Cloudflare, корпоративный прокси) не должен отдавать
+  # один и тот же редирект всем. Помечаем только сам редирект, страницы за ним
+  # кэшируются как обычно. REDIRECT_-вариант — на случай, если Apache
+  # перезапустит запрос и переименует переменную.
+  <IfModule mod_headers.c>
+    Header always set Vary "Cookie, Accept-Language" env=LOCALE_PICK
+    Header always set Cache-Control "private, no-store" env=LOCALE_PICK
+    Header always set Vary "Cookie, Accept-Language" env=REDIRECT_LOCALE_PICK
+    Header always set Cache-Control "private, no-store" env=REDIRECT_LOCALE_PICK
+  </IfModule>
+
+  # ---------- Пути без префикса локали ----------
+  # /nutrition/protein/ → /ru/nutrition/protein/, но только если такой
+  # файл реально не существует в корне
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !^/(ru|en|_next|og|covers|ads)/
+  RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]{2,5}$
+  RewriteRule ^(.*)$ /ru/$1 [R=301,L]
+</IfModule>
+
+# ---------- Страницы ошибок ----------
+ErrorDocument 404 /404.html
+
+# ---------- Прятать служебное ----------
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# Архивы деплоя: scripts/deploy.mjs кладёт их в public_html, распаковывает
+# и сразу удаляет — но пока архив лежит, отдавать его наружу незачем.
+<FilesMatch "\.(tar\.gz|tgz|zip)$">
+  Require all denied
+</FilesMatch>
+
+Options -Indexes

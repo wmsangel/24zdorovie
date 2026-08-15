@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Ежедневная публикация в Telegram через launchd.
+
+  Установка:
+    cp scripts/com.24zdorovie.tg-daily.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.24zdorovie.tg-daily.plist
+
+  Проверка и управление:
+    launchctl list | grep 24zdorovie          # загружен ли агент
+    launchctl start com.24zdorovie.tg-daily   # запустить немедленно
+    launchctl unload ~/Library/LaunchAgents/com.24zdorovie.tg-daily.plist
+
+  ВАЖНО: путь к node прибит абсолютным, потому что launchd не читает
+  профиль оболочки и про nvm ничего не знает. После обновления версии
+  node в nvm путь ниже нужно поправить (which node покажет актуальный).
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.24zdorovie.tg-daily</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/igorzagorodnyi/.nvm/versions/node/v20.18.0/bin/node</string>
+    <string>scripts/tg-daily.mjs</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/igorzagorodnyi/Sites/izn.health</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/Users/igorzagorodnyi/.nvm/versions/node/v20.18.0/bin:/usr/bin:/bin</string>
+  </dict>
+
+  <!--
+    Дважды в день: 10:00 и 19:00. За запуск уходит по одному посту в каждый канал,
+    то есть два поста в сутки на локаль.
+
+    Если Mac спал — launchd запустит задачу сразу после пробуждения. Но пропущенные
+    запуски он не копит: проспав оба времени, наверстает одним запуском, а не двумя.
+    Догнать отставание вручную — npm run tg -- --count=2
+  -->
+  <key>StartCalendarInterval</key>
+  <array>
+    <dict>
+      <key>Hour</key>
+      <integer>10</integer>
+      <key>Minute</key>
+      <integer>0</integer>
+    </dict>
+    <dict>
+      <key>Hour</key>
+      <integer>19</integer>
+      <key>Minute</key>
+      <integer>0</integer>
+    </dict>
+  </array>
+
+  <key>StandardOutPath</key>
+  <string>/Users/igorzagorodnyi/Sites/izn.health/tg-daily.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/igorzagorodnyi/Sites/izn.health/tg-daily.log</string>
+
+  <key>RunAtLoad</key>
+  <false/>
+</dict>
+</plist>

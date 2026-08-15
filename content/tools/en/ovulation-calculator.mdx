@@ -1,0 +1,131 @@
+---
+title: "Ovulation Calculator: Your Fertile Window by Cycle Dates"
+description: "Work out your ovulation date and fertile window from your last period and cycle length — with the real margin of error, a forecast of the cycles ahead, and the date a pregnancy test starts meaning something."
+updated: "2026-08-11"
+lede: "Ovulation does not happen on day 14 — it happens roughly 12–14 days before your next period, so it is counted backwards from the end of the cycle, not forwards from the start. Pregnancy is possible on six days: the five before ovulation and the day itself, because sperm survive up to five days in the reproductive tract while the egg lives 12–24 hours. The odds peak in the two days before ovulation. Even on a steady cycle the exact day drifts by a week or more, which makes calendar maths useful for planning a pregnancy and useless as contraception."
+faq:
+  - q: "What day of the cycle does ovulation happen?"
+    a: "It depends on cycle length, not on a day number: ovulation falls roughly 12–14 days before the next period. On a 28-day cycle that is day 14–16, on a 35-day cycle day 21–23, on a 21-day cycle day 7–9. Across 75,981 cycles tracked with LH tests, the most common ovulation day on a 28-day cycle was day 15 rather than 14, spread across a 10-day range."
+  - q: "How many days a month can you get pregnant?"
+    a: "Six: the five days before ovulation plus the day of ovulation. The window's edges come from how long the cells survive — sperm stay capable of fertilisation in cervical mucus for up to five days, the egg lives 12–24 hours. A day after ovulation the cycle is no longer fertile."
+  - q: "Which days carry the highest chance of conceiving?"
+    a: "The two days before ovulation and the day itself. From a single act of intercourse on those days the probability is on the order of 25–30%; five days before ovulation it is around 10%, and the day after ovulation it is close to zero. Couples trying to conceive generally do better having sex every one to two days across the whole window than trying to hit the exact day."
+  - q: "Can I use this to find my safe days?"
+    a: "No, and this is the key limitation. Calendar-based methods produce roughly 24 unintended pregnancies per 100 women a year in typical use — close to using nothing at all over the first months. Ovulation shifts with stress, illness, travel, lost sleep and rapid weight loss, and sperm may already be waiting when it does."
+  - q: "When should I take a pregnancy test?"
+    a: "Earlier than 12 days past ovulation a test tells you nothing reliable: hCG only appears after implantation, which happens on average 8–10 days after ovulation. A negative before your period is due means nothing — repeat it three days after the date your period was expected."
+  - q: "What if my cycle is irregular?"
+    a: "Beyond a week of variation calendar maths stops working: ovulation moves further than the fertile window is wide. LH tests (the surge precedes ovulation by 24–36 hours), cervical mucus and basal body temperature track it far better — though temperature confirms ovulation only after the fact. The irregularity itself deserves attention: PCOS, thyroid disease and hyperprolactinaemia are common causes."
+  - q: "Why does the calculator show a window instead of a date?"
+    a: "Because a single date would be a lie. In data from 32,595 women, the ovulation day on a 28-day cycle spread across 10 days, and the textbook 'days 10–17' describes the fertile window of only about 30% of women with regular cycles. The window here widens with the cycle variation you enter — as it should."
+  - q: "Can you ovulate twice in one cycle?"
+    a: "Not as two separate events: once an egg is released, the corpus luteum raises progesterone and blocks another. Two eggs can be released within the same 24 hours — that is how fraternal twins happen — but not two independent windows a week apart. Cycles with no ovulation at all, on the other hand, are fairly common, especially in the years after menarche and in perimenopause."
+sources:
+  - title: "Wilcox AJ, Weinberg CR, Baird DD. Timing of sexual intercourse in relation to ovulation. N Engl J Med, 1995"
+    url: "https://pubmed.ncbi.nlm.nih.gov/7477165/"
+  - title: "Wilcox AJ, Dunson D, Baird DD. The timing of the 'fertile window' in the menstrual cycle: day specific estimates from a prospective study. BMJ, 2000"
+    url: "https://pubmed.ncbi.nlm.nih.gov/11082086/"
+  - title: "Bull JR, et al. Real-world menstrual cycle characteristics of more than 600,000 menstrual cycles. npj Digital Medicine, 2019"
+    url: "https://pubmed.ncbi.nlm.nih.gov/31482137/"
+  - title: "Soumpasis I, Grace B, Johnson S. Real-life insights on menstrual cycles and ovulation using big data. Human Reproduction Open, 2020"
+    url: "https://pubmed.ncbi.nlm.nih.gov/32328534/"
+  - title: "Munro MG, et al. The two FIGO systems for normal and abnormal uterine bleeding: 2018 revisions. Int J Gynaecol Obstet, 2018"
+    url: "https://pubmed.ncbi.nlm.nih.gov/30198563/"
+  - title: "Wilcox AJ, Baird DD, Weinberg CR. Time of implantation of the conceptus and loss of pregnancy. N Engl J Med, 1999"
+    url: "https://pubmed.ncbi.nlm.nih.gov/10362823/"
+  - title: "Trussell J. Contraceptive failure in the United States. Contraception, 2011"
+    url: "https://pubmed.ncbi.nlm.nih.gov/21477680/"
+  - title: "ACOG Committee Opinion No. 651. Menstruation in Girls and Adolescents: Using the Menstrual Cycle as a Vital Sign"
+    url: "https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2015/12/menstruation-in-girls-and-adolescents-using-the-menstrual-cycle-as-a-vital-sign"
+---
+
+## How ovulation is calculated
+
+A cycle has two unequal halves. The follicular phase runs from your period to ovulation, and it stretches and shrinks — within one woman, from cycle to cycle. The luteal phase runs from ovulation to the next period, and it is markedly steadier, because the corpus luteum lives out its span and dies close to schedule.
+
+That asymmetry is what every calendar calculation rests on:
+
+> ovulation = expected period − length of the luteal phase
+
+On a 28-day cycle with a 14-day luteal phase this lands on day 14 — the origin of the schoolbook "ovulation happens mid-cycle". On a 32-day cycle it is day 18; on a 24-day cycle, day 10. The "half the cycle" shortcut errs further the further your cycle sits from 28 days.
+
+<Callout type="science" title="How steady is the luteal phase, really">
+  Across 612,613 ovulatory cycles the mean follicular phase came out at 16.9 days and the mean luteal phase at 12.4 days. The second is visibly tighter — but not fixed: 95% of values fall between 7 and 17 days. This calculator defaults to the classic 14 days; if you know your own length from LH tests or basal temperature, enter it and the result shifts by a day or two.
+</Callout>
+
+## Why the result is a window, not a date
+
+Calculator sites usually print one date in large type. The data says otherwise.
+
+<DataTable
+  head={["What was measured", "What came out"]}
+  rows={[
+    ["Women whose cycle is exactly 28 days", "12.4% (while 25.3% believe theirs is)"],
+    ["Spread of ovulation days on a 28-day cycle", "10 days, most often day 15"],
+    ["Women whose cycle varies by 5 days or more", "52%"],
+    ["Regular-cycle women whose fertile window fits 'days 10–17'", "about 30%"],
+  ]}
+  caption="Soumpasis et al., Hum Reprod Open, 2020 (75,981 cycles with LH testing) and Wilcox et al., BMJ, 2000"
+/>
+
+Hence the "cycle varies by" slider. It is not decoration but the honest width of the forecast: at one day of variation the ovulation window is two days wide, at a week it covers a fortnight — at which point it has stopped being a prediction and become a description of the whole cycle.
+
+## The fertile window: six days, not one
+
+Six days of the cycle can lead to pregnancy — the five before ovulation and the day itself. The lopsidedness has a simple cause: only sperm can wait.
+
+- **Sperm** remain capable of fertilisation for up to five days in periovulatory cervical mucus.
+- **The egg** lives 12–24 hours. A day after ovulation the window is shut until the next cycle.
+
+Odds inside the window are not flat: they climb towards ovulation, peak in the two days before it and on the day itself, then collapse. From a single act of intercourse at the peak, the probability of pregnancy runs around 25–30%; on the first day of the window, about 10%.
+
+<Callout type="tip" title="The practical takeaway if you are trying">
+  Do not chase one "right" day — without LH tests you will rarely hit it. Sex every one to two days across the whole fertile window beats precision aiming, and it spares you turning conception into a project with spreadsheets.
+</Callout>
+
+<ReadAlso href="/en/womens-health/menstrual-cycle-training" title="Cycle and training: how the phases affect strength and recovery" />
+
+## Narrowing the date down
+
+The calendar is the crudest method available. Three ways to tighten the window, from simplest to most precise:
+
+<DataTable
+  head={["Method", "What it shows", "Limitation"]}
+  rows={[
+    ["Cervical mucus", "Turns clear and stretchy, like egg white, in the days before ovulation", "Subjective; altered by medication and vaginal products"],
+    ["LH tests", "The surge 24–36 hours before ovulation — the only predictor available at home", "False positives in PCOS, where baseline LH is already high"],
+    ["Basal body temperature", "A 0.3–0.5 °C rise after ovulation confirms it happened", "Retrospective — it cannot be used to plan the current cycle"],
+    ["Ultrasound monitoring", "Direct view of the growing follicle", "Needs several visits per cycle"],
+  ]}
+/>
+
+The combination that works for most couples: the calendar to know where to look, LH tests on those days to pin it down.
+
+## When the calendar does not apply
+
+Some situations make date arithmetic not merely imprecise but pointless:
+
+- **A cycle shorter than 21 or longer than 35 days.** By FIGO's classification that is already abnormal. Long cycles most often mean PCOS; short ones, luteal phase deficiency or perimenopause.
+- **Variation beyond a week.** Ovulation then moves further than the fertile window is wide.
+- **Hormonal contraception.** There is no ovulation of your own to calculate.
+- **Breastfeeding and perimenopause.** Ovulation returns unpredictably and often before the first period — "no cycle" does not mean "cannot conceive".
+
+ACOG argues for treating the menstrual cycle as a vital sign, alongside pulse and blood pressure. Its regularity reflects the hypothalamic–pituitary–ovarian axis, and a disruption there is usually the first thing to signal a problem: the thyroid, prolactin, too little body mass or sustained stress.
+
+<ReadAlso href="/en/womens-health/pcos-explained" title="PCOS: signs, diagnosis and what actually helps" />
+
+## Why this is not contraception
+
+Calendar methods result in roughly 24 unintended pregnancies per 100 women over a year of typical use. For comparison: combined oral contraceptives sit near 7, the IUD below 1.
+
+The failure is biological rather than arithmetic. Ovulation shifts with illness, stress, time-zone changes, lost sleep and sharp calorie deficits — unpredictably and with no outward sign. The calculation, meanwhile, leans on past cycles: data from before the event. And when ovulation arrives unexpectedly early, sperm may already have been waiting inside for five days.
+
+Fertility awareness methods with daily temperature and mucus tracking (the symptothermal method) do considerably better than the calendar with perfect use, but they require training and daily discipline — and still do not compare with hormonal contraception or an IUD.
+
+<ReadAlso href="/en/womens-health/pms-what-helps" title="PMS: what actually helps according to the evidence" />
+
+## If your period is late
+
+When bleeding does not arrive on the calculated day, the calculator shows how many days late you are. On its own that means little: rule out pregnancy with a test first, and if it is negative with no period for a week, repeat it and see a doctor.
+
+No period for three cycles in a row — or six months if your cycle was irregular to begin with — is amenorrhoea and warrants investigation regardless of the test result. The most common causes in women who are not pregnant are functional hypothalamic amenorrhoea from an energy deficit and heavy training, PCOS, thyroid disease and hyperprolactinaemia.

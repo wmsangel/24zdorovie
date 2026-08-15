@@ -1,0 +1,138 @@
+---
+title: "The Horvath Clock: What It Is and What the Test Can Tell You"
+description: "The 2013 epigenetic clock that reads your age from 353 methylation sites — how it works, why it was a landmark, and why buying a Horvath clock test still tells you very little about yourself."
+date: "2026-07-31"
+updated: "2026-07-31"
+category: "longevity"
+cover: "/covers/horvath-clock.jpg"
+coverAlt: "A DNA sequencing readout"
+coverCredit:
+  author: "Rawpixel"
+  url: "https://www.rawpixel.com/image/5934468/photo-image-building-medical"
+  license: "CC CC0 1.0"
+tags: ["horvath clock", "epigenetic clocks", "dna methylation", "biological age", "dna age", "aging"]
+author: "24zdorovie Editorial"
+translationKey: "horvath-clock"
+faq:
+  - q: "What is the Horvath clock?"
+    a: "An algorithm published by Steve Horvath in 2013 that estimates a person's age from the methylation state of 353 specific sites on the genome. Its landmark property was universality: the same 353 sites worked across 51 different tissues and cell types, from blood to brain to breast, with a median error of about 3.6 years. Before it, age predictors had to be built separately for each tissue."
+  - q: "Can I buy a Horvath clock test?"
+    a: "Several consumer companies sell methylation testing and cite Horvath's work, though most now run newer clocks or their own proprietary variants. The practical problem is not availability but reliability: replicate measurements of the same sample can differ by years, so a single result cannot tell you whether anything about you has actually changed."
+  - q: "Why was the Horvath clock trained on chronological age?"
+    a: "Because chronological age was the only label available for thousands of archived samples. That choice created the clock's central paradox: a perfect predictor of your birth certificate would tell you nothing you did not already know. All the claimed biological signal lives in the error term — the gap between predicted and actual age, called epigenetic age acceleration — which is precisely the part the training process was trying to eliminate."
+  - q: "Is the Horvath clock still the best one?"
+    a: "No, and this is not controversial. Second-generation clocks trained on health outcomes rather than birthdays — PhenoAge and especially GrimAge — predict mortality substantially better. DunedinPACE takes a different approach again, estimating the rate of ageing rather than a static age. Horvath's own 2018 skin-and-blood clock outperforms his 2013 version for most tissues."
+  - q: "Does the Horvath clock detect progeria?"
+    a: "No, and that failure is scientifically informative. Cells from people with Hutchinson-Gilford progeria — who age visibly and dramatically fast — show no accelerated epigenetic age on the Horvath clock. Whatever the clock measures, it is not the same process that drives that syndrome. Down syndrome, by contrast, does show measurable acceleration."
+  - q: "What is epigenetic age acceleration?"
+    a: "The difference between your clock-predicted age and your chronological age, after adjusting for the latter. Positive acceleration has been associated with higher mortality and several diseases in large cohorts. Those are population-level associations with wide individual scatter, which is why an individual result carries far less information than the framing suggests."
+  - q: "Can you make your epigenetic clock run backwards?"
+    a: "Small reductions have been reported in a handful of small trials, but no study has shown that deliberately lowering a clock score improves the outcomes that matter — lifespan, heart attacks, dementia. The clock is a surrogate endpoint. Optimising a surrogate without confirming it moves the real outcome is one of the oldest ways medicine has fooled itself."
+sources:
+  - title: "Horvath S. DNA methylation age of human tissues and cell types. Genome Biology, 2013"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4015143/"
+  - title: "Hannum G, et al. Genome-wide methylation profiles reveal quantitative views of human aging rates. Molecular Cell, 2013"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3780611/"
+  - title: "Horvath S, et al. Epigenetic clock for skin and blood cells applied to Hutchinson Gilford Progeria Syndrome and ex vivo studies. Aging (Albany NY), 2018"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6075434/"
+  - title: "Horvath S, Raj K. DNA methylation-based biomarkers and the epigenetic clock theory of ageing. Nature Reviews Genetics, 2018"
+    url: "https://pubmed.ncbi.nlm.nih.gov/29643443/"
+  - title: "Higgins-Chen AT, et al. A computational solution for bolstering reliability of epigenetic clocks. Nature Aging, 2022"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9799002/"
+  - title: "Levine ME, et al. An epigenetic biomarker of aging for lifespan and healthspan (DNAm PhenoAge). Aging (Albany NY), 2018"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5940111/"
+  - title: "Belsky DW, et al. DunedinPACE, a DNA methylation biomarker of the pace of aging. eLife, 2022"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8853656/"
+  - title: "Horvath S, et al. Accelerated epigenetic aging in Down syndrome. Aging Cell, 2015"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4406288/"
+---
+
+In 2013 a geneticist at UCLA published a paper that changed how ageing research measures its subject. Steve Horvath had gone through roughly 8,000 archived tissue samples from 82 public datasets, looking for places in the genome where a chemical tag accumulates or disappears predictably over a lifetime. He found 353 of them — and the same 353 worked in almost every tissue he tried.
+
+That universality was the surprise. It is also the reason the phrase "Horvath clock" ended up on the packaging of consumer DNA age tests, a decade later and several scientific generations behind.
+
+<KeyPoints
+  title="The short version"
+  items={[
+    "The Horvath clock reads age from methylation at 353 genomic sites, and works across 51 tissue types with a median error near 3.6 years",
+    "It was trained to predict chronological age — so a perfect version would be uninformative, and all claimed signal sits in the prediction error",
+    "Newer clocks trained on mortality and health outcomes (PhenoAge, GrimAge, DunedinPACE) predict outcomes considerably better",
+    "Replicate runs of the same sample can differ by years, which is fatal for tracking one person over time",
+    "It does not detect accelerated ageing in progeria — a useful reminder that it is not measuring ageing itself",
+  ]}
+/>
+
+## What the clock actually reads
+
+DNA methylation is a chemical annotation, not a change to the code. A methyl group attaches to a cytosine, almost always where a cytosine sits next to a guanine — a CpG site — and its presence generally makes that stretch of DNA less available for transcription. Your cells use this system to keep a liver cell a liver cell despite carrying the same genome as a neuron.
+
+Methylation patterns are not static across a lifetime. At some CpG sites methylation reliably accumulates as people get older; at others it reliably disappears. The pattern is regular enough that if you measure enough sites you can estimate someone's age from a blood spot without knowing anything else about them.
+
+Horvath's method for finding the useful sites was an elastic-net regression — a statistical procedure that starts with hundreds of thousands of candidate sites and shrinks the list until only those carrying independent predictive weight remain. What came out was 353 CpGs and a set of coefficients. Feed in methylation values, get back a number in years.
+
+<Callout type="science" title="Why universality mattered">
+  A blood-based clock published the same year by Hannum and colleagues used 71 sites and worked well — in blood. Horvath's worked in blood, brain, breast, kidney, liver, lung, muscle and dozens more, including cells taken at birth. That suggested it was tracking something happening in cells generally, rather than a feature of one tissue's turnover. It remains the strongest argument that epigenetic clocks are measuring something real.
+</Callout>
+
+## The paradox built into the training
+
+Here is the part that consumer marketing never mentions, and it is not a subtle criticism — it is the defining property of first-generation clocks.
+
+The Horvath clock was trained to predict **chronological age**, because that was the only label attached to those thousands of archived samples. The better it got at its training task, the closer its output came to simply reproducing your birth certificate.
+
+So the interesting quantity is not the clock's output. It is the clock's **error** — the residual gap between what it predicts and how old you actually are, which the field calls epigenetic age acceleration. If the clock says 54 and your passport says 48, the claim is that those six years mean something biological.
+
+The training process was, by construction, trying to drive that residual to zero. Whatever survives is a mixture of genuine biological variation, tissue composition differences, and measurement noise — and separating those three is the entire ongoing research problem.
+
+## Three generations, and where Horvath sits
+
+<DataTable
+  head={["Clock", "Year", "Trained to predict", "What it is good at"]}
+  rows={[
+    ["Hannum", "2013", "Chronological age (blood only)", "Age estimation in blood"],
+    ["Horvath", "2013", "Chronological age (any tissue)", "Age estimation across tissues"],
+    ["Skin & blood (Horvath)", "2018", "Chronological age, refined", "Better accuracy, works on cultured cells"],
+    ["PhenoAge", "2018", "A mortality-risk score", "Predicting death and disease"],
+    ["GrimAge", "2019", "Time to death", "Best mortality prediction of the set"],
+    ["DunedinPACE", "2022", "Rate of decline across 19 systems", "How fast you are ageing, not how old"],
+  ]}
+  caption="Generational shift from predicting birthdays to predicting outcomes"
+/>
+
+The second generation changed the target. Levine's PhenoAge was trained against a composite mortality-risk score built from clinical markers rather than against age itself. GrimAge went further, training on time to death using methylation surrogates for seven plasma proteins plus smoking pack-years. Both predict mortality substantially better than the Horvath clock, which makes sense: they were asked to.
+
+DunedinPACE changed the question entirely. Rather than estimating how old you are, it estimates how fast you are ageing, trained on two decades of change across 19 organ-system indicators in the Dunedin birth cohort. It is the only one of these that produces a rate rather than a snapshot — and a rate is the thing you would actually want if you were testing whether an intervention works.
+
+<ReadAlso href="/en/longevity/biological-age-tests" title="Biological Age Tests: What They Measure, Are They Worth It" />
+
+## The reliability problem
+
+This is the objection that decides whether a "Horvath clock test" is worth buying, and it is technical rather than philosophical.
+
+Higgins-Chen and colleagues reported in *Nature Aging* in 2022 that measurement noise alone — the same sample, run twice — produced deviations of up to **nine years** across six prominent epigenetic clocks. The methylation arrays these clocks run on were designed for population studies, where noise averages out across thousands of participants. They were not designed to give one person a stable number.
+
+Follow what that means for the use case people actually have in mind. You test, change your diet and exercise for a year, and test again. The result comes back three years younger. You cannot distinguish that from the array having a slightly better day. The authors proposed a fix — principal-component versions of the clocks that are markedly more reproducible — but the consumer products that reached the market largely predate it.
+
+There is a second confounder that is easier to overlook. Blood is a mixture of cell types, and the proportions shift with infection, stress, inflammation and time of day. A change in the ratio of lymphocytes to neutrophils changes the average methylation profile of the sample without anything ageing at all. Research pipelines adjust for this statistically. It is not always clear that consumer pipelines do.
+
+## What the clock gets right, and one thing it gets wrong
+
+The Horvath clock is a real scientific instrument with a track record. Accelerated epigenetic age has been associated with all-cause mortality across multiple cohorts. Obese individuals show accelerated epigenetic age in liver tissue. Down syndrome shows measurable acceleration in blood and brain. The clock has been applied forensically to estimate the age of an unknown sample, and it is now a standard readout in experiments testing whether partial reprogramming can rejuvenate cells.
+
+And then there is progeria. People with Hutchinson-Gilford progeria syndrome age visibly and catastrophically fast, dying in their teens of conditions normally seen in the elderly. If any condition should light up an ageing clock, it is that one.
+
+It does not. Cells from progeria patients show no accelerated epigenetic age on the Horvath clock.
+
+<Callout type="info" title="Why that matters more than it sounds">
+  It tells you the clock is not measuring ageing in the broad sense — it is measuring one specific process that happens to correlate with the passage of time, and that process is separable from the one driving progeria. Any test that reports a single number labelled "your biological age" is compressing something considerably more specific than that label implies.
+</Callout>
+
+## So should you buy the test?
+
+As a research instrument, epigenetic clocks are among the more significant developments in ageing biology this century. As a product sold to one person, they remain premature — the noise is too large relative to the effect you are trying to detect, no intervention has been shown to improve outcomes by improving a clock score, and the number you get back has no action attached to it.
+
+Compare that with what the same money buys elsewhere. A lipid panel, an HbA1c, a blood pressure reading and a fitness test are cheap, reproducible to within a few percent, validated against hard outcomes, and — crucially — each connects to a treatment that is known to work. If your ambition is to age slowly, those tell you more, and they tell you what to do next.
+
+<ReadAlso href="/en/tools/biological-age-calculator" title="Biological Age Test: Calculate PhenoAge From Blood Work" />
+
+If you are still curious, one thing worth knowing: the maths of PhenoAge — the second-generation clock that outperformed Horvath's — has a blood-chemistry version that needs no sequencing at all. You can run it on an ordinary panel from your doctor, for the price of an ordinary panel, and see the individual markers that drive the result rather than a single opaque number.

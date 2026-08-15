@@ -1,0 +1,121 @@
+---
+title: "Calorie and Macro Calculator: Your Daily Target"
+description: "Work out your daily calorie target with the Mifflin-St Jeor equation and split it into protein, fat and carbs for your goal — with safe deficit limits and an honest error margin."
+updated: "2026-08-01"
+lede: "Your calorie target is your basal rate multiplied by an activity factor and shifted by the pace you choose. For a 35-year-old man of 178 cm and 82 kg with light activity, that is a basal rate of about 1760 kcal, maintenance around 2420 kcal, and roughly 1970 kcal a day to lose 0.5% of body weight per week. Every equation carries about a 10% error, so the number is a starting point, not a verdict."
+faq:
+  - q: "How many calories do I need a day?"
+    a: "For an average-height adult with light activity, usually 1800–2200 kcal for women and 2300–2800 for men. The spread inside those brackets is wide: two people of the same weight and age can differ by 400–500 kcal on muscle mass and real-world movement alone. The equation does not calculate your requirement — it calculates the average requirement of people who share your inputs."
+  - q: "Which equation is more accurate, Mifflin-St Jeor or Harris-Benedict?"
+    a: "Mifflin-St Jeor. In a comparison of predictive equations (Frankenfield, 2005) it landed within 10% of indirect calorimetry more often than any other. Harris-Benedict dates from 1919 and overestimates by roughly 5%, because the body composition of its sample does not resemble ours. If you know your body fat percentage, Katch-McArdle beats both — the calculator switches to it automatically."
+  - q: "How much protein do I need when losing fat?"
+    a: "About 2 g per kilogram of body weight, noticeably more than at maintenance. In a deficit protein does two jobs: it protects the muscle your body would otherwise burn alongside the fat, and it is the most satiating of the three macronutrients. With obesity there is no point applying 2 g/kg to actual weight — the calculator uses the weight that corresponds to a BMI of 25 at your height, otherwise the target becomes unachievable."
+  - q: "Why can I not eat below my basal rate?"
+    a: "Because a deficit should come from the gap between food and activity, not from eating less than your body burns lying still. Sustained below that line, what you lose is not mostly fat: muscle, bone density, hair and menstrual function go first. The calculator raises the target back to your basal rate automatically and tells you when it has done so."
+  - q: "Is it true that losing 1 kg requires a 7700 kcal deficit?"
+    a: "As a rule of thumb over a week or two, yes. As a six-month forecast, no. The rule dates from 1958, derives from the energy density of fat tissue, and assumes your burn stays constant. It does not: a lighter body costs less to move, so the same food gradually stops being a deficit. That is why the forecast here is the optimistic end — the real curve is always flatter."
+  - q: "I eat my target and the scale will not move. What is wrong?"
+    a: "Usually the tracking, not the equation. In the classic study by Lichtman et al. (NEJM, 1992), people convinced they ate very little were underreporting their intake by nearly half — entirely sincerely. Check the oil in the pan, the drinks, the bites while cooking and the weekends. If two weeks of honest tracking really moved nothing, cut 150–200 kcal, not a third of your food."
+  - q: "Do I have to track macros, or are calories enough?"
+    a: "For weight on the scale, calories decide it. For what that weight is made of, macros do. The same deficit at 1.2 versus 2 g/kg of protein costs a different share of muscle, and you will see the difference in the mirror and in the gym rather than on the scale. If tracking everything is too much, track protein alone — the rest tends to fall into place."
+sources:
+  - title: "Mifflin MD, St Jeor ST, et al. A new predictive equation for resting energy expenditure in healthy individuals. Am J Clin Nutr, 1990"
+    url: "https://pubmed.ncbi.nlm.nih.gov/2305711/"
+  - title: "Frankenfield D, Roth-Yousey L, Compher C. Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults. J Am Diet Assoc, 2005"
+    url: "https://pubmed.ncbi.nlm.nih.gov/15883556/"
+  - title: "Morton RW, et al. A systematic review, meta-analysis and meta-regression of the effect of protein supplementation on resistance training-induced gains in muscle mass. Br J Sports Med, 2018"
+    url: "https://pubmed.ncbi.nlm.nih.gov/28698222/"
+  - title: "Helms ER, Aragon AA, Fitschen PJ. Evidence-based recommendations for natural bodybuilding contest preparation: nutrition and supplementation. J Int Soc Sports Nutr, 2014"
+    url: "https://pubmed.ncbi.nlm.nih.gov/24864135/"
+  - title: "Garthe I, et al. Effect of two different weight-loss rates on body composition and strength and power-related performance in elite athletes. Int J Sport Nutr Exerc Metab, 2011"
+    url: "https://pubmed.ncbi.nlm.nih.gov/21558571/"
+  - title: "Hall KD, et al. Quantification of the effect of energy imbalance on bodyweight. The Lancet, 2011"
+    url: "https://pubmed.ncbi.nlm.nih.gov/21872751/"
+  - title: "FAO/WHO/UNU. Human energy requirements: report of a joint expert consultation, 2004"
+    url: "https://www.fao.org/3/y5686e/y5686e00.htm"
+  - title: "Institute of Medicine. Dietary Reference Intakes for Energy, Carbohydrate, Fiber, Fat, Fatty Acids, Cholesterol, Protein, and Amino Acids, 2005"
+    url: "https://nap.nationalacademies.org/catalog/10490/"
+  - title: "Lichtman SW, et al. Discrepancy between self-reported and actual caloric intake and exercise in obese subjects. NEJM, 1992"
+    url: "https://pubmed.ncbi.nlm.nih.gov/1454084/"
+---
+
+## How the calculation works
+
+The target is built in three steps, and each one adds its own uncertainty.
+
+**Step one — basal metabolic rate.** This is what your body spends lying still all day: breathing, heart, kidneys, brain. It accounts for 60–70% of everything you burn. The calculator uses the Mifflin-St Jeor equation:
+
+**Men:** 10 × weight(kg) + 6.25 × height(cm) − 5 × age + 5
+**Women:** 10 × weight(kg) + 6.25 × height(cm) − 5 × age − 161
+
+If you enter a body fat percentage, it switches to Katch-McArdle, which works from lean mass and therefore does not ask about sex:
+
+**370 + 21.6 × lean mass(kg)**
+
+**Step two — activity.** The basal rate is multiplied by a factor between 1.2 and 1.9. This is where the estimate loses the most accuracy, as below.
+
+**Step three — the goal.** A deficit or surplus matching your chosen pace is applied, treating a kilogram of fat tissue as 7700 kcal.
+
+<Callout type="info" title="Why the result shows three numbers, not one">
+  The basal rate is the floor your target must never go below. Daily burn is the break-even point. The target is what you actually eat. All three matter: when the scale stalls in a month, what you will be adjusting is the gap between the second and the third.
+</Callout>
+
+## Activity is the largest source of error
+
+The difference between "moderate" and "high" on this scale is around 300 kcal a day. That is more than any rearrangement of macronutrients can give you, and more than the error of the equation itself.
+
+People overestimate their level consistently: three runs a week feels like high activity, yet it adds under two hundred kilocalories a day. An hour of lifting burns 250–400 kcal — about one chocolate bar, not a free dinner.
+
+There is a second trap: compensation. After training, people unconsciously move less for the rest of the day — standing up less, walking slower, sitting longer in the evening. The real increase in daily burn is therefore almost always smaller than a watch reports.
+
+**A practical rule: if you are torn between two levels, take the lower one.** Erring low costs you slightly slower progress. Erring high costs you all of it, plus the conclusion that "these calculators do not work."
+
+<ReadAlso href="/en/weight/calorie-deficit-explained" title="Calorie deficit: how to calculate it without harm" />
+
+## Where the macro numbers come from
+
+The calculator does not split calories evenly or by any fashionable ratio. It allocates them in a strict order of priority: protein first, a floor of fat second, carbohydrates get the remainder.
+
+**Protein comes first because it determines what the weight you lose or gain is made of.**
+
+<DataTable
+  head={["Goal", "Protein, g per kg", "Basis"]}
+  rows={[
+    ["Maintenance", "1.6", "Muscle-gain plateau in the Morton 2018 meta-analysis"],
+    ["Fat loss", "2.0", "Protecting lean mass in a deficit, Helms 2014"],
+    ["Muscle gain", "1.8", "More adds nothing but crowds out the rest of the diet"],
+  ]}
+  caption="Above a BMI of 25 the calculation uses the weight matching BMI 25 — fat tissue has no protein requirement"
+/>
+
+**Fat** gets a floor of 0.8 g per kg of body weight, and around 28% of calories by default. The floor is not cosmetic: too little dietary fat impairs sex hormone synthesis and the absorption of vitamins A, D, E and K. The slider moves the share between 20% and 40% — that range is about what suits you, not about effectiveness.
+
+**Carbohydrates** take whatever is left. They are neither harmful nor optional; they are simply last in the queue, because they are the only macronutrient with no established minimum. They also fuel training, and hard sessions feel distinctly worse on very low carbohydrate intakes.
+
+If protein and fat leave almost nothing for carbohydrates, that is a sign of too steep a deficit rather than clever macro splitting — the calculator says so directly.
+
+<ReadAlso href="/en/nutrition/how-much-protein-per-day" title="How much protein you actually need per day" />
+
+## On pace and the 7700 rule
+
+The pace slider stops at 1% of body weight per week, and not out of timidity. Garthe et al. (2011) had athletes lose weight at two rates, one twice as fast as the other. Both groups lost weight, but the faster group gave up noticeably more lean mass and strength. Faster means a larger share of what you lose is not fat.
+
+The "7700 kcal = 1 kg" rule itself holds up over a week or two and falls apart over months. It assumes constant expenditure, and expenditure falls: a lighter body costs less to move, and adaptive thermogenesis adds to that. Modelling by Hall et al. (Lancet, 2011) shows the real curve is considerably flatter than the linear one, and that a plateau arrives not because "metabolism broke" but because burn has descended to meet intake.
+
+So treat the forecast here as the earliest possible date. Expect it to take 20–30% longer in practice — that is the normal course of events, not your failure.
+
+<ReadAlso href="/en/weight/weight-loss-plateau" title="Why the scale stopped: what happens on a plateau" />
+
+## What the calculator does not know
+
+It does not know your genetics, your thyroid, your medication or how you sleep. It ignores NEAT — the incidental movement outside training that varies by hundreds of kilocalories between people and drops measurably in a deficit. It does not model adaptive thermogenesis, and it has no idea about situations where calculated targets do not apply at all: pregnancy and breastfeeding, a history of disordered eating, kidney disease, GLP-1 medication.
+
+Above all, it does not know how much you actually eat. That is not a footnote: in the Lichtman study, participants sincerely convinced their problem was metabolic were underreporting intake by nearly half while overestimating their exercise. No equation survives unlogged cooking oil, the last third of a child's dinner, and weekends that "do not count."
+
+## How to use the number
+
+Treat the result as a hypothesis. Eat it for two weeks, weighing yourself under identical conditions — morning, after the bathroom, before food — and read the weekly average rather than individual days: water swings of ±1.5 kg are routine and have nothing to do with fat.
+
+If two weeks moved the scale in the right direction at roughly the expected speed, the target is right. If nothing moved, take off 150–200 kcal, not a third of your food. If it moved faster than planned, add the same amount back: losing too fast is also an error, it just looks more flattering for the first month.
+
+Come back to the calculator after a 4–5 kg change. By then the numbers are out of date — burn is calculated from your current mass, and your current mass is no longer the one you entered.

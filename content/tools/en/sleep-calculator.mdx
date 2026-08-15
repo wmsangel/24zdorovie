@@ -1,0 +1,89 @@
+---
+title: "Sleep Calculator: When to Go to Bed and When to Wake"
+description: "Work out your bedtime and wake time by sleep cycles, allowing for how long you take to fall asleep. With an honest margin of error and your accumulated weekly sleep debt."
+updated: "2026-08-03"
+lede: "To wake at 7:00 without surfacing mid-deep-sleep, go to bed around 22:45 or 23:15 — six or five full cycles plus roughly 15 minutes to fall asleep. But a cycle lasts 90 minutes only on average: in healthy adults it ranges from 70 to 120 minutes, so what you really get is a 20–30 minute window rather than an exact time."
+faq:
+  - q: "How long is one sleep cycle?"
+    a: "About 90 minutes on average, with a healthy adult range of 70 to 120 minutes. Cycles are not uniform across the night either: the first half holds more deep slow-wave sleep, while cycles towards morning lengthen as REM expands. So 'the fifth cycle ends at exactly 6:15' is an illusion of precision."
+  - q: "Do I really need to wake between cycles?"
+    a: "Partly. Waking from deep sleep produces sleep inertia — that groggy state lasting 15–30 minutes. Waking from light sleep feels easier. But when the choice is between sleeping 40 minutes less to land between cycles and simply sleeping longer, sleeping longer wins almost every time."
+  - q: "How much sleep does an adult need?"
+    a: "7–9 hours per the National Sleep Foundation, and 7–8 after 65. That is a normal range, not a target. People who genuinely thrive on six hours exist — carriers of rare DEC2 and ADRB1 variants — but they are well under 1% of the population, while far more people count themselves among them."
+  - q: "Can I catch up on sleep at the weekend?"
+    a: "Partially. Subjective alertness and some cognitive function recover; insulin sensitivity and other metabolic markers do not. Sleeping in also shifts your internal clock: waking at 11 on Sunday makes Sunday evening late and Monday morning brutal. That pattern is social jetlag."
+  - q: "How long should it take to fall asleep?"
+    a: "10–20 minutes. Consistently under five usually signals accumulated sleep debt rather than excellent sleep. Consistently over 30, if it affects your day, is the threshold at which insomnia becomes a reasonable conversation. The calculator folds your own figure into the bedtime it suggests."
+  - q: "How long should a nap be?"
+    a: "20 minutes or 90. A twenty-minute nap does not reach deep stages and leaves no inertia. Ninety minutes is a full cycle, so you wake from light sleep again. The worst option is 40–60 minutes, which lands your alarm squarely in slow-wave sleep. Avoid napping after 3 p.m. — it eats the sleep pressure you need by evening."
+  - q: "What matters more, bedtime or consistency?"
+    a: "Consistency, by a wide margin. The same wake-up time seven days a week stabilises circadian rhythms far more than any cycle-based bedtime. If you change one thing, fix your wake time — weekends included."
+sources:
+  - title: "Hirshkowitz M, et al. National Sleep Foundation's sleep time duration recommendations. Sleep Health, 2015"
+    url: "https://pubmed.ncbi.nlm.nih.gov/29073412/"
+  - title: "Carskadon MA, Dement WC. Normal human sleep: an overview. Principles and Practice of Sleep Medicine, 2011"
+    url: "https://pubmed.ncbi.nlm.nih.gov/28162807/"
+  - title: "Van Dongen HPA, et al. The cumulative cost of additional wakefulness. Sleep, 2003"
+    url: "https://pubmed.ncbi.nlm.nih.gov/12683469/"
+  - title: "Brooks A, Lack L. A brief afternoon nap following nocturnal sleep restriction: which nap duration is most recuperative? Sleep, 2006"
+    url: "https://pubmed.ncbi.nlm.nih.gov/16796222/"
+  - title: "Wittmann M, et al. Social jetlag: misalignment of biological and social time. Chronobiol Int, 2006"
+    url: "https://pubmed.ncbi.nlm.nih.gov/16687322/"
+  - title: "Depner CM, et al. Ad libitum weekend recovery sleep fails to prevent metabolic dysregulation. Curr Biol, 2019"
+    url: "https://pubmed.ncbi.nlm.nih.gov/30827911/"
+---
+
+## How the calculation works
+
+From the wake time you set, the calculator counts whole 90-minute cycles backwards and adds your time to fall asleep. Six cycles make nine hours of sleep, five make seven and a half, four make six.
+
+Beside each option it shows what most sleep calculators hide: the window that option becomes if your cycle is 70 or 120 minutes rather than 90. For five cycles that window spans nearly two and a half hours — not a defect in the arithmetic but real biological variation.
+
+<Callout type="warning" title="What the 90-minute rule leaves out">
+  Cycles are not uniform across the night. Deep slow-wave sleep dominates the first half, while cycles towards morning lengthen and fill with REM. On top of that, cycle length in the same person shifts from night to night with sleep debt, alcohol, bedroom temperature and a dozen other things. Any sleep calculator gives you an orientation, not a timetable.
+</Callout>
+
+## What to do with the margin of error
+
+The practical conclusion is simple: never sacrifice duration to land between cycles.
+
+If the choice is seven and a half hours "on cycle" against eight and a quarter "off", take the eight and a quarter. Total sleep duration affects how you feel and how you age far more than which stage your alarm caught. Sleep inertia clears in 15–30 minutes; sleep debt does not clear at all.
+
+<ReadAlso href="/en/sleep/sleep-cycles-and-stages" title="Sleep Cycles and Stages: How a Night Is Actually Built" />
+
+## Your range and your accumulated debt
+
+<DataTable
+  head={["Age", "Recommended", "May be appropriate"]}
+  rows={[
+    ["14–17", "8–10 hours", "7–11"],
+    ["18–25", "7–9 hours", "6–11"],
+    ["26–64", "7–9 hours", "6–10"],
+    ["65 and over", "7–8 hours", "5–9"],
+  ]}
+  caption="National Sleep Foundation recommendations, 2015. The right-hand column covers values normal for some people but worth attention"
+/>
+
+Sleep debt accumulates, and the worst part is that you stop noticing. In Van Dongen's experiment, participants slept six hours a night for two weeks; by the end their attention scores had fallen to roughly the level of people kept awake for two consecutive days. Their own ratings of sleepiness, meanwhile, stayed moderate and barely rose.
+
+This is why "I've adapted to five hours" almost always means not adaptation but the loss of any ability to detect the deficit.
+
+<ReadAlso href="/en/sleep/how-much-sleep-do-you-need" title="How Much Sleep Do You Need: Ranges by Age and Signs of Debt" />
+
+## Catching up at the weekend
+
+It works partially. In the Depner study, participants who had been sleep-restricted for a week were allowed unlimited recovery sleep at the weekend: subjective alertness recovered, insulin sensitivity did not. Worse, once the working week resumed, the recovery-sleep group's metabolic markers were no better than those of people who simply kept sleeping short.
+
+The second effect is the clock shift. Waking at 11 on Sunday is the equivalent of flying three time zones west: you are not sleepy on Sunday evening and you struggle on Monday morning. That regular gap between work-day and free-day schedules is social jetlag, and it is independently associated with obesity, metabolic disturbance and depression.
+
+<ReadAlso href="/en/sleep/chronotypes" title="Chronotypes: Night Owl, Early Bird and Living With Your Clock" />
+
+## What matters more than the calculator
+
+A constant wake-up time. It stabilises circadian rhythms more than any cycle arithmetic and keeps working even when your bedtime drifts. If you make one change, make it this one.
+
+Morning light. Fifteen minutes outdoors in the first hour after waking shifts your clock earlier more reliably than any supplement.
+
+And the absence of compensations: if fitting your schedule requires dozing on the commute every day, the schedule is wrong — not your cycle maths.
+
+<ReadAlso href="/en/sleep/sleep-hygiene-basics" title="Sleep Hygiene Basics: What Works and What Is Just Ritual" />

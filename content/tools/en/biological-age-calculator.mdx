@@ -1,0 +1,100 @@
+---
+title: "Biological Age Test: Calculate PhenoAge From Blood Work"
+description: "Work out your biological age from nine markers on an ordinary blood panel, using the published Levine PhenoAge formula — the same maths a lab would run, without buying a DNA age test."
+updated: "2026-07-31"
+lede: "PhenoAge converts nine routine blood markers plus your age into a single number: the age at which your calculated mortality risk is average for the population. It is not a DNA test and does not need one. If your PhenoAge comes out five years above your real age, that gap is almost always one or two out-of-range values, not ageing in general."
+faq:
+  - q: "Is this the same as a DNA age test?"
+    a: "No, and the difference matters. Commercial DNA age tests measure methylation at specific sites on your genome and run an epigenetic clock over the result. This calculator uses the blood-chemistry version of PhenoAge, which needs no sequencing at all — just a standard panel your doctor can order. Levine's team built both: the blood formula came first, and the methylation clock was then trained to predict it."
+  - q: "Which blood tests do I need?"
+    a: "Albumin, creatinine, fasting glucose, high-sensitivity CRP, lymphocyte percentage, mean cell volume, red cell distribution width, alkaline phosphatase and white blood cell count. Every one of them appears on a routine complete blood count plus a basic metabolic and liver panel — together they cost a fraction of any consumer biological age kit."
+  - q: "What does the result actually mean?"
+    a: "It is a mortality-risk score expressed in years. A PhenoAge of 52 for a 45-year-old means your calculated risk matches that of an average 52-year-old. It is not a statement about your organs, your cells or how long you will live. Levine and colleagues showed the measure predicts mortality across large cohorts; that is a population claim, and it gets noisier the closer you zoom to one person."
+  - q: "My PhenoAge is much higher than my age. Should I worry?"
+    a: "You should get the panel looked at by a clinician, but not because of the ageing framing. A large gap is nearly always driven by one or two markers well outside their reference range — a high CRP, a raised glucose, a high RDW. Those are findings that deserve a diagnosis of their own. The number is useful mainly as a prompt to look at the individual values, which the calculator lists for you."
+  - q: "Can I improve my PhenoAge?"
+    a: "You can improve the inputs, and several of them respond to ordinary interventions: fasting glucose to weight loss and exercise, CRP to smoking cessation and treating whatever is inflaming you. Whether moving the score itself changes your outcome is a separate and unproven question — no trial has shown that deliberately improving a clock score extends life. Treat it as a dashboard, not as a target."
+  - q: "Why does the lifestyle mode say it is not a biological age?"
+    a: "Because it is not one. That mode adds up published life-expectancy effects for eight risk factors, which is a different kind of estimate — it uses no measurement of your body at all. The factors also correlate with each other, so summing them overstates the total. It is there to show you which habits carry the most weight, not to produce a number worth quoting."
+sources:
+  - title: "Levine ME, et al. An epigenetic biomarker of aging for lifespan and healthspan (DNAm PhenoAge). Aging (Albany NY), 2018"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5940111/"
+  - title: "Liu Z, et al. A new aging measure captures morbidity and mortality risk across diverse subpopulations from NHANES IV. PLoS Medicine, 2018"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6306153/"
+  - title: "Higgins-Chen AT, et al. A computational solution for bolstering reliability of epigenetic clocks. Nature Aging, 2022"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9799002/"
+  - title: "Jha P, et al. 21st-century hazards of smoking and benefits of cessation in the United States. NEJM, 2013"
+    url: "https://pubmed.ncbi.nlm.nih.gov/23343063/"
+  - title: "Moore SC, et al. Leisure time physical activity of moderate to vigorous intensity and mortality: a large pooled cohort analysis. PLoS Medicine, 2012"
+    url: "https://pubmed.ncbi.nlm.nih.gov/23139642/"
+  - title: "Prospective Studies Collaboration. Body-mass index and cause-specific mortality in 900 000 adults. The Lancet, 2009"
+    url: "https://pubmed.ncbi.nlm.nih.gov/19299006/"
+  - title: "Wood AM, et al. Risk thresholds for alcohol consumption. The Lancet, 2018"
+    url: "https://pubmed.ncbi.nlm.nih.gov/29676281/"
+  - title: "Holt-Lunstad J, Smith TB, Layton JB. Social relationships and mortality risk: a meta-analytic review. PLoS Medicine, 2010"
+    url: "https://pubmed.ncbi.nlm.nih.gov/20668659/"
+---
+
+## Where the formula comes from
+
+In 2018 Morgan Levine and colleagues took data from NHANES III — around 10,000 American adults followed for mortality — and asked which routine clinical measurements, combined how, best predicted who would die. A Cox regression narrowed 42 candidate markers down to nine, each with a weight, plus chronological age.
+
+The result is a weighted sum that gets converted through a Gompertz mortality model into something with an intuitive unit: years. Your PhenoAge is the age at which your calculated ten-year mortality risk would be average.
+
+This matters because it makes the number honest about what it is. PhenoAge is not measuring your cells. It is a risk score wearing the costume of an age.
+
+<Callout type="science" title="The two PhenoAges">
+  The same paper produced two things with confusingly similar names. **PhenoAge** is the blood-chemistry formula this calculator uses. **DNAm PhenoAge** is an epigenetic clock trained on methylation data to predict that formula's output. Consumer tests sell the second; the first is free and needs no sequencing.
+</Callout>
+
+## The nine markers, and what each one is doing
+
+None of the nine is there because it is a marker of ageing in any mechanistic sense. They are there because they predicted death in the training data.
+
+<DataTable
+  head={["Marker", "What it tracks", "Direction"]}
+  rows={[
+    ["Albumin", "Liver synthesis, nutrition, chronic inflammation", "Lower is worse"],
+    ["Creatinine", "Kidney filtration", "Higher is worse"],
+    ["Fasting glucose", "Glucose regulation", "Higher is worse"],
+    ["CRP", "Systemic inflammation", "Higher is worse"],
+    ["Lymphocyte %", "Immune competence", "Lower is worse"],
+    ["MCV", "Red cell size; B12, folate, alcohol", "Higher is worse"],
+    ["RDW", "Variability in red cell size", "Higher is worse"],
+    ["Alkaline phosphatase", "Liver and bone turnover", "Higher is worse"],
+    ["White blood cells", "Inflammation, infection", "Higher is worse"],
+  ]}
+  caption="Coefficients from Levine et al., Aging (Albany NY), 2018"
+/>
+
+Two of these carry more weight than people expect. **RDW** — the variability in the size of your red blood cells — has the largest coefficient of the nine, and it is a marker almost nobody looks at. **CRP** enters the equation as a logarithm, which means the jump from 0.5 to 5 mg/L matters far more than the jump from 5 to 10.
+
+## Reading your result properly
+
+The calculator shows you the gap between your PhenoAge and your chronological age, then breaks down how much each marker contributes. That breakdown is the part worth your attention.
+
+A number five years above your age is not a verdict on your ageing. It is the sum of your inputs, and in practice it is nearly always dominated by one or two of them. If your gap is +6 years and the breakdown says CRP is adding 5, you do not have an ageing problem — you have an inflammation finding, and inflammation has causes worth identifying.
+
+The reverse is also true and less comfortable. A PhenoAge below your chronological age means your markers are better than average for your age. It does not mean the interventions you have been doing are working, because you have no before-and-after. Single measurements describe where you are, not which way you are moving.
+
+<ReadAlso href="/en/longevity/biological-age-tests" title="Biological Age Tests: What They Measure, Are They Worth It" />
+
+## Why not just buy a DNA age test
+
+Because the reliability problem is severe and vendors do not disclose it. Higgins-Chen and colleagues reported in *Nature Aging* in 2022 that technical noise alone produced deviations of up to nine years between replicate runs of the same sample across six prominent epigenetic clocks. A test whose answer can move by nine years without your body changing at all cannot tell you whether your body changed.
+
+The blood panel has the opposite profile. Its assays are decades old, standardised, run in every hospital, and reproduce within a few percent. It is measuring cruder things — but it is measuring them properly, and every one of the nine values is independently interpretable by a doctor.
+
+<ReadAlso href="/en/longevity/horvath-clock" title="The Horvath Clock: What It Is and What the Test Can Tell You" />
+
+## A note on the lifestyle mode
+
+The second tab estimates an adjustment to your age from eight behavioural and clinical factors, using effect sizes from large cohort studies — smoking from Jha 2013, activity from Moore 2012, BMI from the Prospective Studies Collaboration, alcohol from Wood 2018, social connection from Holt-Lunstad 2010.
+
+It exists because most people asking about their biological age do not have a blood panel in front of them. But it is a different kind of object, and the interface says so: adding independent effect sizes assumes the factors do not overlap, and they overlap heavily. Someone who smokes, drinks heavily and never exercises does not lose the arithmetic sum of the three penalties.
+
+Read the breakdown rather than the total. The rows are ranked by weight, and the top one is the single highest-value thing you could change.
+
+## What none of this measures
+
+Neither mode captures anything about your organs individually, your cognition, your musculoskeletal reserve or your risk of the specific diseases in your family history. For those, the boring measurements still win: blood pressure, lipids, HbA1c, waist circumference, VO2max, grip strength, gait speed, and the age-appropriate screening tests. Each is cheap, reproducible, validated against hard outcomes, and — the part clocks still cannot claim — attached to a treatment that is known to work.

@@ -1,0 +1,90 @@
+---
+title: "Heart Rate Zones Calculator"
+description: "Calculate your five training zones with the Karvonen heart rate reserve method. Uses the Tanaka formula instead of the outdated 220 − age, and shows how to split your weekly volume."
+updated: "2026-08-03"
+lede: "Training zones are built from your maximum heart rate and your resting heart rate. At 35 the Tanaka formula gives a maximum of about 184 bpm; with a resting pulse of 60, Karvonen puts zone 2 at 134–147 bpm. That is where most of your training time should sit — though for most amateurs less than a third of it does."
+faq:
+  - q: "How do I calculate my maximum heart rate?"
+    a: "Use the Tanaka formula: 208 − 0.7 × age. At 40 that is 180 bpm. It beats the familiar 220 − age, which was never published as a study and systematically overestimates the maximum past forty. For women the Gulati equation is more accurate still: 206 − 0.88 × age."
+  - q: "Why is 220 − age considered outdated?"
+    a: "Because it is a line drawn by eye through someone else's data in the 1970s rather than a research finding. Robergs and Landwehr traced its origin in 2002 and showed a standard error of roughly 7–11 bpm along with a systematic overestimate in people over 40. It survived purely on how easy it is to remember."
+  - q: "What is the Karvonen method?"
+    a: "A calculation based on heart rate reserve: target = resting HR + percentage × (max HR − resting HR). Unlike a plain percentage of maximum it accounts for fitness. For someone resting at 45 and someone resting at 75, '70% of max' means very different physiological work, while '70% of reserve' means comparable work."
+  - q: "How do I measure my resting heart rate?"
+    a: "In the morning, immediately on waking, without getting out of bed, three days running — then average them. Overnight data from a watch works too, since it takes the minimum across your sleep. Resting heart rate rises with short sleep, illness, stress and alcohol, so a single reading tells you little."
+  - q: "How much time should I spend in zone 2?"
+    a: "Roughly 60–80% of your total volume. That distribution — the polarized model — is what high-level endurance athletes actually do. Amateurs typically do the opposite, spending almost everything in zone 3, which is already too hard to accumulate volume and still too easy to raise VO₂max."
+  - q: "Why does my watch show different zones?"
+    a: "Watches almost always compute zones as a percentage of maximum rather than of reserve, and they default to 220 − age unless you enter your own maximum. Switch the calculator to 'percentage of max' and the numbers will line up. Karvonen still describes the physiology more accurately."
+  - q: "Can I use heart rate zones on beta blockers?"
+    a: "No. Beta blockers lower both resting and maximum heart rate, and by an amount that cannot be predicted for an individual, which makes any age-based estimate meaningless. The same applies with atrial fibrillation or a pacemaker. In those cases zones come from a clinical exercise test, and rate of perceived exertion is the better guide during training."
+sources:
+  - title: "Tanaka H, Monahan KD, Seals DR. Age-predicted maximal heart rate revisited. J Am Coll Cardiol, 2001"
+    url: "https://pubmed.ncbi.nlm.nih.gov/11153730/"
+  - title: "Gulati M, et al. Heart rate response to exercise stress testing in asymptomatic women. Circulation, 2010"
+    url: "https://pubmed.ncbi.nlm.nih.gov/20585008/"
+  - title: "Robergs RA, Landwehr R. The surprising history of the HRmax = 220 − age equation. J Exerc Physiol, 2002"
+    url: "https://www.asep.org/asep/asep/Robergs2.pdf"
+  - title: "Karvonen MJ, Kentala E, Mustala O. The effects of training on heart rate. Ann Med Exp Biol Fenn, 1957"
+    url: "https://pubmed.ncbi.nlm.nih.gov/13470504/"
+  - title: "Seiler S, Kjerland GØ. Quantifying training intensity distribution in elite endurance athletes. Scand J Med Sci Sports, 2006"
+    url: "https://pubmed.ncbi.nlm.nih.gov/16430681/"
+  - title: "Jensen MT, et al. Elevated resting heart rate, physical fitness and all-cause mortality. Heart, 2013"
+    url: "https://pubmed.ncbi.nlm.nih.gov/23539554/"
+---
+
+## How the calculation works
+
+Zones are built in two steps.
+
+**Step one — maximum heart rate.** The default is the Tanaka equation (208 − 0.7 × age): across a meta-analysis of 351 studies it showed no systematic drift with age, unlike 220 − age. For women the calculator defaults to the Gulati equation, derived from a cohort of 5,437 women.
+
+**Step two — heart rate reserve.** Subtract your resting pulse from your maximum; what remains is the room your heart actually works in. Zone boundaries are then laid out upward from your resting heart rate as percentages of that reserve. That is the Karvonen method.
+
+<Callout type="science" title="Why reserve rather than percentage of maximum">
+  Take two forty-year-olds with the same maximum of 180. One rests at 45, the other at 75. "70% of max" is 126 bpm for both. For the first that is an easy jog in zone 1; for the second it is solid zone 2 work. Karvonen separates them: 126 against 149. Those 23 beats are the difference between a recovery run and genuine aerobic training.
+</Callout>
+
+## What each zone means
+
+<DataTable
+  head={["Zone", "% of reserve", "How it feels", "What it is for"]}
+  rows={[
+    ["Z1 · Recovery", "50–60", "Easy conversation", "Cool-downs, easy days, walking"],
+    ["Z2 · Aerobic base", "60–70", "Full sentences", "The bulk of volume: mitochondria, capillaries, fat oxidation"],
+    ["Z3 · Tempo", "70–80", "Talking is hard", "The grey zone — use sparingly"],
+    ["Z4 · Threshold", "80–90", "Single words", "Lactate threshold, intervals of 8–20 minutes"],
+    ["Z5 · Maximal", "90–100", "No speech at all", "VO₂max, intervals of 30 seconds to 4 minutes"],
+  ]}
+  caption="The talk test is the cheapest way to check that your monitor is telling the truth"
+/>
+
+The talk test deserves its own mention: it costs nothing and is surprisingly accurate. The boundary between zones 1 and 2 lands roughly where speech stops being entirely effortless, and the step into zone 4 lands where a sentence breaks into two or three words.
+
+<ReadAlso href="/en/fitness/heart-rate-training-zones" title="Heart Rate Training Zones: Training by Pulse Without Guesswork" />
+
+## The classic amateur mistake
+
+Professionals spend around 80% of their time in zones 1 and 2 and around 20% in zones 4 and 5. Zone 3 is nearly empty. Amateurs do precisely the reverse: almost everything lands in zone 3.
+
+The logic is understandable — easy running feels pointless, and going genuinely hard every session is not sustainable. The problem is that zone 3 fails in both directions. It is taxing enough to accumulate fatigue and interfere with recovery, and not intense enough to stimulate VO₂max. You cannot build volume there, and it does not buy you quality.
+
+The practical consequence: if you feel tired after an easy session, it probably was not easy. Genuine zone 2 in an untrained person often feels embarrassingly slow — up to and including walking the hills.
+
+<ReadAlso href="/en/fitness/zone-2-training" title="Zone 2: Why Slow Training Delivers More Than Fast Training" />
+
+## Resting heart rate as a marker in its own right
+
+The adult range is 60–100 bpm, but values inside that corridor are not equivalent. In the Copenhagen City Heart Study cohort, every additional 10 beats at rest came with roughly 16% higher mortality — independently of fitness and classical risk factors.
+
+The practical use is more immediate still: a resting pulse 5–7 beats above your own usual figure is a reliable early sign of incomplete recovery, an infection starting, or accumulated sleep debt. That is a day to move the hard session.
+
+<ReadAlso href="/en/heart/resting-heart-rate" title="Resting Heart Rate: What Is Normal and How to Lower It" />
+
+## What the calculator does not know
+
+It does not know your real maximum. Individual values scatter around any formula by roughly ±7 bpm: one person in three is more than 7 beats from their predicted figure, and that is biological variation rather than a flaw in the equation.
+
+It ignores heat, altitude, dehydration and caffeine, all of which raise your heart rate at the same workload. It ignores cardiac drift, where your pulse creeps upward during long efforts at unchanged pace. And it does not apply with arrhythmias or on medication that alters cardiac rhythm.
+
+If you need precision once, a laboratory exercise test with gas analysis provides it. If you need it across months, the best data source is your own heart rate at familiar efforts, recorded and reviewed over a long stretch of time.

@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 24zdorovie
 
-## Getting Started
+Двуязычный (RU/EN) контентный сайт о здоровье, питании и ЗОЖ.
+Боевой домен — [24zdorovie.com](https://24zdorovie.com).
 
-First, run the development server:
+**Стек:** Next.js 16 (App Router, статический экспорт) · Tailwind CSS 4 · MDX · TypeScript
+
+**Документация:** [AGENTS.md](./AGENTS.md) — как писать статьи ·
+[docs/DEPLOY.md](./docs/DEPLOY.md) — сборка и публикация ·
+[docs/TELEGRAM.md](./docs/TELEGRAM.md) — автопостинг в каналы
+
+## Запуск
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000 → редирект на /ru
+npm run build   # прод-сборка: собирает все статьи в статику
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Как устроен контент
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Статьи — обычные файлы в репозитории, никакой CMS и базы данных:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+content/
+  ru/nutrition/skolko-belka-v-den.mdx
+  en/nutrition/how-much-protein-per-day.mdx
+  pages/ru/about.mdx          # служебные страницы
+```
 
-## Learn More
+Положил файл → появились страница, запись в sitemap, RSS, OG-картинка,
+хлебные крошки и schema.org. Формат frontmatter и список MDX-компонентов —
+в [AGENTS.md](./AGENTS.md).
 
-To learn more about Next.js, take a look at the following resources:
+## Что уже настроено под SEO
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Что | Где |
+| --- | --- |
+| Canonical + hreflang RU/EN | `src/lib/seo.ts` |
+| schema.org: MedicalWebPage, Recipe, FAQPage, BreadcrumbList, Organization, WebSite | `src/lib/seo.ts` |
+| OG-картинки 1200×630 по рубрикам | `scripts/gen-og.mjs` (серверных маршрутов на статике нет) |
+| sitemap.xml с языковыми альтернативами | `src/app/sitemap.ts` |
+| robots.txt | `src/app/robots.ts` |
+| RSS для каждой локали | `src/app/rss/[feed]/route.ts` |
+| Порог индексации тег-страниц | `TAG_INDEX_MIN` в `src/lib/content.ts` |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Реклама
 
-## Deploy on Vercel
+Один файл — `src/config/ads.ts`:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **AdSense / РСЯ** — вписать `client`, проставить slot-id, `enabled: true`
+- **Прямые баннеры** — добавить объект в `DIRECT_BANNERS` (имеют приоритет над сетью)
+- **Партнёрские интеграции** — компонент `<ProductCard />` внутри статьи
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Плейсменты: `header`, `in-feed`, `in-article`, `article-end`, `sidebar`.
+Блок `in-article` вставляется в середину статьи автоматически.
+Пока реклама выключена, в dev-режиме на её месте видны серые плейсхолдеры.
+
+## Деплой
+
+Сайт собирается в статику и лежит на shared-хостинге с Apache за Cloudflare:
+содержимое `out/` кладётся в `public_html`. Серверного рантайма нет —
+редиректы и заголовки описаны в `public/.htaccess`.
+
+```bash
+npm run build     # → out/
+```
+
+Подробно, включая обязательный сброс кэша Cloudflare и проверки после
+заливки — в [docs/DEPLOY.md](./docs/DEPLOY.md).
+
+## Автопостинг в Telegram
+
+По одной статье в день в русский и английский каналы, в порядке от самой
+старой к новой. Планировщик — launchd на рабочей машине.
+
+```bash
+npm run tg:status   # что в очереди
+npm run tg:dry      # показать посты, ничего не отправляя
+```
+
+Настройка и разбор ошибок — в [docs/TELEGRAM.md](./docs/TELEGRAM.md).
+
+## Осталось сделать
+
+1. Заменить плейсхолдеры оператора в `content/pages/*/privacy.mdx` и `terms.mdx`,
+   показать документы юристу
+2. Подключить рассылку: вписать URL внешнего сервиса в `SITE.newsletterEndpoint`
+   (`src/config/site.ts`); пока строка пустая — форма скрыта
+3. Разобрать в Search Console отчёт по непроиндексированным страницам
+
+Уже сделано: Яндекс.Метрика подключена, сайт добавлен в Search Console
+и Вебмастер, sitemap отправлен.
