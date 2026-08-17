@@ -106,9 +106,17 @@ export function pickDirectBanner(placement: AdPlacement, locale: Locale): Direct
  * Ссылки помечаются rel="sponsored" и меткой «Реклама» — чтобы перелинковка
  * между своими сайтами не читалась поисковиком как ссылочная схема.
  */
-export const HOUSE_ADS = {
+export const HOUSE_ADS: { enabled: boolean; placements: AdPlacement[] } = {
   enabled: true,
-} as const;
+  /**
+   * Плейсменты, где домовым баннерам разрешено выигрывать. Остальные
+   * уходят AdSense — так на время ревью Google видит собственные слоты
+   * в теле статьи (in-article, article-end) и в шапке.
+   * Пустой массив = все плейсменты (поведение до ревью, когда AdSense
+   * ещё не показывает).
+   */
+  placements: ["sidebar", "in-feed"],
+};
 
 export type HouseAd = {
   id: string;
@@ -256,6 +264,10 @@ const PLACEMENT_ORDER: AdPlacement[] = [
  */
 export function pickHouseAd(placement: AdPlacement, locale: Locale): HouseAd | undefined {
   if (!HOUSE_ADS.enabled) return undefined;
+  // Плейсмент вне allow-list отдаётся AdSense (пустой список = все разрешены)
+  if (HOUSE_ADS.placements.length > 0 && !HOUSE_ADS.placements.includes(placement)) {
+    return undefined;
+  }
   const eligible = HOUSE_ADS_INVENTORY.filter(
     (ad) =>
       ad.locales.includes(locale) &&
