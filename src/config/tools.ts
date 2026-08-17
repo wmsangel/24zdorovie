@@ -238,6 +238,31 @@ export const TOOLS: Tool[] = [
     },
   },
   {
+    slug: "fiber-calculator",
+    emoji: "🌾",
+    category: "gut",
+    name: {
+      ru: "Калькулятор клетчатки",
+      en: "Fiber Intake Calculator",
+    },
+    tagline: {
+      ru: "Норма клетчатки по полу, возрасту и калорийности — с разрывом до того, сколько её съедают на деле, и чем этот разрыв закрыть",
+      en: "Your fiber target by sex, age and calories — plus the gap to what people actually eat and how to close it",
+    },
+    related: {
+      ru: [
+        "/nutrition/kletchatka-skolko-nuzhno",
+        "/gut/mikrobiom-kishechnika",
+        "/gut/zapor-chto-delat",
+      ],
+      en: [
+        "/nutrition/fiber-how-much-you-need",
+        "/gut/gut-microbiome-basics",
+        "/gut/constipation-what-to-do",
+      ],
+    },
+  },
+  {
     slug: "protein-calculator",
     emoji: "🍗",
     category: "nutrition",

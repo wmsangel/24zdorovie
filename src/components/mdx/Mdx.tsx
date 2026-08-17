@@ -9,6 +9,7 @@ import { BodyCompositionCalculator } from "../tools/BodyCompositionCalculator";
 import { BurnoutSelfCheck } from "../tools/BurnoutSelfCheck";
 import { CaffeineCalculator } from "../tools/CaffeineCalculator";
 import { CalorieMacroCalculator } from "../tools/CalorieMacroCalculator";
+import { FiberCalculator } from "../tools/FiberCalculator";
 import { HeartRateZonesCalculator } from "../tools/HeartRateZonesCalculator";
 import { OvulationCalculator } from "../tools/OvulationCalculator";
 import { ProteinCalculator } from "../tools/ProteinCalculator";
@@ -64,6 +65,7 @@ const components = {
   VitaminDCalculator,
   OvulationCalculator,
   ProteinCalculator,
+  FiberCalculator,
 };
 
 export function Mdx({ source }: { source: string }) {
