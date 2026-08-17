@@ -10,6 +10,7 @@
     "deploy": "node scripts/deploy.mjs",
     "deploy:dry": "node scripts/deploy.mjs --dry-run --no-build",
     "traffic": "node scripts/traffic.mjs",
+    "indexnow": "node scripts/indexnow.mjs",
     "tg": "node scripts/tg-daily.mjs",
     "tg:status": "node scripts/tg-daily.mjs --status",
     "tg:dry": "node scripts/tg-daily.mjs --dry-run"
