@@ -9,11 +9,13 @@ import { BodyCompositionCalculator } from "../tools/BodyCompositionCalculator";
 import { BurnoutSelfCheck } from "../tools/BurnoutSelfCheck";
 import { CaffeineCalculator } from "../tools/CaffeineCalculator";
 import { CalorieMacroCalculator } from "../tools/CalorieMacroCalculator";
+import { CvdRiskCalculator } from "../tools/CvdRiskCalculator";
 import { FiberCalculator } from "../tools/FiberCalculator";
 import { HeartRateZonesCalculator } from "../tools/HeartRateZonesCalculator";
 import { OvulationCalculator } from "../tools/OvulationCalculator";
 import { ProteinCalculator } from "../tools/ProteinCalculator";
 import { SleepCycleCalculator } from "../tools/SleepCycleCalculator";
+import { SymptomChecker } from "../tools/SymptomChecker";
 import { VitaminDCalculator } from "../tools/VitaminDCalculator";
 import { WaterIntakeCalculator } from "../tools/WaterIntakeCalculator";
 import {
@@ -66,6 +68,8 @@ const components = {
   OvulationCalculator,
   ProteinCalculator,
   FiberCalculator,
+  CvdRiskCalculator,
+  SymptomChecker,
 };
 
 export function Mdx({ source }: { source: string }) {

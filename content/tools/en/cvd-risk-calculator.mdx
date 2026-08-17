@@ -1,0 +1,67 @@
+---
+title: "Heart Attack & Stroke Risk Calculator (SCORE2)"
+description: "Estimate your 10-year risk of heart attack and stroke with the SCORE2 (2021) algorithm, calibrated to your region. The current European standard — from an ordinary lipid panel, no test kit needed."
+updated: "2026-08-17"
+lede: "SCORE2 is the current European algorithm that estimates your chance of a heart attack or stroke in the next 10 years from five inputs: age, sex, smoking, blood pressure, and total and HDL cholesterol. The European Society of Cardiology calibrates it to four risk regions, so the same lab values give a higher figure in a high-risk country than a low-risk one. The model works for ages 40–69 without established cardiovascular disease, diabetes or kidney disease."
+faq:
+  - q: "What does SCORE2 show?"
+    a: "The probability of a fatal or non-fatal cardiovascular event — heart attack or stroke — over the next 10 years. It is a risk estimate for a person without established CVD, not a diagnosis. SCORE2 replaced the older SCORE chart: it now counts non-fatal events and includes HDL cholesterol."
+  - q: "Why does the region change the result?"
+    a: "The European Society of Cardiology groups countries into four regions by cardiovascular mortality and calibrates the model to each — low, moderate, high and very high. The same lab values produce a higher estimated risk for someone in a high-risk region than in a low-risk one. Pick the region that matches your country."
+  - q: "What counts as high risk?"
+    a: "The thresholds depend on age. Under 50: below 2.5% is low-to-moderate, 2.5–7.5% high, above 7.5% very high. Ages 50–69: below 5% low-to-moderate, 5–10% high, above 10% very high. The same percentage is more concerning at a younger age because it implies a higher lifetime risk."
+  - q: "What lab tests do I need?"
+    a: "Total cholesterol and HDL cholesterol — a standard lipid panel available at any lab. Plus a measured systolic (upper) blood pressure and whether you smoke. Nothing needs to be purchased."
+  - q: "What should I do about a high result?"
+    a: "See a doctor. At high and very high risk, the discussion usually goes beyond lifestyle to lowering LDL cholesterol with medication and controlling blood pressure to target. A clinician decides on treatment with the full picture; the calculator only shows the scale of the risk."
+  - q: "Who is SCORE2 not for?"
+    a: "People under 40 or over 69 (the separate SCORE2-OP model covers older adults), and anyone with established cardiovascular disease, diabetes, chronic kidney disease or familial hypercholesterolaemia. Their risk is assessed differently and is already high — SCORE2 does not apply."
+sources:
+  - title: "SCORE2 working group and ESC Cardiovascular risk collaboration. SCORE2 risk prediction algorithms: new models to estimate 10-year risk of cardiovascular disease in Europe. Eur Heart J, 2021"
+    url: "https://pubmed.ncbi.nlm.nih.gov/34120177/"
+  - title: "Visseren FLJ, et al. 2021 ESC Guidelines on cardiovascular disease prevention in clinical practice. Eur Heart J, 2021"
+    url: "https://pubmed.ncbi.nlm.nih.gov/34458905/"
+  - title: "SCORE2-OP working group. SCORE2-OP risk prediction algorithms: estimating incident cardiovascular event risk in older persons. Eur Heart J, 2021"
+    url: "https://pubmed.ncbi.nlm.nih.gov/34120185/"
+---
+
+## How the calculation works
+
+SCORE2 takes five factors — age, sex, smoking, systolic blood pressure, total cholesterol and HDL cholesterol — and, using a model trained on more than 600,000 people, estimates the 10-year risk of a heart attack or stroke. The result is calibrated to your region: the same lab values give a different risk depending on the country's cardiovascular mortality.
+
+<Callout type="warning" title="Region changes the number">
+  This is not the calculator being pessimistic but the European Society of Cardiology's classification: countries are grouped into four risk regions. Pick the one that matches where you live — most of Western Europe is low or moderate, much of Eastern Europe is high or very high.
+</Callout>
+
+<CvdRiskCalculator locale="en" />
+
+## How to read the result
+
+The category matters more than the raw percentage. The thresholds are tied to age: at 45 a 5% risk is already the high category, while at 65 it is still moderate, because absolute risk naturally rises with age and the same percentage in a younger person implies a faster climb.
+
+<DataTable
+  head={["Age", "Low to moderate", "High", "Very high"]}
+  rows={[
+    ["40–49", "< 2.5%", "2.5–7.5%", "> 7.5%"],
+    ["50–69", "< 5%", "5–10%", "> 10%"],
+  ]}
+  caption="Risk-category thresholds from the 2021 ESC guidelines"
+/>
+
+<ReadAlso href="/en/heart/cholesterol-explained" title="Cholesterol: LDL, HDL and what actually lowers risk" />
+
+## What actually lowers the risk
+
+Three of the five factors are modifiable: smoking, blood pressure and cholesterol. Quitting smoking cuts cardiovascular risk faster than any drug — within a year it roughly halves. Controlling blood pressure and lowering LDL work together: the higher the baseline risk, the greater the absolute benefit of correcting them.
+
+<ReadAlso href="/en/heart/blood-pressure-explained" title="Blood pressure: which numbers are normal and when to treat" />
+
+## When a result is a reason to see a doctor, not to panic
+
+A high estimated risk is not a verdict but a reason to discuss target cholesterol and blood-pressure levels — and possibly medication — with a doctor. A low risk is not a reason to forget lifestyle either: SCORE2 estimates the next 10 years, not a lifetime, and in a younger person even a low 10-year risk can mean a high lifetime one.
+
+<ReadAlso href="/en/heart/stroke-warning-signs" title="Stroke: the early warning signs and what actually prevents it" />
+
+## Limits of the model
+
+SCORE2 does not apply to people with established cardiovascular disease, diabetes, chronic kidney disease or familial hypercholesterolaemia: in all of these the person already sits at high or very high risk, and a general chart only misleads. For ages 70 and over, the separately calibrated SCORE2-OP model is used.

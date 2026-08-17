@@ -238,6 +238,56 @@ export const TOOLS: Tool[] = [
     },
   },
   {
+    slug: "cold-flu-covid-checker",
+    emoji: "🤒",
+    category: "immunity",
+    name: {
+      ru: "Простуда, грипп или COVID: сравнение симптомов",
+      en: "Cold, Flu or COVID: Symptom Comparison",
+    },
+    tagline: {
+      ru: "На какой паттерн больше похоже — и почему грипп и COVID по симптомам не различить без теста. С отдельным блоком тревожных признаков",
+      en: "Which pattern your symptoms fit — and why flu and COVID need a test to tell apart. With a separate list of warning signs",
+    },
+    related: {
+      ru: [
+        "/immunity/chastye-prostudy-u-vzroslyh",
+        "/immunity/kak-ukrepit-immunitet",
+        "/immunity/vitamin-c-i-prostuda",
+      ],
+      en: [
+        "/immunity/frequent-colds-in-adults",
+        "/immunity/how-to-boost-immunity",
+        "/immunity/vitamin-c-and-colds",
+      ],
+    },
+  },
+  {
+    slug: "cvd-risk-calculator",
+    emoji: "❤️",
+    category: "heart",
+    name: {
+      ru: "Калькулятор риска инфаркта и инсульта",
+      en: "Heart Attack & Stroke Risk Calculator",
+    },
+    tagline: {
+      ru: "10-летний риск ССЗ по SCORE2 (2021) с калибровкой под регион — для России это «очень высокий» риск по классификации ESC",
+      en: "Your 10-year cardiovascular risk from SCORE2 (2021), calibrated to your region — the current European standard",
+    },
+    related: {
+      ru: [
+        "/heart/holesterin-lpnp-lpvp",
+        "/heart/arterialnoe-davlenie-normy",
+        "/heart/insult-priznaki-i-profilaktika",
+      ],
+      en: [
+        "/heart/cholesterol-explained",
+        "/heart/blood-pressure-explained",
+        "/heart/stroke-warning-signs",
+      ],
+    },
+  },
+  {
     slug: "fiber-calculator",
     emoji: "🌾",
     category: "gut",
