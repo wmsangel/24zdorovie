@@ -238,6 +238,31 @@ export const TOOLS: Tool[] = [
     },
   },
   {
+    slug: "protein-calculator",
+    emoji: "🍗",
+    category: "nutrition",
+    name: {
+      ru: "Калькулятор белка в день",
+      en: "Daily Protein Calculator",
+    },
+    tagline: {
+      ru: "Норма белка как диапазон г/кг под вашу активность и цель — с разбивкой по приёмам, а не одна цифра из ниоткуда",
+      en: "Your protein target as a g/kg range for your activity and goal — split across meals, not one number from nowhere",
+    },
+    related: {
+      ru: [
+        "/nutrition/skolko-belka-v-den",
+        "/weight/deficit-kaloriy-kak-schitat",
+        "/fitness/skolko-raz-v-nedelyu-trenirovatsya",
+      ],
+      en: [
+        "/nutrition/how-much-protein-per-day",
+        "/weight/calorie-deficit-explained",
+        "/fitness/training-frequency",
+      ],
+    },
+  },
+  {
     slug: "sleep-calculator",
     emoji: "🌙",
     category: "sleep",

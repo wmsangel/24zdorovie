@@ -1,0 +1,80 @@
+---
+title: "Daily Protein Intake Calculator"
+description: "Work out your daily protein target as a g/kg range for your activity and goal. Split across meals, with the reasoning behind every number — based on systematic reviews, not guesswork."
+updated: "2026-08-17"
+lede: "A healthy adult needs 1.2–1.6 g of protein per kilogram of body weight per day, not the old 0.8 g RDA — that figure is a floor against deficiency, not an optimum. For a 75 kg person that is roughly 90–120 g a day. Strength training and a calorie deficit push the range up to 1.6–2.2 g/kg; after 65 the minimum rises because ageing muscle needs more."
+faq:
+  - q: "How much protein do I need per day?"
+    a: "For most physically active adults, 1.2–1.6 g per kilogram of body weight. The 0.8 g/kg RDA covers only the minimum requirement and is not designed for building or keeping muscle. In Morton's 2018 meta-analysis, resistance-training gains in muscle mass plateau around 1.6 g/kg."
+  - q: "How much protein to build muscle?"
+    a: "1.6–2.2 g per kilogram of body weight combined with resistance training and a modest calorie surplus. Above 2.2 g/kg the research shows no extra gain: the limiting factor is the training stimulus, not protein beyond that threshold."
+  - q: "How much protein when losing weight?"
+    a: "Protein goes up in a calorie deficit to preserve muscle: trained individuals are advised 1.6–2.4 g/kg. Protein is also more satiating than other macronutrients and costs more energy to digest, which helps hold the deficit without constant hunger."
+  - q: "Can the body only absorb 30 g of protein per meal?"
+    a: "No, that is a myth. The body absorbs essentially all the protein you eat — only the speed differs. For stimulating muscle protein synthesis, about 0.3–0.4 g/kg per meal is optimal; beyond that the added synthesis is small, but the protein is not wasted, it serves other functions."
+  - q: "Is high protein bad for your kidneys?"
+    a: "In people with healthy kidneys, a high-protein diet does not damage them — this is shown in controlled trials. Protein restriction is needed in existing chronic kidney disease, where a doctor sets the target. For healthy adults, 1.6–2.2 g/kg is safe."
+  - q: "Do older adults need more protein?"
+    a: "Yes. Ageing muscle responds less to protein (anabolic resistance), so after 65 the recommendation is at least 1.0–1.2 g/kg, and up to 1.5 g/kg with active training. This is a key measure for preventing sarcopenia and loss of independence."
+sources:
+  - title: "Morton RW, et al. A systematic review, meta-analysis and meta-regression of protein supplementation on resistance training-induced gains in muscle mass and strength. Br J Sports Med, 2018"
+    url: "https://pubmed.ncbi.nlm.nih.gov/28698222/"
+  - title: "Jäger R, et al. International Society of Sports Nutrition Position Stand: protein and exercise. J Int Soc Sports Nutr, 2017"
+    url: "https://pubmed.ncbi.nlm.nih.gov/28642676/"
+  - title: "Bauer J, et al. Evidence-based recommendations for optimal dietary protein intake in older people: PROT-AGE Study Group. J Am Med Dir Assoc, 2013"
+    url: "https://pubmed.ncbi.nlm.nih.gov/23867520/"
+  - title: "Helms ER, et al. A systematic review of dietary protein during caloric restriction in resistance trained lean athletes. Int J Sport Nutr Exerc Metab, 2014"
+    url: "https://pubmed.ncbi.nlm.nih.gov/24092765/"
+  - title: "WHO/FAO/UNU. Protein and amino acid requirements in human nutrition. WHO Technical Report Series 935, 2007"
+    url: "https://www.who.int/publications/i/item/9241209356"
+  - title: "Schoenfeld BJ, Aragon AA. How much protein can the body use in a single meal for muscle-building? J Int Soc Sports Nutr, 2018"
+    url: "https://pubmed.ncbi.nlm.nih.gov/29497353/"
+---
+
+## How the calculation works
+
+A protein target is not a single number but a range of grams per kilogram of body weight. The calculator takes a base range from your activity level and shifts it for your goal.
+
+- **Sedentary** — 0.8–1.0 g/kg. The lower bound is the RDA: the minimum at which the average healthy person avoids deficiency, not an optimum for wellbeing or body composition.
+- **Regular training** — 1.2–1.6 g/kg. The general recommendation for physically active people.
+- **Strength, building or keeping muscle** — 1.6–2.2 g/kg. The upper bound applies in a calorie deficit and during active gaining.
+
+A calorie deficit adds a margin to preserve muscle; muscle gain sits at the top of the range. After 65 the lower bound never drops below 1.0 g/kg regardless of activity.
+
+<Callout type="science" title="Why not 0.8 g/kg">
+  The 0.8 g/kg RDA was derived by nitrogen balance as the amount at which 97.5% of healthy people avoid deficiency. That is a disease threshold, not a health target. Studies on body composition, age-related muscle preservation and recovery consistently favour higher intakes.
+</Callout>
+
+<ProteinCalculator locale="en" />
+
+## How to spread protein across the day
+
+Total daily intake matters more than distribution, but distribution helps: muscle protein synthesis is maximally stimulated by a serving of about 0.3–0.4 g/kg in one sitting. In practice that means 3–5 protein-containing meals rather than the whole day's protein at dinner.
+
+The "only 30 g per meal" rule is a myth. The body absorbs essentially all protein; the point is only that above 0.3–0.4 g/kg the extra stimulation of muscle protein synthesis is small. What you eat is not lost — it serves other functions.
+
+<ReadAlso href="/en/nutrition/how-much-protein-per-day" title="How much protein per day: the target by goal" />
+
+## What covers the target
+
+<DataTable
+  head={["Food", "Protein", "Serving"]}
+  rows={[
+    ["Chicken breast", "31 g", "100 g"],
+    ["Whey protein", "24 g", "1 scoop"],
+    ["Cottage cheese 5%", "17 g", "100 g"],
+    ["Greek yogurt", "10 g", "100 g"],
+    ["Eggs", "13 g", "2 pcs"],
+    ["Cooked lentils", "9 g", "100 g"],
+    ["Tofu", "8 g", "100 g"],
+  ]}
+  caption="USDA FoodData Central; values rounded"
+/>
+
+Plant sources are lower in protein and less balanced in amino acids, so on a plant-based diet the total target is raised by about 10% and the variety of sources matters more.
+
+<ReadAlso href="/en/nutrition/mediterranean-diet" title="The Mediterranean diet: what it is and why it works" />
+
+## Who this does not apply to
+
+In chronic kidney disease protein is restricted and the target comes from a doctor — it can be considerably lower than the calculated range. Pregnancy, dialysis, phenylketonuria and several metabolic conditions are handled separately. In all of these, the calculator is not a guide.

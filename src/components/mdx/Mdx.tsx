@@ -11,6 +11,7 @@ import { CaffeineCalculator } from "../tools/CaffeineCalculator";
 import { CalorieMacroCalculator } from "../tools/CalorieMacroCalculator";
 import { HeartRateZonesCalculator } from "../tools/HeartRateZonesCalculator";
 import { OvulationCalculator } from "../tools/OvulationCalculator";
+import { ProteinCalculator } from "../tools/ProteinCalculator";
 import { SleepCycleCalculator } from "../tools/SleepCycleCalculator";
 import { VitaminDCalculator } from "../tools/VitaminDCalculator";
 import { WaterIntakeCalculator } from "../tools/WaterIntakeCalculator";
@@ -62,6 +63,7 @@ const components = {
   SleepCycleCalculator,
   VitaminDCalculator,
   OvulationCalculator,
+  ProteinCalculator,
 };
 
 export function Mdx({ source }: { source: string }) {

@@ -6,6 +6,7 @@ import { CaffeineCalculator } from "./CaffeineCalculator";
 import { CalorieMacroCalculator } from "./CalorieMacroCalculator";
 import { HeartRateZonesCalculator } from "./HeartRateZonesCalculator";
 import { OvulationCalculator } from "./OvulationCalculator";
+import { ProteinCalculator } from "./ProteinCalculator";
 import { SleepCycleCalculator } from "./SleepCycleCalculator";
 import { VitaminDCalculator } from "./VitaminDCalculator";
 import { WaterIntakeCalculator } from "./WaterIntakeCalculator";
@@ -27,6 +28,7 @@ const WIDGETS: Record<string, (props: { locale: Locale }) => React.ReactElement>
   "sleep-calculator": SleepCycleCalculator,
   "vitamin-d-calculator": VitaminDCalculator,
   "ovulation-calculator": OvulationCalculator,
+  "protein-calculator": ProteinCalculator,
 };
 
 export function ToolWidget({ slug, locale }: { slug: string; locale: Locale }) {
