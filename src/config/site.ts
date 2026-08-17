@@ -4,7 +4,7 @@ export const SITE = {
   name: "24zdorovie",
   /** Год запуска — используется в копирайте и schema.org */
   founded: 2026,
-  email: "hello@24zdorovie.com",
+  email: "info@24zdorovie.com",
   /**
    * Приём подписки. На статическом хостинге своего эндпоинта нет,
    * поэтому сюда вставляется полный URL формы внешнего сервиса

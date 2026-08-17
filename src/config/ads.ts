@@ -169,6 +169,63 @@ export const HOUSE_ADS_INVENTORY: HouseAd[] = [
     },
   },
   {
+    id: "iznkit",
+    href: "https://iznkit.com/",
+    emoji: "🧰",
+    accent: "#475569",
+    locales: ["ru", "en"],
+    copy: {
+      ru: {
+        title: "iznkit",
+        tagline: "21+ инструмент: счета, калькуляторы и документы в аккуратный PDF",
+        cta: "Открыть",
+      },
+      en: {
+        title: "iznkit",
+        tagline: "21+ tools that turn forms into clean, branded PDFs",
+        cta: "Open",
+      },
+    },
+  },
+  {
+    id: "costtrek",
+    href: "https://costtrek.com/",
+    emoji: "🌍",
+    accent: "#0d9488",
+    locales: ["ru", "en"],
+    copy: {
+      ru: {
+        title: "CostTrek",
+        tagline: "Стоимость жизни в городах мира и зарплата, нужная для переезда",
+        cta: "Сравнить",
+      },
+      en: {
+        title: "CostTrek",
+        tagline: "Compare the cost of living between cities and the salary you'd need",
+        cta: "Compare",
+      },
+    },
+  },
+  {
+    id: "izngames",
+    href: "https://izngames.com/",
+    emoji: "🎮",
+    accent: "#7c3aed",
+    locales: ["ru", "en"],
+    copy: {
+      ru: {
+        title: "izn.games",
+        tagline: "Бесплатные браузерные игры — без загрузок и регистрации",
+        cta: "Играть",
+      },
+      en: {
+        title: "izn.games",
+        tagline: "Free browser games — no downloads, no sign-up",
+        cta: "Play",
+      },
+    },
+  },
+  {
     id: "prodom-expert",
     href: "https://prodom-expert.ru/",
     emoji: "🏠",
