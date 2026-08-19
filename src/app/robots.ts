@@ -14,6 +14,8 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: `${SITE.url}/sitemap.xml`,
-    host: SITE.url,
+    // Директиву Host намеренно не выводим: Яндекс перестал её поддерживать
+    // (с 2018 зеркало определяется 301-редиректами), а её наличие в robots.txt
+    // Яндекс.Вебмастер отмечает как ошибку. Google Host никогда не использовал.
   };
 }

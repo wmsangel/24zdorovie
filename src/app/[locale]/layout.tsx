@@ -64,6 +64,16 @@ export async function generateMetadata({
     creator: meta.title,
     publisher: meta.title,
     formatDetection: { telephone: false },
+    // Явный список: SVG (чёткая иконка для современных браузеров, из src/app/icon.svg)
+    // плюс растровая favicon.ico — её ждёт фавикон-робот Яндекса, по одному SVG он
+    // сообщал «файл favicon не найден». Задавать оба нужно здесь: как только
+    // появляется icons в метадате, авто-ссылка на icon.svg из файла пропадает.
+    icons: {
+      icon: [
+        { url: "/icon.svg", type: "image/svg+xml" },
+        { url: "/favicon.ico", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
+      ],
+    },
     alternates: {
       canonical: absolute(`/${l}`),
       languages: {

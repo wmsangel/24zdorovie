@@ -10,6 +10,9 @@ export function Footer({ locale }: { locale: Locale }) {
   const tr = translator(locale);
   const year = new Date().getFullYear();
 
+  // Канал по локали: русскому читателю — русский, англоязычному — английский
+  const telegram = locale === "ru" ? SITE.social.telegramRu : SITE.social.telegramEn;
+
   // Калькуляторы линкуются из футера поимённо: сквозная перелинковка
   // на страницы-инструменты заметно ускоряет их попадание в индекс
   const toolLinks = [
@@ -90,6 +93,18 @@ export function Footer({ locale }: { locale: Locale }) {
                     </Link>
                   </li>
                 ))}
+                {telegram && (
+                  <li>
+                    <a
+                      href={telegram}
+                      target="_blank"
+                      rel="noopener"
+                      className="text-[var(--ink-soft)] transition-colors hover:text-[var(--brand-strong)]"
+                    >
+                      {locale === "ru" ? "Telegram-канал" : "Telegram channel"}
+                    </a>
+                  </li>
+                )}
                 <li>
                   <Link
                     href={`/rss/${locale}.xml`}

@@ -22,6 +22,11 @@ declare global {
  *
  * Отсюда же key по маршруту: при переходе нужен новый <ins>. AdSense метит
  * обработанные элементы и второй раз в тот же блок объявление не положит.
+ *
+ * Инициализация ленивая: блок пингуется в AdSense не сразу, а когда подходит
+ * к вьюпорту (IntersectionObserver, запас 600px). Верхние блоки грузятся
+ * практически сразу, нижние — только при прокрутке, чтобы не инициализировать
+ * все места разом при открытии длинной страницы.
  */
 export function AdSenseUnit(props: { client: string; slot: string; minHeight: number }) {
   const pathname = usePathname();
@@ -42,12 +47,34 @@ function Unit({ client, slot, minHeight }: { client: string; slot: string; minHe
      * прогоняет эффект дважды). */
     if (el.getAttribute("data-adsbygoogle-status")) return;
 
-    pushed.current = true;
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (error) {
-      console.warn("[ads] блок не инициализировался", error);
+    const push = () => {
+      if (pushed.current || el.getAttribute("data-adsbygoogle-status")) return;
+      pushed.current = true;
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (error) {
+        console.warn("[ads] блок не инициализировался", error);
+      }
+    };
+
+    // Без IntersectionObserver (очень старые браузеры) — грузим сразу.
+    if (typeof IntersectionObserver === "undefined") {
+      push();
+      return;
     }
+
+    // Грузим объявление, когда блок в пределах 600px от вьюпорта.
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          push();
+          io.disconnect();
+        }
+      },
+      { rootMargin: "600px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
   }, []);
 
   return (
