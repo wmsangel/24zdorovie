@@ -78,6 +78,7 @@ npm run deploy -- --no-build    # залить уже собранное out/
 npm run deploy -- --full        # забыть состояние и залить всё заново
 npm run deploy -- --no-delete   # ничего не удалять на сервере
 npm run deploy -- --no-purge    # не трогать кэш Cloudflare
+npm run deploy -- --no-indexnow # не пинговать IndexNow об изменённых страницах
 ```
 
 `--selftest` стоит гонять после любой смены хостинга или доступов: он

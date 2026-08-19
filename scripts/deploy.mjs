@@ -25,6 +25,7 @@
  *   npm run deploy -- --full       — забыть состояние и залить всё заново
  *   npm run deploy -- --no-delete  — не удалять на сервере ничего
  *   npm run deploy -- --no-purge   — не сбрасывать кэш Cloudflare
+ *   npm run deploy -- --no-indexnow — не пинговать IndexNow об изменённых страницах
  *
  * Доступ (scripts/.deploy.env, файл в .gitignore):
  *   CPANEL_HOST   — хост cPanel, БЕЗ Cloudflare: обычно вида
@@ -42,6 +43,7 @@ import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { submitToIndexNow } from "./indexnow.mjs";
 
 const ROOT = process.cwd();
 const OUT_DIR = path.join(ROOT, "out");
@@ -71,6 +73,7 @@ const NO_BUILD = hasFlag("no-build");
 const FULL = hasFlag("full");
 const NO_DELETE = hasFlag("no-delete");
 const FORCE_DELETE = hasFlag("force-delete");
+const NO_INDEXNOW = hasFlag("no-indexnow");
 
 // ---------------------------------------------------------------- окружение
 
@@ -416,6 +419,36 @@ async function purgeCloudflare() {
 }
 
 /**
+ * Уведомить IndexNow (Bing + Yandex) только об изменившихся страницах.
+ *
+ * Из changed берём лишь HTML-страницы (…/index.html) → URL со слэшем.
+ * Теги исключаем: их страницы пересобираются от изменения счётчиков, а
+ * ниже порога они и вовсе noindex — пинговать их незачем.
+ * Best-effort, как и сброс кэша: сбой не валит деплой.
+ */
+async function pingIndexNow(changed) {
+  const ORIGIN = "https://24zdorovie.com";
+  const urls = changed
+    .map((rel) => rel.split(path.sep).join("/"))
+    .filter((rel) => rel.endsWith("/index.html") && !rel.includes("/tag/"))
+    .map((rel) => encodeURI(`${ORIGIN}/${rel.slice(0, -"index.html".length)}`));
+
+  if (urls.length === 0) {
+    console.log("  IndexNow: изменившихся страниц нет — пинг пропущен.");
+    return;
+  }
+
+  try {
+    const r = await submitToIndexNow(urls, { root: ROOT });
+    if (r.skipped) console.log(`  IndexNow пропущен: ${r.skipped}`);
+    else if (r.ok) console.log(`  IndexNow: уведомлены Bing и Yandex о ${r.count} стр. (HTTP ${r.status})`);
+    else console.warn(`  ⚠ IndexNow ответил HTTP ${r.status}${r.body ? `: ${r.body.slice(0, 200)}` : ""}`);
+  } catch (e) {
+    console.warn(`  ⚠ IndexNow не отправлен: ${e.message}`);
+  }
+}
+
+/**
  * Проверка связки upload → extract → unlink на одном файле.
  * Нужна перед первым большим деплоем: если cPanel не умеет распаковывать
  * архив по API, лучше узнать это на 200 байтах, а не на 220 мегабайтах.
@@ -522,6 +555,7 @@ async function main() {
 
   console.log("\n✓ Готово.");
   if (!hasFlag("no-purge")) await purgeCloudflare();
+  if (!NO_INDEXNOW) await pingIndexNow(changed);
   console.log("  Проверки после заливки — в docs/DEPLOY.md.");
 }
 
