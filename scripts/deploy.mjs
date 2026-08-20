@@ -419,16 +419,22 @@ async function purgeCloudflare() {
 }
 
 /**
- * Уведомить IndexNow (Bing + Yandex) только об изменившихся страницах.
+ * Уведомить IndexNow (Bing + Yandex) о НОВЫХ страницах.
  *
- * Из changed берём лишь HTML-страницы (…/index.html) → URL со слэшем.
- * Теги исключаем: их страницы пересобираются от изменения счётчиков, а
- * ниже порога они и вовсе noindex — пинговать их незачем.
- * Best-effort, как и сброс кэша: сбой не валит деплой.
+ * Получает уже отфильтрованный список новых относительных путей (те, что
+ * появились с прошлого деплоя). Почему только новые, а не все изменённые:
+ * между сборками Next меняет разметку каждой страницы, поэтому по хешу
+ * «изменёнными» оказываются почти все HTML — пинговать их все на каждый
+ * деплой значит спамить IndexNow неизменившимся контентом. Реально новый
+ * контент — это добавленные файлы. Правки существующих страниц пингуются
+ * вручную: npm run indexnow -- <url>.
+ *
+ * Из списка берём лишь HTML-страницы (…/index.html) → URL со слэшем; теги
+ * исключаем (ниже порога они noindex). Best-effort: сбой не валит деплой.
  */
-async function pingIndexNow(changed) {
+async function pingIndexNow(newPaths) {
   const ORIGIN = "https://24zdorovie.com";
-  const urls = changed
+  const urls = newPaths
     .map((rel) => rel.split(path.sep).join("/"))
     .filter((rel) => rel.endsWith("/index.html") && !rel.includes("/tag/"))
     .map((rel) => encodeURI(`${ORIGIN}/${rel.slice(0, -"index.html".length)}`));
@@ -507,7 +513,7 @@ async function main() {
 
   buildSite();
 
-  const { current, changed, deleted, first } = plan();
+  const { previous, current, changed, deleted, first } = plan();
   const totalBytes = changed.reduce((sum, rel) => sum + fs.statSync(path.join(OUT_DIR, rel)).size, 0);
 
   console.log(
@@ -555,7 +561,7 @@ async function main() {
 
   console.log("\n✓ Готово.");
   if (!hasFlag("no-purge")) await purgeCloudflare();
-  if (!NO_INDEXNOW) await pingIndexNow(changed);
+  if (!NO_INDEXNOW) await pingIndexNow(changed.filter((rel) => !(rel in previous)));
   console.log("  Проверки после заливки — в docs/DEPLOY.md.");
 }
 
