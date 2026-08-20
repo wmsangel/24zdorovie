@@ -1,1 +1,2 @@
 google.com, pub-5535516142831006, DIRECT, f08c47fec0942fa0
+awin.com, 3044579, DIRECT
