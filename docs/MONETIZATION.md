@@ -317,3 +317,32 @@ Binance — до 50%, но нужен барьер (5000 подписчиков)
 
 Оговорка: маркетингово-операционные данные, не инвестиционный совет; ставки и
 способы выплат меняются — сверять при регистрации.
+
+## Шорт-лист сетей: вердикты (go / option / no-go)
+
+Пул провалидированных вариантов, чтобы выбирать не с нуля. Легенда:
+✅ брать · 🟡 опция/позже · ⛔ не для этого сайта.
+
+| Сеть / программа | Тип | Выплата в KG | Вердикт |
+| --- | --- | --- | --- |
+| Ezoic | display-медиация (incl. AdSense) | Payoneer | ✅ основной display |
+| AdSense | display | — (внутри Ezoic) | ✅ на модерации; Ezoic его и подхватит |
+| Awin | affiliate EN/глобал | Payoneer | ✅ приняты |
+| ShareASale | affiliate (часть Awin) | Payoneer | ✅ доступ есть |
+| Admitad (Mitgo) | affiliate RU | проверить | ✅ заявки поданы |
+| iHerb | бренд (добавки) | Payoneer | 🟡 фит №1, перезайти с трафиком |
+| FlexOffers | affiliate-сеть | Payoneer | 🟡 берёт новичков, широта |
+| Indoleads | CPA глобал | Payoneer + крипта | 🟡 KG-выплаты хороши, офферы выбирать точечно |
+| Amazon Associates | affiliate | Payoneer (реквизиты) | 🟡 EN-товарка |
+| Impact | affiliate премиум | Payoneer | 🟡 отказал новому — вернуться через 1–2 мес |
+| Thorne / Ritual / AG1 / Onnit | бренды-добавки | через сети | 🟡 позже, с трафиком |
+| Oura / Garmin / Fitbit | устройства | через сети | 🟡 под сон/фитнес |
+| Bybit / MEXC / CoinEx / ChangeNOW | крипто-биржи | крипта (USDT) | ✅ но для thecryptotools, не health |
+| Digistore24 | MoR цифровые/health | банк/PayPal | ⛔ health-инвентарь = хайп-нутра |
+| Wolfson / Market Health / MoreNiche | нутра | — | ⛔ агрессивная нутра, яд для E-E-A-T |
+| Adsterra / Adcash / HilltopAds | popunder/push CPM | Payoneer/крипта | ⛔ убивают Ezoic/AdSense и доверие |
+| MeoWant (ShareASale) / SamBoat (Awin) | зоотовары / аренда лодок | — | ⛔ офтоп, не наша ниша |
+
+Принцип: **высокая ставка ≠ брать.** Нутра и popunder-сети дают большой процент,
+но разрушают доверие медсайта и ломают Ezoic/AdSense. Приоритет — чистые
+релевантные офферы через Ezoic + Admitad (RU) + Awin (EN).
