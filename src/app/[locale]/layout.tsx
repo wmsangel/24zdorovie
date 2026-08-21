@@ -43,12 +43,6 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-/** Тег верификации Impact (value=, не content=); в переменной — чтобы обойти типы <meta> */
-const IMPACT_VERIFICATION = {
-  name: "impact-site-verification",
-  value: "45d20717-70ab-4f5f-a794-fa1bd4daf850",
-};
-
 export async function generateMetadata({
   params,
 }: {
@@ -118,14 +112,8 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning className={`${manrope.variable} ${playfair.variable}`}>
       <head>
-        {/*
-          Верификация площадки в Impact (партнёрская сеть — через неё iHerb и др.).
-          Impact ждёт именно value=, а не стандартный content=, поэтому тег задан
-          вручную, а не через metadata.verification (та рендерит content=).
-          Спред переменной, а не литерала: у типа <meta> нет value, а спред
-          переменной не проходит проверку лишних свойств — так без каста в any.
-        */}
-        <meta {...IMPACT_VERIFICATION} />
+        {/* Верификация площадки в Admitad (Mitgo) — партнёрская сеть под RU-стек */}
+        <meta name="mitgo-verification" content="83d7d0af-bd2a-4e93-862e-c069dbf3c512" />
         {/*
           Загрузчик AdSense обязан стоять именно в <head> на каждой странице:
           так его требует инструкция Google, по нему же сайт проверяют при
