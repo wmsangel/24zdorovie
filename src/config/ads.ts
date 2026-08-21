@@ -64,22 +64,44 @@ export type DirectBanner = {
   /** ISO-дата окончания показа; после неё баннер не выводится */
   until?: string;
   sponsored?: boolean;
+  /**
+   * Токен маркировки из ОРД. У партнёрских баннеров вшит в креатив, но по
+   * закону должен быть и на самом размещении — выводим подписью под картинкой.
+   */
+  erid?: string;
+  /** Рекламодатель: выводится подписью под баннером рядом с erid */
+  advertiser?: string;
 };
 
 export const DIRECT_BANNERS: DirectBanner[] = [
-  // Пример заполнения:
-  // {
-  //   id: "protein-brand-2026-q3",
-  //   placement: "sidebar",
-  //   locales: ["ru"],
-  //   href: "https://partner.example/?utm_source=izn",
-  //   image: "/ads/protein-300x600.jpg",
-  //   alt: "Протеин без сахара — скидка 20%",
-  //   width: 300,
-  //   height: 600,
-  //   until: "2026-12-31",
-  //   sponsored: true,
-  // },
+  // СберЗдоровье (ДОКДОК) — Admitad, только RU. Креативы вшиты с «Реклама»,
+  // противопоказаниями и 18+; erid дублируем подписью через AdSlot.
+  {
+    id: "sber-sidebar-160x600",
+    placement: "sidebar",
+    locales: ["ru"],
+    href: "https://yknhc.com/g/77wmol9wye1d9ff0ed903cdca90c0a/?i=4&erid=2bL9aMPo2e49hMef4rrTs88WFr",
+    image: "/ads/sber-160x600.jpg",
+    alt: "СберЗдоровье — запись к врачу со скидкой до 50%",
+    width: 160,
+    height: 600,
+    sponsored: true,
+    erid: "2bL9aMPo2e49hMef4rrTs88WFr",
+    advertiser: "СберЗдоровье (ДОКДОК)",
+  },
+  {
+    id: "sber-infeed-300x250",
+    placement: "in-feed",
+    locales: ["ru"],
+    href: "https://yknhc.com/g/p1fauyxvi91d9ff0ed903cdca90c0a/?i=4&erid=2bL9aMPo2e49hMef4rrTs88WLF",
+    image: "/ads/sber-300x250.jpg",
+    alt: "СберЗдоровье — запись к врачу со скидкой до 50%",
+    width: 300,
+    height: 250,
+    sponsored: true,
+    erid: "2bL9aMPo2e49hMef4rrTs88WLF",
+    advertiser: "СберЗдоровье (ДОКДОК)",
+  },
 ];
 
 export function pickDirectBanner(placement: AdPlacement, locale: Locale): DirectBanner | undefined {

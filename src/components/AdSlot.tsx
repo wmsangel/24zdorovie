@@ -35,7 +35,8 @@ export function AdSlot({
           href={direct.href}
           rel={direct.sponsored ? "sponsored noopener" : "noopener"}
           target="_blank"
-          className="block overflow-hidden rounded-2xl border border-[var(--line)]"
+          style={{ maxWidth: direct.width }}
+          className="mx-auto block overflow-hidden rounded-2xl border border-[var(--line)]"
         >
           <Image
             src={direct.image}
@@ -45,6 +46,13 @@ export function AdSlot({
             className="h-auto w-full"
           />
         </a>
+        {(direct.erid || direct.advertiser) && (
+          <p className="mt-1 text-[0.62rem] leading-tight text-[var(--ink-faint)]">
+            {[direct.advertiser, direct.erid && `erid: ${direct.erid}`]
+              .filter(Boolean)
+              .join(" · ")}
+          </p>
+        )}
       </aside>
     );
   }
