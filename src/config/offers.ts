@@ -49,27 +49,28 @@ export type Offer = {
 };
 
 export const OFFERS: Offer[] = [
-  // Пример заполнения — раскомментировать и подставить свои значения:
-  // {
-  //   id: "sberhealth-checkup-2026q3",
-  //   tools: ["biological-age-calculator", "bmi-calculator"],
-  //   locales: ["ru"],
-  //   kind: "medical",
-  //   title: {
-  //     ru: "Чек-ап по девяти показателям крови",
-  //     en: "Nine-marker blood check-up",
-  //   },
-  //   description: {
-  //     ru: "Те же анализы, что нужны калькулятору: СРБ, альбумин, креатинин, глюкоза и остальные шесть.",
-  //     en: "The same panel the calculator asks for: CRP, albumin, creatinine, glucose and six more.",
-  //   },
-  //   cta: { ru: "Записаться", en: "Book" },
-  //   href: "https://partner.example/?utm_source=24zdorovie&utm_medium=tool",
-  //   price: { ru: "от 3 900 ₽", en: "from $49" },
-  //   erid: "2Vfnxxxxxxx",
-  //   advertiser: "ООО «Рекламодатель», ИНН 0000000000",
-  //   until: "2026-12-31",
-  // },
+  {
+    id: "sberhealth-priem",
+    // Под медкалькуляторами, где «записаться к врачу / сдать анализы» — логичный
+    // следующий шаг: биовозраст → чек-ап, риск ССЗ → кардиолог/анализы,
+    // симптомы → онлайн-консультация.
+    tools: ["biological-age-calculator", "cvd-risk-calculator", "cold-flu-covid-checker"],
+    locales: ["ru"],
+    kind: "medical",
+    title: {
+      ru: "Запись к врачу и онлайн-консультация — СберЗдоровье",
+      en: "Doctor's appointment and online consultation — SberHealth",
+    },
+    description: {
+      ru: "Онлайн-консультации, анализы и запись на приём: 8000+ клиник и 120 000 врачей по России, скидка до 50% на первый приём.",
+      en: "Online consultations, tests and appointments across Russia.",
+    },
+    cta: { ru: "Записаться", en: "Book" },
+    href: "https://yknhc.com/g/j121kp52md1d9ff0ed903cdca90c0a/?erid=2bL9aMPo2e49hMef4rqyS8BgEh",
+    price: { ru: "скидка до 50% на первый приём", en: "up to 50% off the first visit" },
+    erid: "2bL9aMPo2e49hMef4rqyS8BgEh",
+    advertiser: "СберЗдоровье",
+  },
 ];
 
 /** Первый подходящий оффер для инструмента: по слагу, локали и сроку показа */
