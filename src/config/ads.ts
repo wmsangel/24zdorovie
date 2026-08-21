@@ -21,18 +21,6 @@ export const ADS = {
     enabled: true,
     client: "ca-pub-5535516142831006",
   },
-  /**
-   * Awin — партнёрская сеть. Для трекинга ставится MasterTag в <head>.
-   * ID берётся в кабинете Awin: Toolbox → MasterTag (URL вида
-   * https://www.dwin1.com/<id>.js — сюда идёт только число <id>).
-   * Верификацию площадки закрывает строка `awin.com, 3044579, DIRECT`
-   * в public/ads.txt — MasterTag для неё не обязателен, но нужен для трекинга.
-   * Включить: вписать masterTagId и enabled: true.
-   */
-  awin: {
-    enabled: false,
-    masterTagId: "" as string,
-  },
   /** Яндекс.РСЯ — альтернатива/дополнение для RU-локали */
   yandex: {
     enabled: false,

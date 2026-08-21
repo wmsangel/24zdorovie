@@ -127,10 +127,6 @@ export default async function LocaleLayout({
             crossOrigin="anonymous"
           />
         )}
-        {/* Awin MasterTag — трекинг переходов и конверсий партнёрской сети */}
-        {ADS.awin.enabled && ADS.awin.masterTagId && (
-          <script defer src={`https://www.dwin1.com/${ADS.awin.masterTagId}.js`} type="text/javascript" />
-        )}
       </head>
       <body className="min-h-screen antialiased">
         {/*

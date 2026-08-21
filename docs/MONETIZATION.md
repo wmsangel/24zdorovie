@@ -309,8 +309,9 @@ Binance — до 50%, но нужен барьер (5000 подписчиков)
 ### Статус подключений (обновлять по мере)
 - **Impact** — мета-тег верификации площадки в `<head>` (`impact-site-verification`,
   через `value=`); подавать в iHerb после верификации.
-- **Awin** — строка `awin.com, 3044579, DIRECT` в `public/ads.txt`; MasterTag
-  ждёт `masterTagId` в `src/config/ads.ts` (Toolbox → MasterTag).
+- **Awin** — аккаунт удалён самим Awin (август 2026). Интеграция вычищена:
+  строка из `ads.txt`, конфиг `ADS.awin` и MasterTag из layout убраны. При
+  повторном заходе — вернуть строку в `ads.txt` и MasterTag по образцу AdSense.
 - **ShareASale** — доступ есть (вступление в MeoWant; сама MeoWant — зоотовары,
   не наш фит, не использовать). Искать health-мерчантов.
 - **Amazon Associates** — зарегистрирован; выплата через Payoneer-реквизиты.
@@ -327,8 +328,8 @@ Binance — до 50%, но нужен барьер (5000 подписчиков)
 | --- | --- | --- | --- |
 | Ezoic | display-медиация (incl. AdSense) | Payoneer | ✅ основной display |
 | AdSense | display | — (внутри Ezoic) | ✅ на модерации; Ezoic его и подхватит |
-| Awin | affiliate EN/глобал | Payoneer | ✅ приняты |
-| ShareASale | affiliate (часть Awin) | Payoneer | ✅ доступ есть |
+| Awin | affiliate EN/глобал | Payoneer | ⛔ аккаунт удалён Awin (август), перезайти позже |
+| ShareASale | affiliate (часть Awin) | Payoneer | 🟡 доступ был; после удаления Awin проверить |
 | Admitad (Mitgo) | affiliate RU | проверить | ✅ заявки поданы |
 | iHerb | бренд (добавки) | Payoneer | 🟡 фит №1, перезайти с трафиком |
 | FlexOffers | affiliate-сеть | Payoneer | 🟡 берёт новичков, широта |
