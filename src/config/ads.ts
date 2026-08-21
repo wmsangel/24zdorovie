@@ -65,6 +65,12 @@ export type DirectBanner = {
   until?: string;
   sponsored?: boolean;
   /**
+   * Показывать только на мобильном (`lg:hidden`). Нужно для inline-слотов в теле
+   * статьи: на десктопе то же место закрывает сайдбар, и три баннера подряд —
+   * перебор для YMYL. На мобильном сайдбара нет, поэтому баннер здесь уместен.
+   */
+  mobileOnly?: boolean;
+  /**
    * Токен маркировки из ОРД. У партнёрских баннеров вшит в креатив, но по
    * закону должен быть и на самом размещении — выводим подписью под картинкой.
    */
@@ -99,6 +105,36 @@ export const DIRECT_BANNERS: DirectBanner[] = [
     width: 300,
     height: 250,
     sponsored: true,
+    erid: "2bL9aMPo2e49hMef4rrTs88WLF",
+    advertiser: "СберЗдоровье (ДОКДОК)",
+  },
+  // Inline в теле статьи — только мобильный: на десктопе Сбер уже в сайдбаре,
+  // три баннера подряд для YMYL перебор. На мобильном сайдбара нет.
+  {
+    id: "sber-inarticle-300x250",
+    placement: "in-article",
+    locales: ["ru"],
+    href: "https://yknhc.com/g/p1fauyxvi91d9ff0ed903cdca90c0a/?i=4&erid=2bL9aMPo2e49hMef4rrTs88WLF",
+    image: "/ads/sber-300x250.jpg",
+    alt: "СберЗдоровье — запись к врачу со скидкой до 50%",
+    width: 300,
+    height: 250,
+    sponsored: true,
+    mobileOnly: true,
+    erid: "2bL9aMPo2e49hMef4rrTs88WLF",
+    advertiser: "СберЗдоровье (ДОКДОК)",
+  },
+  {
+    id: "sber-articleend-300x250",
+    placement: "article-end",
+    locales: ["ru"],
+    href: "https://yknhc.com/g/p1fauyxvi91d9ff0ed903cdca90c0a/?i=4&erid=2bL9aMPo2e49hMef4rrTs88WLF",
+    image: "/ads/sber-300x250.jpg",
+    alt: "СберЗдоровье — запись к врачу со скидкой до 50%",
+    width: 300,
+    height: 250,
+    sponsored: true,
+    mobileOnly: true,
     erid: "2bL9aMPo2e49hMef4rrTs88WLF",
     advertiser: "СберЗдоровье (ДОКДОК)",
   },

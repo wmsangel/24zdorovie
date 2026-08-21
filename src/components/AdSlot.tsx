@@ -29,7 +29,10 @@ export function AdSlot({
 
   if (direct) {
     return (
-      <aside className={`not-prose ${className}`} aria-label={t(locale, "ad_label")}>
+      <aside
+        className={`not-prose ${direct.mobileOnly ? "lg:hidden" : ""} ${className}`}
+        aria-label={t(locale, "ad_label")}
+      >
         <AdLabel locale={locale} />
         <a
           href={direct.href}
