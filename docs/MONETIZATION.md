@@ -260,3 +260,60 @@ YMYL, отказ партнёрской сети при модерации пл�
 Порядок подключения по приоритету фита — в разделе «Порядок действий» выше:
 маркетплейсы и Фитомаркет Эвалар берут почти сразу, СберЗдоровье целить как
 основной медицинский источник под калькуляторы риска и чек-апы.
+
+## Международные партнёрки и выплаты в KG (ресёрч, август 2026)
+
+Главный фильтр для владельца (ИП Кыргызстана, юрлица вне KG нет): **как
+выводятся деньги**. Прямой банковский перевод в США/ЕС недоступен, поэтому
+приоритет — сети и программы с выплатой на **Payoneer** или **в крипте (USDT)**.
+Проверять фактически в кабинете, ставки и способы выплат меняются.
+
+### Правило выплат
+- **Друзья KG:** Payoneer-нативные (iHerb/Impact, FlexOffers, Awin, ShareASale)
+  и крипто-нативные (Bybit, MEXC, CoinEx) — вывод прямой.
+- **Amazon Associates** — только через костыль: US-реквизиты счёта из Payoneer
+  вписываются как Direct Deposit (в списке способов Amazon Payoneer не значится).
+- **CJ** — Payoneer не подтверждён, скорее банк/чек: для KG хуже.
+- Пороги: Impact $10 · Awin $20 · FlexOffers/ShareASale $50 · Thorne $100.
+
+### Здоровье (24zdorovie) — с чего начать
+| Программа | Комиссия | Выплата | Заметка |
+| --- | --- | --- | --- |
+| [iHerb](https://www.iherb.com/info/affiliates) (через Impact) | до 10–25% | Payoneer/PayPal/банк, cookie 7 дн | **Фит №1**: витамины, омега-3, магний, белок, клетчатка. Старт |
+| [FlexOffers](https://www.flexoffers.com/) (сеть) | по мерчанту | Payoneer, еженедельно | Одно одобрение → тысячи health-мерчантов, широта для нового сайта |
+| [Awin](https://www.awin.com/) | по мерчанту | Payoneer | Myprotein и добавки; ads.txt + MasterTag уже настроены |
+| [ShareASale](https://www.shareasale.com/) | по мерчанту | Payoneer | Часть Awin; искать supplement-бренды |
+| [Thorne](https://www.thorne.com/affiliate) | 10–20% | PayPal, $100 мин | Премиум, научный бренд — под доказательный тон |
+| Ritual · AG1 · Transparent Labs · Onnit | 15–20% / рекуррент | через Impact/ShareASale/CJ | Подписочные добавки |
+| [Oura Ring](https://ouraring.com/affiliates) · Garmin · Fitbit | по программе | Impact/CJ | Под калькулятор сна и статьи фитнес/сон |
+
+**НЕ брать** (высокая ставка, но яд для доказательного медсайта — бьёт по
+E-E-A-T, доверию и AdSense): Wolfson Brands (40%), Market Health (до 60%),
+MoreNiche (до 50%) — агрессивная нутра (похудалки, чудо-добавки).
+
+### Крипта (thecryptotools) — платят в USDT
+Выплата вообще не проблема: USDT на кошелёк, без банка.
+[Bybit](https://www.bybit.com/en/affiliate/) (до 50%, daily USDT — старт) ·
+[MEXC](https://www.mexc.com/affiliate) (до 70%) ·
+[CoinEx](https://www.coinex.com/en/affiliate) (daily USDT) ·
+[ChangeNOW](https://changenow.io/program-affiliate) (lifetime) ·
+[Ledger](https://www.ledger.com/affiliates) (10%, железные кошельки).
+Binance — до 50%, но нужен барьер (5000 подписчиков) и платит в локальной
+валюте, не крипте. Директория программ с выплатой в USDT:
+[affiliate.watch/payment-method/tether-usdt](https://affiliate.watch/payment-method/tether-usdt).
+
+### RU-аудитория 24zdorovie — через [Admitad](https://www.admitad.com/ru/)
+Здравсити, Фитомаркет Эвалар, СберЗдоровье (детали выше). Порог $10.
+⚠️ Способ вывода Admitad именно на KG проверить в кабинете.
+
+### Статус подключений (обновлять по мере)
+- **Impact** — мета-тег верификации площадки в `<head>` (`impact-site-verification`,
+  через `value=`); подавать в iHerb после верификации.
+- **Awin** — строка `awin.com, 3044579, DIRECT` в `public/ads.txt`; MasterTag
+  ждёт `masterTagId` в `src/config/ads.ts` (Toolbox → MasterTag).
+- **ShareASale** — доступ есть (вступление в MeoWant; сама MeoWant — зоотовары,
+  не наш фит, не использовать). Искать health-мерчантов.
+- **Amazon Associates** — зарегистрирован; выплата через Payoneer-реквизиты.
+
+Оговорка: маркетингово-операционные данные, не инвестиционный совет; ставки и
+способы выплат меняются — сверять при регистрации.
