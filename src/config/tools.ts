@@ -338,6 +338,31 @@ export const TOOLS: Tool[] = [
     },
   },
   {
+    slug: "blood-test-unit-converter",
+    emoji: "🩸",
+    category: "heart",
+    name: {
+      ru: "Конвертер единиц анализов крови",
+      en: "Blood Test Unit Converter",
+    },
+    tagline: {
+      ru: "Холестерин, глюкоза, триглицериды, HbA1c и другие — пересчёт ммоль/л ↔ мг/дл в обе стороны, с ориентиром нормы",
+      en: "Cholesterol, glucose, triglycerides, HbA1c and more — mmol/L ↔ mg/dL both ways, with reference ranges",
+    },
+    related: {
+      ru: [
+        "/heart/holesterin-lpnp-lpvp",
+        "/heart/triglitseridy-norma-i-kak-snizit",
+        "/longevity/chekap-po-vozrastam",
+      ],
+      en: [
+        "/heart/cholesterol-explained",
+        "/heart/triglycerides-explained",
+        "/longevity/health-checkups-by-age",
+      ],
+    },
+  },
+  {
     slug: "sleep-calculator",
     emoji: "🌙",
     category: "sleep",

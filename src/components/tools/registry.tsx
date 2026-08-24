@@ -1,5 +1,6 @@
 import type { Locale } from "@/config/site";
 import { BiologicalAgeCalculator } from "./BiologicalAgeCalculator";
+import { BloodUnitConverter } from "./BloodUnitConverter";
 import { BodyCompositionCalculator } from "./BodyCompositionCalculator";
 import { BurnoutSelfCheck } from "./BurnoutSelfCheck";
 import { CaffeineCalculator } from "./CaffeineCalculator";
@@ -35,6 +36,7 @@ const WIDGETS: Record<string, (props: { locale: Locale }) => React.ReactElement>
   "fiber-calculator": FiberCalculator,
   "cvd-risk-calculator": CvdRiskCalculator,
   "cold-flu-covid-checker": SymptomChecker,
+  "blood-test-unit-converter": BloodUnitConverter,
 };
 
 export function ToolWidget({ slug, locale }: { slug: string; locale: Locale }) {

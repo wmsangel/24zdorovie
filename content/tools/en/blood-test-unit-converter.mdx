@@ -1,0 +1,84 @@
+---
+title: "Blood Test Unit Converter: mmol/L to mg/dL"
+description: "Convert cholesterol, glucose, triglycerides, HbA1c and more between mmol/L and mg/dL, both directions. With conversion factors, reference ranges and the formulas."
+updated: "2026-08-24"
+lede: "To convert cholesterol and other lipids from mmol/L to mg/dL, multiply by 38.67; to go back, divide. For example, 5.09 mmol/L × 38.67 ≈ 196.8 mg/dL. Glucose uses a factor of 18.02 and triglycerides 88.57. The units differ because Europe and most of the world report molar concentration (mmol/L) while the US uses mass concentration (mg/dL)."
+faq:
+  - q: "How do I convert cholesterol from mmol/L to mg/dL?"
+    a: "Multiply the mmol/L value by 38.67 to get mg/dL. To reverse it, divide mg/dL by 38.67. The same factor works for total, LDL and HDL cholesterol because it is the same molecule. Example: 5.09 mmol/L ≈ 196.8 mg/dL; 5.2 mmol/L ≈ 201 mg/dL."
+  - q: "What is the conversion factor for glucose?"
+    a: "18.02. Glucose from mmol/L to mg/dL: multiply by 18.02; to reverse, divide. For example, 5.5 mmol/L ≈ 99 mg/dL and 100 mg/dL ≈ 5.55 mmol/L. The factor is the molar mass of glucose (180.16 g/mol) divided by 10."
+  - q: "And for triglycerides?"
+    a: "88.57. Triglyceride molecules are larger than cholesterol, so the factor is larger too: 1.7 mmol/L ≈ 150 mg/dL. Note that triglycerides should be measured fasting — eating beforehand inflates the value."
+  - q: "Why does the US use mg/dL and Europe mmol/L?"
+    a: "They are two ways to express concentration. mmol/L (molar) counts molecules and belongs to the SI system used by Europe and most of the world. mg/dL (mass) counts the weight of substance per volume and persists in the US. The test itself is identical — only the unit on the report differs."
+  - q: "How are HbA1c percent and mmol/mol related?"
+    a: "They are two scales for glycated haemoglobin: % (NGSP/DCCT, the familiar one) and mmol/mol (IFCC, the lab standard). The formula is % = mmol/mol ÷ 10.929 + 2.15. Normal is below 5.7% (39 mmol/mol); 5.7–6.4% is prediabetes; 6.5% and above is diabetes."
+  - q: "What is eAG?"
+    a: "Estimated average glucose — the ~3-month average glucose your HbA1c corresponds to. The ADAG formula: eAG (mg/dL) = 28.7 × HbA1c(%) − 46.7. For example, an HbA1c of 7% ≈ 8.6 mmol/L (154 mg/dL) average glucose. The converter shows eAG automatically when you pick HbA1c."
+sources:
+  - title: "Rifai N, et al. Tietz Textbook of Clinical Chemistry and Molecular Diagnostics — SI unit conversion factors"
+    url: "https://www.elsevier.com/books/tietz-textbook-of-clinical-chemistry-and-molecular-diagnostics/rifai/978-0-323-77572-4"
+  - title: "NGSP. IFCC-NGSP Master Equation: HbA1c(%) = 0.09148 × IFCC + 2.152"
+    url: "https://ngsp.org/ifcc.asp"
+  - title: "Nathan DM, et al. Translating the A1C Assay Into Estimated Average Glucose Values (ADAG). Diabetes Care, 2008"
+    url: "https://pubmed.ncbi.nlm.nih.gov/18540046/"
+  - title: "Mach F, et al. 2019 ESC/EAS Guidelines for the management of dyslipidaemias. Eur Heart J, 2020"
+    url: "https://pubmed.ncbi.nlm.nih.gov/31504418/"
+  - title: "American Diabetes Association. Classification and Diagnosis of Diabetes: Standards of Care in Diabetes"
+    url: "https://diabetesjournals.org/care/issue/47/Supplement_1"
+---
+
+## How the conversion works
+
+The difference between mmol/L and mg/dL is not in the test but in what is being counted. **mmol/L** is molar concentration: how many molecules of a substance are in a litre. **mg/dL** is mass concentration: how many milligrams are in a decilitre. You convert between them using the molar mass of the substance.
+
+The conversion factor equals molar mass ÷ 10, which is where the familiar numbers come from:
+
+<DataTable
+  head={["Marker", "mmol/L → mg/dL", "Example"]}
+  rows={[
+    ["Cholesterol, LDL, HDL", "× 38.67", "5.09 → 196.8"],
+    ["Triglycerides", "× 88.57", "1.7 → 150.6"],
+    ["Glucose", "× 18.02", "5.5 → 99"],
+    ["Uric acid (µmol/L)", "÷ 59.48", "360 → 6.1"],
+    ["Creatinine (µmol/L)", "÷ 88.42", "80 → 0.90"],
+  ]}
+  caption="To reverse (mg/dL → mmol/L), divide by the same factor"
+/>
+
+Total, LDL and HDL cholesterol share one factor — it is the same molecule, differing only in the lipoprotein fraction it is measured in.
+
+<Callout type="info" title="Why countries use different units">
+  Molar concentration (mmol/L) reflects the biochemistry more directly — molecules react, not milligrams — and belongs to the SI system used by Europe and most of the world. The US stayed on mass concentration (mg/dL) for historical reasons. That is why US articles, risk calculators and reference ranges often need converting.
+</Callout>
+
+## Cholesterol: the most common conversion
+
+This is where people most often stumble when comparing their result with foreign reference ranges. Benchmarks for total cholesterol:
+
+<DataTable
+  head={["Category", "mmol/L", "mg/dL"]}
+  rows={[
+    ["Desirable", "below 5.2", "below 200"],
+    ["Borderline", "5.2 – 6.2", "200 – 239"],
+    ["High", "6.2 and above", "240 and above"],
+  ]}
+  caption="Targets are individual and depend on your cardiovascular risk"
+/>
+
+But total cholesterol is a blunt number. What to do next depends on LDL, HDL and your overall risk.
+
+<ReadAlso href="/en/heart/cholesterol-explained" title="Cholesterol Explained: What LDL and HDL Numbers Mean" />
+
+## Glucose and HbA1c
+
+Glucose uses a factor of 18.02. Fasting thresholds: normal 3.9–5.5 mmol/L (70–99 mg/dL), prediabetes 5.6–6.9, diabetes 7.0 and above on two tests.
+
+HbA1c is a special case: it is not mmol/L and mg/dL but **percent (NGSP)** and **mmol/mol (IFCC)**. When you select HbA1c, the converter also shows **eAG** — the ~3-month average glucose your percentage corresponds to.
+
+<ReadAlso href="/en/longevity/health-checkups-by-age" title="Health Check-ups by Age: What to Test and When" />
+
+## One caveat
+
+Unit conversion is arithmetic. It does not turn a number into a diagnosis or replace a clinician's reading. Lab reference ranges differ slightly, so always compare your result with the reference values printed on your own report — they are calibrated to that lab's method.

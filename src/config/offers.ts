@@ -54,7 +54,12 @@ export const OFFERS: Offer[] = [
     // Под медкалькуляторами, где «записаться к врачу / сдать анализы» — логичный
     // следующий шаг: биовозраст → чек-ап, риск ССЗ → кардиолог/анализы,
     // симптомы → онлайн-консультация.
-    tools: ["biological-age-calculator", "cvd-risk-calculator", "cold-flu-covid-checker"],
+    tools: [
+      "biological-age-calculator",
+      "cvd-risk-calculator",
+      "cold-flu-covid-checker",
+      "blood-test-unit-converter",
+    ],
     locales: ["ru"],
     kind: "medical",
     title: {

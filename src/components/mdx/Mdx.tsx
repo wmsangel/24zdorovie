@@ -5,6 +5,7 @@ import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { BiologicalAgeCalculator } from "../tools/BiologicalAgeCalculator";
+import { BloodUnitConverter } from "../tools/BloodUnitConverter";
 import { BodyCompositionCalculator } from "../tools/BodyCompositionCalculator";
 import { BurnoutSelfCheck } from "../tools/BurnoutSelfCheck";
 import { CaffeineCalculator } from "../tools/CaffeineCalculator";
@@ -70,6 +71,7 @@ const components = {
   FiberCalculator,
   CvdRiskCalculator,
   SymptomChecker,
+  BloodUnitConverter,
 };
 
 export function Mdx({ source }: { source: string }) {
