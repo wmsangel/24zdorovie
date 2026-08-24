@@ -106,12 +106,19 @@ export function Footer({ locale }: { locale: Locale }) {
                   </li>
                 )}
                 <li>
-                  <Link
+                  {/*
+                    Обычный <a>, а не next/link: /rss/{locale}.xml — это route
+                    handler с XML, а не навигируемая страница. У <Link> клиентский
+                    роутер на каждой странице префетчит несуществующий
+                    /rss/{locale}.xml/__next._tree.txt и плодит 404 (были в топе
+                    ошибок Cloudflare). Плоский <a> префетч не запускает.
+                  */}
+                  <a
                     href={`/rss/${locale}.xml`}
                     className="text-[var(--ink-soft)] transition-colors hover:text-[var(--brand-strong)]"
                   >
                     RSS
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </nav>
