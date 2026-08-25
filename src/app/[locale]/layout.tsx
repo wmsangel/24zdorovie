@@ -115,6 +115,20 @@ export default async function LocaleLayout({
         {/* Верификация площадки в Admitad (Mitgo) — партнёрская сеть под RU-стек */}
         <meta name="mitgo-verification" content="83d7d0af-bd2a-4e93-862e-c069dbf3c512" />
         {/*
+          Ezoic — JavaScript-интеграция (как на calclumen). sa.min.js обязан
+          стоять в <head> на каждой странице: по нему Ezoic проверяет подключение
+          сайта (Check Connection) и через него отдаёт рекламу. Инициализация
+          очереди ezstandalone идёт следом, аналитика — асинхронно.
+        */}
+        <script src="https://www.ezojs.com/ezoic/sa.min.js" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "window.ezstandalone=window.ezstandalone||{};ezstandalone.cmd=ezstandalone.cmd||[];",
+          }}
+        />
+        <script async src="https://ezoicanalytics.com/analytics.js" />
+        {/*
           Загрузчик AdSense обязан стоять именно в <head> на каждой странице:
           так его требует инструкция Google, по нему же сайт проверяют при
           подключении и по нему работают автоматические объявления.
