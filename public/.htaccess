@@ -51,6 +51,12 @@ AddDefaultCharset UTF-8
   AddType application/manifest+json .webmanifest
 </IfModule>
 
+# .xml по умолчанию отдаётся как RSS (для /rss/*.xml). Sitemap — исключение:
+# поисковики ждут для него application/xml, поэтому переопределяем точечно.
+<Files "sitemap.xml">
+  ForceType application/xml
+</Files>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
 

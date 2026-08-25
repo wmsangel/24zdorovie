@@ -115,6 +115,15 @@ export default async function LocaleLayout({
         {/* Верификация площадки в Admitad (Mitgo) — партнёрская сеть под RU-стек */}
         <meta name="mitgo-verification" content="83d7d0af-bd2a-4e93-862e-c069dbf3c512" />
         {/*
+          Единый CMP (согласие на куки, GDPR/CCPA) — Ezoic gatekeeperconsent.
+          Google-сертифицированный; закрывает согласие и для Ezoic, и для AdSense.
+          Грузится первым, до любых рекламных скриптов. data-cfasync="false" —
+          чтобы Cloudflare Rocket Loader не откладывал исполнение. Второй CMP
+          подключать нельзя — два конфликтуют.
+        */}
+        <script src="https://cmp.gatekeeperconsent.com/min.js" data-cfasync="false" />
+        <script src="https://the.gatekeeperconsent.com/cmp.min.js" data-cfasync="false" />
+        {/*
           Ezoic — JavaScript-интеграция (как на calclumen). sa.min.js обязан
           стоять в <head> на каждой странице: по нему Ezoic проверяет подключение
           сайта (Check Connection) и через него отдаёт рекламу. Инициализация
