@@ -102,6 +102,27 @@ export const OFFERS: Offer[] = [
     price: { ru: "визит от $39", en: "free AI consult · visits from $39" },
     advertiser: "Doctronic (US)",
   },
+  {
+    id: "iherb-supplements",
+    // Под калькуляторами добавок/питания: витамин D → купить витамин D,
+    // белок → протеин, клетчатка → псиллиум. Медкалькуляторы заняты Сбером —
+    // здесь конфликта нет. iHerb.group — RU (доставка по РФ, рос. карты).
+    tools: ["vitamin-d-calculator", "protein-calculator", "fiber-calculator"],
+    locales: ["ru"],
+    kind: "supplement",
+    title: {
+      ru: "Витамины и добавки — iHerb",
+      en: "Vitamins & supplements — iHerb",
+    },
+    description: {
+      ru: "35 000+ товаров: витамины B, C, D, E, омега-3, протеин, клетчатка. Доставка по России, оплата российскими картами.",
+      en: "Vitamins, omega-3, protein and more, delivered across Russia.",
+    },
+    cta: { ru: "Смотреть", en: "Shop" },
+    href: "https://xnmik.com/g/ncvzabqdgm1d9ff0ed9062343b7806/?erid=2bL9aMPo2e49hMef4pfzYmiQPz",
+    erid: "2bL9aMPo2e49hMef4pfzYmiQPz",
+    advertiser: "ООО «Форест», ИНН 7814817732",
+  },
 ];
 
 /** Первый подходящий оффер для инструмента: по слагу, локали и сроку показа */
