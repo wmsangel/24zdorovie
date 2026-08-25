@@ -76,6 +76,32 @@ export const OFFERS: Offer[] = [
     erid: "2bL9aMPo2e49hMef4rqyS8BgEh",
     advertiser: "СберЗдоровье",
   },
+  {
+    id: "doctronic-telehealth",
+    // EN-зеркало Сбера: под теми же медкалькуляторами, где логичный следующий
+    // шаг — «спросить врача». Doctronic — US-телемедицина, поэтому locales только
+    // en и erid не нужен (это не реклама для РФ). US-only гео отрабатывает Admitad.
+    tools: [
+      "biological-age-calculator",
+      "cvd-risk-calculator",
+      "cold-flu-covid-checker",
+      "blood-test-unit-converter",
+    ],
+    locales: ["en"],
+    kind: "medical",
+    title: {
+      ru: "Спросить врача онлайн — Doctronic",
+      en: "Talk to a doctor online — Doctronic",
+    },
+    description: {
+      ru: "ИИ-консультация о здоровье 24/7 и приём лицензированного врача США по видео, когда нужно.",
+      en: "Free AI health guidance 24/7, plus a licensed US doctor by video when you need one. Insurance accepted.",
+    },
+    cta: { ru: "Спросить", en: "Ask a doctor" },
+    href: "https://tsygg.com/g/7r1pt1n1fo1d9ff0ed90abb0242f2d/",
+    price: { ru: "визит от $39", en: "free AI consult · visits from $39" },
+    advertiser: "Doctronic (US)",
+  },
 ];
 
 /** Первый подходящий оффер для инструмента: по слагу, локали и сроку показа */
