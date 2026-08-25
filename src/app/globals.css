@@ -198,6 +198,11 @@
     color: #fff;
   }
   :root[data-theme="dark"] .btn-primary { color: #0e1512; }
+  /* Системная тёмная тема без явного атрибута: --brand светлеет, поэтому текст
+     кнопки тоже должен стать тёмным, иначе белое на светло-зелёном не читается. */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .btn-primary { color: #0e1512; }
+  }
   .btn-primary:hover { background: var(--brand-strong); }
   :root[data-theme="dark"] .btn-primary:hover { background: var(--brand-strong); }
 
@@ -387,7 +392,10 @@
   .prose h3 { font-size: 1.4375rem; }
 }
 
-.prose a {
+/* :not(.btn) — чтобы это неслоевое правило не перекрашивало кнопки-ссылки
+   (ProductCard, OfferBlock): неслоевой .prose a иначе бьёт слоевой .btn-primary
+   независимо от специфичности, и текст кнопки уезжает в цвет ссылки. */
+.prose a:not(.btn) {
   color: var(--brand-strong);
   text-decoration: underline;
   text-decoration-thickness: 1.5px;
@@ -395,7 +403,7 @@
   text-decoration-color: color-mix(in oklab, var(--brand) 45%, transparent);
   transition: text-decoration-color 0.15s ease;
 }
-.prose a:hover { text-decoration-color: var(--brand); }
+.prose a:not(.btn):hover { text-decoration-color: var(--brand); }
 
 .prose strong { font-weight: 700; }
 
