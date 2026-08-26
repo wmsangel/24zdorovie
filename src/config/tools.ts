@@ -338,6 +338,31 @@ export const TOOLS: Tool[] = [
     },
   },
   {
+    slug: "blood-pressure-checker",
+    emoji: "🩺",
+    category: "heart",
+    name: {
+      ru: "Чекер артериального давления",
+      en: "Blood Pressure Category Checker",
+    },
+    tagline: {
+      ru: "В какую категорию попадает ваше давление по ESC/ESH — от оптимального до гипертонии, с поправкой на то, что один замер не диагноз",
+      en: "Which ESC/ESH category your reading falls into — from optimal to hypertension, with the reminder that one reading is not a diagnosis",
+    },
+    related: {
+      ru: [
+        "/heart/arterialnoe-davlenie-normy",
+        "/heart/insult-priznaki-i-profilaktika",
+        "/heart/holesterin-lpnp-lpvp",
+      ],
+      en: [
+        "/heart/blood-pressure-explained",
+        "/heart/stroke-warning-signs",
+        "/heart/cholesterol-explained",
+      ],
+    },
+  },
+  {
     slug: "blood-test-unit-converter",
     emoji: "🩸",
     category: "heart",
