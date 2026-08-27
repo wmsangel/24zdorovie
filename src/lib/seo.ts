@@ -40,6 +40,10 @@ type MetaInput = {
   type?: "website" | "article";
   publishedTime?: string;
   modifiedTime?: string;
+  /** OG article:* — автор, рубрика, теги (только для type: "article") */
+  authors?: string[];
+  section?: string;
+  tags?: string[];
   /** Явные альтернативы; если не заданы — тот же путь в другой локали */
   alternates?: Partial<Record<Locale, string>>;
   noindex?: boolean;
@@ -55,6 +59,9 @@ export function buildMetadata({
   type = "website",
   publishedTime,
   modifiedTime,
+  authors,
+  section,
+  tags,
   alternates,
   noindex,
 }: MetaInput): Metadata {
@@ -82,7 +89,24 @@ export function buildMetadata({
     title,
     description,
     alternates: { canonical, languages },
-    robots: noindex ? { index: false, follow: true } : undefined,
+    /**
+     * Директивы robots задаём на каждой странице явно: метадата layout на
+     * вложенные страницы не наследуется, и без этого блока статьи, рубрики и
+     * инструменты теряют max-image-preview:large и полный сниппет в выдаче.
+     */
+    robots: noindex
+      ? { index: false, follow: true }
+      : {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+            "max-video-preview": -1,
+          },
+        },
     openGraph: {
       type,
       url: canonical,
@@ -91,8 +115,15 @@ export function buildMetadata({
       siteName: SITE_META[locale].title,
       locale: OG_LOCALE[locale],
       images: [{ url: img, width: 1200, height: 630, alt: title }],
-      ...(publishedTime ? { publishedTime } : {}),
-      ...(modifiedTime ? { modifiedTime } : {}),
+      ...(type === "article"
+        ? {
+            ...(publishedTime ? { publishedTime } : {}),
+            ...(modifiedTime ? { modifiedTime } : {}),
+            ...(authors?.length ? { authors } : {}),
+            ...(section ? { section } : {}),
+            ...(tags?.length ? { tags } : {}),
+          }
+        : {}),
     },
     twitter: {
       card: "summary_large_image",
@@ -117,6 +148,9 @@ export function articleMetadata(article: Article): Metadata {
     image: article.cover ? absolute(article.cover) : ogImage({ title: article.title, category: article.category, locale: article.locale }),
     publishedTime: article.date,
     modifiedTime: article.updated ?? article.date,
+    authors: [article.author ?? SITE_META[article.locale].title],
+    section: getCategory(article.category)?.name[article.locale],
+    tags: article.tags,
     alternates: {
       [article.locale]: path,
       ...(translated ? { [other]: `/${translated.category}/${translated.slug}` } : {}),
@@ -175,13 +209,31 @@ export function breadcrumbLd(items: { name: string; url: string }[]) {
   };
 }
 
+/**
+ * Картинка статьи как ImageObject: Google предпочитает объект с размерами
+ * голому URL и для части rich-результатов требует именно его. Для обложки
+ * размеры неизвестны, для OG-заглушки они всегда 1200×630.
+ */
+function articleImageLd(article: Article) {
+  if (article.cover) {
+    return { "@type": "ImageObject", url: absolute(article.cover) };
+  }
+  return {
+    "@type": "ImageObject",
+    url: ogImage({ title: article.title, category: article.category, locale: article.locale }),
+    width: 1200,
+    height: 630,
+  };
+}
+
 export function articleLd(article: Article) {
   const category = getCategory(article.category);
   const url = absolute(article.url);
+  const isMedical = article.category !== "recipes";
 
   return {
     "@context": "https://schema.org",
-    "@type": article.category === "recipes" ? "Article" : "MedicalWebPage",
+    "@type": isMedical ? "MedicalWebPage" : "Article",
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     headline: article.title,
     description: article.description,
@@ -191,9 +243,7 @@ export function articleLd(article: Article) {
     articleSection: category?.name[article.locale],
     keywords: article.tags?.join(", "),
     wordCount: article.words,
-    image: article.cover
-      ? absolute(article.cover)
-      : ogImage({ title: article.title, category: article.category, locale: article.locale }),
+    image: articleImageLd(article),
     author: {
       "@type": "Person",
       name: article.author ?? SITE_META[article.locale].title,
@@ -201,6 +251,14 @@ export function articleLd(article: Article) {
     },
     ...(article.reviewer
       ? { reviewedBy: { "@type": "Person", name: article.reviewer } }
+      : {}),
+    // YMYL-сигналы для медицинских тем: дата последней проверки и аудитория —
+    // Google явно учитывает их при оценке экспертности health-контента.
+    ...(isMedical
+      ? {
+          lastReviewed: article.updated ?? article.date,
+          medicalAudience: { "@type": "MedicalAudience", audienceType: "Patient" },
+        }
       : {}),
     publisher: { "@id": `${SITE.url}/#organization` },
     isPartOf: { "@id": `${SITE.url}/#website` },

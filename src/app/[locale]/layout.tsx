@@ -115,6 +115,14 @@ export default async function LocaleLayout({
         {/* Верификация площадки в Admitad (Mitgo) — партнёрская сеть под RU-стек */}
         <meta name="mitgo-verification" content="83d7d0af-bd2a-4e93-862e-c069dbf3c512" />
         {/*
+          Ранний DNS-резолв сторонних доменов (реклама и аналитика грузятся
+          после интерактива) — сокращает задержку их подключения и помогает
+          Core Web Vitals. Шрифты self-hosted через next/font, им хинт не нужен.
+        */}
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://mc.yandex.ru" />
+        {/*
           Ezoic удалён после отказа Incubator (нет смысла тащить мёртвые скрипты
           и их CMP на каждую страницу). Дисплей-путь теперь AdSense. Как одобрят —
           сюда встанет CMP Google «Privacy & messaging» (Funding Choices) для
