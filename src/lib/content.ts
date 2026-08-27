@@ -202,23 +202,55 @@ export function getAllTags(locale: Locale): { tag: string; count: number }[] {
 }
 
 /**
- * Похожие материалы: сначала совпадение по тегам внутри рубрики,
- * затем добор свежими из той же рубрики, затем — просто свежими.
+ * Похожие материалы для тематических кластеров.
+ *
+ * Оценка = общие теги × 3 + та же рубрика × 2. Такой вес держит кластер
+ * связным (любая статья той же рубрики набирает ≥2 и обходит случайную
+ * свежую с 0), но при этом сильное совпадение по тегам вытягивает наверх и
+ * материал из соседней рубрики — так строятся межрубричные тематические
+ * связки (например, «белок» соединяет nutrition, fitness и supplements).
+ * Если релевантных не хватило, добор идёт свежими из той же рубрики, затем
+ * просто свежими — блок всегда заполнен до limit.
  */
-export function getRelated(article: Article, limit = 3): Article[] {
+export function getRelated(article: Article, limit = 6): Article[] {
   const pool = getArticles(article.locale).filter((a) => a.slug !== article.slug);
   const tags = new Set((article.tags ?? []).map((t) => t.toLowerCase()));
 
   const scored = pool.map((a) => {
     const overlap = (a.tags ?? []).filter((t) => tags.has(t.toLowerCase())).length;
     const sameCategory = a.category === article.category ? 1 : 0;
-    return { article: a, score: overlap * 2 + sameCategory };
+    return { article: a, score: overlap * 3 + sameCategory * 2, sameCategory };
   });
 
-  return scored
-    .sort((a, b) => b.score - a.score || +new Date(b.article.date) - +new Date(a.article.date))
-    .slice(0, limit)
-    .map((s) => s.article);
+  const byRelevance = scored.sort(
+    (a, b) => b.score - a.score || +new Date(b.article.date) - +new Date(a.article.date),
+  );
+
+  // Гарантируем присутствие «родной» рубрики: если топ вытянуло целиком
+  // межрубричными тегами, подмешиваем ближайших соседей по рубрике, чтобы
+  // кластер не рассыпался.
+  const picked = byRelevance.slice(0, limit);
+  const sameCatFloor = Math.min(2, byRelevance.filter((s) => s.sameCategory).length);
+  const inPicked = new Set(picked.map((s) => s.article.slug));
+  let haveSameCat = picked.filter((s) => s.sameCategory).length;
+  if (haveSameCat < sameCatFloor) {
+    for (const s of byRelevance) {
+      if (haveSameCat >= sameCatFloor) break;
+      if (!s.sameCategory || inPicked.has(s.article.slug)) continue;
+      // заменяем самый слабый межрубричный элемент на соседа по рубрике
+      for (let i = picked.length - 1; i >= 0; i--) {
+        if (!picked[i].sameCategory) {
+          inPicked.delete(picked[i].article.slug);
+          picked[i] = s;
+          inPicked.add(s.article.slug);
+          haveSameCat += 1;
+          break;
+        }
+      }
+    }
+  }
+
+  return picked.map((s) => s.article);
 }
 
 /** Версия этой же статьи на другом языке — для hreflang и переключателя языка */

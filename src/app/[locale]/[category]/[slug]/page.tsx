@@ -54,7 +54,7 @@ export default async function ArticlePage({
   const cat = getCategory(article.category);
   const headings = extractHeadings(article.body);
   const [bodyStart, bodyRest] = splitAtMiddleHeading(article.body);
-  const related = getRelated(article, 3);
+  const related = getRelated(article, 6);
   const url = `${SITE.url}${article.url}`;
 
   return (
