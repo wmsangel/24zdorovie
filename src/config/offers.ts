@@ -125,6 +125,28 @@ export const OFFERS: Offer[] = [
     erid: "2bL9aMPo2e49hMef4pfzYmiQPz",
     advertiser: "ООО «Форест», ИНН 7814817732",
   },
+  {
+    id: "sprosivracha",
+    // Вторая RU-телемедицина. Медкалькуляторы заняты Сбером (pickOffer отдаёт
+    // один оффер на инструмент), поэтому ставим на health-инструменты без
+    // оффера, где «спросить врача» — логичный следующий шаг.
+    tools: ["burnout-test", "ovulation-calculator"],
+    locales: ["ru"],
+    kind: "medical",
+    title: {
+      ru: "Спросить врача онлайн — СпросиВрача",
+      en: "Ask a doctor online — SprosiVracha",
+    },
+    description: {
+      ru: "Онлайн-консультация с врачом примерно за 10 минут: 28 000+ специалистов, можно получить ответы нескольких врачей.",
+      en: "An online doctor consultation in about 10 minutes across 28,000+ specialists.",
+    },
+    cta: { ru: "Спросить", en: "Ask" },
+    href: "https://rkdro.com/g/komku8wlxj1d9ff0ed90f9bce894e2/?erid=2bL9aMPo2e49hMef4rrTycihm6",
+    price: { ru: "от 699 ₽", en: "from 699 ₽" },
+    erid: "2bL9aMPo2e49hMef4rrTycihm6",
+    advertiser: "СпросиВрача",
+  },
 ];
 
 /** Первый подходящий оффер для инструмента: по слагу, локали и сроку показа */
