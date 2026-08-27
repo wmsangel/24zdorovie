@@ -115,28 +115,11 @@ export default async function LocaleLayout({
         {/* Верификация площадки в Admitad (Mitgo) — партнёрская сеть под RU-стек */}
         <meta name="mitgo-verification" content="83d7d0af-bd2a-4e93-862e-c069dbf3c512" />
         {/*
-          Единый CMP (согласие на куки, GDPR/CCPA) — Ezoic gatekeeperconsent.
-          Google-сертифицированный; закрывает согласие и для Ezoic, и для AdSense.
-          Грузится первым, до любых рекламных скриптов. data-cfasync="false" —
-          чтобы Cloudflare Rocket Loader не откладывал исполнение. Второй CMP
-          подключать нельзя — два конфликтуют.
+          Ezoic удалён после отказа Incubator (нет смысла тащить мёртвые скрипты
+          и их CMP на каждую страницу). Дисплей-путь теперь AdSense. Как одобрят —
+          сюда встанет CMP Google «Privacy & messaging» (Funding Choices) для
+          согласия GDPR/CCPA; отдельный CMP до показа рекламы не требуется.
         */}
-        <script src="https://cmp.gatekeeperconsent.com/min.js" data-cfasync="false" />
-        <script src="https://the.gatekeeperconsent.com/cmp.min.js" data-cfasync="false" />
-        {/*
-          Ezoic — JavaScript-интеграция (как на calclumen). sa.min.js обязан
-          стоять в <head> на каждой странице: по нему Ezoic проверяет подключение
-          сайта (Check Connection) и через него отдаёт рекламу. Инициализация
-          очереди ezstandalone идёт следом, аналитика — асинхронно.
-        */}
-        <script src="https://www.ezojs.com/ezoic/sa.min.js" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html:
-              "window.ezstandalone=window.ezstandalone||{};ezstandalone.cmd=ezstandalone.cmd||[];",
-          }}
-        />
-        <script async src="https://ezoicanalytics.com/analytics.js" />
         {/*
           Загрузчик AdSense обязан стоять именно в <head> на каждой странице:
           так его требует инструкция Google, по нему же сайт проверяют при
