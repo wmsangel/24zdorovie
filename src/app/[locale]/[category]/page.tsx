@@ -73,8 +73,10 @@ export default async function CategoryPage({
             </span>
             <div>
               <h1 className="text-[2.2rem] leading-tight md:text-[3rem]">{cat.name[locale]}</h1>
+              {/* Хаб-вступление пиллара: даёт странице рубрики собственный текст
+                  под головной запрос, а не только список карточек */}
               <p className="mt-3 max-w-2xl text-[1.02rem] leading-relaxed text-[var(--ink-soft)]">
-                {cat.description[locale]}
+                {cat.intro[locale]}
               </p>
               <p className="mt-4 text-[0.85rem] font-semibold text-[var(--accent)]">
                 {locale === "ru"
