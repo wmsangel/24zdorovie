@@ -135,7 +135,7 @@ export default async function ArticlePage({
 
             {bodyRest && (
               <>
-                <AdSlot placement="in-article" locale={locale} className="my-10" />
+                <AdSlot placement="in-article" locale={locale} className="my-10" seed={article.slug} />
                 <div className="prose">
                   <Mdx source={bodyRest} />
                 </div>
@@ -212,14 +212,14 @@ export default async function ArticlePage({
               <ShareBar url={url} title={article.title} locale={locale} />
             </div>
 
-            <AdSlot placement="article-end" locale={locale} className="mt-10" />
+            <AdSlot placement="article-end" locale={locale} className="mt-10" seed={article.slug} />
           </div>
 
           {/* ── Сайдбар ───────────────────────────────────────── */}
           <aside className="hidden lg:block">
             <div className="sticky top-24 space-y-8">
               {headings.length >= 3 && <Toc headings={headings} locale={locale} />}
-              <AdSlot placement="sidebar" locale={locale} />
+              <AdSlot placement="sidebar" locale={locale} seed={article.slug} />
             </div>
           </aside>
         </div>

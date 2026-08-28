@@ -59,7 +59,9 @@ export function ArticlesArchive({ locale, page }: { locale: Locale; page: number
             <Fragment key={article.url}>
               {/* priority только на первой странице: там карточки в первом экране */}
               <ArticleCard article={article} locale={locale} priority={p.page === 1 && i < 3} />
-              {(i + 1) % 6 === 0 && <AdSlot placement="in-feed" locale={locale} className="h-full" />}
+              {(i + 1) % 6 === 0 && (
+                <AdSlot placement="in-feed" locale={locale} className="h-full" seed={article.slug} />
+              )}
             </Fragment>
           ))}
         </div>

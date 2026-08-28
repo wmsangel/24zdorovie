@@ -178,7 +178,7 @@ export default async function ToolPage({
             <ShareBar url={url} title={page.title} locale={locale} />
           </div>
 
-          <AdSlot placement="article-end" locale={locale} className="mt-10" />
+          <AdSlot placement="article-end" locale={locale} className="mt-10" seed={tool.slug} />
         </div>
 
         {related.length > 0 && (

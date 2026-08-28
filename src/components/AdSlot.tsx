@@ -19,10 +19,13 @@ export function AdSlot({
   placement,
   locale,
   className = "",
+  seed,
 }: {
   placement: AdPlacement;
   locale: Locale;
   className?: string;
+  /** Ключ страницы (обычно слаг) — прокручивает домовые баннеры по сайту */
+  seed?: string;
 }) {
   const spec = SLOTS[placement];
   const direct = pickDirectBanner(placement, locale);
@@ -60,7 +63,7 @@ export function AdSlot({
     );
   }
 
-  const house = pickHouseAd(placement, locale);
+  const house = pickHouseAd(placement, locale, seed);
   if (house) {
     return (
       <aside className={`not-prose ${className}`} aria-label={t(locale, "ad_label")}>

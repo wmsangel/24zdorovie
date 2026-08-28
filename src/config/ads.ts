@@ -292,6 +292,58 @@ export const HOUSE_ADS_INVENTORY: HouseAd[] = [
     },
   },
   {
+    id: "izntools",
+    href: "https://izntools.com/",
+    emoji: "🛠️",
+    accent: "#4f46e5",
+    locales: ["ru", "en"],
+    copy: {
+      ru: {
+        title: "IZN Tools",
+        tagline: "100 бесплатных браузерных инструментов: сжатие фото, JSON, SEO, калькуляторы",
+        cta: "Открыть",
+      },
+      en: {
+        title: "IZN Tools",
+        tagline: "100 free browser tools: image compression, JSON, SEO markup, calculators",
+        cta: "Open",
+      },
+    },
+  },
+  {
+    id: "testsweep",
+    href: "https://testsweep.com/",
+    emoji: "🖥️",
+    accent: "#0891b2",
+    locales: ["ru", "en"],
+    copy: {
+      ru: {
+        title: "TestSweep",
+        tagline: "Проверка экрана и железа прямо в браузере: битые пиксели, частота, мерцание",
+        cta: "Проверить",
+      },
+      en: {
+        title: "TestSweep",
+        tagline: "Test your screen and computer in the browser: dead pixels, refresh rate, flicker",
+        cta: "Run test",
+      },
+    },
+  },
+  {
+    id: "bilimjol",
+    href: "https://bilimjol.com/",
+    emoji: "📚",
+    accent: "#16a34a",
+    locales: ["ru"],
+    copy: {
+      ru: {
+        title: "Bilimjol",
+        tagline: "Тысячи заданий для детей: логика, математика, чтение — от подготовки к школе до 11 класса",
+        cta: "Заниматься",
+      },
+    },
+  },
+  {
     id: "prodom-expert",
     href: "https://prodom-expert.ru/",
     emoji: "🏠",
@@ -315,12 +367,26 @@ const PLACEMENT_ORDER: AdPlacement[] = [
   "sidebar",
 ];
 
+/** Стабильный хеш строки (djb2) — для детерминированной ротации по странице */
+function hashStr(s: string): number {
+  let h = 5381;
+  for (let i = 0; i < s.length; i++) h = (h * 33 + s.charCodeAt(i)) >>> 0;
+  return h;
+}
+
 /**
  * Детерминированный выбор домового баннера под плейсмент и локаль.
+ *
  * Сдвиг по индексу плейсмента разводит сайты по разным блокам одной
- * страницы: в шапке и внутри статьи не окажется один и тот же проект.
+ * страницы. Дополнительно `seed` (обычно слаг страницы) прокручивает весь
+ * инвентарь по сайту: на разных страницах в одном и том же слоте оказываются
+ * разные проекты — иначе показывались бы вечно одни и те же два.
  */
-export function pickHouseAd(placement: AdPlacement, locale: Locale): HouseAd | undefined {
+export function pickHouseAd(
+  placement: AdPlacement,
+  locale: Locale,
+  seed?: string,
+): HouseAd | undefined {
   if (!HOUSE_ADS.enabled) return undefined;
   // Плейсмент вне allow-list отдаётся AdSense (пустой список = все разрешены)
   if (HOUSE_ADS.placements.length > 0 && !HOUSE_ADS.placements.includes(placement)) {
@@ -333,6 +399,7 @@ export function pickHouseAd(placement: AdPlacement, locale: Locale): HouseAd | u
       (!ad.placements || ad.placements.includes(placement)),
   );
   if (eligible.length === 0) return undefined;
-  const offset = Math.max(0, PLACEMENT_ORDER.indexOf(placement));
+  const base = Math.max(0, PLACEMENT_ORDER.indexOf(placement));
+  const offset = seed ? base + hashStr(seed) : base;
   return eligible[offset % eligible.length];
 }

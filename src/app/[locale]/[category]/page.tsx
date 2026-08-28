@@ -102,7 +102,7 @@ export default async function CategoryPage({
                 {rest.map((article, i) => (
                   <Fragment key={article.url}>
                     <ArticleCard article={article} locale={locale} />
-                    {i === 4 && <AdSlot placement="in-feed" locale={locale} className="h-full" />}
+                    {i === 4 && <AdSlot placement="in-feed" locale={locale} className="h-full" seed={slug} />}
                   </Fragment>
                 ))}
               </div>
