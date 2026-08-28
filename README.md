@@ -5,9 +5,8 @@
 
 **Стек:** Next.js 16 (App Router, статический экспорт) · Tailwind CSS 4 · MDX · TypeScript
 
-**Документация:** [AGENTS.md](./AGENTS.md) — как писать статьи ·
-[docs/DEPLOY.md](./docs/DEPLOY.md) — сборка и публикация ·
-[docs/TELEGRAM.md](./docs/TELEGRAM.md) — автопостинг в каналы
+**📚 Вся документация — в одном месте: [docs/README.md](./docs/README.md)**
+(статус/TODO, деплой, монетизация, телеграм, команды, карта конфигов).
 
 ## Запуск
 
