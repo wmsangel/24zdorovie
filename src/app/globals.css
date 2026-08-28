@@ -109,6 +109,9 @@
 
 @layer base {
   html {
+    /* Базовый размер 17px вместо 16: весь интерфейс на rem вырастает
+       пропорционально. По отзывам читателей мелкий текст читался тяжело. */
+    font-size: 106.25%;
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
     -webkit-text-size-adjust: 100%;
@@ -117,6 +120,7 @@
     background: var(--paper);
     color: var(--ink);
     font-family: var(--font-sans);
+    line-height: 1.6;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
@@ -365,12 +369,12 @@
    ========================================================================== */
 
 .prose {
-  font-size: 1.0625rem;
-  line-height: 1.75;
+  font-size: 1.125rem;
+  line-height: 1.8;
   color: var(--ink);
 }
 @media (min-width: 768px) {
-  .prose { font-size: 1.125rem; line-height: 1.78; }
+  .prose { font-size: 1.1875rem; line-height: 1.8; }
 }
 
 .prose > * + * { margin-top: 1.25em; }
