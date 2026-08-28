@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope, Playfair_Display } from "next/font/google";
+import { Manrope } from "next/font/google";
 import { notFound } from "next/navigation";
 import { Analytics } from "@/components/Analytics";
 import { Header } from "@/components/Header";
@@ -15,16 +15,6 @@ import "../globals.css";
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
   variable: "--font-manrope",
-  display: "swap",
-});
-
-/**
- * Акцидентный шрифт заголовков. Кириллица обязательна: основная локаль —
- * русская, и без неё заголовки молча уезжают на системный serif.
- */
-const playfair = Playfair_Display({
-  subsets: ["latin", "cyrillic"],
-  variable: "--font-playfair",
   display: "swap",
 });
 
@@ -110,7 +100,7 @@ export default async function LocaleLayout({
   if (!isLocale(locale)) notFound();
 
   return (
-    <html lang={locale} suppressHydrationWarning className={`${manrope.variable} ${playfair.variable}`}>
+    <html lang={locale} suppressHydrationWarning className={manrope.variable}>
       <head>
         {/* Верификация площадки в Admitad (Mitgo) — партнёрская сеть под RU-стек */}
         <meta name="mitgo-verification" content="83d7d0af-bd2a-4e93-862e-c069dbf3c512" />

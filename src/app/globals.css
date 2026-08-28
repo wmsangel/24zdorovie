@@ -7,7 +7,9 @@
 
 @theme {
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: var(--font-playfair), ui-serif, Georgia, "Times New Roman", serif;
+  /* Заголовки — тем же Manrope, что и тело (единый сан-сериф): читается легче
+     и современнее прежнего Playfair. Насыщенность добирается весом. */
+  --font-display: var(--font-manrope), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --color-paper: var(--paper);
   --color-surface: var(--surface);
@@ -135,9 +137,9 @@
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.022em;
+    line-height: 1.18;
     text-wrap: balance;
   }
   p, li { text-wrap: pretty; }
