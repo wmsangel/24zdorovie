@@ -426,6 +426,11 @@
   border-radius: 999px;
   background: var(--brand);
 }
+/* Внутри not-prose-блоков (KeyPoints и др.) у списков свой маркер (галочка),
+   поэтому кастомный prose-буллет и его отступы гасим — иначе двойной значок. */
+.prose .not-prose ul { padding-left: 0; }
+.prose .not-prose ul > li { padding-left: 0; }
+.prose .not-prose ul > li::before { content: none; }
 .prose ol { list-style: decimal; }
 .prose ol > li::marker { color: var(--brand-strong); font-weight: 700; }
 .prose li + li { margin-top: 0.5em; }
