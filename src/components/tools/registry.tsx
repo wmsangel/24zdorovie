@@ -3,6 +3,7 @@ import { BiologicalAgeCalculator } from "./BiologicalAgeCalculator";
 import { BloodPressureChecker } from "./BloodPressureChecker";
 import { BloodUnitConverter } from "./BloodUnitConverter";
 import { BodyCompositionCalculator } from "./BodyCompositionCalculator";
+import { DueDateCalculator } from "./DueDateCalculator";
 import { BurnoutSelfCheck } from "./BurnoutSelfCheck";
 import { CaffeineCalculator } from "./CaffeineCalculator";
 import { CalorieMacroCalculator } from "./CalorieMacroCalculator";
@@ -39,6 +40,7 @@ const WIDGETS: Record<string, (props: { locale: Locale }) => React.ReactElement>
   "cold-flu-covid-checker": SymptomChecker,
   "blood-test-unit-converter": BloodUnitConverter,
   "blood-pressure-checker": BloodPressureChecker,
+  "due-date-calculator": DueDateCalculator,
 };
 
 export function ToolWidget({ slug, locale }: { slug: string; locale: Locale }) {

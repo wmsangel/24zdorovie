@@ -7,6 +7,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { BiologicalAgeCalculator } from "../tools/BiologicalAgeCalculator";
 import { BloodPressureChecker } from "../tools/BloodPressureChecker";
 import { BloodUnitConverter } from "../tools/BloodUnitConverter";
+import { DueDateCalculator } from "../tools/DueDateCalculator";
 import { BodyCompositionCalculator } from "../tools/BodyCompositionCalculator";
 import { BurnoutSelfCheck } from "../tools/BurnoutSelfCheck";
 import { CaffeineCalculator } from "../tools/CaffeineCalculator";
@@ -74,6 +75,7 @@ const components = {
   SymptomChecker,
   BloodUnitConverter,
   BloodPressureChecker,
+  DueDateCalculator,
 };
 
 export function Mdx({ source }: { source: string }) {

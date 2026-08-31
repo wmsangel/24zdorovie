@@ -88,6 +88,7 @@ export const OFFERS: Offer[] = [
       "cold-flu-covid-checker",
       "blood-test-unit-converter",
       "blood-pressure-checker",
+      "due-date-calculator",
     ],
     locales: ["en"],
     kind: "medical",
@@ -130,7 +131,7 @@ export const OFFERS: Offer[] = [
     // Вторая RU-телемедицина. Медкалькуляторы заняты Сбером (pickOffer отдаёт
     // один оффер на инструмент), поэтому ставим на health-инструменты без
     // оффера, где «спросить врача» — логичный следующий шаг.
-    tools: ["burnout-test", "ovulation-calculator"],
+    tools: ["burnout-test", "ovulation-calculator", "due-date-calculator"],
     locales: ["ru"],
     kind: "medical",
     title: {

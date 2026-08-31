@@ -338,6 +338,31 @@ export const TOOLS: Tool[] = [
     },
   },
   {
+    slug: "due-date-calculator",
+    emoji: "🤰",
+    category: "womens-health",
+    name: {
+      ru: "Калькулятор даты родов и срока беременности",
+      en: "Due Date & Pregnancy Calculator",
+    },
+    tagline: {
+      ru: "Дата родов по последней менструации (правило Негеле), срок в неделях на сегодня, триместр и ключевые сроки — с поправкой на длину цикла",
+      en: "Your due date from the last period (Naegele's rule), how many weeks along you are today, trimester and key dates — adjusted for cycle length",
+    },
+    related: {
+      ru: [
+        "/womens-health/tsikl-i-trenirovki",
+        "/womens-health/kontratseptsiya-metody",
+        "/womens-health/zhelezo-u-zhenshchin",
+      ],
+      en: [
+        "/womens-health/menstrual-cycle-training",
+        "/womens-health/contraception-options",
+        "/womens-health/iron-for-women",
+      ],
+    },
+  },
+  {
     slug: "blood-pressure-checker",
     emoji: "🩺",
     category: "heart",
