@@ -10,6 +10,7 @@ import { CalorieMacroCalculator } from "./CalorieMacroCalculator";
 import { CvdRiskCalculator } from "./CvdRiskCalculator";
 import { FiberCalculator } from "./FiberCalculator";
 import { HeartRateZonesCalculator } from "./HeartRateZonesCalculator";
+import { IdealWeightCalculator } from "./IdealWeightCalculator";
 import { OvulationCalculator } from "./OvulationCalculator";
 import { ProteinCalculator } from "./ProteinCalculator";
 import { SleepCycleCalculator } from "./SleepCycleCalculator";
@@ -41,6 +42,7 @@ const WIDGETS: Record<string, (props: { locale: Locale }) => React.ReactElement>
   "blood-test-unit-converter": BloodUnitConverter,
   "blood-pressure-checker": BloodPressureChecker,
   "due-date-calculator": DueDateCalculator,
+  "ideal-weight-calculator": IdealWeightCalculator,
 };
 
 export function ToolWidget({ slug, locale }: { slug: string; locale: Locale }) {

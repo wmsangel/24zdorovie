@@ -15,6 +15,7 @@ import { CalorieMacroCalculator } from "../tools/CalorieMacroCalculator";
 import { CvdRiskCalculator } from "../tools/CvdRiskCalculator";
 import { FiberCalculator } from "../tools/FiberCalculator";
 import { HeartRateZonesCalculator } from "../tools/HeartRateZonesCalculator";
+import { IdealWeightCalculator } from "../tools/IdealWeightCalculator";
 import { OvulationCalculator } from "../tools/OvulationCalculator";
 import { ProteinCalculator } from "../tools/ProteinCalculator";
 import { SleepCycleCalculator } from "../tools/SleepCycleCalculator";
@@ -76,6 +77,7 @@ const components = {
   BloodUnitConverter,
   BloodPressureChecker,
   DueDateCalculator,
+  IdealWeightCalculator,
 };
 
 export function Mdx({ source }: { source: string }) {

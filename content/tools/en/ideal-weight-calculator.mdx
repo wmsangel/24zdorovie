@@ -1,0 +1,85 @@
+---
+title: "Ideal Weight by Height: Calculator for Men and Women"
+description: "Find your healthy weight by height and sex. Not a single 'ideal' number, but the BMI range plus the classic Devine, Robinson, Miller and Hamwi formulas."
+updated: "2026-08-31"
+lede: "There is no single 'ideal weight' — a range is healthy, not one number. Enter your height and sex: the calculator shows your healthy weight range from BMI (18.5–24.9) and, for comparison, four classic clinical formulas."
+faq:
+  - q: "How do I calculate my ideal weight by height?"
+    a: "The most evidence-based approach is not to look for one number, but to take the healthy range from body mass index: weight from 18.5 to 24.9 × (height in metres)². For example, at 175 cm that is roughly 57–76 kg. The classic formulas (Devine, Robinson and others) give a single point inside this range and were created mainly for drug dosing."
+  - q: "Is ideal weight different for men and women?"
+    a: "Yes. At the same height, the reference is usually higher for men because of greater muscle mass and a different body structure. The classic formulas use different coefficients for men and women. The BMI range is formally the same, but for men the healthy point tends to sit in its upper part."
+  - q: "Why does the calculator show a range instead of one number?"
+    a: "Because there is no single correct figure. Weight depends on the share of muscle, bone and build. An athlete and an untrained person of the same height can differ by 10–15 kg and both be healthy. A range is more honest than one point and does not push you toward an unrealistic target."
+  - q: "How accurate are the Devine and Hamwi formulas?"
+    a: "They are a reference, not a precise norm. The formulas were created in the 1960s–80s, mainly to dose drugs by lean body mass. They use only height and sex and ignore muscle, so they underestimate the 'ideal' for athletes and can overestimate it for people with low muscle mass. For assessing health, the BMI range together with waist circumference is more reliable."
+sources:
+  - title: "WHO. Body mass index — BMI"
+    url: "https://www.who.int/data/gho/data/themes/topics/topic-details/GHO/body-mass-index"
+  - title: "Devine BJ. Gentamicin therapy. Drug Intell Clin Pharm, 1974"
+    url: "https://pubmed.ncbi.nlm.nih.gov/"
+  - title: "Robinson JD, et al. Determination of ideal body weight for drug dosage calculations. Am J Hosp Pharm, 1983"
+    url: "https://pubmed.ncbi.nlm.nih.gov/6869387/"
+  - title: "Peterson CM, et al. Universal equation for estimating ideal body weight. Am J Clin Nutr, 2016"
+    url: "https://pubmed.ncbi.nlm.nih.gov/27030535/"
+---
+
+## What "ideal weight" is and why it's a range
+
+The query "ideal weight by height" assumes there is one correct number. There
+isn't. At the same height, a body can weigh differently depending on the share of
+muscle, bone density and build — and all of it can be healthy. That is why
+evidence-based medicine talks not about an "ideal" but about a **healthy weight
+range**.
+
+The simplest and most widely accepted reference is body mass index (BMI). A BMI
+range of 18.5 to 24.9 is considered healthy for most adults. Multiply these bounds
+by the square of your height in metres and you get the healthy weight range for
+your specific height. The calculator above does this automatically.
+
+## The classic formulas: where "one number" came from
+
+The Devine, Robinson, Miller and Hamwi formulas that still surface in online
+calculators were created in the 1960s–80s and **not to tell a person how much they
+should weigh**. Their main purpose was clinical — to calculate a drug dose from
+lean body weight so that medication was dosed by lean mass rather than fat.
+
+That gives them built-in limits:
+
+<KeyPoints title="Why the formulas are only a reference" items={[
+  "They depend only on height and sex — not on muscle or build",
+  "They give one point, while health is a range",
+  "Below 152 cm they become imprecise",
+  "They underestimate the 'ideal' for athletes and can overestimate it for sedentary people"
+]} />
+
+We show them not because they deserve blind trust, but because you will meet them
+online anyway — and it's better to see them next to the healthy range with an
+honest caveat.
+
+<IdealWeightCalculator locale="en" />
+
+## What matters more than the number on the scale
+
+Weight is a crude marker. Two people of the same height and weight can be in
+completely different shape. More informative health markers:
+
+<DataTable
+  head={["Marker", "What it reflects", "Healthy reference"]}
+  rows={[
+    ["Waist circumference", "Visceral fat around organs", "< 94 cm (men), < 80 cm (women)"],
+    ["Muscle mass share", "Metabolism, strength, glucose handling", "Rises with strength training"],
+    ["Blood pressure", "Load on vessels and heart", "around 120/80 mmHg"],
+    ["Blood tests", "Glucose, cholesterol, inflammation", "Within reference range"]
+  ]}
+  caption="Weight is best read together with these markers, not in isolation"
+/>
+
+If the goal is to change your weight, the calculator's range sets a sensible
+target — after that it's not the number itself that matters, but body composition
+and habits.
+
+<ReadAlso href="/en/weight/bmi-and-body-composition" title="BMI and body composition: what it shows and what it misses" />
+
+<ReadAlso href="/en/weight/calorie-deficit-explained" title="Calorie deficit: how to calculate it without harm" />
+
+<ReadAlso href="/en/weight/visceral-fat" title="Visceral fat: why it's dangerous and how to measure it" />

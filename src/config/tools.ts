@@ -146,6 +146,31 @@ export const TOOLS: Tool[] = [
     },
   },
   {
+    slug: "ideal-weight-calculator",
+    emoji: "🎯",
+    category: "weight",
+    name: {
+      ru: "Калькулятор идеального веса",
+      en: "Ideal Weight Calculator",
+    },
+    tagline: {
+      ru: "Здоровый диапазон веса по росту и полу — честно, без «одной идеальной цифры»: диапазон по ИМТ плюс классические формулы Devine, Robinson, Miller, Hamwi",
+      en: "Your healthy weight range by height and sex — honestly, no single 'ideal' number: the BMI range plus the classic Devine, Robinson, Miller and Hamwi formulas",
+    },
+    related: {
+      ru: [
+        "/weight/imt-i-sostav-tela",
+        "/weight/deficit-kaloriy-kak-schitat",
+        "/weight/vistseralnyy-zhir",
+      ],
+      en: [
+        "/weight/bmi-and-body-composition",
+        "/weight/calorie-deficit-explained",
+        "/weight/visceral-fat",
+      ],
+    },
+  },
+  {
     slug: "heart-rate-zones-calculator",
     emoji: "💓",
     category: "fitness",
