@@ -148,6 +148,28 @@ export const OFFERS: Offer[] = [
     erid: "2bL9aMPo2e49hMef4rrTycihm6",
     advertiser: "СпросиВрача",
   },
+  {
+    id: "polza-diet-delivery",
+    // Под калькуляторами питания/веса, где «рассчитал рацион → закажи готовое
+    // диетпитание» — логичный следующий шаг. Медкалькуляторы заняты Сбером,
+    // добавки — iHerb; здесь конфликта нет. Польза — медицинские диеты
+    // (Стол №5 при ЖКТ, Стол №9 при диабете), гео Москва и СПб.
+    tools: ["calorie-macro-calculator", "bmi-calculator", "ideal-weight-calculator"],
+    locales: ["ru"],
+    kind: "goods",
+    title: {
+      ru: "Готовое питание по диете — Польза",
+      en: "Ready diet meals — Polza",
+    },
+    description: {
+      ru: "Доставка готового рациона на день по медицинским диетам: Стол №5 при болезнях ЖКТ, Стол №9 при диабете, варианты 1200–2000 ккал без глютена и лактозы. Москва и СПб.",
+      en: "Ready-made medical-diet meals delivered across Moscow and St. Petersburg.",
+    },
+    cta: { ru: "Смотреть рационы", en: "See plans" },
+    href: "https://tywhh.com/g/l7h3l7fb7d1d9ff0ed90b6fd49dbd9/?erid=2bL9aMPo2e49hMef4peznKd8xa",
+    erid: "2bL9aMPo2e49hMef4peznKd8xa",
+    advertiser: "Польза",
+  },
 ];
 
 /** Первый подходящий оффер для инструмента: по слагу, локали и сроку показа */
