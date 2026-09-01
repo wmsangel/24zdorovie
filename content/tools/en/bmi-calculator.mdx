@@ -1,9 +1,13 @@
 ---
-title: "BMI and Body Composition Calculator"
-description: "Work out your body mass index, waist-to-height ratio and body fat from a tape measure. With WHO Asian cut-offs and an honest account of where BMI fails and why your waist matters more."
-updated: "2026-08-03"
-lede: "Body mass index is your weight in kilograms divided by your height in metres squared. The healthy adult range is 18.5 to 24.9; at 175 cm that means 56.7–76.3 kg. But BMI cannot tell muscle from fat and knows nothing about where that fat sits, which is why waist circumference predicts risk better: it should be less than half your height."
+title: "BMI Calculator: Work Out Your Body Mass Index Online"
+description: "Calculate your BMI from height and weight online: a chart of the ranges for men and women, WHO Asian cut-offs and an honest account of where body mass index fails and why your waist matters more."
+updated: "2026-09-01"
+lede: "Body mass index (BMI) is your weight in kilograms divided by your height in metres squared. The healthy adult range is 18.5 to 24.9; at 175 cm that means 56.7–76.3 kg. Enter your height and weight and the calculator shows your BMI and category at once. But remember: BMI cannot tell muscle from fat and knows nothing about where that fat sits, which is why waist circumference predicts risk better — it should be less than half your height."
 faq:
+  - q: "How do I calculate BMI from height and weight?"
+    a: "Divide your weight in kilograms by your height in metres squared. For example, at 70 kg and 1.75 m: 70 / (1.75 × 1.75) = 22.9, which is normal. The calculator above does this automatically and shows which category the result falls into."
+  - q: "Is the BMI range different for men and women?"
+    a: "The BMI thresholds for adults are the same regardless of sex: normal is 18.5–24.9. The difference lies elsewhere: at the same BMI women carry more body fat on average. So the body-fat and waist references differ by sex, while the index itself uses one shared scale."
   - q: "What is a normal BMI?"
     a: "Between 18.5 and 24.9. Below 18.5 is underweight, 25–29.9 is overweight, and 30 or above is obesity, split into three classes. For people of South and East Asian descent the cut-offs are lower — overweight from 23, obesity from 27.5 — because at the same index they carry more body fat and a higher risk of type 2 diabetes."
   - q: "Why does BMI get it wrong?"
@@ -34,6 +38,26 @@ sources:
   - title: "Ruderman N, et al. The metabolically obese, normal-weight individual revisited. Diabetes, 1998"
     url: "https://pubmed.ncbi.nlm.nih.gov/9588440/"
 ---
+
+## BMI chart: what each range means
+
+Once you have your number, find it in the chart. Categories follow the WHO classification for adults aged 18+; BMI is not read this way for children, adolescents or during pregnancy.
+
+<DataTable
+  head={["BMI, kg/m²", "Category", "What it means"]}
+  rows={[
+    ["below 16", "Severe underweight", "Health risk, see a doctor"],
+    ["16.0–18.4", "Underweight", "Below the healthy range"],
+    ["18.5–24.9", "Normal", "Healthy range"],
+    ["25.0–29.9", "Overweight", "Raised risk"],
+    ["30.0–34.9", "Obesity class I", "High risk"],
+    ["35.0–39.9", "Obesity class II", "Very high risk"],
+    ["40 and above", "Obesity class III", "Extremely high risk"],
+  ]}
+  caption="WHO classification. For people of South and East Asian descent the cut-offs are lower: overweight from 23, obesity from 27.5"
+/>
+
+The number alone is only a signpost: the 25–29.9 band holds both muscular people and people with a large belly and weak muscles. What your own result means is unpacked below.
 
 ## How the calculation works
 
