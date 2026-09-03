@@ -1,0 +1,74 @@
+---
+title: "One-Rep Max Calculator: Estimate Your 1RM From a Set"
+description: "Calculate your one-rep max (1RM) from a working set — no risky max attempt needed: the average of the Epley, Brzycki and Lombardi formulas plus a table of working weights by rep target."
+updated: "2026-09-03"
+lede: "Your one-rep max (1RM) is the most weight you can lift once with good form. You do not need to test it directly — that carries injury risk for most lifters; a 1RM is reliably estimated from a submaximal set. Enter the weight you lifted and the reps you did: the calculator averages three classic formulas and shows working weights for every goal."
+faq:
+  - q: "How do I calculate my one-rep max?"
+    a: "Take a weight you lifted for a set to (or near) failure and the number of reps, and plug them into a formula. By Epley: 1RM = weight × (1 + reps/30). For example, 80 kg for 5 reps gives about 93 kg. The calculator above averages three formulas so you are not relying on just one."
+  - q: "How accurate is a 1RM estimate?"
+    a: "It is most accurate in the 2–10 rep range — usually within a few percent. Above 10–12 reps the formulas start to diverge and overestimate, because muscular endurance is driven by different factors than maximal strength. For a set of 3–6 reps the estimate is solid enough to program with."
+  - q: "Why should I know my 1RM at all?"
+    a: "So you can pick your working weight as a percentage of your max instead of guessing. Strength programs are written in percentages of 1RM: strength at 85–100% (1–5 reps), hypertrophy at 67–85% (6–12), muscular endurance below 67%. Knowing your 1RM turns those percentages into actual plates on the bar."
+  - q: "Should I test my true 1RM myself?"
+    a: "As a beginner, no. A true max attempt demands flawless technique, a full warm-up and a spotter; without them it is a fast route to injury. A submaximal estimate gives nearly the same number with none of the risk. Testing a real 1RM only makes sense for experienced lifters, supervised, and in strength sports where it is part of competition."
+  - q: "Which formula is more accurate, Epley or Brzycki?"
+    a: "In practice they give close numbers in the working range and differ mainly at the extremes. Brzycki reads slightly low at high reps, Epley slightly high, and Lombardi is gentler than both. That is why the calculator shows all three and their average: a single 'most accurate' formula is a myth — lean on the range instead."
+sources:
+  - title: "Epley B. Poundage chart. Boyd Epley Workout, 1985"
+    url: "https://en.wikipedia.org/wiki/One-repetition_maximum"
+  - title: "Brzycki M. Strength testing: predicting a one-rep max from reps-to-fatigue. JOPERD, 1993"
+    url: "https://www.tandfonline.com/doi/abs/10.1080/07303084.1993.10606684"
+  - title: "LeSuer DA, et al. The accuracy of prediction equations for estimating 1-RM performance. J Strength Cond Res, 1997"
+    url: "https://pubmed.ncbi.nlm.nih.gov/9440287/"
+  - title: "Haff GG, Triplett NT (eds). Essentials of Strength Training and Conditioning, 4th ed. NSCA, 2015"
+    url: "https://www.nsca.com/store/product-detail/INV/9781718210868/9781718210868"
+---
+
+## What a 1RM is and why it matters
+
+Your one-rep max (1RM) is the heaviest weight you can lift for a single rep with correct form. It is the base unit of strength: almost every strength program prescribes load not in kilograms but as a percentage of 1RM, because a percentage transfers between people and exercises while an absolute weight does not.
+
+The catch is that testing a 1RM directly is risky. A near-limit attempt is the least forgiving of technique errors. So in the vast majority of cases lifters do not lift it — they **estimate it from an ordinary working set**, which is safe and nearly as accurate.
+
+<OneRepMaxCalculator locale="en" />
+
+## How the calculator works
+
+Every formula rests on one pattern: the more reps you can do with a weight, the lighter that weight is relative to your max. The three classic formulas describe that relationship slightly differently.
+
+<DataTable
+  head={["Formula", "Equation", "Character"]}
+  rows={[
+    ["Epley", "weight × (1 + reps/30)", "Returns the weight itself at 1 rep; reads slightly high at high reps"],
+    ["Brzycki", "weight × 36 / (37 − reps)", "Accurate at 2–10 reps; breaks down near 37 reps"],
+    ["Lombardi", "weight × reps^0.10", "Power-based, gentler at high reps"],
+  ]}
+  caption="The calculator shows all three and their average — there is no single 'most accurate' formula"
+/>
+
+## 1RM percentages: which weight for which goal
+
+Once you have a 1RM estimate, you can turn a program's percentages into real plates. Reference ranges from the NSCA:
+
+<DataTable
+  head={["Goal", "% of 1RM", "Reps per set"]}
+  rows={[
+    ["Maximal strength", "85–100%", "1–5"],
+    ["Hypertrophy (muscle growth)", "67–85%", "6–12"],
+    ["Muscular endurance", "below 67%", "12+"],
+  ]}
+  caption="Ranges are approximate: the working percentage depends on the exercise and your experience"
+/>
+
+<ReadAlso href="/en/fitness/progressive-overload" title="Progressive Overload: How to Add Weight Without Plateaus or Injury" />
+
+## What the estimate does not replace
+
+A formula-based 1RM is an estimate, not a verdict or a guarantee. Your real max on a given day shifts with technique, warm-up, sleep, stress and even the time of day. Use the number as a starting point for choosing working weights, not as a record you must confirm at all costs.
+
+And the safety point above all: never go for a true max attempt without warm-up sets and a spotter. The whole point of a submaximal estimate is to learn your strength level without the risk.
+
+<ReadAlso href="/en/fitness/strength-training-for-beginners" title="Strength Training for Beginners: Your First Three Months" />
+
+<ReadAlso href="/en/fitness/muscle-soreness-doms" title="Muscle Soreness (DOMS): Why It Happens and What Helps" />

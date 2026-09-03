@@ -171,6 +171,31 @@ export const TOOLS: Tool[] = [
     },
   },
   {
+    slug: "one-rep-max-calculator",
+    emoji: "🏋️",
+    category: "fitness",
+    name: {
+      ru: "Калькулятор одноповторного максимума (1RM)",
+      en: "One-Rep Max (1RM) Calculator",
+    },
+    tagline: {
+      ru: "Оцените 1RM по рабочему подходу «вес × повторения» — среднее по формулам Epley, Brzycki, Lombardi плюс таблица рабочих весов под цель подхода",
+      en: "Estimate your 1RM from a working set — the average of the Epley, Brzycki and Lombardi formulas plus a table of working weights for every rep goal",
+    },
+    related: {
+      ru: [
+        "/fitness/progressiya-nagruzki",
+        "/fitness/silovye-trenirovki-dlya-nachinayushchih",
+        "/fitness/skolko-raz-v-nedelyu-trenirovatsya",
+      ],
+      en: [
+        "/fitness/progressive-overload",
+        "/fitness/strength-training-for-beginners",
+        "/fitness/training-frequency",
+      ],
+    },
+  },
+  {
     slug: "heart-rate-zones-calculator",
     emoji: "💓",
     category: "fitness",
