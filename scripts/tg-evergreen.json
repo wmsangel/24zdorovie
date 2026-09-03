@@ -84,6 +84,76 @@
       "body": "Отдых надёжно снижает истощение — и так же надёжно всё возвращается через пару недель, если на работе ничего не изменилось. Отпуск это передышка, чтобы что-то поменять, а не само изменение. Где вы сейчас по трём шкалам — можно проверить.",
       "tags": ["выгорание", "психика"],
       "link": "/ru/tools/burnout-test"
+    },
+    {
+      "id": "ru-alcohol-no-safe-dose",
+      "title": "🍷 «Бокал красного полезен для сердца» — устаревший миф",
+      "body": "Крупные свежие обзоры не подтверждают защитного эффекта алкоголя: ранние данные искажались тем, что в «непьющих» попадали бросившие по болезни. Безопасной для здоровья дозы нет — есть допустимый риск, и он тем ниже, чем меньше вы пьёте.",
+      "tags": ["алкоголь", "сердце", "мифы"],
+      "link": "/ru/longevity/alkogol-i-zdorovie"
+    },
+    {
+      "id": "ru-blue-zones",
+      "title": "🗺️ «Голубые зоны»: секрет долголетия не в ягодах годжи",
+      "body": "В регионах-долгожителях нет чудо-продукта. Общее у них скучное и бесплатное: много бытового движения, растительная основа рациона, крепкие социальные связи и смысл дня. Продают вам добавку — а работает образ жизни.",
+      "tags": ["долголетие", "мифы"],
+      "link": "/ru/longevity/golubye-zony-pravda"
+    },
+    {
+      "id": "ru-vo2max",
+      "title": "🫀 Самый недооценённый маркер долголетия — не холестерин, а выносливость",
+      "body": "VO2max (максимальное потребление кислорода) связан с риском смерти сильнее, чем курение или давление. Хорошая новость: он тренируем в любом возрасте — регулярное кардио и интервалы поднимают его за месяцы.",
+      "tags": ["долголетие", "vo2max", "кардио"],
+      "link": "/ru/longevity/vo2max-i-prodolzhitelnost-zhizni"
+    },
+    {
+      "id": "ru-intermittent-fasting",
+      "title": "⏱️ Интервальное голодание не волшебнее обычного дефицита калорий",
+      "body": "Исследования с равной калорийностью показывают: 16/8 не даёт преимущества в жиросжигании перед обычным питанием. Оно просто помогает некоторым есть меньше, ограничив окно. Работает как удобная рамка, а не как отдельный жиросжигатель.",
+      "tags": ["голодание", "вес", "мифы"],
+      "link": "/ru/weight/intervalnoe-golodanie"
+    },
+    {
+      "id": "ru-cheat-meals",
+      "title": "🍕 Один «читмил» не перечеркнёт неделю дефицита",
+      "body": "Набрать жир за один приём пищи физически трудно: скачок веса наутро — это вода и содержимое кишечника, а не жир. Проблема не в разовом отступлении, а в том, что оно тянет за собой несколько дней срыва. Планируйте, а не наказывайте себя.",
+      "tags": ["питание", "вес", "мифы"],
+      "link": "/ru/weight/chitmily-i-refidy"
+    },
+    {
+      "id": "ru-salt",
+      "title": "🧂 Соль: проблема не в солонке, а в готовой еде",
+      "body": "До 70–80% натрия мы получаем не из солонки, а из промышленной еды: хлеба, колбас, соусов, полуфабрикатов. Поэтому «не досаливать» помогает мало — куда сильнее работает сдвиг в сторону домашней готовки и цельных продуктов.",
+      "tags": ["соль", "питание", "давление"],
+      "link": "/ru/nutrition/sol-skolko-v-den"
+    },
+    {
+      "id": "ru-fiber",
+      "title": "🌾 Клетчатки почти все едят вдвое меньше нормы",
+      "body": "Норма — около 25–30 г в день, а типичный рацион даёт 12–15. Между тем это один из самых доказанных факторов здоровья кишечника, сахара и холестерина. Добавляйте постепенно и пейте воду — иначе живот ответит вздутием.",
+      "tags": ["клетчатка", "кишечник", "питание"],
+      "link": "/ru/nutrition/kletchatka-skolko-nuzhno"
+    },
+    {
+      "id": "ru-zone-2",
+      "title": "🚶 Не вся польза кардио — в высоком пульсе",
+      "body": "Спокойное кардио во «второй зоне» (можете говорить, но не петь) развивает выносливость сердца и митохондрии не хуже, а восстанавливаться после него легче. Большую часть кардио разумно делать именно на низком пульсе, а не всегда «до отказа».",
+      "tags": ["кардио", "пульс", "фитнес"],
+      "link": "/ru/fitness/zona-2-trenirovki"
+    },
+    {
+      "id": "ru-sunscreen",
+      "title": "🧴 Главный антивозрастной уход — это SPF, а не крем за 10 000",
+      "body": "До 80% видимого старения кожи — от ультрафиолета, а не от возраста. Ни одна сыворотка не сравнится по доказательной базе с ежедневным солнцезащитным кремом. Всё остальное в уходе работает только поверх этой основы.",
+      "tags": ["кожа", "spf", "долголетие"],
+      "link": "/ru/longevity/dokazatelnyy-uhod-za-kozhey"
+    },
+    {
+      "id": "ru-panic-attacks",
+      "title": "😮‍💨 Паническая атака ужасна на ощупь, но не опасна для жизни",
+      "body": "Сердцебиение, нехватка воздуха и страх смерти — это ложная тревога вегетативной системы, а не инфаркт. Атака достигает пика за минуты и спадает сама. Медленный выдох длиннее вдоха помогает переждать — а частые атаки стоит обсудить со специалистом.",
+      "tags": ["тревога", "паника", "психика"],
+      "link": "/ru/mental-health/panicheskie-ataki"
     }
   ],
   "en": [
@@ -170,6 +240,76 @@
       "body": "Time off reliably lowers exhaustion — and it reliably comes back within weeks if nothing about the job changed. A holiday is breathing room to change something, not the change itself. You can check where you sit across the three dimensions.",
       "tags": ["burnout", "mental_health"],
       "link": "/en/tools/burnout-test"
+    },
+    {
+      "id": "en-alcohol-no-safe-dose",
+      "title": "🍷 «A glass of red is good for your heart» is an outdated myth",
+      "body": "Large recent reviews find no protective effect of alcohol: earlier data was skewed because «non-drinkers» included people who quit due to illness. There's no safe-for-health dose — only a level of risk, and it's lower the less you drink.",
+      "tags": ["alcohol", "heart", "myths"],
+      "link": "/en/longevity/alcohol-and-health"
+    },
+    {
+      "id": "en-blue-zones",
+      "title": "🗺️ Blue Zones: the longevity secret isn't a superfood",
+      "body": "The world's longest-lived regions share no magic ingredient. What they have is boring and free: lots of incidental movement, a mostly plant-based diet, strong social ties and a sense of purpose. Someone sells you a supplement — what works is the lifestyle.",
+      "tags": ["longevity", "myths"],
+      "link": "/en/longevity/blue-zones-truth"
+    },
+    {
+      "id": "en-vo2max",
+      "title": "🫀 The most underrated longevity marker isn't cholesterol — it's fitness",
+      "body": "VO2max (your max oxygen uptake) is tied to death risk more strongly than smoking or blood pressure. The good news: it's trainable at any age — regular cardio and intervals raise it within months.",
+      "tags": ["longevity", "vo2max", "cardio"],
+      "link": "/en/longevity/vo2max-and-lifespan"
+    },
+    {
+      "id": "en-intermittent-fasting",
+      "title": "⏱️ Intermittent fasting isn't more magic than a plain calorie deficit",
+      "body": "Studies matched for calories show 16/8 has no fat-loss edge over regular eating. It simply helps some people eat less by narrowing the window. It works as a convenient frame, not as a standalone fat burner.",
+      "tags": ["fasting", "weight", "myths"],
+      "link": "/en/weight/intermittent-fasting"
+    },
+    {
+      "id": "en-cheat-meals",
+      "title": "🍕 One «cheat meal» won't undo a week of deficit",
+      "body": "Gaining fat from a single meal is physically hard: the jump on the scale next morning is water and gut contents, not fat. The risk isn't one meal — it's when it drags a few days of slipping behind it. Plan it, don't punish yourself.",
+      "tags": ["nutrition", "weight", "myths"],
+      "link": "/en/weight/cheat-meals-refeeds"
+    },
+    {
+      "id": "en-salt",
+      "title": "🧂 Salt: the problem isn't the shaker, it's packaged food",
+      "body": "Up to 70–80% of sodium comes not from the salt shaker but from processed food — bread, deli meats, sauces, ready meals. That's why «not adding salt» does little; shifting toward home cooking and whole foods does far more.",
+      "tags": ["salt", "nutrition", "blood_pressure"],
+      "link": "/en/nutrition/salt-how-much-per-day"
+    },
+    {
+      "id": "en-fiber",
+      "title": "🌾 Almost everyone eats half the fibre they should",
+      "body": "The target is around 25–30 g a day; a typical diet delivers 12–15. Yet it's one of the best-evidenced levers for gut health, blood sugar and cholesterol. Add it gradually and drink water, or your gut answers with bloating.",
+      "tags": ["fiber", "gut", "nutrition"],
+      "link": "/en/nutrition/fiber-how-much-you-need"
+    },
+    {
+      "id": "en-zone-2",
+      "title": "🚶 Not all the value of cardio is in a high heart rate",
+      "body": "Easy «zone 2» cardio (you can talk but not sing) builds heart endurance and mitochondria just as well, and it's easier to recover from. Most of your cardio is best done at a low heart rate, not always «all out».",
+      "tags": ["cardio", "heart_rate", "fitness"],
+      "link": "/en/fitness/zone-2-training"
+    },
+    {
+      "id": "en-sunscreen",
+      "title": "🧴 The top anti-ageing product is SPF, not a $100 cream",
+      "body": "Up to 80% of visible skin ageing comes from UV, not from age itself. No serum matches daily sunscreen for evidence. Everything else in a routine only works on top of that foundation.",
+      "tags": ["skin", "spf", "longevity"],
+      "link": "/en/longevity/evidence-based-skincare"
+    },
+    {
+      "id": "en-panic-attacks",
+      "title": "😮‍💨 A panic attack feels terrifying but isn't life-threatening",
+      "body": "The pounding heart, breathlessness and fear of dying are a false alarm from your nervous system, not a heart attack. An attack peaks within minutes and subsides on its own. A slow exhale longer than the inhale helps you ride it out — and frequent attacks are worth discussing with a professional.",
+      "tags": ["anxiety", "panic", "mental_health"],
+      "link": "/en/mental-health/panic-attacks"
     }
   ]
 }
