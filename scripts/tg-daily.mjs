@@ -98,7 +98,7 @@ function walk(dir) {
 function readQueue(locale) {
   return walk(path.join(CONTENT_DIR, locale))
     .map((file) => {
-      const { data } = matter(fs.readFileSync(file, "utf8"));
+      const { data, content } = matter(fs.readFileSync(file, "utf8"));
       if (data.draft) return null;
       const slug = path.basename(file, ".mdx");
       const category = path.basename(path.dirname(file));
@@ -108,6 +108,9 @@ function readQueue(locale) {
         locale,
         title: data.title ?? slug,
         description: data.description ?? "",
+        // Первый абзац тела — по конвенции проекта это суть-ответ в 2–3 предложениях,
+        // написанная так, чтобы читаться самостоятельно. Живее мета-описания.
+        answer: firstParagraph(content),
         tags: Array.isArray(data.tags) ? data.tags : [],
         date: data.date ?? "1970-01-01",
         url: `${SITE_URL}/${locale}/${category}/${slug}/`,
@@ -141,6 +144,61 @@ function writeState(state) {
 const escapeHtml = (s) =>
   String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
+/** Живой призыв к переходу под локаль. */
+const CTA = {
+  ru: "👉 Разбор целиком на сайте",
+  en: "👉 Read the full article",
+};
+
+/** Максимальная длина тела поста, чтобы лента читалась, а не пугала простынёй. */
+const BODY_MAX = 360;
+
+/**
+ * Первый абзац тела статьи. По конвенции проекта он и есть ответ на запрос,
+ * поэтому годится как самостоятельный текст поста. Пропускаем фронтматтер уже
+ * снят gray-matter'ом; здесь отбрасываем компоненты, заголовки, списки и таблицы,
+ * берём первый прозаический абзац и чистим markdown/HTML.
+ */
+function firstParagraph(content) {
+  const lines = String(content).split("\n");
+  const para = [];
+  const skipStart = /^(#|<|import\s|export\s|\||>|```|[-*]\s|\d+\.\s)/;
+
+  for (const raw of lines) {
+    const line = raw.trim();
+    if (para.length === 0) {
+      if (!line || skipStart.test(line)) continue;
+      para.push(line);
+    } else {
+      if (!line || /^(#|<|```|\|)/.test(line)) break;
+      para.push(line);
+    }
+  }
+
+  return para
+    .join(" ")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // [текст](ссылка) → текст
+    .replace(/\*\*([^*]+)\*\*/g, "$1") // **жирный**
+    .replace(/(^|[^*])\*([^*]+)\*/g, "$1$2") // *курсив*
+    .replace(/`([^`]+)`/g, "$1") // `код`
+    .replace(/<[^>]+>/g, "") // остатки html
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * Обрезка до BODY_MAX по границе предложения: сначала пробуем закончить на
+ * точке/!/?, иначе режем по последнему пробелу и ставим многоточие.
+ */
+function trimToSentence(text, max = BODY_MAX) {
+  if (text.length <= max) return text;
+  const slice = text.slice(0, max);
+  const lastStop = Math.max(slice.lastIndexOf(". "), slice.lastIndexOf("! "), slice.lastIndexOf("? "));
+  if (lastStop > max * 0.5) return slice.slice(0, lastStop + 1);
+  const lastSpace = slice.lastIndexOf(" ");
+  return `${slice.slice(0, lastSpace > 0 ? lastSpace : max).trimEnd()}…`;
+}
+
 /** Хештег не может содержать пробелы и дефисы — приводим тег к безопасному виду. */
 const toHashtag = (tag) =>
   `#${String(tag).toLowerCase().replace(/[\s-]+/g, "_").replace(/[^\p{L}\p{N}_]/gu, "")}`;
@@ -157,15 +215,20 @@ function buildMessage(article, categories) {
     .filter((t) => t.length > 2)
     .join(" ");
 
+  // Тело поста: живой первый абзац статьи; если извлечь не удалось — мета-описание.
+  const rawBody = article.answer && article.answer.length > 40 ? article.answer : article.description;
+  const body = trimToSentence(rawBody);
+  const cta = CTA[article.locale] ?? CTA.ru;
+
   return [
     escapeHtml(heading),
     "",
     `<b>${escapeHtml(article.title)}</b>`,
     "",
-    escapeHtml(article.description),
+    escapeHtml(body),
     hashtags ? `\n${hashtags}` : "",
     "",
-    article.url,
+    `${cta} → ${article.url}`,
   ]
     .filter((line, i, all) => !(line === "" && all[i - 1] === ""))
     .join("\n");
