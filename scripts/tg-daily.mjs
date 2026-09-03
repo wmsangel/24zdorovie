@@ -32,8 +32,9 @@ const EVERGREEN_FILE = path.join(ROOT, "scripts", "tg-evergreen.json");
 const SITE_URL = "https://24zdorovie.com";
 const LOCALES = ["ru", "en"];
 const MAX_HASHTAGS = 3;
-/** Каждый EVERGREEN_EVERY-й пост в ленте — оригинальный (остальные — репосты статей). */
-const EVERGREEN_EVERY = 3;
+/** Каждый EVERGREEN_EVERY-й пост в ленте — оригинальный (остальные — репосты статей).
+ *  2 → чередование 1:1 (статья ↔ оригинал), то есть ровно один пост со статьёй в слот. */
+const EVERGREEN_EVERY = 2;
 
 // ---------------------------------------------------------------- аргументы
 
@@ -140,13 +141,19 @@ function readQueue(locale) {
 // ---------------------------------------------------------------- состояние
 
 function readState() {
-  const empty = { posted: { ru: [], en: [] }, evergreenPosted: { ru: [], en: [] } };
+  const empty = { posted: { ru: [], en: [] }, evergreenCount: { ru: 0, en: 0 } };
   if (!fs.existsSync(STATE_FILE)) return empty;
   try {
     const parsed = JSON.parse(fs.readFileSync(STATE_FILE, "utf8"));
+    // Оригиналы цикличны, поэтому храним счётчик опубликованных, а не список id.
+    // Мигрируем со старого поля evergreenPosted (список) на число, если оно встретилось.
+    const count = (loc) =>
+      typeof parsed.evergreenCount?.[loc] === "number"
+        ? parsed.evergreenCount[loc]
+        : (parsed.evergreenPosted?.[loc]?.length ?? 0);
     return {
       posted: { ru: parsed.posted?.ru ?? [], en: parsed.posted?.en ?? [] },
-      evergreenPosted: { ru: parsed.evergreenPosted?.ru ?? [], en: parsed.evergreenPosted?.en ?? [] },
+      evergreenCount: { ru: count("ru"), en: count("en") },
     };
   } catch {
     throw new Error(`[tg] .tg-state.json повреждён — почините или удалите файл: ${STATE_FILE}`);
@@ -376,17 +383,16 @@ async function main() {
     const queue = readQueue(locale);
     const everList = evergreen[locale] ?? [];
     const posted = new Set(state.posted[locale]);
-    const everDone = new Set(state.evergreenPosted[locale]);
+    let everCount = state.evergreenCount[locale]; // сколько оригиналов уже опубликовано (цикл по кругу)
     const pending = queue.filter((a) => !posted.has(a.slug));
-    const everPending = everList.filter((e) => !everDone.has(e.id));
 
     if (STATUS_ONLY) {
       console.log(
         `\n${locale.toUpperCase()}: статьи ${posted.size}/${queue.length} (в очереди ${pending.length}) · ` +
-          `оригиналы ${everDone.size}/${everList.length} (в очереди ${everPending.length})`,
+          `оригиналы: набор ${everList.length}, опубликовано ${everCount} (идут по кругу)`,
       );
       pending.slice(0, 3).forEach((a, i) => console.log(`  ${i + 1}. ${a.date}  ${a.title}`));
-      if (pending.length === 0 && everPending.length === 0) console.log("  очередь пуста");
+      if (pending.length === 0) console.log("  статьи в очереди кончились — идут только оригиналы");
       continue;
     }
 
@@ -401,18 +407,19 @@ async function main() {
         `[tg] не задан токен: нужен TG_BOT_TOKEN_${locale.toUpperCase()} либо общий TG_BOT_TOKEN`,
       );
     }
-    if (pending.length === 0 && everPending.length === 0) {
-      console.log(`[tg] ${locale}: очередь пуста — ни статей, ни оригиналов`);
+    if (pending.length === 0 && everList.length === 0) {
+      console.log(`[tg] ${locale}: публиковать нечего — ни статей, ни оригиналов`);
       continue;
     }
 
-    // Чередование: каждый EVERGREEN_EVERY-й пост в общей ленте — оригинал.
-    // Когда статьи кончились, добираем оригиналами (и наоборот).
+    // Чередование: каждый EVERGREEN_EVERY-й пост общей ленты — оригинал (при =2 это 1:1).
+    // Оригиналы цикличны (everCount % длины набора). Если статьи кончились — идут только
+    // оригиналы; если оригиналов нет вовсе — только статьи.
     for (let n = 0; n < COUNT; n++) {
-      const done = posted.size + everDone.size;
+      const done = posted.size + everCount;
       const wantEver = done % EVERGREEN_EVERY === EVERGREEN_EVERY - 1;
       const nextArticle = queue.find((a) => !posted.has(a.slug));
-      const nextEver = everList.find((e) => !everDone.has(e.id));
+      const nextEver = everList.length ? everList[everCount % everList.length] : null;
 
       let kind = null;
       if (wantEver && nextEver) kind = "ever";
@@ -433,9 +440,9 @@ async function main() {
         }
       } else {
         await postEvergreen(nextEver, locale, channel, token);
-        everDone.add(nextEver.id);
+        everCount += 1;
         if (!DRY_RUN) {
-          state.evergreenPosted[locale].push(nextEver.id);
+          state.evergreenCount[locale] = everCount;
           writeState(state);
         }
       }
