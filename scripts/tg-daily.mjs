@@ -28,9 +28,12 @@ const ROOT = process.cwd();
 const CONTENT_DIR = path.join(ROOT, "content");
 const STATE_FILE = path.join(ROOT, ".tg-state.json");
 const ENV_FILE = path.join(ROOT, "scripts", ".tg.env");
+const EVERGREEN_FILE = path.join(ROOT, "scripts", "tg-evergreen.json");
 const SITE_URL = "https://24zdorovie.com";
 const LOCALES = ["ru", "en"];
 const MAX_HASHTAGS = 3;
+/** Каждый EVERGREEN_EVERY-й пост в ленте — оригинальный (остальные — репосты статей). */
+const EVERGREEN_EVERY = 3;
 
 // ---------------------------------------------------------------- аргументы
 
@@ -60,6 +63,20 @@ function loadEnvFile() {
     const value = trimmed.slice(eq + 1).trim().replace(/^["']|["']$/g, "");
     if (!(key in process.env)) process.env[key] = value;
   }
+}
+
+/** Оригинальные вечнозелёные посты. Нет файла — фича просто не активна. */
+function loadEvergreen() {
+  if (!fs.existsSync(EVERGREEN_FILE)) return { ru: [], en: [] };
+  let parsed;
+  try {
+    parsed = JSON.parse(fs.readFileSync(EVERGREEN_FILE, "utf8"));
+  } catch {
+    throw new Error(`[tg] tg-evergreen.json повреждён — почините формат: ${EVERGREEN_FILE}`);
+  }
+  const pick = (arr) =>
+    (Array.isArray(arr) ? arr : []).filter((p) => p && p.id && p.title && p.body);
+  return { ru: pick(parsed.ru), en: pick(parsed.en) };
 }
 
 // ---------------------------------------------------------------- рубрики
@@ -123,10 +140,14 @@ function readQueue(locale) {
 // ---------------------------------------------------------------- состояние
 
 function readState() {
-  if (!fs.existsSync(STATE_FILE)) return { posted: { ru: [], en: [] } };
+  const empty = { posted: { ru: [], en: [] }, evergreenPosted: { ru: [], en: [] } };
+  if (!fs.existsSync(STATE_FILE)) return empty;
   try {
     const parsed = JSON.parse(fs.readFileSync(STATE_FILE, "utf8"));
-    return { posted: { ru: parsed.posted?.ru ?? [], en: parsed.posted?.en ?? [] } };
+    return {
+      posted: { ru: parsed.posted?.ru ?? [], en: parsed.posted?.en ?? [] },
+      evergreenPosted: { ru: parsed.evergreenPosted?.ru ?? [], en: parsed.evergreenPosted?.en ?? [] },
+    };
   } catch {
     throw new Error(`[tg] .tg-state.json повреждён — почините или удалите файл: ${STATE_FILE}`);
   }
@@ -234,6 +255,30 @@ function buildMessage(article, categories) {
     .join("\n");
 }
 
+/** Оригинальный пост: заголовок + текст + хештеги + (если есть) ссылка на сайт. */
+function buildEvergreenMessage(item, locale) {
+  const hashtags = (Array.isArray(item.tags) ? item.tags : [])
+    .slice(0, MAX_HASHTAGS)
+    .map(toHashtag)
+    .filter((t) => t.length > 2)
+    .join(" ");
+
+  const cta = CTA[locale] ?? CTA.ru;
+  const url = item.link ? `${SITE_URL}${item.link}` : "";
+
+  return [
+    `<b>${escapeHtml(item.title)}</b>`,
+    "",
+    escapeHtml(item.body),
+    hashtags ? `\n${hashtags}` : "",
+    url ? "" : null,
+    url ? `${cta} → ${url}` : null,
+  ]
+    .filter((line) => line !== null)
+    .filter((line, i, all) => !(line === "" && all[i - 1] === ""))
+    .join("\n");
+}
+
 // ---------------------------------------------------------------- отправка
 
 /**
@@ -294,12 +339,34 @@ async function post(article, categories, channel, token) {
   console.log(`[tg] ${article.locale}: опубликовано «${article.title}» (message_id ${result.message_id})`);
 }
 
+async function postEvergreen(item, locale, channel, token) {
+  const text = buildEvergreenMessage(item, locale);
+
+  if (DRY_RUN) {
+    console.log(`\n--- ${locale.toUpperCase()} → ${channel} · оригинал (черновой прогон) ---`);
+    console.log(text);
+    return;
+  }
+
+  const linkPreview = item.link
+    ? { url: `${SITE_URL}${item.link}`, prefer_large_media: true, show_above_text: true }
+    : { is_disabled: true };
+
+  const result = await callTelegram(
+    "sendMessage",
+    { chat_id: channel, text, parse_mode: "HTML", link_preview_options: linkPreview },
+    token,
+  );
+  console.log(`[tg] ${locale}: оригинал «${item.id}» (message_id ${result.message_id})`);
+}
+
 // ---------------------------------------------------------------- сценарий
 
 async function main() {
   loadEnvFile();
 
   const categories = readCategories();
+  const evergreen = loadEvergreen();
   const state = readState();
   const locales = ONLY_LOCALE ? [ONLY_LOCALE] : LOCALES;
 
@@ -307,13 +374,19 @@ async function main() {
     if (!LOCALES.includes(locale)) throw new Error(`[tg] неизвестная локаль: ${locale}`);
 
     const queue = readQueue(locale);
+    const everList = evergreen[locale] ?? [];
     const posted = new Set(state.posted[locale]);
+    const everDone = new Set(state.evergreenPosted[locale]);
     const pending = queue.filter((a) => !posted.has(a.slug));
+    const everPending = everList.filter((e) => !everDone.has(e.id));
 
     if (STATUS_ONLY) {
-      console.log(`\n${locale.toUpperCase()}: опубликовано ${posted.size} из ${queue.length}, в очереди ${pending.length}`);
+      console.log(
+        `\n${locale.toUpperCase()}: статьи ${posted.size}/${queue.length} (в очереди ${pending.length}) · ` +
+          `оригиналы ${everDone.size}/${everList.length} (в очереди ${everPending.length})`,
+      );
       pending.slice(0, 3).forEach((a, i) => console.log(`  ${i + 1}. ${a.date}  ${a.title}`));
-      if (pending.length === 0) console.log("  очередь пуста — новых статей нет");
+      if (pending.length === 0 && everPending.length === 0) console.log("  очередь пуста");
       continue;
     }
 
@@ -328,17 +401,43 @@ async function main() {
         `[tg] не задан токен: нужен TG_BOT_TOKEN_${locale.toUpperCase()} либо общий TG_BOT_TOKEN`,
       );
     }
-    if (pending.length === 0) {
-      console.log(`[tg] ${locale}: очередь пуста, все ${queue.length} статей опубликованы`);
+    if (pending.length === 0 && everPending.length === 0) {
+      console.log(`[tg] ${locale}: очередь пуста — ни статей, ни оригиналов`);
       continue;
     }
 
-    for (const article of pending.slice(0, COUNT)) {
-      await post(article, categories, channel, token);
-      if (!DRY_RUN) {
-        // Пишем состояние после каждого поста: падение на втором не отменит первый
-        state.posted[locale].push(article.slug);
-        writeState(state);
+    // Чередование: каждый EVERGREEN_EVERY-й пост в общей ленте — оригинал.
+    // Когда статьи кончились, добираем оригиналами (и наоборот).
+    for (let n = 0; n < COUNT; n++) {
+      const done = posted.size + everDone.size;
+      const wantEver = done % EVERGREEN_EVERY === EVERGREEN_EVERY - 1;
+      const nextArticle = queue.find((a) => !posted.has(a.slug));
+      const nextEver = everList.find((e) => !everDone.has(e.id));
+
+      let kind = null;
+      if (wantEver && nextEver) kind = "ever";
+      else if (nextArticle) kind = "article";
+      else if (nextEver) kind = "ever";
+      else {
+        console.log(`[tg] ${locale}: очередь исчерпана`);
+        break;
+      }
+
+      if (kind === "article") {
+        await post(nextArticle, categories, channel, token);
+        posted.add(nextArticle.slug);
+        if (!DRY_RUN) {
+          // Пишем состояние после каждого поста: падение на втором не отменит первый
+          state.posted[locale].push(nextArticle.slug);
+          writeState(state);
+        }
+      } else {
+        await postEvergreen(nextEver, locale, channel, token);
+        everDone.add(nextEver.id);
+        if (!DRY_RUN) {
+          state.evergreenPosted[locale].push(nextEver.id);
+          writeState(state);
+        }
       }
     }
   }

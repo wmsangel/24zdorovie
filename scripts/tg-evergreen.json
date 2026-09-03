@@ -1,0 +1,175 @@
+{
+  "_note": "Оригинальные вечнозелёные посты для Telegram. Подмешиваются в ленту (каждый 3-й пост). Каждый: id (уникальный, для трекинга), title (с эмодзи), body (2-3 предложения), tags, link (путь на сайт без домена — цель клика). Правится вручную; порядок = порядок публикации.",
+  "ru": [
+    {
+      "id": "ru-metabolism-frequency",
+      "title": "🧬 Миф: чтобы «разогнать» метаболизм, надо есть часто и маленькими порциями",
+      "body": "Частота приёмов пищи почти не влияет на суточный расход энергии — это показывают контролируемые исследования. Реально двигают обмен мышечная масса, движение и достаточный сон. Ешьте 3 раза или 6 — по удобству и голоду, а не по мифу о «разгоне».",
+      "tags": ["метаболизм", "мифы", "питание"],
+      "link": "/ru/weight/mify-o-metabolizme"
+    },
+    {
+      "id": "ru-thirst-late-signal",
+      "title": "💧 Жажда — это поздний сигнал, а не ранний",
+      "body": "Когда вы почувствовали жажду, лёгкий дефицит жидкости уже есть. Проверка проще любого правила «8 стаканов» — цвет мочи: светло-соломенный это норма, тёмно-жёлтый значит пора попить. Считать стаканы не нужно.",
+      "tags": ["вода", "гидратация"],
+      "link": "/ru/tools/water-intake-calculator"
+    },
+    {
+      "id": "ru-stretching-doms",
+      "title": "🤸 Растяжка перед тренировкой не спасает от крепатуры",
+      "body": "Обзоры показывают: статическая растяжка до нагрузки почти не влияет на боль в мышцах на следующий день, а перед силовой ещё и временно снижает силу. От крепатуры помогает не растяжка, а постепенное наращивание нагрузки.",
+      "tags": ["фитнес", "крепатура", "мифы"],
+      "link": "/ru/fitness/krepatura-posle-trenirovki"
+    },
+    {
+      "id": "ru-eggs-cholesterol",
+      "title": "🥚 Яйца не «забивают сосуды холестерином»",
+      "body": "У большинства людей холестерин из еды слабо влияет на холестерин крови — печень подстраивает собственный синтез. Здоровым взрослым яйцо в день вписывается в рацион без вреда для сердца. Куда важнее общий фон: насыщенные жиры, клетчатка, вес.",
+      "tags": ["питание", "холестерин", "мифы"],
+      "link": "/ru/nutrition/skolko-yaits-v-den"
+    },
+    {
+      "id": "ru-10000-steps",
+      "title": "👟 10 000 шагов — маркетинг, а не медицинская норма",
+      "body": "Цифра пришла из рекламы японского шагомера 1960-х, а не из исследований. Польза для смертности заметно растёт уже с 4000–7000 шагов и выходит на плато примерно к 8000–10000. Меньше «десятки» — это тоже много пользы.",
+      "tags": ["движение", "шаги", "мифы"],
+      "link": "/ru/fitness/skolko-shagov-v-den"
+    },
+    {
+      "id": "ru-sleep-8h",
+      "title": "😴 «Спать ровно 8 часов всем» — миф",
+      "body": "Норма взрослого — диапазон 7–9 часов, и внутри него у людей разная потребность. Ориентируйтесь не на цифру, а на самочувствие днём: если вы бодры без будильника по выходным, скорее всего высыпаетесь. Гоняться именно за восьмёркой не нужно.",
+      "tags": ["сон", "мифы"],
+      "link": "/ru/sleep/skolko-nuzhno-spat"
+    },
+    {
+      "id": "ru-caffeine-cutoff",
+      "title": "☕ Кофе после обеда может испортить ночной сон, даже если вы уснули",
+      "body": "Период полувыведения кофеина 5–6 часов, поэтому чашка в 16:00 к полуночи ещё наполовину «в крови» и снижает глубину сна. Многим стоит ставить точку за 8–10 часов до отбоя. Точный час можно прикинуть по калькулятору.",
+      "tags": ["кофеин", "сон"],
+      "link": "/ru/tools/caffeine-calculator"
+    },
+    {
+      "id": "ru-juice-sugar",
+      "title": "🧃 «Натуральный» сок — это тоже сахар",
+      "body": "В стакане апельсинового сока примерно столько же сахара, сколько в коле, только без клетчатки, которая тормозит его всасывание. Целый фрукт насыщает лучше и поднимает сахар мягче. Сок — не «полезная» замена воде.",
+      "tags": ["сахар", "питание", "мифы"],
+      "link": "/ru/nutrition/sahar-skolko-mozhno"
+    },
+    {
+      "id": "ru-immunity-pill",
+      "title": "🛡️ Иммунитет нельзя «поднять» таблеткой",
+      "body": "Иммунитет — не мышца и не батарейка, а сеть из сотен типов клеток; накрутить её добавкой невозможно. Работает скучное: сон, движение, еда, отказ от курения и прививки. «Иммуномодуляторы» и мегадозы витаминов в лучшем случае бесполезны.",
+      "tags": ["иммунитет", "мифы", "добавки"],
+      "link": "/ru/immunity/kak-ukrepit-immunitet"
+    },
+    {
+      "id": "ru-protein-amount",
+      "title": "🍗 Белка большинству нужно больше, чем кажется",
+      "body": "Минимум «чтобы не заболеть» — 0,8 г на кг веса, но при нагрузках, похудении и после 60 исследования показывают преимущество 1,2–1,6 г на кг, а при силовых — до 2,0. Посчитать свою норму под цель можно за минуту.",
+      "tags": ["белок", "питание"],
+      "link": "/ru/tools/protein-calculator"
+    },
+    {
+      "id": "ru-vitamin-d-winter",
+      "title": "🌥️ Витамин D — единственная добавка, которую многим и правда стоит обсудить зимой",
+      "body": "С октября по март на широте большей части России солнце почти не даёт витамина D в коже, а из еды его мало. Это одна из немногих добавок с реальными основаниями — но дозу лучше подбирать по анализу, а не «на всякий случай».",
+      "tags": ["витамин_d", "добавки"],
+      "link": "/ru/supplements/vitamin-d-normy-i-dozirovki"
+    },
+    {
+      "id": "ru-burnout-vacation",
+      "title": "🔥 Отпуск не лечит выгорание",
+      "body": "Отдых надёжно снижает истощение — и так же надёжно всё возвращается через пару недель, если на работе ничего не изменилось. Отпуск это передышка, чтобы что-то поменять, а не само изменение. Где вы сейчас по трём шкалам — можно проверить.",
+      "tags": ["выгорание", "психика"],
+      "link": "/ru/tools/burnout-test"
+    }
+  ],
+  "en": [
+    {
+      "id": "en-metabolism-frequency",
+      "title": "🧬 Myth: eating small, frequent meals «boosts» your metabolism",
+      "body": "Meal frequency barely changes your daily energy expenditure — controlled studies are clear on this. What actually moves your metabolism is muscle mass, movement and enough sleep. Eat 3 meals or 6 by preference and hunger, not by a myth.",
+      "tags": ["metabolism", "myths", "nutrition"],
+      "link": "/en/weight/metabolism-myths"
+    },
+    {
+      "id": "en-thirst-late-signal",
+      "title": "💧 Thirst is a late signal, not an early one",
+      "body": "By the time you feel thirsty you're already mildly low on fluids. A check that beats any «8 glasses» rule — urine colour: pale straw is fine, dark yellow means drink up. No need to count glasses.",
+      "tags": ["hydration", "water"],
+      "link": "/en/tools/water-intake-calculator"
+    },
+    {
+      "id": "en-stretching-doms",
+      "title": "🤸 Stretching before a workout won't spare you soreness",
+      "body": "Reviews show static stretching before exercise barely affects next-day muscle soreness — and before lifting it temporarily lowers strength. What prevents soreness isn't stretching but building load gradually.",
+      "tags": ["fitness", "soreness", "myths"],
+      "link": "/en/fitness/muscle-soreness-doms"
+    },
+    {
+      "id": "en-eggs-cholesterol",
+      "title": "🥚 Eggs don't «clog your arteries with cholesterol»",
+      "body": "For most people, dietary cholesterol has little effect on blood cholesterol — the liver adjusts its own output. For healthy adults an egg a day fits a normal diet without harming the heart. The bigger levers are saturated fat, fibre and weight.",
+      "tags": ["nutrition", "cholesterol", "myths"],
+      "link": "/en/nutrition/eggs-per-day"
+    },
+    {
+      "id": "en-10000-steps",
+      "title": "👟 10,000 steps is marketing, not a medical target",
+      "body": "The number came from a 1960s Japanese pedometer ad, not research. Mortality benefit rises steeply from just 4,000–7,000 steps and largely plateaus around 8,000–10,000. Under «10k» is still a lot of benefit.",
+      "tags": ["movement", "steps", "myths"],
+      "link": "/en/fitness/how-many-steps-per-day"
+    },
+    {
+      "id": "en-sleep-8h",
+      "title": "😴 «Everyone needs exactly 8 hours» is a myth",
+      "body": "The adult range is 7–9 hours, and need varies within it. Judge by how you feel in the day, not by a number: if you wake refreshed without an alarm on days off, you're probably getting enough. Chasing exactly eight isn't the point.",
+      "tags": ["sleep", "myths"],
+      "link": "/en/sleep/how-much-sleep-do-you-need"
+    },
+    {
+      "id": "en-caffeine-cutoff",
+      "title": "☕ Afternoon coffee can wreck your sleep even if you fall asleep fine",
+      "body": "Caffeine's half-life is 5–6 hours, so a 4 pm cup is still half «in your system» at midnight, cutting deep sleep. Many people should stop 8–10 hours before bed. You can estimate your own cut-off time with the calculator.",
+      "tags": ["caffeine", "sleep"],
+      "link": "/en/tools/caffeine-calculator"
+    },
+    {
+      "id": "en-juice-sugar",
+      "title": "🧃 «Natural» juice is still sugar",
+      "body": "A glass of orange juice holds about as much sugar as cola, just without the fibre that slows its absorption. Whole fruit fills you up better and raises blood sugar more gently. Juice isn't a «healthy» swap for water.",
+      "tags": ["sugar", "nutrition", "myths"],
+      "link": "/en/nutrition/how-much-sugar-per-day"
+    },
+    {
+      "id": "en-immunity-pill",
+      "title": "🛡️ You can't «boost» immunity with a pill",
+      "body": "Immunity isn't a muscle or a battery — it's a network of hundreds of cell types, and no supplement cranks it up. What works is boring: sleep, movement, food, not smoking, vaccines. «Immune boosters» and vitamin megadoses are useless at best.",
+      "tags": ["immunity", "myths", "supplements"],
+      "link": "/en/immunity/how-to-boost-immunity"
+    },
+    {
+      "id": "en-protein-amount",
+      "title": "🍗 Most people need more protein than they think",
+      "body": "The «don't get sick» minimum is 0.8 g per kg, but with training, weight loss and past 60 the evidence favours 1.2–1.6 g per kg, and up to 2.0 with strength work. You can work out your own target for your goal in a minute.",
+      "tags": ["protein", "nutrition"],
+      "link": "/en/tools/protein-calculator"
+    },
+    {
+      "id": "en-vitamin-d-winter",
+      "title": "🌥️ Vitamin D is one of the few supplements genuinely worth considering in winter",
+      "body": "From autumn to spring at higher latitudes the sun is too weak to make vitamin D in your skin, and food supplies little. It's one of the few supplements with a real case — but dose it by a blood test, not «just in case».",
+      "tags": ["vitamin_d", "supplements"],
+      "link": "/en/supplements/vitamin-d-dosage"
+    },
+    {
+      "id": "en-burnout-vacation",
+      "title": "🔥 A holiday doesn't fix burnout",
+      "body": "Time off reliably lowers exhaustion — and it reliably comes back within weeks if nothing about the job changed. A holiday is breathing room to change something, not the change itself. You can check where you sit across the three dimensions.",
+      "tags": ["burnout", "mental_health"],
+      "link": "/en/tools/burnout-test"
+    }
+  ]
+}
