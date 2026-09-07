@@ -196,6 +196,31 @@ export const TOOLS: Tool[] = [
     },
   },
   {
+    slug: "running-pace-calculator",
+    emoji: "⏱️",
+    category: "fitness",
+    name: {
+      ru: "Калькулятор темпа бега",
+      en: "Running Pace Calculator",
+    },
+    tagline: {
+      ru: "Темп и скорость по дистанции и времени плюс прогноз результата на 5 км, 10 км, полумарафоне и марафоне по формуле Ригеля",
+      en: "Pace and speed from your distance and time, plus predicted finish times for 5K, 10K, half and full marathon via Riegel's formula",
+    },
+    related: {
+      ru: [
+        "/fitness/beg-s-nulya",
+        "/fitness/pulsovye-zony-kardio",
+        "/fitness/zona-2-trenirovki",
+      ],
+      en: [
+        "/fitness/running-for-beginners",
+        "/fitness/heart-rate-training-zones",
+        "/fitness/zone-2-training",
+      ],
+    },
+  },
+  {
     slug: "heart-rate-zones-calculator",
     emoji: "💓",
     category: "fitness",

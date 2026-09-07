@@ -1,0 +1,72 @@
+---
+title: "Running Pace Calculator: Pace, Speed and Race Predictions"
+description: "Work out your running pace (min/km) and speed from a distance and time, plus predicted finish times for 5K, 10K, half and full marathon using Riegel's formula."
+updated: "2026-09-07"
+lede: "Running pace is your time per kilometre: 10 km in 50 minutes is a pace of 5:00 min/km and a speed of 12 km/h. Enter the distance and time of your run — the calculator gives your pace, speed and predicted finish times for 5K, 10K, half and full marathon."
+faq:
+  - q: "How do I calculate running pace?"
+    a: "Divide your time by the distance. Run 10 km in 50 minutes and that's 300 seconds per kilometre, i.e. a pace of 5:00 min/km, or 12 km/h. The calculator above does this instantly and converts between the two."
+  - q: "What's the difference between pace and speed?"
+    a: "They're the same thing expressed differently. Pace is minutes per kilometre (lower is faster); speed is kilometres per hour (higher is faster). Runners usually think in pace (min/km), while a gym treadmill is set in speed (km/h)."
+  - q: "How accurate is the marathon prediction?"
+    a: "The prediction uses Riegel's formula from your result and is accurate from roughly 1500 m to the marathon, assuming similar fitness. But the longer the distance, the more the result depends on endurance and race-day fuelling, not just your current pace. A real marathon is almost always slower than the 'maths' unless you've put in the mileage."
+  - q: "What is a good running pace?"
+    a: "'Good' depends on age, sex and experience. Rough amateur benchmarks: an easy jog is 6:00–7:00 min/km, a solid recreational 10K pace is around 5:00–5:30, and 4:30 or faster is a trained level. What matters more than the absolute number is your progress relative to yourself."
+sources:
+  - title: "Riegel PS. Athletic records and human endurance. American Scientist, 1981"
+    url: "https://www.jstor.org/stable/27850484"
+  - title: "Vickers AJ, Vertosick EA. An empirical study of race times in recreational endurance runners. BMC Sports Sci Med Rehabil, 2016"
+    url: "https://pubmed.ncbi.nlm.nih.gov/27822371/"
+---
+
+## Pace, speed and predictions — what the calculator gives
+
+From a single run it answers three questions.
+
+**Pace** — minutes per kilometre (min/km). This is the runner's working unit: training and race splits are planned in pace. A lower number is faster.
+
+**Speed** — kilometres per hour (km/h). The same thing, but the familiar form for a gym treadmill, which is set in km/h.
+
+**Predicted times** for 5K, 10K, half and full marathon — an estimate of what to expect at other distances on your current form.
+
+## How the prediction works: Riegel's formula
+
+The prediction uses Peter Riegel's formula (1981):
+
+<DataTable
+  head={["Term", "Meaning"]}
+  rows={[
+    ["T₂ = T₁ × (D₂ / D₁)^1.06", "Time at the new distance"],
+    ["T₁, D₁", "Your time and distance from the run"],
+    ["D₂", "The distance you're predicting for"],
+    ["1.06", "Exponent: pace slows slightly as distance grows"],
+  ]}
+  caption="Riegel's formula works well from roughly 1500 m to the marathon"
+/>
+
+The 1.06 exponent captures a simple fact: the longer the distance, the slightly slower your average pace — you can't hold 5K pace over a marathon. So a marathon predicted from a 5K is always slower than simple multiplication.
+
+<RunningPaceCalculator locale="en" />
+
+## Where the prediction is wrong
+
+The formula assumes you're equally prepared for every distance. In practice you're not:
+
+<KeyPoints title="What the formula ignores" items={[
+  "Mileage: without long runs, a marathon will be slower than predicted",
+  "Fuelling and hydration — decisive over the marathon",
+  "Sprints and ultras: beyond 1500 m … 42 km the formula drifts",
+  "Heat, wind, terrain and altitude"
+]} />
+
+The practical takeaway: a prediction to a neighbouring distance (10K to half marathon) is usually close, while a jump 'from 5K to marathon' should be read as a ceiling, not a plan.
+
+<ReadAlso href="/en/fitness/running-for-beginners" title="Running for Beginners: How to Start and Stick With It" />
+
+## Using pace in training
+
+The same running speed does different jobs depending on your heart rate. Most of your mileage is best run slowly — in 'zone 2', where you can hold a conversation. It's easy running that builds endurance, not constant all-out effort.
+
+<ReadAlso href="/en/fitness/zone-2-training" title="Zone 2: Why Slow Running Makes You Faster" />
+
+<ReadAlso href="/en/fitness/heart-rate-training-zones" title="Heart Rate Zones: How to Calculate and Why They Matter" />

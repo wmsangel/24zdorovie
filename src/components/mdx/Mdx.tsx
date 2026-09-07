@@ -19,6 +19,7 @@ import { IdealWeightCalculator } from "../tools/IdealWeightCalculator";
 import { OneRepMaxCalculator } from "../tools/OneRepMaxCalculator";
 import { OvulationCalculator } from "../tools/OvulationCalculator";
 import { ProteinCalculator } from "../tools/ProteinCalculator";
+import { RunningPaceCalculator } from "../tools/RunningPaceCalculator";
 import { SleepCycleCalculator } from "../tools/SleepCycleCalculator";
 import { SymptomChecker } from "../tools/SymptomChecker";
 import { VitaminDCalculator } from "../tools/VitaminDCalculator";
@@ -80,6 +81,7 @@ const components = {
   DueDateCalculator,
   IdealWeightCalculator,
   OneRepMaxCalculator,
+  RunningPaceCalculator,
 };
 
 export function Mdx({ source }: { source: string }) {
