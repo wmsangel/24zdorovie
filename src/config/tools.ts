@@ -110,12 +110,12 @@ export const TOOLS: Tool[] = [
     related: {
       ru: [
         "/mental-health/vygoranie-priznaki",
-        "/mental-health/vygoranie-i-dsm-5",
+        "/mental-health/vygoranie-u-studentov",
         "/mental-health/kak-spravlyatsya-so-stressom",
       ],
       en: [
         "/mental-health/burnout-signs-recovery",
-        "/mental-health/burnout-dsm-5",
+        "/mental-health/student-burnout",
         "/mental-health/how-to-manage-stress",
       ],
     },
