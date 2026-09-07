@@ -42,7 +42,7 @@ export function AdSlot({
           rel={direct.sponsored ? "sponsored noopener" : "noopener"}
           target="_blank"
           style={{ maxWidth: direct.width }}
-          className="mx-auto block overflow-hidden rounded-2xl border border-[var(--line)]"
+          className="mx-auto block overflow-hidden rounded-2xl border border-[var(--line)] shadow-[var(--shadow-soft)] transition-[box-shadow,border-color] duration-300 hover:border-[var(--brand)] hover:shadow-[var(--shadow-lift)]"
         >
           <Image
             src={direct.image}
@@ -128,7 +128,7 @@ function HouseAdCard({
       rel="sponsored noopener"
       target="_blank"
       style={{ minHeight, ["--ad-accent" as string]: ad.accent }}
-      className={`group flex overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] transition-colors hover:border-[var(--ad-accent)] ${
+      className={`group flex overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow-soft)] transition-[box-shadow,border-color] duration-300 hover:border-[var(--ad-accent)] hover:shadow-[var(--shadow-lift)] ${
         vertical
           ? "flex-col items-center justify-center gap-4 p-6 text-center"
           : "flex-row items-center gap-4 p-4"

@@ -119,7 +119,7 @@ export function ProductCard({
   note?: string;
 }) {
   return (
-    <aside className="not-prose my-8 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)]">
+    <aside className="not-prose group my-8 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow-soft)] transition-[box-shadow,border-color] duration-300 hover:border-[var(--brand)] hover:shadow-[var(--shadow-lift)]">
       <div className="flex flex-col gap-4 p-5 sm:flex-row sm:items-center">
         {image && (
           <div className="relative h-28 w-28 shrink-0 self-center overflow-hidden rounded-xl border border-[var(--line)]">
@@ -131,7 +131,13 @@ export function ProductCard({
           {description && (
             <p className="mt-1 text-[0.92rem] leading-relaxed text-[var(--ink-soft)]">{description}</p>
           )}
-          {price && <p className="mt-2 text-[0.95rem] font-bold text-[var(--brand-strong)]">{price}</p>}
+          {price && (
+            <p className="mt-2.5">
+              <span className="inline-block rounded-full bg-[var(--brand-tint)] px-3 py-1 text-[0.9rem] font-bold text-[var(--brand-strong)]">
+                {price}
+              </span>
+            </p>
+          )}
         </div>
         <a
           href={href}
@@ -140,6 +146,12 @@ export function ProductCard({
           className="btn btn-primary shrink-0 self-start sm:self-center"
         >
           {cta}
+          <span
+            aria-hidden="true"
+            className="ml-1.5 inline-block transition-transform duration-300 group-hover:translate-x-0.5"
+          >
+            →
+          </span>
         </a>
       </div>
       <p className="border-t border-[var(--line)] bg-[var(--surface-2)] px-5 py-2.5 text-[0.72rem] text-[var(--ink-faint)]">

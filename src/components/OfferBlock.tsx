@@ -1,6 +1,8 @@
 import { ADS } from "@/config/ads";
+import { getCategory } from "@/config/categories";
 import { pickOffer, type Offer, type OfferKind } from "@/config/offers";
 import type { Locale } from "@/config/site";
+import { TOOLS } from "@/config/tools";
 import { t, type TranslationKey } from "@/lib/i18n";
 
 const NOTE_KEY: Record<OfferKind, TranslationKey> = {
@@ -8,6 +10,13 @@ const NOTE_KEY: Record<OfferKind, TranslationKey> = {
   medical: "offer_note_medical",
   goods: "offer_note_goods",
 };
+
+/** Акцент рубрики инструмента — чтобы оффер визуально «принадлежал» странице,
+ *  а не выглядел чужеродной вставкой. Неизвестный слаг → фирменный зелёный (leaf). */
+function accentFor(toolSlug: string): string {
+  const tool = TOOLS.find((x) => x.slug === toolSlug);
+  return (tool && getCategory(tool.category)?.accent) || "leaf";
+}
 
 /**
  * Партнёрский блок под результатом калькулятора.
@@ -32,11 +41,17 @@ export function OfferBlock({ toolSlug, locale }: { toolSlug: string; locale: Loc
 
   return (
     <aside
-      className="mt-8 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)]"
+      data-accent={accentFor(toolSlug)}
+      className="group mt-8 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow-soft)] transition-[box-shadow,border-color] duration-300 hover:border-[var(--accent)] hover:shadow-[var(--shadow-lift)]"
       aria-label={t(locale, "ad_label")}
     >
-      <div className="flex items-center justify-between gap-3 border-b border-[var(--line)] bg-[var(--surface-2)] px-5 py-2">
-        <span className="text-[0.7rem] font-bold uppercase tracking-[0.12em] text-[var(--ink-faint)]">
+      <div className="flex items-center justify-between gap-3 border-b border-[var(--line)] bg-[var(--accent-tint)] px-5 py-2">
+        <span className="flex items-center gap-2 text-[0.7rem] font-bold uppercase tracking-[0.12em] text-[var(--ink-faint)]">
+          <span
+            aria-hidden="true"
+            className="size-1.5 rounded-full"
+            style={{ backgroundColor: "var(--accent)" }}
+          />
           {t(locale, "ad_label")}
         </span>
         {offer.erid && (
@@ -55,8 +70,10 @@ export function OfferBlock({ toolSlug, locale }: { toolSlug: string; locale: Loc
             {offer.description[locale]}
           </p>
           {offer.price && (
-            <p className="mt-2 text-[0.95rem] font-bold text-[var(--brand-strong)]">
-              {offer.price[locale]}
+            <p className="mt-2.5">
+              <span className="inline-block rounded-full bg-[var(--accent-tint)] px-3 py-1 text-[0.9rem] font-bold text-[var(--accent)]">
+                {offer.price[locale]}
+              </span>
             </p>
           )}
         </div>
@@ -67,6 +84,12 @@ export function OfferBlock({ toolSlug, locale }: { toolSlug: string; locale: Loc
           className="btn btn-primary shrink-0 self-start sm:self-center"
         >
           {offer.cta[locale]}
+          <span
+            aria-hidden="true"
+            className="ml-1.5 inline-block transition-transform duration-300 group-hover:translate-x-0.5"
+          >
+            →
+          </span>
         </a>
       </div>
 
