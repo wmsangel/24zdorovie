@@ -25,6 +25,46 @@ export function generateStaticParams() {
   );
 }
 
+/**
+ * Описание тег-страницы из заголовков её статей.
+ *
+ * Раньше здесь был шаблон «Все материалы по теме X — N статей», из-за чего
+ * десятки тег-страниц читались как почти-дубли (Bing это отмечает). Теперь
+ * подставляем сами заголовки — сколько влезает в ~155 символов, остаток
+ * сворачиваем в «и ещё N». Первый заголовок берём всегда (при нужде обрезаем),
+ * чтобы описание не выродилось в один хвост «и ещё N материалов».
+ */
+function tagDescription(locale: Locale, tag: string, titles: string[]): string {
+  const count = titles.length;
+  const prefix = locale === "ru" ? `«${tag}» на 24zdorovie: ` : `“${tag}” on 24zdorovie: `;
+  // Лимит на заголовочную часть; поверх ляжет суффикс «…и ещё N материалов»,
+  // поэтому держим MAX ниже 160, чтобы итог остался в рамках сниппета.
+  const MAX = 138;
+
+  const picked: string[] = [];
+  for (const title of titles) {
+    const candidate = picked.length ? `${prefix}${[...picked, title].join(" · ")}` : `${prefix}${title}`;
+    if (candidate.length > MAX) break;
+    picked.push(title);
+  }
+  if (picked.length === 0 && titles[0]) {
+    // единственный заголовок длиннее лимита — обрезаем по слову
+    const room = MAX - prefix.length - 1;
+    picked.push(`${titles[0].slice(0, Math.max(0, room)).replace(/\s+\S*$/, "")}…`);
+  }
+
+  // Каждый элемент picked = одна статья (полный заголовок или усечённый первый).
+  const rest = count - picked.length;
+  let body = `${prefix}${picked.join(" · ")}`;
+  if (rest > 0) {
+    body +=
+      locale === "ru"
+        ? ` и ещё ${rest} ${plural(rest, ["материал", "материала", "материалов"])}`
+        : ` and ${rest} more`;
+  }
+  return `${body}.`;
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -35,7 +75,8 @@ export async function generateMetadata({
   const slug = decodeURIComponent(encoded);
   const tag = tagBySlug(locale, slug);
   if (!tag) return {};
-  const count = getByTag(locale, tag).length;
+  const tagged = getByTag(locale, tag);
+  const count = tagged.length;
 
   /**
    * Теги привязаны к языку: «аденозин» есть только в русских статьях.
@@ -52,10 +93,14 @@ export async function generateMetadata({
     path: `/tag/${slug}`,
     alternates,
     title: locale === "ru" ? `${tag}: подборка материалов` : `${tag}: articles`,
-    description:
-      locale === "ru"
-        ? `Все материалы по теме «${tag}» — ${count} ${plural(count, ["статья", "статьи", "статей"])} на 24zdorovie.`
-        : `Everything tagged “${tag}” — ${count} articles on 24zdorovie.`,
+    // Описание собираем из реальных заголовков статей тега, а не из шаблона:
+    // так каждая тег-страница уникальна по содержанию (не «почти дубль»)
+    // и заодно информативнее в выдаче.
+    description: tagDescription(
+      locale,
+      tag,
+      tagged.map((a) => a.title),
+    ),
     // Тег с одним материалом дублирует карточку статьи — в индекс не отдаём
     noindex: count < TAG_INDEX_MIN,
   });
