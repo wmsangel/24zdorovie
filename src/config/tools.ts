@@ -84,13 +84,13 @@ export const TOOLS: Tool[] = [
     },
     related: {
       ru: [
+        "/longevity/kak-snizit-biologicheskiy-vozrast",
         "/longevity/biologicheskiy-vozrast",
-        "/longevity/chasy-horvata",
         "/longevity/chekap-po-vozrastam",
       ],
       en: [
+        "/longevity/how-to-lower-biological-age",
         "/longevity/biological-age-tests",
-        "/longevity/horvath-clock",
         "/longevity/health-checkups-by-age",
       ],
     },
