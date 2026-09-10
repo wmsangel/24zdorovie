@@ -17,9 +17,9 @@ const DICT = {
     nav_about: "О проекте",
     nav_search: "Поиск",
     nav_tools: "Инструменты",
-    tools_title: "Калькуляторы и тесты",
+    tools_title: "Калькуляторы здоровья",
     tools_lede:
-      "Считают по опубликованным формулам, а не по выдуманным шкалам: под каждым инструментом расписано, откуда взяты коэффициенты и чего он не умеет. Ничего не отправляется на сервер — расчёт идёт прямо в браузере.",
+      "Бесплатные калькуляторы и тесты здоровья: ИМТ, калории и БЖУ, биологический возраст, риск для сердца, давление, сон и другое. Считают по опубликованным формулам, а не по выдуманным шкалам, и работают прямо в браузере — данные никуда не отправляются.",
     tools_related: "Материалы по теме",
     tools_other: "Другие инструменты",
     tools_open: "Открыть",
@@ -104,9 +104,9 @@ const DICT = {
     nav_about: "About",
     nav_search: "Search",
     nav_tools: "Tools",
-    tools_title: "Calculators & tests",
+    tools_title: "Health Calculators",
     tools_lede:
-      "Built on published formulas rather than invented scales: every tool spells out where its coefficients come from and what it cannot tell you. Nothing is sent to a server — the maths runs in your browser.",
+      "Free health calculators and tests: BMI, calories and macros, biological age, heart risk, blood pressure, sleep and more. Built on published formulas rather than invented scales, and they run right in your browser — nothing is sent to a server.",
     tools_related: "Related reading",
     tools_other: "More tools",
     tools_open: "Open",
