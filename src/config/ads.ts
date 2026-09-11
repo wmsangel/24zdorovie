@@ -357,6 +357,25 @@ export const HOUSE_ADS_INVENTORY: HouseAd[] = [
       },
     },
   },
+  {
+    id: "foldout",
+    href: "https://foldoutkit.com/",
+    emoji: "🧩",
+    accent: "#7c3aed",
+    locales: ["ru", "en"],
+    copy: {
+      ru: {
+        title: "Foldout",
+        tagline: "Шаблоны сайтов, писем и таблиц с чистым, читаемым кодом — бесплатно, без регистрации",
+        cta: "Открыть",
+      },
+      en: {
+        title: "Foldout",
+        tagline: "Website, email & spreadsheet templates with clean, readable code — free, no sign-up",
+        cta: "Browse",
+      },
+    },
+  },
 ];
 
 const PLACEMENT_ORDER: AdPlacement[] = [
