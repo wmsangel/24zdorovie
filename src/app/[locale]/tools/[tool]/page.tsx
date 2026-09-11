@@ -70,7 +70,13 @@ export default async function ToolPage({
 
   const cat = getCategory(tool.category);
   const related = resolveRelated(locale, tool.related[locale]);
-  const others = TOOLS.filter((x) => x.slug !== tool.slug);
+  // Сначала инструменты той же рубрики (релевантнее и лучше для перелинковки),
+  // затем остальные; ограничиваем 6, чтобы не вываливать весь список 20 карточек.
+  const rest = TOOLS.filter((x) => x.slug !== tool.slug);
+  const others = [
+    ...rest.filter((x) => x.category === tool.category),
+    ...rest.filter((x) => x.category !== tool.category),
+  ].slice(0, 6);
   const url = `${SITE.url}/${locale}/tools/${tool.slug}/`;
 
   return (
@@ -223,6 +229,15 @@ export default async function ToolPage({
                   </Link>
                 );
               })}
+            </div>
+            <div className="mt-8">
+              <Link
+                href={`/${locale}/tools`}
+                className="inline-flex items-center gap-1.5 text-[0.92rem] font-semibold text-[var(--brand-strong)] hover:underline"
+              >
+                {locale === "ru" ? "Все калькуляторы здоровья" : "All health calculators"}
+                <span aria-hidden="true">→</span>
+              </Link>
             </div>
           </section>
         )}
