@@ -63,6 +63,7 @@ export async function generateMetadata({
         { url: "/icon.svg", type: "image/svg+xml" },
         { url: "/favicon.ico", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
       ],
+      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
     },
     alternates: {
       canonical: absolute(`/${l}`),

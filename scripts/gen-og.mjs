@@ -214,3 +214,34 @@ const iconPngs = await Promise.all(
 await writeFile(path.join(process.cwd(), "public", "favicon.ico"), buildIco(iconPngs, ICON_SIZES));
 
 console.log(`[og] favicon.ico собран из icon.svg: ${ICON_SIZES.join("/")} px`);
+
+// ---------------------------------------------------------------- PNG-иконки
+/**
+ * PNG-иконки из того же icon.svg:
+ *   apple-touch-icon 180×180 — iOS кладёт её на домашний экран; прозрачность там
+ *     превращается в чёрный фон, поэтому подкладываем фирменный светлый (#fbfaf6);
+ *   192/512 — минимальный набор для устанавливаемого PWA и части краулеров;
+ *   512 maskable — с safe-zone (лого ~62% кадра на непрозрачном фоне), чтобы
+ *     Android не обрезал логотип под свою маску.
+ * Каждый размер рендерим из SVG (не апскейлим мелкий мастер) ради чёткости.
+ */
+const PAPER = { r: 251, g: 250, b: 246, alpha: 1 }; // --paper, фон iOS-иконки
+const publicDir = path.join(process.cwd(), "public");
+const renderIcon = (size, density = 512) =>
+  sharp(iconSource, { density }).resize(size, size, { kernel: "lanczos3" });
+
+await renderIcon(180).flatten({ background: PAPER }).png({ compressionLevel: 9 })
+  .toFile(path.join(publicDir, "apple-touch-icon.png"));
+await renderIcon(192).png({ compressionLevel: 9 }).toFile(path.join(publicDir, "icon-192.png"));
+await renderIcon(512).png({ compressionLevel: 9 }).toFile(path.join(publicDir, "icon-512.png"));
+
+// Maskable: лого 320px по центру непрозрачного полотна 512 (safe-zone ~37%).
+const maskableLogo = await sharp(iconSource, { density: 512 }).resize(320, 320).png().toBuffer();
+await sharp({
+  create: { width: 512, height: 512, channels: 4, background: PAPER },
+})
+  .composite([{ input: maskableLogo, gravity: "centre" }])
+  .png({ compressionLevel: 9 })
+  .toFile(path.join(publicDir, "icon-512-maskable.png"));
+
+console.log("[og] PNG-иконки: apple-touch-icon 180, icon 192/512, maskable 512");

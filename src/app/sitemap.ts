@@ -6,12 +6,14 @@ import {
   getAllArticles,
   getAllTags,
   getArticles,
+  getByTag,
   tagSlug,
   TAG_INDEX_MIN,
   type Article,
 } from "@/lib/content";
 import { pageCount } from "@/lib/paginate";
 import { absolute } from "@/lib/seo";
+import { getToolPage } from "@/lib/tools";
 
 /** Статический экспорт требует явно пометить метадата-роуты как статические */
 export const dynamic = "force-static";
@@ -101,20 +103,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       });
     }
 
-    // Калькуляторы существуют в обеих локалях всегда — hreflang выводим без проверок
+    // Калькуляторы существуют в обеих локалях всегда — hreflang выводим без проверок.
+    // lastmod берём из фронтматтера инструмента (updated), иначе — дата свежей статьи.
+    const freshest = getArticles(locale)[0]?.date ?? new Date();
     for (const tool of TOOLS) {
       entries.push({
         url: url(locale, `/tools/${tool.slug}`),
+        lastModified: getToolPage(locale, tool.slug)?.updated ?? freshest,
         changeFrequency: "monthly",
         priority: 0.8,
         alternates: { languages: languages(`/tools/${tool.slug}`) },
       });
     }
 
-    // В карту сайта попадают только теги, переживающие порог thin content
+    // В карту сайта попадают только теги, переживающие порог thin content.
+    // lastmod — дата самой свежей статьи под тегом.
     for (const { tag } of getAllTags(locale).filter((t) => t.count >= TAG_INDEX_MIN)) {
       entries.push({
         url: url(locale, `/tag/${encodeURIComponent(tagSlug(tag))}`),
+        lastModified: getByTag(locale, tag)[0]?.date ?? freshest,
         changeFrequency: "weekly",
         priority: 0.3,
       });
