@@ -246,6 +246,31 @@ export const TOOLS: Tool[] = [
     },
   },
   {
+    slug: "pregnancy-weight-gain-calculator",
+    emoji: "🤰",
+    category: "womens-health",
+    name: {
+      ru: "Калькулятор прибавки веса при беременности",
+      en: "Pregnancy Weight Gain Calculator",
+    },
+    tagline: {
+      ru: "Рекомендуемая прибавка веса за беременность по нормам IOM в зависимости от ИМТ до беременности, с темпом по неделям",
+      en: "Recommended pregnancy weight gain by the IOM ranges based on your pre-pregnancy BMI, with a weekly pace",
+    },
+    related: {
+      ru: [
+        "/womens-health/zhelezo-u-zhenshchin",
+        "/weight/imt-i-sostav-tela",
+        "/nutrition/skolko-belka-v-den",
+      ],
+      en: [
+        "/womens-health/iron-for-women",
+        "/weight/bmi-and-body-composition",
+        "/nutrition/how-much-protein-per-day",
+      ],
+    },
+  },
+  {
     slug: "heart-rate-zones-calculator",
     emoji: "💓",
     category: "fitness",

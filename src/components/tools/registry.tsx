@@ -14,6 +14,7 @@ import { IdealWeightCalculator } from "./IdealWeightCalculator";
 import { OneRepMaxCalculator } from "./OneRepMaxCalculator";
 import { OvulationCalculator } from "./OvulationCalculator";
 import { PeriodCalculator } from "./PeriodCalculator";
+import { PregnancyWeightCalculator } from "./PregnancyWeightCalculator";
 import { ProteinCalculator } from "./ProteinCalculator";
 import { RunningPaceCalculator } from "./RunningPaceCalculator";
 import { SleepCycleCalculator } from "./SleepCycleCalculator";
@@ -49,6 +50,7 @@ const WIDGETS: Record<string, (props: { locale: Locale }) => React.ReactElement>
   "one-rep-max-calculator": OneRepMaxCalculator,
   "running-pace-calculator": RunningPaceCalculator,
   "period-calculator": PeriodCalculator,
+  "pregnancy-weight-gain-calculator": PregnancyWeightCalculator,
 };
 
 export function ToolWidget({ slug, locale }: { slug: string; locale: Locale }) {
