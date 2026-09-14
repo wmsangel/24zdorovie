@@ -18,6 +18,7 @@ import { HeartRateZonesCalculator } from "../tools/HeartRateZonesCalculator";
 import { IdealWeightCalculator } from "../tools/IdealWeightCalculator";
 import { OneRepMaxCalculator } from "../tools/OneRepMaxCalculator";
 import { OvulationCalculator } from "../tools/OvulationCalculator";
+import { PeriodCalculator } from "../tools/PeriodCalculator";
 import { ProteinCalculator } from "../tools/ProteinCalculator";
 import { RunningPaceCalculator } from "../tools/RunningPaceCalculator";
 import { SleepCycleCalculator } from "../tools/SleepCycleCalculator";
@@ -82,6 +83,7 @@ const components = {
   IdealWeightCalculator,
   OneRepMaxCalculator,
   RunningPaceCalculator,
+  PeriodCalculator,
 };
 
 export function Mdx({ source }: { source: string }) {

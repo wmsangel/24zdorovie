@@ -221,6 +221,31 @@ export const TOOLS: Tool[] = [
     },
   },
   {
+    slug: "period-calculator",
+    emoji: "🗓️",
+    category: "womens-health",
+    name: {
+      ru: "Календарь месячных",
+      en: "Period Calculator",
+    },
+    tagline: {
+      ru: "Дата следующих месячных, текущий день цикла и ближайшие циклы по дате последней менструации",
+      en: "Your next period date, current cycle day and upcoming cycles from your last period",
+    },
+    related: {
+      ru: [
+        "/womens-health/tsikl-i-trenirovki",
+        "/womens-health/pms-chto-pomogaet",
+        "/womens-health/spkya-priznaki-i-lechenie",
+      ],
+      en: [
+        "/womens-health/menstrual-cycle-training",
+        "/womens-health/pms-what-helps",
+        "/womens-health/pcos-explained",
+      ],
+    },
+  },
+  {
     slug: "heart-rate-zones-calculator",
     emoji: "💓",
     category: "fitness",
