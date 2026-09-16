@@ -12,9 +12,10 @@
  * _redirects и _headers.
  */
 
-const LOCALES = ["ru", "en"];
-// Префиксы, которые нельзя трогать правилом «без локали»
-const RESERVED = /^\/(ru|en|_next|og|covers|ads)\//;
+// Префиксы/папки, которые нельзя трогать правилом «без локали».
+// Должны совпадать с реальными корневыми папками out/ (ru, en, _next,
+// _not-found, og, covers, ads, rss, 404) — иначе их бы увело на /ru/…
+const RESERVED = /^\/(ru|en|_next|_not-found|og|covers|ads|rss|404)(\/|$)/;
 // Root-файлы и любые файлы с расширением обслуживаем как есть
 const HAS_EXT = /\.[a-z0-9]{2,5}$/i;
 
@@ -54,7 +55,13 @@ export async function onRequest(context) {
     });
   }
 
-  // 2. Нормализация legacy-слагов тегов: регистр + пробел → дефис.
+  // 2. Старые адреса фида → русский RSS (до правила «без локали», иначе оно
+  //    увело бы /rss на /ru/rss).
+  if (/^\/(rss|feed)\/?$/.test(p)) {
+    return redirect(url.origin + "/rss/ru.xml", 301);
+  }
+
+  // 3. Нормализация legacy-слагов тегов: регистр + пробел → дефис.
   //    Валидные адреса (строчные, через дефис) проходят без изменений.
   const tag = p.match(/^\/(ru|en)\/tag\/(.+?)\/?$/);
   if (tag) {
@@ -66,7 +73,7 @@ export async function onRequest(context) {
     }
   }
 
-  // 3. Пути без префикса локали → русская версия (постоянный редирект).
+  // 4. Пути без префикса локали → русская версия (постоянный редирект).
   const noLocale =
     !RESERVED.test(p) &&
     !/^\/(ru|en)$/.test(p) &&

@@ -1,9 +1,8 @@
-# Cloudflare Pages — статические редиректы (порт из public/.htaccess).
-# Динамику (локаль на /, пути без префикса, нормализация тег-слагов) делает
-# functions/_middleware.js. www→apex и HTTPS — настройками зоны Cloudflare.
-
-# Старые адреса фида
-/rss    /rss/ru.xml  301
-/rss/   /rss/ru.xml  301
-/feed   /rss/ru.xml  301
-/feed/  /rss/ru.xml  301
+# Cloudflare Pages — редиректы.
+# Все редиректы живут в functions/_middleware.js (edge выполняется раньше
+# _redirects, поэтому держать их в двух местах — только путаница):
+#   • rss/feed → /rss/ru.xml
+#   • выбор локали на /
+#   • пути без префикса локали → /ru/…
+#   • нормализация legacy тег-слагов (регистр + пробел)
+# www→apex и HTTPS — настройками зоны Cloudflare.
