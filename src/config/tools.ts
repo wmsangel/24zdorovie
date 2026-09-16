@@ -401,14 +401,14 @@ export const TOOLS: Tool[] = [
     },
     related: {
       ru: [
+        "/heart/kak-snizit-serdechno-sosudistyy-risk",
         "/heart/holesterin-lpnp-lpvp",
         "/heart/arterialnoe-davlenie-normy",
-        "/heart/insult-priznaki-i-profilaktika",
       ],
       en: [
+        "/heart/how-to-lower-cardiovascular-risk",
         "/heart/cholesterol-explained",
         "/heart/blood-pressure-explained",
-        "/heart/stroke-warning-signs",
       ],
     },
   },
