@@ -1,0 +1,19 @@
+# Cloudflare Pages — заголовки (порт из public/.htaccess).
+# Файл копируется Next в корень out/ и читается Pages при деплое.
+# Сжатие (Brotli/Gzip) и HTTPS Cloudflare делает сам — здесь их нет.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-DNS-Prefetch-Control: on
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Неизменяемые ассеты и медиа — кэшируем на год.
+# Хэшированные файлы Next в /_next/static Pages и так помечает immutable,
+# но /covers и /og не хэшируются — задаём явно.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+/covers/*
+  Cache-Control: public, max-age=31536000, immutable
+/og/*
+  Cache-Control: public, max-age=31536000, immutable
