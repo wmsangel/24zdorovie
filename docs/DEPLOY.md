@@ -1,10 +1,16 @@
 # Публикация сайта
 
-Проект собирается в статику (`output: "export"`) и живёт на shared-хостинге
-с Apache за Cloudflare. Никакого Node на сервере нет: всё серверное поведение —
-редиректы, заголовки, выбор локали — описано в `public/.htaccess`.
+> **С 16.09.2026 основной хостинг — Cloudflare Pages** (`npm run deploy`).
+> Пошагово и логика `.htaccess` на Pages — в [CLOUDFLARE-PAGES.md](./CLOUDFLARE-PAGES.md).
+> Этот документ описывает **резервный** путь на GoDaddy (cPanel):
+> `npm run deploy:cpanel`. GoDaddy держим для отката, пока Pages не устоится.
 
-Боевой домен — **24zdorovie.com**. Каталог на хостинге — `public_html`.
+Проект собирается в статику (`output: "export"`). Резервный хостинг — shared
+Apache (GoDaddy) за Cloudflare. Никакого Node на сервере нет: серверное
+поведение там — редиректы, заголовки, выбор локали — описано в `public/.htaccess`
+(на Pages его заменяют `_headers`, `_redirects`, `functions/_middleware.js`).
+
+Боевой домен — **24zdorovie.com**. Каталог на GoDaddy — `public_html`.
 
 ## 1. Сборка
 
