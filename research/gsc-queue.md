@@ -10,17 +10,17 @@
 Google» — пропустить, не тратя заявку. Один URL повторно не отправлять. Отмечать
 [x] с датой. «Квота превышена» — записать и остановиться.
 
-## День 1 — СЕГОДНЯ (2026-09-18)  ← отправить эти 10
-- [ ] https://24zdorovie.com/ru/heart/kak-snizit-serdechno-sosudistyy-risk/
-- [ ] https://24zdorovie.com/en/heart/how-to-lower-cardiovascular-risk/
-- [ ] https://24zdorovie.com/en/longevity/how-to-lower-biological-age/
-- [ ] https://24zdorovie.com/ru/longevity/kak-snizit-biologicheskiy-vozrast/
-- [ ] https://24zdorovie.com/en/mental-health/student-burnout/
-- [ ] https://24zdorovie.com/ru/mental-health/vygoranie-u-studentov/
-- [ ] https://24zdorovie.com/en/tools/pregnancy-weight-gain-calculator/
-- [ ] https://24zdorovie.com/ru/tools/pregnancy-weight-gain-calculator/
-- [ ] https://24zdorovie.com/en/tools/period-calculator/
-- [ ] https://24zdorovie.com/ru/tools/period-calculator/
+## День 1 — отправлено 2026-09-18 ✅ (10/10)
+- [x] https://24zdorovie.com/ru/heart/kak-snizit-serdechno-sosudistyy-risk/ — отправлен 2026-09-18
+- [x] https://24zdorovie.com/en/heart/how-to-lower-cardiovascular-risk/ — отправлен 2026-09-18
+- [x] https://24zdorovie.com/en/longevity/how-to-lower-biological-age/ — отправлен 2026-09-18
+- [x] https://24zdorovie.com/ru/longevity/kak-snizit-biologicheskiy-vozrast/ — отправлен 2026-09-18
+- [x] https://24zdorovie.com/en/mental-health/student-burnout/ — отправлен 2026-09-18
+- [x] https://24zdorovie.com/ru/mental-health/vygoranie-u-studentov/ — отправлен 2026-09-18
+- [x] https://24zdorovie.com/en/tools/pregnancy-weight-gain-calculator/ — отправлен 2026-09-18
+- [x] https://24zdorovie.com/ru/tools/pregnancy-weight-gain-calculator/ — отправлен 2026-09-18
+- [x] https://24zdorovie.com/en/tools/period-calculator/ — отправлен 2026-09-18
+- [x] https://24zdorovie.com/ru/tools/period-calculator/ — отправлен 2026-09-18
 
 ## День 2
 - [ ] https://24zdorovie.com/en/tools/running-pace-calculator/
@@ -60,3 +60,4 @@ safe-weight-loss-rate, chitmily-i-refidy / cheat-meals-refeeds), рецепты
 
 ## Журнал запусков
 - 2026-09-18: очередь создана; отправка выполняется вручную (GSC-домен закрыт для Claude in Chrome).
+- 2026-09-18: День 1 — отправлено 10/10. Следующий батч — День 2. Квота на сегодня исчерпана.
