@@ -273,6 +273,25 @@ export const HOUSE_ADS_INVENTORY: HouseAd[] = [
     },
   },
   {
+    id: "pawdget",
+    href: "https://pawdget.com/",
+    emoji: "🐾",
+    accent: "#b0622f",
+    locales: ["ru", "en"],
+    copy: {
+      ru: {
+        title: "Pawdget",
+        tagline: "Сколько на самом деле стоит собака или кошка в США — по породе и штату",
+        cta: "Посчитать",
+      },
+      en: {
+        title: "Pawdget",
+        tagline: "What a dog or cat really costs per year — by breed and state, every figure sourced",
+        cta: "Price a breed",
+      },
+    },
+  },
+  {
     id: "izngames",
     href: "https://izngames.com/",
     emoji: "🎮",
