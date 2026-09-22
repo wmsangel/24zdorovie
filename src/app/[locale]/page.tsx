@@ -9,7 +9,7 @@ import { CategoryCard } from "@/components/CategoryCard";
 import { Newsletter } from "@/components/Newsletter";
 import { TopicsMarquee } from "@/components/TopicsMarquee";
 import { CATEGORIES, getCategory } from "@/config/categories";
-import { SITE_META, type Locale } from "@/config/site";
+import { SITE, SITE_META, type Locale } from "@/config/site";
 import { TOOLS } from "@/config/tools";
 import { getAllTags, getArticles, getByCategory, getFeatured, tagSlug } from "@/lib/content";
 import { isLocale, localePath, plural, translator } from "@/lib/i18n";
@@ -34,7 +34,13 @@ export async function generateMetadata({
   const meta = SITE_META[locale];
   const title = `${meta.title} — ${meta.tagline}`;
   return {
-    ...buildMetadata({ locale, path: "/", title, description: meta.description }),
+    ...buildMetadata({
+      locale,
+      path: "/",
+      title,
+      description: meta.description,
+      image: `${SITE.url}/og/home-${locale}.png`,
+    }),
     title: { absolute: title },
   };
 }

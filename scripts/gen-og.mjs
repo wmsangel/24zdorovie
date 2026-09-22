@@ -21,6 +21,12 @@ const TAGLINES = {
   en: "Health without the myths",
 };
 
+/** Строка ценности под заголовком фирменной OG-картинки главной */
+const VALUE = {
+  ru: "Доказательные разборы, калькуляторы и рецепты",
+  en: "Evidence-based explainers, calculators and recipes",
+};
+
 const ACCENTS = {
   leaf: "#1fa268",
   citrus: "#b8790a",
@@ -124,6 +130,48 @@ function svg({ heading, accent, locale }) {
 </svg>`;
 }
 
+/**
+ * Фирменная OG-картинка главной. В отличие от карточек-рубрик это не «плитка с
+ * заголовком», а бренд-высказывание: крупный лого-локап, тэглайн в две строки,
+ * строка ценности, домен и фирменные зелёные блобы на бумажном фоне.
+ */
+function homeSvg(locale) {
+  const brand = ACCENTS.leaf; // #1fa268 — фирменный зелёный
+  const brandStrong = "#17784d";
+  const mint = "#78d8a9";
+  const lines = wrap(TAGLINES[locale], 14);
+  const fontSize = 78;
+  const lineHeight = fontSize * 1.1;
+  const top = 300;
+  const tspans = lines
+    .map((l, i) => `<tspan x="72" y="${top + i * lineHeight}">${esc(l)}</tspan>`)
+    .join("");
+  const subY = top + (lines.length - 1) * lineHeight + 66;
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbfaf6"/>
+      <stop offset="1" stop-color="#edf6f0"/>
+    </linearGradient>
+  </defs>
+  <rect width="${W}" height="${H}" fill="url(#bg)"/>
+  <circle cx="1050" cy="80" r="300" fill="${brand}" opacity="0.14"/>
+  <circle cx="120" cy="600" r="240" fill="${mint}" opacity="0.20"/>
+
+  <rect x="72" y="72" width="56" height="56" rx="16" fill="${brand}"/>
+  <circle cx="100" cy="100" r="13" fill="#fbfaf6"/>
+  <text x="148" y="110" font-family="${FONT}" font-size="30" font-weight="700" fill="#14201a">${esc(BRAND)}</text>
+
+  <text font-family="${FONT}" font-size="${fontSize}" font-weight="800" fill="#14201a">${tspans}</text>
+
+  <text x="72" y="${subY}" font-family="${FONT}" font-size="30" fill="#4d5c54">${esc(VALUE[locale])}</text>
+
+  <text x="72" y="562" font-family="${FONT}" font-size="26" font-weight="700" fill="${brandStrong}">${esc(BRAND)}.com</text>
+  <rect x="900" y="546" width="228" height="8" rx="4" fill="${brand}"/>
+</svg>`;
+}
+
 await assertCategoriesInSync();
 
 const outDir = path.join(process.cwd(), "public", "og");
@@ -154,7 +202,13 @@ for (const job of jobs) {
   await sharp(buffer).png({ compressionLevel: 9 }).toFile(path.join(outDir, job.file));
 }
 
-console.log(`[og] сгенерировано картинок: ${jobs.length} → public/og/`);
+// Фирменная OG-картинка главной — отдельный шаблон (не «плитка-рубрика»)
+for (const locale of ["ru", "en"]) {
+  const buffer = Buffer.from(homeSvg(locale));
+  await sharp(buffer).png({ compressionLevel: 9 }).toFile(path.join(outDir, `home-${locale}.png`));
+}
+
+console.log(`[og] сгенерировано картинок: ${jobs.length + 2} → public/og/`);
 
 // ---------------------------------------------------------------- favicon.ico
 
