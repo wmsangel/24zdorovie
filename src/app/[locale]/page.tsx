@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AdSlot } from "@/components/AdSlot";
@@ -12,8 +13,31 @@ import { SITE_META, type Locale } from "@/config/site";
 import { TOOLS } from "@/config/tools";
 import { getAllTags, getArticles, getByCategory, getFeatured, tagSlug } from "@/lib/content";
 import { isLocale, localePath, plural, translator } from "@/lib/i18n";
+import { buildMetadata } from "@/lib/seo";
 
 export const revalidate = 3600;
+
+/**
+ * Метадата главной. Без неё страница наследовала только title/description из
+ * layout, но БЕЗ openGraph/twitter — и репост ссылки на главную в соцсетях шёл
+ * без карточки (og:image отсутствовал). buildMetadata добавляет OG, twitter и
+ * hreflang; title делаем absolute, чтобы шаблон "%s — 24zdorovie" не задвоил бренд.
+ */
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale: raw } = await params;
+  if (!isLocale(raw)) return {};
+  const locale: Locale = raw;
+  const meta = SITE_META[locale];
+  const title = `${meta.title} — ${meta.tagline}`;
+  return {
+    ...buildMetadata({ locale, path: "/", title, description: meta.description }),
+    title: { absolute: title },
+  };
+}
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params;

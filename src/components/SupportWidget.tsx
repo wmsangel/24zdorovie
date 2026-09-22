@@ -106,8 +106,10 @@ function CopyButton({
 export function SupportWidget({ locale }: { locale: Locale }) {
   const t = COPY[locale];
   const enc = encodeURIComponent;
-  const shareUrl = `${SITE.url}/${locale}/support`;
-  const siteUrl = `${SITE.url}/${locale}`;
+  // Со слэшем на конце: сайт на trailingSlash, иначе краулеры соцсетей идут
+  // через 308-редирект перед тем, как прочитать OG.
+  const shareUrl = `${SITE.url}/${locale}/support/`;
+  const siteUrl = `${SITE.url}/${locale}/`;
   const telegram = locale === "ru" ? SITE.social.telegramRu : SITE.social.telegramEn;
 
   const shareTargets = [
