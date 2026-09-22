@@ -528,11 +528,13 @@ export const TOOLS: Tool[] = [
       ru: [
         "/heart/holesterin-lpnp-lpvp",
         "/heart/triglitseridy-norma-i-kak-snizit",
+        "/weight/insulinorezistentnost",
         "/longevity/chekap-po-vozrastam",
       ],
       en: [
         "/heart/cholesterol-explained",
         "/heart/triglycerides-explained",
+        "/weight/insulin-resistance",
         "/longevity/health-checkups-by-age",
       ],
     },
