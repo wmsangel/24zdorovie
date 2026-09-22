@@ -23,6 +23,8 @@ Google» — пропустить, не тратя заявку. Один URL п
 - [x] https://24zdorovie.com/ru/tools/period-calculator/ — отправлен 2026-09-18
 
 ## День 2
+- [ ] https://24zdorovie.com/ru/weight/insulinorezistentnost/  ← новая (22.09)
+- [ ] https://24zdorovie.com/en/weight/insulin-resistance/  ← новая (22.09)
 - [ ] https://24zdorovie.com/en/tools/running-pace-calculator/
 - [ ] https://24zdorovie.com/ru/tools/running-pace-calculator/
 - [ ] https://24zdorovie.com/en/mental-health/how-to-lower-cortisol/
@@ -31,8 +33,6 @@ Google» — пропустить, не тратя заявку. Один URL п
 - [ ] https://24zdorovie.com/ru/tools/one-rep-max-calculator/
 - [ ] https://24zdorovie.com/en/tools/ideal-weight-calculator/
 - [ ] https://24zdorovie.com/ru/tools/ideal-weight-calculator/
-- [ ] https://24zdorovie.com/ru/tools/ (хаб «Калькуляторы здоровья», перезалит)
-- [ ] https://24zdorovie.com/en/tools/
 
 ## День 3
 - [ ] https://24zdorovie.com/en/tools/due-date-calculator/
@@ -47,6 +47,10 @@ Google» — пропустить, не тратя заявку. Один URL п
 - [ ] https://24zdorovie.com/en/
 
 ## Бэклог (разбивать по 10 на следующие дни)
+Перенесено из Дня 2 (уже проиндексированные хабы, перезалиты — низкий приоритет):
+- [ ] https://24zdorovie.com/ru/tools/  (хаб «Калькуляторы здоровья», перезалит)
+- [ ] https://24zdorovie.com/en/tools/
+
 Свежие статьи, ещё не отправленные: beauty/уход (dokazatelnyy-uhod-za-kozhey /
 evidence-based-skincare, apparatnaya-kosmetologiya / aesthetic-procedures,
 domashnie-beauty-pribory / at-home-beauty-devices, zdorove-glaz-zrenie /
