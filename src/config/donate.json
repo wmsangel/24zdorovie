@@ -1,0 +1,26 @@
+[
+  {
+    "id": "tron",
+    "chain": "TRON",
+    "standard": "TRC-20",
+    "assets": ["USDT"],
+    "address": "TTYkkhf3Pbc3Vw8h8wt2Y1uEGfxmT1TcL6",
+    "qr": "/donate/tron.svg"
+  },
+  {
+    "id": "solana",
+    "chain": "Solana",
+    "standard": "SPL",
+    "assets": ["SOL", "USDT"],
+    "address": "He8CCQNSxyeGTiBG1EwxjbfNnQJndYB58jY15fBezyLX",
+    "qr": "/donate/solana.svg"
+  },
+  {
+    "id": "ethereum",
+    "chain": "Ethereum",
+    "standard": "ERC-20",
+    "assets": ["ETH", "USDT", "USDC"],
+    "address": "0x80cda3f917b5cb07217bacc5d81605d406cbcfb8",
+    "qr": "/donate/ethereum.svg"
+  }
+]

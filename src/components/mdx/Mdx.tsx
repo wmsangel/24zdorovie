@@ -26,6 +26,7 @@ import { SleepCycleCalculator } from "../tools/SleepCycleCalculator";
 import { SymptomChecker } from "../tools/SymptomChecker";
 import { VitaminDCalculator } from "../tools/VitaminDCalculator";
 import { WaterIntakeCalculator } from "../tools/WaterIntakeCalculator";
+import { SupportWidget } from "../SupportWidget";
 import {
   Callout,
   DataTable,
@@ -86,6 +87,7 @@ const components = {
   RunningPaceCalculator,
   PeriodCalculator,
   PregnancyWeightCalculator,
+  SupportWidget,
 };
 
 export function Mdx({ source }: { source: string }) {

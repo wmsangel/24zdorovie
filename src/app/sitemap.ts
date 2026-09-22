@@ -29,6 +29,7 @@ const STATIC_PATHS = [
   "/privacy",
   "/terms",
   "/disclaimer",
+  "/support",
 ];
 
 /** absolute() сам добавляет завершающий слэш — он обязателен при trailingSlash: true */

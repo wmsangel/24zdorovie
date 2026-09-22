@@ -25,6 +25,7 @@ export function Footer({ locale }: { locale: Locale }) {
     { href: "/authors", label: locale === "ru" ? "Авторы и редполитика" : "Authors & editorial policy" },
     { href: "/contacts", label: locale === "ru" ? "Контакты" : "Contacts" },
     { href: "/advertising", label: locale === "ru" ? "Реклама на сайте" : "Advertise" },
+    { href: "/support", label: locale === "ru" ? "Поддержать проект" : "Support us" },
   ];
 
   const legalLinks = [
