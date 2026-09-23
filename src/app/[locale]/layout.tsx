@@ -18,6 +18,22 @@ const manrope = Manrope({
   display: "swap",
 });
 
+/**
+ * Токены подтверждения прав в вебмастерах. Не секреты — они и так видны
+ * в HTML каждой страницы; держим в коде, чтобы переживали переезд хостинга.
+ *
+ * Google: Search Console → Настройки (шестерёнка слева внизу) → Подтверждение
+ * права собственности → «Тег HTML» → скопировать значение content="…",
+ * без самого тега. Пустая строка = тег не выводится (сборка остаётся зелёной).
+ *
+ * Зачем дубль к файлу в /public: 16.09.2026 при переезде на Cloudflare Pages
+ * файлы подтверждения ушли в 404 на неделю (Pages срезает «.html», и адрес
+ * попадал под правило локали в functions/_middleware.js) — Яндекс успел снять
+ * подтверждение. Мета-тег не зависит от роутинга статики.
+ */
+const GOOGLE_VERIFICATION = ""; // ← вставить токен из GSC
+const YANDEX_VERIFICATION = "fe376f3b8b568699";
+
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -83,9 +99,11 @@ export async function generateMetadata({
       follow: true,
       googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
     },
-    // Google подтверждён файлом в /public, Яндексу нужен мета-тег
+    // Оба вебмастера продублированы мета-тегом — файлы в /public как таковые
+    // остаются, но одного их наличия мало (см. GOOGLE_VERIFICATION выше).
     verification: {
-      yandex: "fe376f3b8b568699",
+      yandex: YANDEX_VERIFICATION,
+      ...(GOOGLE_VERIFICATION ? { google: GOOGLE_VERIFICATION } : {}),
     },
   };
 }
