@@ -14,10 +14,17 @@
 
 // Префиксы/папки, которые нельзя трогать правилом «без локали».
 // Должны совпадать с реальными корневыми папками out/ (ru, en, _next,
-// _not-found, og, covers, ads, rss, 404) — иначе их бы увело на /ru/…
-const RESERVED = /^\/(ru|en|_next|_not-found|og|covers|ads|rss|404)(\/|$)/;
-// Root-файлы и любые файлы с расширением обслуживаем как есть
-const HAS_EXT = /\.[a-z0-9]{2,5}$/i;
+// _not-found, og, covers, ads, rss, donate, 404) — иначе их бы увело на /ru/…
+const RESERVED = /^\/(ru|en|_next|_not-found|og|covers|ads|rss|donate|404)(\/|$)/;
+// Root-файлы и любые файлы с расширением обслуживаем как есть.
+// Верхняя граница — 12 символов: расширения бывают длиннее пяти
+// (manifest.webmanifest — 11), иначе такой файл уезжает на /ru/… и даёт 404.
+const HAS_EXT = /\.[a-z0-9]{2,12}$/i;
+// Файлы подтверждения прав в вебмастерах: корневые google<hex>.html и
+// yandex_<hex>.html. Pages отдаёт такой файл и по адресу без «.html» (308),
+// а безрасширенный адрес правило «без локали» увело бы на /ru/… → 404,
+// и права в GSC/Яндексе отвалились бы при перепроверке.
+const VERIFY = /^\/(google[0-9a-z]+|yandex_[0-9a-z]+)(\.html)?$/i;
 
 function safeDecode(s) {
   try {
@@ -76,6 +83,7 @@ export async function onRequest(context) {
   // 4. Пути без префикса локали → русская версия (постоянный редирект).
   const noLocale =
     !RESERVED.test(p) &&
+    !VERIFY.test(p) &&
     !/^\/(ru|en)$/.test(p) &&
     !HAS_EXT.test(p) &&
     p !== "/";
