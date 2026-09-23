@@ -1,7 +1,7 @@
 ---
 title: "Heart Attack & Stroke Risk Calculator (SCORE2)"
 description: "Estimate your 10-year risk of heart attack and stroke with the SCORE2 (2021) algorithm, calibrated to your region. The current European standard — from an ordinary lipid panel, no test kit needed."
-updated: "2026-08-17"
+updated: "2026-09-23"
 lede: "SCORE2 is the current European algorithm that estimates your chance of a heart attack or stroke in the next 10 years from five inputs: age, sex, smoking, blood pressure, and total and HDL cholesterol. The European Society of Cardiology calibrates it to four risk regions, so the same lab values give a higher figure in a high-risk country than a low-risk one. The model works for ages 40–69 without established cardiovascular disease, diabetes or kidney disease."
 faq:
   - q: "What does SCORE2 show?"
@@ -16,6 +16,12 @@ faq:
     a: "See a doctor. At high and very high risk, the discussion usually goes beyond lifestyle to lowering LDL cholesterol with medication and controlling blood pressure to target. A clinician decides on treatment with the full picture; the calculator only shows the scale of the risk."
   - q: "Who is SCORE2 not for?"
     a: "People under 40 or over 69 (the separate SCORE2-OP model covers older adults), and anyone with established cardiovascular disease, diabetes, chronic kidney disease or familial hypercholesterolaemia. Their risk is assessed differently and is already high — SCORE2 does not apply."
+  - q: "Which region should I pick for my country?"
+    a: "By the 2021 ESC classification: low — Belgium, Denmark, France, Israel, Luxembourg, the Netherlands, Norway, Spain, Switzerland, the United Kingdom; moderate — Austria, Finland, Germany, Greece, Iceland, Ireland, Italy, Malta, Portugal, Slovenia, Sweden; high — Croatia, Czechia, Estonia, Hungary, Kazakhstan, Poland, Slovakia, Turkey; very high — Bulgaria, Latvia, Lithuania, Moldova, Romania, Russia, Serbia, Ukraine and most of the CIS. The region matters: the same blood results give roughly double the risk in a very-high-risk country compared with Germany."
+  - q: "What is the SCORE2 risk for a 48-year-old male?"
+    a: "It depends on smoking and blood results. In Germany (moderate-risk region), a 48-year-old man who does not smoke, with blood pressure 130, total cholesterol 5.5 and HDL 1.2 mmol/L, gets 3.5% — the high category for his age. If he smokes, the same numbers give 6.4%. In a very-high-risk country such as Russia the non-smoking figure would be 6.4%."
+  - q: "What is the SCORE2 risk for a woman of 41 or 58?"
+    a: "In Germany, a 41-year-old non-smoking woman with blood pressure 125, total cholesterol 5.0 and HDL 1.6 mmol/L gets 0.8% — low to moderate. A 58-year-old non-smoking woman with 135, 5.8 and 1.4 gets 3.8%, still low to moderate for her age band; in France or Spain the same profile gives 3.2%."
 sources:
   - title: "SCORE2 working group and ESC Cardiovascular risk collaboration. SCORE2 risk prediction algorithms: new models to estimate 10-year risk of cardiovascular disease in Europe. Eur Heart J, 2021"
     url: "https://pubmed.ncbi.nlm.nih.gov/34120177/"
@@ -47,6 +53,27 @@ The category matters more than the raw percentage. The thresholds are tied to ag
   ]}
   caption="Risk-category thresholds from the 2021 ESC guidelines"
 />
+
+## Worked examples: what the numbers look like
+
+Before entering your own figures, here are typical profiles run through this same calculator for a moderate-risk country such as Germany.
+
+<DataTable
+  head={["Profile", "SBP / total chol / HDL", "Risk", "Category"]}
+  rows={[
+    ["Woman, 41, non-smoker", "125 / 5.0 / 1.6", "0.8%", "Low to moderate"],
+    ["Man, 48, non-smoker", "130 / 5.5 / 1.2", "3.5%", "High"],
+    ["Man, 48, smoker", "130 / 5.5 / 1.2", "6.4%", "High"],
+    ["Woman, 58, non-smoker", "135 / 5.8 / 1.4", "3.8%", "Low to moderate"],
+    ["Man, 58, non-smoker", "140 / 5.5 / 1.2", "6.9%", "High"],
+    ["Man, 60, smoker", "160 / 6.5 / 1.0", "18.1%", "Very high"],
+  ]}
+  caption="Cholesterol in mmol/L, blood pressure systolic. SCORE2 calculated for a moderate-risk region"
+/>
+
+Two things stand out. Smoking is the most expensive item on the list: for the 48-year-old man it takes risk from 3.5% to 6.4% with identical blood results. And the age band shifts the verdict as much as the numbers do — the 58-year-old woman's 3.8% still counts as low to moderate, because the threshold for 50–69 sits at 5%, while a 48-year-old man's 3.5% is already "high" under the stricter under-50 cut-off.
+
+Region changes the answer too. The same 58-year-old non-smoking man scores **6.9% in Germany, 5.4% in France or Spain, and 12.9% in Russia** — same person, same blood test. The scale is calibrated to national cardiovascular mortality, so an identical set of risk factors turns into an event more often in a very-high-risk country.
 
 <ReadAlso href="/en/heart/cholesterol-explained" title="Cholesterol: LDL, HDL and what actually lowers risk" />
 
