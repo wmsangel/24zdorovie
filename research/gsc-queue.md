@@ -23,7 +23,7 @@ Google» — пропустить, не тратя заявку. Один URL п
 - [x] https://24zdorovie.com/ru/tools/period-calculator/ — отправлен 2026-09-18
 
 ## День 2
-- [ ] https://24zdorovie.com/ru/weight/insulinorezistentnost/  ← новая (22.09)
+- [ ] https://24zdorovie.com/ru/weight/insulinorezistentnost/  ← новая (22.09); слот забронирован 23.09, ждёт ручной подачи владельцем
 - [ ] https://24zdorovie.com/en/weight/insulin-resistance/  ← новая (22.09)
 - [ ] https://24zdorovie.com/en/tools/running-pace-calculator/
 - [ ] https://24zdorovie.com/ru/tools/running-pace-calculator/
