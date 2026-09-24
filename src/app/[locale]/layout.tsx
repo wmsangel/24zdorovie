@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Analytics } from "@/components/Analytics";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SupportFab } from "@/components/SupportFab";
 import { JsonLd } from "@/components/JsonLd";
 import { themeScript } from "@/components/ThemeToggle";
 import { ADS } from "@/config/ads";
@@ -174,6 +175,7 @@ export default async function LocaleLayout({
         <Header locale={locale} />
         <main id="main">{children}</main>
         <Footer locale={locale} />
+        <SupportFab locale={locale} />
         <JsonLd data={[organizationLd(locale), websiteLd(locale)]} />
         <Analytics />
       </body>
