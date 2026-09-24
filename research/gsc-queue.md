@@ -24,7 +24,7 @@ Google» — пропустить, не тратя заявку. Один URL п
 
 ## День 2
 - [x] https://24zdorovie.com/ru/weight/insulinorezistentnost/ — отправлен 2026-09-23
-- [x] https://24zdorovie.com/en/weight/insulin-resistance/ — слот забронирован 2026-09-24
+- [x] https://24zdorovie.com/en/weight/insulin-resistance/ — отправлен 2026-09-24
 - [ ] https://24zdorovie.com/en/tools/running-pace-calculator/
 - [ ] https://24zdorovie.com/ru/tools/running-pace-calculator/
 - [ ] https://24zdorovie.com/en/mental-health/how-to-lower-cortisol/
