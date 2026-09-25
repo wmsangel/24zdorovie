@@ -413,6 +413,31 @@ export const TOOLS: Tool[] = [
     },
   },
   {
+    slug: "findrisc-calculator",
+    emoji: "🩺",
+    category: "weight",
+    name: {
+      ru: "Тест на риск диабета (FINDRISC)",
+      en: "Diabetes Risk Test (FINDRISC)",
+    },
+    tagline: {
+      ru: "Валидированный опросник FINDRISC: 8 вопросов оценивают риск диабета 2 типа на 10 лет — без анализов, по образу жизни и семейной истории",
+      en: "The validated FINDRISC questionnaire: 8 questions estimate your 10-year risk of type 2 diabetes — no blood test, from lifestyle and family history",
+    },
+    related: {
+      ru: [
+        "/weight/insulinorezistentnost",
+        "/weight/vistseralnyy-zhir",
+        "/heart/kak-snizit-serdechno-sosudistyy-risk",
+      ],
+      en: [
+        "/weight/insulin-resistance",
+        "/weight/visceral-fat",
+        "/heart/how-to-lower-cardiovascular-risk",
+      ],
+    },
+  },
+  {
     slug: "fiber-calculator",
     emoji: "🌾",
     category: "gut",
