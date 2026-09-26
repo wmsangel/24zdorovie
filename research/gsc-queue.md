@@ -25,7 +25,7 @@ Google» — пропустить, не тратя заявку. Один URL п
 ## День 2
 - [x] https://24zdorovie.com/ru/weight/insulinorezistentnost/ — отправлен 2026-09-23
 - [x] https://24zdorovie.com/en/weight/insulin-resistance/ — отправлен 2026-09-24
-- [ ] https://24zdorovie.com/ru/tools/findrisc-calculator/  ← новая (25.09), приоритет
+- [x] https://24zdorovie.com/ru/tools/findrisc-calculator/ — слот забронирован 2026-09-26 (подать вручную)
 - [ ] https://24zdorovie.com/en/tools/findrisc-calculator/  ← новая (25.09), приоритет
 - [ ] https://24zdorovie.com/en/tools/running-pace-calculator/
 - [ ] https://24zdorovie.com/ru/tools/running-pace-calculator/
@@ -68,3 +68,4 @@ safe-weight-loss-rate, chitmily-i-refidy / cheat-meals-refeeds), рецепты
 - 2026-09-18: очередь создана; отправка выполняется вручную (GSC-домен закрыт для Claude in Chrome).
 - 2026-09-18: День 1 — отправлено 10/10. Следующий батч — День 2. Квота на сегодня исчерпана.
 - 2026-09-25: https://24zdorovie.com/en/fitness/hiit-training/ — отправлен ✅ (было «Обнаружена, не проиндексирована»).
+- 2026-09-26: слот забронирован за https://24zdorovie.com/ru/tools/findrisc-calculator/ (новый инструмент).
