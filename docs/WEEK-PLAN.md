@@ -75,14 +75,14 @@ Telegram-автопостинг крутится сам.
 Порядок = приоритет. Брать по ОДНОЙ задаче, когда текущий недельный план исчерпан.
 Все пункты укладываются в наши ограничения: статика, органика, без бэкенда.
 
-0. [ ] **CTR/позиция двух EN-инструментов с уже большим спросом** (срез 28.09, см.
-   память `search-console-demand-2026-09`). У `burnout-test` и `biological-age-calculator`
-   уже 100+ показов и **0 кликов** — это самый дешёвый рычаг (спрос есть, добираем позицию/CTR):
-   - [ ] `burnout-test`: title/H1/FAQ под точные EN-запросы — «burnout self test», «burnout quiz»,
-     «burnout questionnaire», «burnout self assessment free», «symptoms test for students».
-   - [ ] `biological-age-calculator`: покрыть варианты «levine / **yale** / blood test biological
-     age calculator» (запрос «biological age calculator yale» — новый, 58 показов).
-   Только on-page (заголовки/подзаголовки/FAQ/перелинковка), без ломки расчёта.
+0. [x] **CTR/позиция двух EN-инструментов с уже большим спросом** ✅ 2026-09-28
+   (срез 28.09, память `search-console-demand-2026-09`). У обоих 100+ показов и 0 кликов.
+   - [x] `biological-age-calculator`: «Yale» в title/description/lede + FAQ «Is this the Yale
+     biological age calculator?» (PhenoAge, Morgan Levine, Йель — факт); закрыт запрос
+     «biological age calculator yale» (58). Tagline → «(Levine, Yale)». RU — упоминание в lede.
+   - [x] `burnout-test`: в описание добавлено «questionnaire» (71 показ). Остальные варианты
+     (self test / quiz / self assessment free / symptoms test for students) уже были покрыты.
+   Задеплоено, IndexNow переотправил страницы. Дальше — смотреть сдвиг позиций/кликов по дельте.
 
 1. [ ] **Шкалы-опросники — новый жанр «тест со скорингом»** (клиентский расчёт, как
    `BurnoutSelfCheck`; RU+EN; обязательно дисклеймер «это скрининг, не диагноз» +
