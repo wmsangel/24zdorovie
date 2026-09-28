@@ -395,6 +395,44 @@ export const HOUSE_ADS_INVENTORY: HouseAd[] = [
       },
     },
   },
+  {
+    id: "foundaday",
+    href: "https://foundaday.com/",
+    emoji: "✨",
+    accent: "#db2777",
+    locales: ["ru", "en"],
+    copy: {
+      ru: {
+        title: "Находка дня",
+        tagline: "Одна интересная находка в день — в каждой рубрике",
+        cta: "Смотреть",
+      },
+      en: {
+        title: "Found a Day",
+        tagline: "One interesting find a day, in every category",
+        cta: "See it",
+      },
+    },
+  },
+  {
+    id: "ocrsnip",
+    href: "https://ocrsnip.com/",
+    emoji: "📄",
+    accent: "#0d9488",
+    locales: ["ru", "en"],
+    copy: {
+      ru: {
+        title: "OCRSnip",
+        tagline: "Выписки → Excel, фото → текст, таблицы → таблицы. Всё в браузере",
+        cta: "Открыть",
+      },
+      en: {
+        title: "OCRSnip",
+        tagline: "Statements → Excel, images → text, tables → tables. In your browser",
+        cta: "Open",
+      },
+    },
+  },
 ];
 
 const PLACEMENT_ORDER: AdPlacement[] = [
