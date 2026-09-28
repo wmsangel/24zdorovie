@@ -80,7 +80,7 @@ export const TOOLS: Tool[] = [
     },
     tagline: {
       ru: "PhenoAge по девяти показателям крови — формула, валидированная по смертности, без покупки теста",
-      en: "PhenoAge from nine standard blood markers — a mortality-validated formula, no test kit required",
+      en: "PhenoAge (Levine, Yale) from nine standard blood markers — a mortality-validated formula, no test kit required",
     },
     related: {
       ru: [
