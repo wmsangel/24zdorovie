@@ -215,9 +215,12 @@ export function Figure({ src, alt, caption }: { src: string; alt: string; captio
 
 /** Внутренняя перелинковка — важна для SEO, поэтому вынесена в отдельный блок */
 export function ReadAlso({ href, title }: { href: string; title: string }) {
+  // Локаль берём из href: MDX-компоненту она не передаётся, а показывать в
+  // EN-статьях русское «Читайте также» неправильно (портит E-E-A-T).
+  const label = href.startsWith("/en/") ? "Read also: " : "Читайте также: ";
   return (
     <p className="not-prose my-6 rounded-xl border-l-[3px] border-[var(--brand)] bg-[var(--brand-tint)] px-4 py-3 text-[0.95rem]">
-      <span className="font-semibold text-[var(--brand-strong)]">Читайте также: </span>
+      <span className="font-semibold text-[var(--brand-strong)]">{label}</span>
       <Link href={href} className="underline underline-offset-2">
         {title}
       </Link>
