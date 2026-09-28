@@ -75,6 +75,15 @@ Telegram-автопостинг крутится сам.
 Порядок = приоритет. Брать по ОДНОЙ задаче, когда текущий недельный план исчерпан.
 Все пункты укладываются в наши ограничения: статика, органика, без бэкенда.
 
+0. [ ] **CTR/позиция двух EN-инструментов с уже большим спросом** (срез 28.09, см.
+   память `search-console-demand-2026-09`). У `burnout-test` и `biological-age-calculator`
+   уже 100+ показов и **0 кликов** — это самый дешёвый рычаг (спрос есть, добираем позицию/CTR):
+   - [ ] `burnout-test`: title/H1/FAQ под точные EN-запросы — «burnout self test», «burnout quiz»,
+     «burnout questionnaire», «burnout self assessment free», «symptoms test for students».
+   - [ ] `biological-age-calculator`: покрыть варианты «levine / **yale** / blood test biological
+     age calculator» (запрос «biological age calculator yale» — новый, 58 показов).
+   Только on-page (заголовки/подзаголовки/FAQ/перелинковка), без ломки расчёта.
+
 1. [ ] **Шкалы-опросники — новый жанр «тест со скорингом»** (клиентский расчёт, как
    `BurnoutSelfCheck`; RU+EN; обязательно дисклеймер «это скрининг, не диагноз» +
    ссылка на валидацию шкалы). Механика инструмента: `src/lib/<name>.ts` +
