@@ -433,6 +433,25 @@ export const HOUSE_ADS_INVENTORY: HouseAd[] = [
       },
     },
   },
+  {
+    id: "dasha-motion",
+    href: "https://dasha-motion.com/",
+    emoji: "🎬",
+    accent: "#e11d48",
+    locales: ["ru", "en"],
+    copy: {
+      ru: {
+        title: "Dasha Motion",
+        tagline: "Моушн-дизайн: рекламные креативы, 2D-анимация и AI",
+        cta: "Портфолио",
+      },
+      en: {
+        title: "Dasha Motion",
+        tagline: "Motion design: ad creatives, 2D animation and AI",
+        cta: "Portfolio",
+      },
+    },
+  },
 ];
 
 const PLACEMENT_ORDER: AdPlacement[] = [
