@@ -1,0 +1,218 @@
+<title>Дорожная карта 24zdorovie</title>
+<style>
+  /* Layout: одна колонка, липкий заголовок, сетка плиток статуса, затем разделы-карточки.
+     Токены — фирменные цвета 24zdorovie (зелёный leaf + бумага), шрифт Manrope. */
+  :root {
+    --bg: #fbfaf6;
+    --surface: #ffffff;
+    --surface-2: #f2f1ea;
+    --line: #e4e2d8;
+    --ink: #14201a;
+    --ink-soft: #4d5c54;
+    --ink-faint: #8a938c;
+    --brand: #1fa268;
+    --brand-strong: #17784d;
+    --brand-tint: #e6f4ec;
+    --amber: #a9731810;
+    --warn: #b8790a;
+    --owner: #1f7fa2;
+    --shadow: 0 1px 2px rgba(20,32,26,.05), 0 6px 20px rgba(20,32,26,.04);
+    --font: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e1512; --surface: #16201b; --surface-2: #1c2822; --line: #2a3830;
+      --ink: #eaf0ec; --ink-soft: #a9b6ad; --ink-faint: #7d8a82;
+      --brand: #45c98c; --brand-strong: #7fe0ae; --brand-tint: #17352690;
+      --warn: #e0a94a; --owner: #5cb6d6;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.25);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e1512; --surface: #16201b; --surface-2: #1c2822; --line: #2a3830;
+    --ink: #eaf0ec; --ink-soft: #a9b6ad; --ink-faint: #7d8a82;
+    --brand: #45c98c; --brand-strong: #7fe0ae; --brand-tint: #17352690;
+    --warn: #e0a94a; --owner: #5cb6d6;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.25);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--font); line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-variant-numeric: tabular-nums;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding-inline: 20px; padding-block: 0 56px; }
+
+  header {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+    background: color-mix(in oklab, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .head-in { max-width: 900px; margin: 0 auto; padding: 16px 20px;
+    display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  h1 { font-size: 1.4rem; font-weight: 800; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+  .logo-dot { display: inline-block; width: 12px; height: 12px; border-radius: 4px;
+    background: var(--brand); margin-right: 8px; vertical-align: middle; }
+  .updated { font-size: .8rem; color: var(--ink-faint); white-space: nowrap; }
+
+  .lead { color: var(--ink-soft); font-size: .95rem; margin: 22px 0 4px; }
+  .lead code { background: var(--surface-2); padding: 1px 6px; border-radius: 6px; font-size: .85em; }
+
+  /* плитки статуса */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin: 22px 0 8px; }
+  .tile { background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: 14px 16px; box-shadow: var(--shadow); min-width: 0; }
+  .tile .n { font-size: 1.7rem; font-weight: 800; line-height: 1.1; color: var(--brand-strong); }
+  .tile .l { font-size: .78rem; color: var(--ink-faint); margin-top: 3px; text-transform: uppercase; letter-spacing: .04em; }
+
+  section { margin-top: 34px; }
+  h2 { font-size: 1.05rem; font-weight: 800; margin: 0 0 12px; display: flex; align-items: center; gap: 8px; }
+  h2 .rule { flex: 1; height: 1px; background: var(--line); }
+
+  ol.plan { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: run; }
+  ol.plan > li { background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 13px 15px 13px 48px; position: relative; box-shadow: var(--shadow); min-width: 0; }
+  ol.plan > li::before { counter-increment: run; content: counter(run);
+    position: absolute; left: 12px; top: 12px; width: 26px; height: 26px; border-radius: 8px;
+    background: var(--brand-tint); color: var(--brand-strong); font-weight: 800; font-size: .85rem;
+    display: grid; place-items: center; }
+  .t { font-weight: 700; }
+  .d { color: var(--ink-soft); font-size: .9rem; margin-top: 3px; }
+
+  ul.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  ul.list > li { background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 11px 14px; font-size: .92rem; box-shadow: var(--shadow); min-width: 0; }
+  ul.list.done > li { border-left: 3px solid var(--brand); }
+  ul.list.ideas > li { border-left: 3px solid var(--warn); }
+  ul.list.owner > li { border-left: 3px solid var(--owner); }
+  ul.list b { font-weight: 700; }
+  .muted { color: var(--ink-soft); }
+
+  .pill { display: inline-block; font-size: .72rem; font-weight: 700; padding: 2px 8px; border-radius: 999px;
+    vertical-align: middle; }
+  .pill.q { background: var(--surface-2); color: var(--ink-soft); }
+  .pill.owner { background: color-mix(in oklab, var(--owner) 18%, transparent); color: var(--owner); }
+
+  .bg-note { background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px;
+    padding: 14px 16px; font-size: .9rem; color: var(--ink-soft); }
+  .bg-note b { color: var(--ink); }
+
+  footer { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line);
+    font-size: .82rem; color: var(--ink-faint); }
+  footer code { background: var(--surface-2); padding: 1px 6px; border-radius: 6px; }
+  a { color: var(--brand-strong); }
+</style>
+
+<header>
+  <div class="head-in">
+    <h1><span class="logo-dot"></span>Дорожная карта 24zdorovie</h1>
+    <span class="updated">обновлено 29.09.2026</span>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="lead">
+    Живой статус проекта: очередь работ, сделанное и копилка идей. Источник правды —
+    <code>docs/WEEK-PLAN.md</code> в репозитории; эта страница — витрина поверх него.
+    Стадия: домен молодой, потолок — авторитет/позиции и монетизация в рамках ограничений
+    (органика, статик, приём денег через ИП КГ, курс на повторный AdSense).
+  </p>
+
+  <div class="tiles">
+    <div class="tile"><div class="n">10</div><div class="l">запусков в очереди</div></div>
+    <div class="tile"><div class="n">23</div><div class="l">калькулятора</div></div>
+    <div class="tile"><div class="n">130+</div><div class="l">статьи ×2 языка</div></div>
+    <div class="tile"><div class="n">14</div><div class="l">сайта в кросс-промо</div></div>
+    <div class="tile"><div class="n">5</div><div class="l">решений за владельцем</div></div>
+    <div class="tile"><div class="n">7</div><div class="l">идей в копилке</div></div>
+  </div>
+
+  <section>
+    <h2>Очередь — 10 запусков <span class="rule"></span></h2>
+    <ol class="plan">
+      <li><span class="t">PHQ-9 — скрининг депрессии</span> <span class="pill q">в очереди</span>
+        <div class="d">Инструмент mental-health по паттерну FINDRISC. Усиливает топ-кластер спроса (burnout/mental-health).</div></li>
+      <li><span class="t">GAD-7 — скрининг тревоги</span> <span class="pill q">в очереди</span>
+        <div class="d">Тем же паттерном; взаимные ReadAlso с PHQ-9 и статьями о стрессе/выгорании.</div></li>
+      <li><span class="t">Страница «Эксперты / редсовет» + подписи рецензента</span> <span class="pill q">в очереди</span>
+        <div class="d">E-E-A-T → плюс к YMYL-ранжированию и к повторной подаче AdSense (ближайший денежный шлюз).</div></li>
+      <li><span class="t">Сквозная аналитика событий (GA4 + Метрика)</span> <span class="pill q">в очереди</span>
+        <div class="d">Хелпер track(): использование калькуляторов, партнёрские клики (сигнал дохода), плавашка, поиск, дочитывание.</div></li>
+      <li><span class="t">Email-дайджест + PDF-лид-магнит</span> <span class="pill q">в очереди</span>
+        <div class="d">Внешний сервис (проверить выплаты для КГ), форма на статике, первый PDF-гайд. Правка Privacy.</div></li>
+      <li><span class="t">Контекстные ссылки на сеть — внедрить одобренное</span> <span class="pill q">в очереди</span>
+        <div class="d">Сильная связка gigiena-sna → prodom-expert (RU). Только после ок владельца.</div></li>
+      <li><span class="t">Справочник-БД — пилот на одной рубрике</span> <span class="pill q">в очереди</span>
+        <div class="d">Витамины/добавки: пакет MDX, десятки SEO-точек входа. Без drug-interaction/pill-ID.</div></li>
+      <li><span class="t">Контент №2 по свежим данным</span> <span class="pill q">в очереди</span>
+        <div class="d">Срез Bing/Яндекс/GSC → тема по реальным показам → статья RU+EN под явный пробел.</div></li>
+      <li><span class="t">Telegram +10 постов + перелинковка</span> <span class="pill q">в очереди</span>
+        <div class="d">Вечнозелёные посты (сейчас 22 в цикле) + взаимные ReadAlso по новым статьям.</div></li>
+      <li><span class="t">Ревизия и корректировка карты</span> <span class="pill q">в очереди</span>
+        <div class="d">Дельта-SEO-чек (дубли/lastmod/schema/сироты), снять цифры, обновить план.</div></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Фон каждого запуска <span class="rule"></span></h2>
+    <div class="bg-note">
+      <b>GSC</b> — следующая десятка из <code>research/gsc-queue.md</code> (вручную, ~10/сутки). ·
+      <b>Быстрые победы</b> — докрутка title/ReadAlso по проявившимся запросам (поз. ~6–15, 0 кликов). ·
+      <b>Edge-здоровье</b> — <code>npm run traffic</code> (наши 404 / спайк 5xx). ·
+      <b>Telegram</b> — автопостинг сам. · <b>Деплой</b> — <code>npm run deploy</code>, перед ним зелёный build.
+    </div>
+  </section>
+
+  <section>
+    <h2>✅ Сделано (13–29 сентября) <span class="rule"></span></h2>
+    <ul class="list done">
+      <li><b>Инфраструктура:</b> IndexNow в Pages-деплое; миграция на Cloudflare Pages завершена.</li>
+      <li><b>Контент под спрос:</b> инсулинорезистентность (RU+EN); докрутка SCORE2-калькулятора (worked examples).</li>
+      <li><b>Новый инструмент:</b> FINDRISC — риск диабета 2 типа (RU+EN).</li>
+      <li><b>CTR-докрутка:</b> biological-age («Yale») и burnout («questionnaire») под спрос.</li>
+      <li><b>Быстрые победы:</b> кофеин, витамин D, сон, EN-ИМТ (перелинковка/title).</li>
+      <li><b>Поддержка:</b> страница <code>/support</code> (крипто-донат + беклинк-блок) и плавашка «Связь и поддержка».</li>
+      <li><b>Полиш:</b> фирменная OG главной; фикс мобильного горизонтального скролла; фикс i18n ReadAlso (EN).</li>
+      <li><b>Бег и стопы:</b> 3 статьи RU+EN (кроссовки, колени, плантарный фасциит) + баннер Crocs (EN).</li>
+      <li><b>anti-age pillar</b> (RU+EN) — дом под оффер Beautiful People.</li>
+      <li><b>Кросс-промо:</b> вся семья сети (14 сайтов) в house-ads.</li>
+      <li><b>Разбор:</b> конкурентный анализ RU/EN + монетизация; аудит контактов.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>💡 Входящие идеи (копилка) <span class="rule"></span></h2>
+    <ul class="list ideas">
+      <li>Bing быстрая победа: «пульс покоя бегуны норма» (поз. 6) — довести title/описание.</li>
+      <li>vo2max / кофеин: подогнать title, когда GSC покажет конкретные запросы (не вслепую).</li>
+      <li>«Детектор репостов» (FB/TG/WhatsApp/VK/X) в дневном отчёте + кнопка «поделиться результатом».</li>
+      <li>AdMob-приложение — обёртка вокруг калькуляторов (Play-merchant для КГ закрыт → только реклама).</li>
+      <li>Платные PDF — только через Paddle (не Lemon Squeezy) и после проверки выплат в КГ.</li>
+      <li>Детская тема (сон/питание/экранное время) → откроет донора для ссылки на bilimjol.</li>
+      <li>Щитовидка/ТТГ — кандидат в контент (нет чистой рубрики — решить, куда класть).</li>
+      <li>301 <code>/covers/*.jpg → .webp</code> в middleware (файл «не трогать без причины»).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🔵 Ждёт решения владельца <span class="rule"></span></h2>
+    <ul class="list owner">
+      <li><b>Одобрить карту контекстных ссылок</b> на сеть — тогда внедряю по одной.</li>
+      <li><b>Beautiful People</b> — подать в Admitad; дать deeplink + erid → впишу оффер в anti-age pillar.</li>
+      <li><b>Токены GSC/Bing/Яндекс.Вебмастер/Метрика</b> — включат авто-аналитику и модуль «Проекты» izn.crm.</li>
+      <li><b>Пульс по возрасту</b> — делать ли инструмент (нужны перцентили NHANES).</li>
+      <li><b>Перенос регистратора домена</b> в Cloudflare (было отложено).</li>
+    </ul>
+  </section>
+
+  <footer>
+    Источник правды — <code>docs/WEEK-PLAN.md</code> в репозитории 24zdorovie. Эта страница
+    переопубликовывается на тот же URL после каждой значимой правки; пин и ссылка сохраняются.
+    Приватный артефакт — виден только владельцу.
+  </footer>
+</div>
