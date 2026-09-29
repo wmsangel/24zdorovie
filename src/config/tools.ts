@@ -146,6 +146,31 @@ export const TOOLS: Tool[] = [
     },
   },
   {
+    slug: "gad-7-anxiety-test",
+    emoji: "🫧",
+    category: "mental-health",
+    name: {
+      ru: "Тест на тревожность (GAD-7)",
+      en: "Anxiety Test (GAD-7)",
+    },
+    tagline: {
+      ru: "Валидированная шкала GAD-7: 7 вопросов оценивают тяжесть тревоги за 2 недели — бесплатно и анонимно",
+      en: "The validated GAD-7 scale: 7 questions gauge the severity of anxiety over 2 weeks — free and private",
+    },
+    related: {
+      ru: [
+        "/mental-health/trevoga-kak-rabotaet",
+        "/mental-health/panicheskie-ataki",
+        "/mental-health/kak-spravlyatsya-so-stressom",
+      ],
+      en: [
+        "/mental-health/understanding-anxiety",
+        "/mental-health/panic-attacks",
+        "/mental-health/how-to-manage-stress",
+      ],
+    },
+  },
+  {
     slug: "bmi-calculator",
     emoji: "⚖️",
     category: "weight",

@@ -16,6 +16,7 @@ import { CvdRiskCalculator } from "../tools/CvdRiskCalculator";
 import { FiberCalculator } from "../tools/FiberCalculator";
 import { FindriscCalculator } from "../tools/FindriscCalculator";
 import { Phq9Calculator } from "../tools/Phq9Calculator";
+import { Gad7Calculator } from "../tools/Gad7Calculator";
 import { HeartRateZonesCalculator } from "../tools/HeartRateZonesCalculator";
 import { IdealWeightCalculator } from "../tools/IdealWeightCalculator";
 import { OneRepMaxCalculator } from "../tools/OneRepMaxCalculator";
@@ -82,6 +83,7 @@ const components = {
   CvdRiskCalculator,
   FindriscCalculator,
   Phq9Calculator,
+  Gad7Calculator,
   SymptomChecker,
   BloodUnitConverter,
   BloodPressureChecker,
