@@ -37,6 +37,8 @@ Google» — пропустить, не тратя заявку. Один URL п
 - [ ] https://24zdorovie.com/ru/tools/ideal-weight-calculator/
 
 ## День 3
+- [ ] https://24zdorovie.com/ru/tools/phq-9-depression-test/  ← новая (29.09), приоритет
+- [ ] https://24zdorovie.com/en/tools/phq-9-depression-test/  ← новая (29.09), приоритет
 - [ ] https://24zdorovie.com/en/tools/due-date-calculator/
 - [ ] https://24zdorovie.com/ru/tools/due-date-calculator/
 - [ ] https://24zdorovie.com/en/tools/blood-pressure-checker/

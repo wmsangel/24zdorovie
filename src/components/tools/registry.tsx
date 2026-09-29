@@ -13,6 +13,7 @@ import { FindriscCalculator } from "./FindriscCalculator";
 import { HeartRateZonesCalculator } from "./HeartRateZonesCalculator";
 import { IdealWeightCalculator } from "./IdealWeightCalculator";
 import { OneRepMaxCalculator } from "./OneRepMaxCalculator";
+import { Phq9Calculator } from "./Phq9Calculator";
 import { OvulationCalculator } from "./OvulationCalculator";
 import { PeriodCalculator } from "./PeriodCalculator";
 import { PregnancyWeightCalculator } from "./PregnancyWeightCalculator";
@@ -44,6 +45,7 @@ const WIDGETS: Record<string, (props: { locale: Locale }) => React.ReactElement>
   "fiber-calculator": FiberCalculator,
   "cvd-risk-calculator": CvdRiskCalculator,
   "findrisc-calculator": FindriscCalculator,
+  "phq-9-depression-test": Phq9Calculator,
   "cold-flu-covid-checker": SymptomChecker,
   "blood-test-unit-converter": BloodUnitConverter,
   "blood-pressure-checker": BloodPressureChecker,

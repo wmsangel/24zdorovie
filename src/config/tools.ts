@@ -121,6 +121,31 @@ export const TOOLS: Tool[] = [
     },
   },
   {
+    slug: "phq-9-depression-test",
+    emoji: "🧠",
+    category: "mental-health",
+    name: {
+      ru: "Тест на депрессию (PHQ-9)",
+      en: "Depression Test (PHQ-9)",
+    },
+    tagline: {
+      ru: "Валидированная шкала PHQ-9: 9 вопросов оценивают тяжесть симптомов депрессии за 2 недели — бесплатно и анонимно",
+      en: "The validated PHQ-9 scale: 9 questions gauge the severity of depression symptoms over 2 weeks — free and private",
+    },
+    related: {
+      ru: [
+        "/mental-health/kpt-osnovy",
+        "/mental-health/sport-i-nastroenie",
+        "/mental-health/kak-spravlyatsya-so-stressom",
+      ],
+      en: [
+        "/mental-health/cbt-basics",
+        "/mental-health/exercise-and-mental-health",
+        "/mental-health/how-to-manage-stress",
+      ],
+    },
+  },
+  {
     slug: "bmi-calculator",
     emoji: "⚖️",
     category: "weight",
