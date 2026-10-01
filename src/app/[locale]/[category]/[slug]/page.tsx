@@ -85,7 +85,12 @@ export default async function ArticlePage({
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.85rem] text-[var(--ink-soft)]">
               {article.author && (
-                <span className="font-semibold text-[var(--ink)]">{article.author}</span>
+                <Link
+                  href={localePath(locale, "/authors")}
+                  className="font-semibold text-[var(--ink)] underline-offset-2 hover:underline"
+                >
+                  {article.author}
+                </Link>
               )}
               <time dateTime={article.date}>{formatDate(article.date, locale)}</time>
               {article.updated && article.updated !== article.date && (
