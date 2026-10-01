@@ -51,6 +51,9 @@
 
 ## План на ~10 запусков (по приоритету; одна главная задача за запуск)
 
+- **SEO: быстрая победа `/en/tools/sleep-calculator/`** — запрос «sleep calculator for women» 122 показа, поз. 5.7, 0 кликов (страница 178 показов, поз. 7.7): добавить «for women» в title/description и блок о сне у женщин (цикл, беременность, менопауза) с FAQ. (SEO, 2026-10-01)
+- **SEO: trailing slash на 14 EN-страницах** (`/en/contacts`, `/en/longevity/horvath-clock`, `/en/mental-health/burnout-dsm-5`, `/en/tools/caffeine-calculator` …) — Google выбрал canonical БЕЗ слэша, наш со слэшем: проверить 301 без-слэша → со слэшем на Cloudflare Pages, sitemap и внутренние ссылки. (SEO, 2026-10-01)
+
 1. [x] **PHQ-9 — скрининг депрессии** ✅ 2026-09-29 — `/tools/phq-9-depression-test` RU+EN.
    Формула/пороги в `src/lib/phq9.ts` (Kroenke 2001), safety-обработка пункта 9 (мысли о
    самоповреждении → кризисная подсказка независимо от суммы). Проверено: 17/27 «умеренно
