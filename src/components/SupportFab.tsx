@@ -79,6 +79,8 @@ export function SupportFab({ locale }: { locale: Locale }) {
             role="menuitem"
             href={reportHref()}
             onClick={() => setOpen(false)}
+            data-track="support_fab"
+            data-track-action="feedback"
             className="flex items-start gap-3 border-b border-[var(--line)] px-4 py-3.5 transition-colors hover:bg-[var(--surface-2)]"
           >
             <span aria-hidden="true" className="mt-0.5 text-xl leading-none">💬</span>
@@ -91,6 +93,8 @@ export function SupportFab({ locale }: { locale: Locale }) {
             role="menuitem"
             href={localePath(locale, "/support")}
             onClick={() => setOpen(false)}
+            data-track="support_fab"
+            data-track-action="donate"
             className="flex items-start gap-3 px-4 py-3.5 transition-colors hover:bg-[var(--surface-2)]"
           >
             <span aria-hidden="true" className="mt-0.5 text-xl leading-none">☕</span>

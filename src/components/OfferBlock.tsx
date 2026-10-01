@@ -82,6 +82,9 @@ export function OfferBlock({ toolSlug, locale }: { toolSlug: string; locale: Loc
           target="_blank"
           rel="sponsored noopener noreferrer"
           className="btn btn-primary shrink-0 self-start sm:self-center"
+          data-track="affiliate_click"
+          data-track-offer={offer.id}
+          data-track-placement="offerblock"
         >
           {offer.cta[locale]}
           <span

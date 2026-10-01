@@ -10,6 +10,7 @@ import { Newsletter } from "@/components/Newsletter";
 import { ShareBar } from "@/components/ShareBar";
 import { OfferBlock } from "@/components/OfferBlock";
 import { ToolWidget } from "@/components/tools/registry";
+import { TrackView } from "@/components/TrackView";
 import { getCategory } from "@/config/categories";
 import { LOCALES, SITE, type Locale } from "@/config/site";
 import { TOOLS, getTool } from "@/config/tools";
@@ -121,6 +122,7 @@ export default async function ToolPage({
             </p>
           )}
 
+          <TrackView event="tool_view" params={{ tool: tool.slug }} />
           <ToolWidget slug={tool.slug} locale={locale} />
 
           {/* Оффер идёт сразу под результатом: человек уже получил цифру */}

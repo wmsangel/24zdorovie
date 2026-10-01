@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
 import { notFound } from "next/navigation";
 import { Analytics } from "@/components/Analytics";
+import { TrackClicks } from "@/components/TrackClicks";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SupportFab } from "@/components/SupportFab";
@@ -178,6 +179,7 @@ export default async function LocaleLayout({
         <SupportFab locale={locale} />
         <JsonLd data={[organizationLd(locale), websiteLd(locale)]} />
         <Analytics />
+        <TrackClicks />
       </body>
     </html>
   );

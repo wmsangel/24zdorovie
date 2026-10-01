@@ -144,6 +144,9 @@ export function ProductCard({
           target="_blank"
           rel="sponsored noopener noreferrer"
           className="btn btn-primary shrink-0 self-start sm:self-center"
+          data-track="affiliate_click"
+          data-track-offer={title}
+          data-track-placement="productcard"
         >
           {cta}
           <span
@@ -221,7 +224,12 @@ export function ReadAlso({ href, title }: { href: string; title: string }) {
   return (
     <p className="not-prose my-6 rounded-xl border-l-[3px] border-[var(--brand)] bg-[var(--brand-tint)] px-4 py-3 text-[0.95rem]">
       <span className="font-semibold text-[var(--brand-strong)]">{label}</span>
-      <Link href={href} className="underline underline-offset-2">
+      <Link
+        href={href}
+        className="underline underline-offset-2"
+        data-track="internal_link"
+        data-track-kind="readalso"
+      >
         {title}
       </Link>
     </p>

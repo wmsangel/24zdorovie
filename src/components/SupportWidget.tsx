@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { Locale } from "@/config/site";
 import { SITE } from "@/config/site";
 import wallets from "@/config/donate.json";
+import { track } from "@/lib/track";
 
 /**
  * Страница поддержки: приём крипто-чаевых + блок «бесплатные способы помочь».
@@ -80,17 +81,22 @@ function CopyButton({
   idle,
   done,
   className = "",
+  event,
+  eventParams,
 }: {
   value: string;
   idle: string;
   done: string;
   className?: string;
+  event?: string;
+  eventParams?: Record<string, string>;
 }) {
   const [copied, setCopied] = useState(false);
   async function copy() {
     try {
       await navigator.clipboard.writeText(value);
       setCopied(true);
+      if (event) track(event, eventParams);
       setTimeout(() => setCopied(false), 2000);
     } catch {
       /* буфер недоступен — молча игнорируем */
@@ -156,6 +162,8 @@ export function SupportWidget({ locale }: { locale: Locale }) {
                     idle={t.copy}
                     done={t.copied}
                     className="btn btn-primary mt-3 text-[0.85rem]"
+                    event="donate_copy"
+                    eventParams={{ chain: w.chain }}
                   />
                 </div>
               </div>
@@ -177,11 +185,27 @@ export function SupportWidget({ locale }: { locale: Locale }) {
           <p className="font-display text-lg font-semibold">{t.shareLabel}</p>
           <div className="mt-3 flex flex-wrap gap-2">
             {shareTargets.map((s) => (
-              <a key={s.name} href={s.href} target="_blank" rel="noopener noreferrer" className={pill}>
+              <a
+                key={s.name}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-track="share"
+                data-track-target={s.name}
+                data-track-where="support"
+                className={pill}
+              >
                 {s.name}
               </a>
             ))}
-            <CopyButton value={siteUrl} idle={t.copyLink} done={t.linkCopied} className={pill} />
+            <CopyButton
+              value={siteUrl}
+              idle={t.copyLink}
+              done={t.linkCopied}
+              className={pill}
+              event="share"
+              eventParams={{ target: "copy_link", where: "support" }}
+            />
           </div>
         </div>
 
@@ -189,7 +213,13 @@ export function SupportWidget({ locale }: { locale: Locale }) {
         <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5">
           <p className="font-display text-lg font-semibold">{t.githubTitle}</p>
           <p className="mt-2 text-[0.9rem] leading-relaxed text-[var(--ink-soft)]">{t.githubText}</p>
-          <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className={`${pill} mt-3 inline-block`}>
+          <a
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-track="support_github"
+            className={`${pill} mt-3 inline-block`}
+          >
             {t.githubCta}
           </a>
         </div>
@@ -199,7 +229,13 @@ export function SupportWidget({ locale }: { locale: Locale }) {
           <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5">
             <p className="font-display text-lg font-semibold">{t.tgTitle}</p>
             <p className="mt-2 text-[0.9rem] leading-relaxed text-[var(--ink-soft)]">{t.tgText}</p>
-            <a href={telegram} target="_blank" rel="noopener noreferrer" className={`${pill} mt-3 inline-block`}>
+            <a
+              href={telegram}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-track="support_telegram"
+              className={`${pill} mt-3 inline-block`}
+            >
               {t.tgCta}
             </a>
           </div>
@@ -214,6 +250,8 @@ export function SupportWidget({ locale }: { locale: Locale }) {
             idle={t.copyLink}
             done={t.linkCopied}
             className={`${pill} mt-3 inline-block`}
+            event="share"
+            eventParams={{ target: "copy_link_recommend", where: "support" }}
           />
         </div>
       </div>

@@ -37,6 +37,8 @@ export function ShareBar({ url, title, locale }: { url: string; title: string; l
           href={s.href}
           target="_blank"
           rel="noopener noreferrer"
+          data-track="share"
+          data-track-target={s.name}
           className="rounded-full border border-[var(--line)] px-3 py-1.5 text-[0.8rem] font-semibold text-[var(--ink-soft)] transition-colors hover:border-[var(--brand)] hover:text-[var(--brand-strong)]"
         >
           {s.name}
@@ -45,6 +47,8 @@ export function ShareBar({ url, title, locale }: { url: string; title: string; l
       <button
         type="button"
         onClick={copy}
+        data-track="share"
+        data-track-target="copy_link"
         className="rounded-full border border-[var(--line)] px-3 py-1.5 text-[0.8rem] font-semibold text-[var(--ink-soft)] transition-colors hover:border-[var(--brand)] hover:text-[var(--brand-strong)]"
       >
         {copied ? tr("copied") : tr("copy_link")}
