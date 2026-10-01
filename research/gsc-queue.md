@@ -75,3 +75,4 @@ safe-weight-loss-rate, chitmily-i-refidy / cheat-meals-refeeds), рецепты
 - 2026-09-26: слот забронирован за https://24zdorovie.com/ru/tools/findrisc-calculator/ (новый инструмент).
 - 2026-09-29: слот забронирован за https://24zdorovie.com/en/fitness/progressive-overload/ (было «URL неизвестен Google»).
 - 2026-09-30: слот забронирован за https://24zdorovie.com/en/heart/oral-health/ (было «Обнаружена, не проиндексирована»).
+- 2026-10-01: слот забронирован за https://24zdorovie.com/en/mental-health/how-to-lower-cortisol/ (было «URL неизвестен Google»).
