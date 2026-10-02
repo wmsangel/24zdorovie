@@ -333,6 +333,42 @@ const DEFAULT_LIFESTYLE: LifestyleAnswers = {
 const nf = (n: number, digits = 1) =>
   Math.abs(n).toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: digits });
 
+/**
+ * «Что дальше» — внутренние ссылки под результатом. Калькулятор биовозраста —
+ * главная точка входа из соцсетей (Instagram/FB), где высокий отказ: эти ссылки
+ * уводят дальше по сайту (снизить биовозраст, смежные риски, перевод анализов).
+ */
+const NEXT_TITLE: Record<Locale, string> = { ru: "Что дальше", en: "What next" };
+const NEXT_LINKS: Record<Locale, { title: string; href: string }[]> = {
+  ru: [
+    {
+      title: "Как снизить биологический возраст: что работает",
+      href: "/ru/longevity/kak-snizit-biologicheskiy-vozrast",
+    },
+    { title: "Тест на риск диабета 2 типа (FINDRISC)", href: "/ru/tools/findrisc-calculator" },
+    {
+      title: "Калькулятор риска инфаркта и инсульта (SCORE2)",
+      href: "/ru/tools/cvd-risk-calculator",
+    },
+    {
+      title: "Конвертер единиц анализов крови",
+      href: "/ru/tools/blood-test-unit-converter",
+    },
+  ],
+  en: [
+    {
+      title: "How to lower your biological age: what works",
+      href: "/en/longevity/how-to-lower-biological-age",
+    },
+    { title: "Type 2 Diabetes Risk Test (FINDRISC)", href: "/en/tools/findrisc-calculator" },
+    {
+      title: "Heart Attack & Stroke Risk Calculator (SCORE2)",
+      href: "/en/tools/cvd-risk-calculator",
+    },
+    { title: "Blood test unit converter", href: "/en/tools/blood-test-unit-converter" },
+  ],
+};
+
 export function BiologicalAgeCalculator({ locale = "ru" }: { locale?: Locale }) {
   const c = COPY[locale] ?? COPY.ru;
 
@@ -676,6 +712,26 @@ export function BiologicalAgeCalculator({ locale = "ru" }: { locale?: Locale }) 
           </div>
         </>
       )}
+
+      <div className="border-t border-[var(--line)] p-5 md:p-7">
+        <p className="text-[0.78rem] font-bold uppercase tracking-[0.08em] text-[var(--ink-faint)]">
+          {NEXT_TITLE[locale]}
+        </p>
+        <ul className="mt-3 flex flex-col gap-1.5 text-[0.95rem]">
+          {NEXT_LINKS[locale].map((l) => (
+            <li key={l.href}>
+              <a
+                href={l.href}
+                data-track="internal_link"
+                data-track-kind="bioage_result"
+                className="font-semibold text-[var(--brand-strong)] underline underline-offset-2"
+              >
+                → {l.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }
