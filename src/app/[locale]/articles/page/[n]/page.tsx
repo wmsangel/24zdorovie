@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ArticlesArchive } from "@/components/ArticlesArchive";
+import { JsonLd } from "@/components/JsonLd";
 import { LOCALES, type Locale } from "@/config/site";
 import { getArticles } from "@/lib/content";
 import { isLocale, t } from "@/lib/i18n";
-import { pageCount } from "@/lib/paginate";
-import { buildMetadata } from "@/lib/seo";
+import { pageCount, paginate } from "@/lib/paginate";
+import { breadcrumbLd, buildMetadata, collectionLd } from "@/lib/seo";
 
 export const revalidate = 3600;
 export const dynamicParams = false;
@@ -78,5 +79,30 @@ export default async function ArticlesPagedPage({
   const page = resolvePage(locale, rawN);
   if (!page) notFound();
 
-  return <ArticlesArchive locale={locale} page={page} />;
+  const title = `${locale === "ru" ? "Все статьи" : "All articles"} — ${t(locale, "pagination_page")} ${page}`;
+  const items = paginate(getArticles(locale), page).items;
+
+  return (
+    <>
+      <ArticlesArchive locale={locale} page={page} />
+      <JsonLd
+        data={[
+          collectionLd({
+            name: title,
+            description:
+              locale === "ru"
+                ? `Архив материалов, страница ${page} — от новых к старым.`
+                : `The archive of articles, page ${page} — newest first.`,
+            url: `/${locale}/articles/page/${page}`,
+            locale,
+            items,
+          }),
+          breadcrumbLd([
+            { name: t(locale, "breadcrumb_home"), url: `/${locale}` },
+            { name: locale === "ru" ? "Все статьи" : "All articles", url: `/${locale}/articles` },
+          ]),
+        ]}
+      />
+    </>
+  );
 }
