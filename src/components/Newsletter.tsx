@@ -1,15 +1,39 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect } from "react";
 import { SITE, type Locale } from "@/config/site";
 import { translator } from "@/lib/i18n";
 
 /**
- * Форма подписки. Адрес уходит на внешний сервис рассылок из
- * SITE.newsletterEndpoint — на статическом хостинге своего API нет.
- * Пока эндпоинт не задан, форма не рендерится: мёртвое поле ввода
- * хуже, чем его отсутствие.
+ * Подписка на email-дайджест через MailerLite (встраиваемая форма).
+ *
+ * На статическом хостинге своего API нет, поэтому форму целиком рендерит
+ * MailerLite: мы грузим их universal.js один раз и ставим `<div class="ml-embedded">`.
+ * Сама форма (поля, тексты, кнопка, double opt-in, согласие) настраивается в
+ * кабинете MailerLite — отсюда ею не управляем, чтобы не дублировать заголовки.
+ *
+ * Пока `SITE.newsletter.account`/`form` пустые — блок не рендерится (как раньше
+ * при пустом endpoint): мёртвое поле ввода хуже, чем его отсутствие.
  */
+
+let mlScriptRequested = false;
+
+function loadMailerLite(account: string) {
+  if (mlScriptRequested || typeof window === "undefined") return;
+  mlScriptRequested = true;
+  const w = window as unknown as { ml?: ((...a: unknown[]) => void) & { q?: unknown[] } };
+  w.ml =
+    w.ml ||
+    function (...args: unknown[]) {
+      (w.ml!.q = w.ml!.q || []).push(args);
+    };
+  const s = document.createElement("script");
+  s.async = true;
+  s.src = "https://assets.mailerlite.com/js/universal.js";
+  document.head.appendChild(s);
+  w.ml("account", account);
+}
+
 export function Newsletter({
   locale,
   variant = "full",
@@ -18,91 +42,33 @@ export function Newsletter({
   variant?: "full" | "compact";
 }) {
   const tr = translator(locale);
-  const [email, setEmail] = useState("");
-  const [state, setState] = useState<"idle" | "loading" | "done" | "error">("idle");
+  const { account, form } = SITE.newsletter;
 
-  if (!SITE.newsletterEndpoint) return null;
+  useEffect(() => {
+    if (account) loadMailerLite(account);
+  }, [account]);
 
-  async function submit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!email.includes("@")) return;
-    setState("loading");
-    try {
-      const res = await fetch(SITE.newsletterEndpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, locale }),
-      });
-      setState(res.ok ? "done" : "error");
-    } catch {
-      setState("error");
-    }
-  }
+  if (!account || !form) return null;
 
-  const form = (
-    <form onSubmit={submit} className="flex flex-col gap-2 sm:flex-row">
-      <label className="sr-only" htmlFor={`nl-${variant}`}>
-        {tr("newsletter_placeholder")}
-      </label>
-      <input
-        id={`nl-${variant}`}
-        type="email"
-        required
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder={tr("newsletter_placeholder")}
-        className="min-w-0 flex-1 rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 py-3 text-[0.95rem] outline-none transition-colors placeholder:text-[var(--ink-faint)] focus:border-[var(--brand)]"
-      />
-      <button type="submit" className="btn btn-primary" disabled={state === "loading"}>
-        {state === "loading" ? "…" : tr("newsletter_cta")}
-      </button>
-    </form>
-  );
+  // Форма MailerLite самодостаточна (свои заголовок/поля/кнопка/согласие).
+  const embed = <div className="ml-embedded" data-form={form} />;
 
   if (variant === "compact") {
     return (
       <div>
         <p className="text-sm font-semibold">{tr("newsletter_title")}</p>
-        <div className="mt-3">
-          {state === "done" ? (
-            <p className="text-sm text-[var(--brand-strong)]">{tr("newsletter_done")}</p>
-          ) : (
-            form
-          )}
-        </div>
-        <p className="mt-2 text-xs text-[var(--ink-faint)]">{tr("newsletter_privacy")}</p>
+        <div className="mt-3">{embed}</div>
       </div>
     );
   }
 
   return (
-    <section className="card relative overflow-hidden p-8 md:p-12">
+    <section className="card relative overflow-hidden p-6 md:p-8">
       <div
         className="organic-blob -right-16 -top-24 h-72 w-72 bg-[var(--brand)]"
         aria-hidden="true"
       />
-      <div className="relative max-w-xl">
-        <p className="kicker">{tr("newsletter_cta")}</p>
-        <h2 className="mt-3 text-3xl md:text-4xl">{tr("newsletter_title")}</h2>
-        <p className="mt-3 text-[1.02rem] leading-relaxed text-[var(--ink-soft)]">
-          {tr("newsletter_text")}
-        </p>
-        <div className="mt-6">
-          {state === "done" ? (
-            <p className="text-[1.05rem] font-semibold text-[var(--brand-strong)]">
-              {tr("newsletter_done")}
-            </p>
-          ) : (
-            form
-          )}
-          {state === "error" && (
-            <p className="mt-2 text-sm text-[#b8447a]">
-              {locale === "ru" ? "Что-то пошло не так. Попробуйте позже." : "Something went wrong. Try again later."}
-            </p>
-          )}
-          <p className="mt-3 text-xs text-[var(--ink-faint)]">{tr("newsletter_privacy")}</p>
-        </div>
-      </div>
+      <div className="relative">{embed}</div>
     </section>
   );
 }

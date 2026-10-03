@@ -6,11 +6,17 @@ export const SITE = {
   founded: 2026,
   email: "info@24zdorovie.com",
   /**
-   * Приём подписки. На статическом хостинге своего эндпоинта нет,
-   * поэтому сюда вставляется полный URL формы внешнего сервиса
-   * (SendPulse, Mailchimp, Buttondown). Пустая строка — форма скрыта.
+   * Email-рассылка через MailerLite (встраиваемая форма, universal.js).
+   * Своего бэкенда на статике нет, поэтому форму рендерит сам MailerLite.
+   * Заполнить ДВА значения из аккаунта MailerLite:
+   *   account — ID из сниппета `ml('account','XXXXXXX')` (Sites/Forms → embed);
+   *   form    — код встраиваемой формы из `<div class="ml-embedded" data-form="YYYYYYY">`.
+   * Пока любое из полей пустое — блок подписки не рендерится (ничего не ломается).
    */
-  newsletterEndpoint: "" as string,
+  newsletter: {
+    account: "" as string,
+    form: "" as string,
+  },
   /** Уходит в sameAs организации в schema.org — только живые профили */
   social: {
     telegramRu: "https://t.me/zdorovie24Ru",
