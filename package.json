@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/gen-og.mjs && next build",
+    "build": "node scripts/gen-og.mjs && node scripts/gen-lead-magnet.mjs && next build",
     "start": "next start",
     "lint": "eslint",
     "deploy": "node scripts/deploy-pages.mjs",
@@ -37,6 +37,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
+    "pdf-lib": "^1.17.1",
     "sharp": "^0.34.5",
     "tailwindcss": "^4",
     "typescript": "^5"

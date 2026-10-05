@@ -70,7 +70,11 @@ export function Newsletter({
         className="organic-blob -right-16 -top-24 h-72 w-72 bg-[var(--brand)]"
         aria-hidden="true"
       />
-      <div className="relative">{embed}</div>
+      <div className="relative">
+        <p className="text-lg font-bold md:text-xl">{tr("newsletter_title")}</p>
+        <p className="mt-2 max-w-xl text-sm text-ink-soft">{tr("newsletter_magnet")}</p>
+        <div className="mt-4">{embed}</div>
+      </div>
     </section>
   );
 }
