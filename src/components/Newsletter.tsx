@@ -42,16 +42,18 @@ export function Newsletter({
   variant?: "full" | "compact";
 }) {
   const tr = translator(locale);
-  const { account, form } = SITE.newsletter;
+  const { account, form, formRu } = SITE.newsletter;
+  // RU-страницы берут отдельную русскую форму, если она заведена; иначе — общую.
+  const formCode = locale === "ru" && formRu ? formRu : form;
 
   useEffect(() => {
     if (account) loadMailerLite(account);
   }, [account]);
 
-  if (!account || !form) return null;
+  if (!account || !formCode) return null;
 
   // Форма MailerLite самодостаточна (свои заголовок/поля/кнопка/согласие).
-  const embed = <div className="ml-embedded" data-form={form} />;
+  const embed = <div className="ml-embedded" data-form={formCode} />;
 
   if (variant === "compact") {
     return (

@@ -12,10 +12,16 @@ export const SITE = {
    *   account — ID из сниппета `ml('account','XXXXXXX')` (Sites/Forms → embed);
    *   form    — код встраиваемой формы из `<div class="ml-embedded" data-form="YYYYYYY">`.
    * Пока любое из полей пустое — блок подписки не рендерится (ничего не ломается).
+   *
+   * Встраиваемая форма одноязычная: её тексты (кнопка, согласие) задаются в
+   * кабинете MailerLite. `form` используется по умолчанию для обеих локалей.
+   * Если завести отдельную русскую форму — положить её код в `formRu`, и на
+   * RU-страницах покажется она; пусто — везде используется `form`.
    */
   newsletter: {
-    account: "" as string,
-    form: "" as string,
+    account: "2685197" as string,
+    form: "UXgHTM" as string,
+    formRu: "" as string,
   },
   /** Уходит в sameAs организации в schema.org — только живые профили */
   social: {
