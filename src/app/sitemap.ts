@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { CATEGORIES } from "@/config/categories";
 import { LOCALES, type Locale } from "@/config/site";
 import { TOOLS } from "@/config/tools";
+import { REFERENCE } from "@/config/reference";
 import {
   getAllArticles,
   getAllTags,
@@ -14,6 +15,7 @@ import {
 import { pageCount } from "@/lib/paginate";
 import { absolute } from "@/lib/seo";
 import { getToolPage } from "@/lib/tools";
+import { getRefPage } from "@/lib/reference";
 
 /** Статический экспорт требует явно пометить метадата-роуты как статические */
 export const dynamic = "force-static";
@@ -22,6 +24,7 @@ const STATIC_PATHS = [
   "",
   "/articles",
   "/tools",
+  "/reference",
   "/about",
   "/authors",
   "/contacts",
@@ -114,6 +117,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: "monthly",
         priority: 0.8,
         alternates: { languages: languages(`/tools/${tool.slug}`) },
+      });
+    }
+
+    // Карточки справочника существуют в обеих локалях (REFERENCE требует MDX на обе),
+    // поэтому hreflang выводим без проверок, как у калькуляторов.
+    for (const item of REFERENCE) {
+      entries.push({
+        url: url(locale, `/reference/${item.slug}`),
+        lastModified: getRefPage(locale, item.slug)?.updated ?? freshest,
+        changeFrequency: "monthly",
+        priority: 0.7,
+        alternates: { languages: languages(`/reference/${item.slug}`) },
       });
     }
 

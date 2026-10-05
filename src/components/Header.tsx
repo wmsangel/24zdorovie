@@ -151,6 +151,13 @@ export function Header({ locale }: { locale: Locale }) {
           >
             {tr("nav_tools")}
           </Link>
+
+          <Link
+            href={localePath(locale, "/reference")}
+            className="rounded-full px-3.5 py-2 text-sm font-semibold text-[var(--brand-strong)] transition-colors hover:bg-[var(--brand-tint)]"
+          >
+            {tr("nav_reference")}
+          </Link>
         </nav>
 
         <div className="ml-auto flex items-center gap-2">
@@ -220,6 +227,18 @@ export function Header({ locale }: { locale: Locale }) {
             </span>
             <span className="text-[0.95rem] font-semibold text-[var(--brand-strong)]">
               {tr("nav_tools")}
+            </span>
+          </Link>
+
+          <Link
+            href={localePath(locale, "/reference")}
+            className="mt-2 flex items-center gap-3 rounded-2xl border border-[var(--brand)] bg-[var(--brand-tint)] p-3"
+          >
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-[var(--surface)] text-lg">
+              💊
+            </span>
+            <span className="text-[0.95rem] font-semibold text-[var(--brand-strong)]">
+              {tr("nav_reference")}
             </span>
           </Link>
 

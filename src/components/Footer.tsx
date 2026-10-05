@@ -17,6 +17,7 @@ export function Footer({ locale }: { locale: Locale }) {
   // на страницы-инструменты заметно ускоряет их попадание в индекс
   const toolLinks = [
     { href: "/tools", label: tr("tools_title") },
+    { href: "/reference", label: tr("reference_title") },
     ...TOOLS.map((t) => ({ href: `/tools/${t.slug}`, label: t.name[locale] })),
   ];
 

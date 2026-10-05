@@ -398,3 +398,36 @@ export function collectionLd(params: {
     },
   };
 }
+
+/**
+ * Разметка карточки справочника добавок. DietarySupplement — тип schema.org для
+ * пищевой добавки как вещества: описывает сам предмет (название, синонимы,
+ * рекомендуемый приём, оговорка о безопасности), а не страницу. Богатых
+ * результатов Google под него не рисует, но это валидная разметка, помогающая
+ * поисковику понять сущность. Картинку и язык берём как у остальных типов.
+ */
+export function supplementLd(params: {
+  name: string;
+  description: string;
+  url: string;
+  locale: Locale;
+  category?: string;
+  aka?: string[];
+  recommendedIntake?: string;
+  safety?: string;
+  updated?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "DietarySupplement",
+    name: params.name,
+    description: params.description,
+    url: absolute(params.url),
+    inLanguage: params.locale,
+    image: ogImage({ title: params.name, category: params.category, locale: params.locale }),
+    ...(params.aka?.length ? { nonProprietaryName: params.aka } : {}),
+    ...(params.recommendedIntake ? { recommendedIntake: params.recommendedIntake } : {}),
+    ...(params.safety ? { safetyConsideration: params.safety } : {}),
+    ...(params.updated ? { dateModified: params.updated } : {}),
+  };
+}

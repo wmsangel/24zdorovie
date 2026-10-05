@@ -24,6 +24,11 @@ const DICT = {
     tools_other: "Другие инструменты",
     tools_open: "Открыть",
     tools_privacy: "Данные не покидают ваш браузер",
+    nav_reference: "Справочник",
+    reference_title: "Справочник добавок",
+    reference_lede:
+      "Доказательные карточки витаминов, минералов и БАДов: что реально доказано, рабочая доза с источником, пищевые источники и честный разбор мифов. Без взаимодействий с лекарствами и постановки диагноза.",
+    reference_other: "Другие добавки",
     a11y_nav_main: "Основная навигация",
     a11y_nav_breadcrumb: "Хлебные крошки",
     a11y_menu: "Меню",
@@ -112,6 +117,11 @@ const DICT = {
     tools_other: "More tools",
     tools_open: "Open",
     tools_privacy: "Your data never leaves your browser",
+    nav_reference: "Reference",
+    reference_title: "Supplement Guide",
+    reference_lede:
+      "Evidence-based cards on vitamins, minerals and supplements: what's actually proven, the working dose with its source, food sources and an honest take on the myths. No drug interactions, no diagnosis.",
+    reference_other: "More supplements",
     a11y_nav_main: "Main navigation",
     a11y_nav_breadcrumb: "Breadcrumb",
     a11y_menu: "Menu",
