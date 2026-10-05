@@ -53,7 +53,7 @@
 
 ## План на ~10 запусков (по приоритету; одна главная задача за запуск)
 
-- **SEO: быстрые победы `/en/tools/bmi-calculator/` и `/en/tools/heart-rate-zones-calculator/`** — BMI: 59 показов, поз. 12.6, 0 кликов (запросы «bmi work out» поз. 9.2, «bmi test online» поз. 9.7); пульсовые зоны: 39 показов, поз. 9.8 («heart rate zone calculator» поз. 11, «zone 2 calculator» поз. 12): внести эти формулировки в title/description и H1/подзаголовки, добавить ссылки на оба калькулятора из `/en/weight/bmi-and-body-composition/` и `/en/longevity/vo2max-and-lifespan/` (обе уже в топ-10). (SEO, 2026-10-05)
+- [x] **SEO: быстрые победы `/en/tools/bmi-calculator/` и `/en/tools/heart-rate-zones-calculator/`** ✅ 2026-10-05. HR-зоны: title уже содержал «Heart Rate Zone Calculator»/«Zone 2» (фикс 01.10) — не трогал. BMI: в description добавлено «free online BMI test» (под «bmi test online»; «work out»/«online» уже были). Перелинковка: BMI-калькулятор добавлен ReadAlso в `/en/weight/bmi-and-body-composition/` (топ-10), калькулятор зон — в `/en/longevity/vo2max-and-lifespan/` (топ-10). Проверить CTR через 1–2 недели. (SEO, 2026-10-05)
 - **SEO: быстрая победа `/en/tools/sleep-calculator/`** — запрос «sleep calculator for women» 122 показа, поз. 5.7, 0 кликов (страница 178 показов, поз. 7.7): добавить «for women» в title/description и блок о сне у женщин (цикл, беременность, менопауза) с FAQ. (SEO, 2026-10-01)
 - **SEO: trailing slash на 14 EN-страницах** (`/en/contacts`, `/en/longevity/horvath-clock`, `/en/mental-health/burnout-dsm-5`, `/en/tools/caffeine-calculator` …) — Google выбрал canonical БЕЗ слэша, наш со слэшем: проверить 301 без-слэша → со слэшем на Cloudflare Pages, sitemap и внутренние ссылки. (SEO, 2026-10-01)
 
