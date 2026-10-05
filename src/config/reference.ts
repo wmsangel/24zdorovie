@@ -49,6 +49,74 @@ export const REFERENCE: RefItem[] = [
       en: ["/fitness/strength-training-for-beginners", "/nutrition/how-much-protein-per-day"],
     },
   },
+  {
+    slug: "vitamin-c",
+    emoji: "🍊",
+    category: "supplements",
+    name: {
+      ru: "Витамин C",
+      en: "Vitamin C",
+    },
+    tagline: {
+      ru: "Что доказано об аскорбинке, сколько нужно в день и почему мегадозы бесполезны",
+      en: "What's proven about ascorbic acid, how much you need and why megadoses are pointless",
+    },
+    related: {
+      ru: ["/immunity/vitamin-c-i-prostuda", "/supplements/multivitaminy-nuzhny-li"],
+      en: ["/immunity/vitamin-c-and-colds", "/supplements/do-multivitamins-work"],
+    },
+  },
+  {
+    slug: "zinc",
+    emoji: "🛡️",
+    category: "supplements",
+    name: {
+      ru: "Цинк",
+      en: "Zinc",
+    },
+    tagline: {
+      ru: "Зачем нужен, рабочая доза и почему постоянные мегадозы вредят",
+      en: "What it's for, the working dose and why chronic megadoses backfire",
+    },
+    related: {
+      ru: ["/immunity/tsink-i-prostuda", "/immunity/kak-ukrepit-immunitet"],
+      en: ["/immunity/zinc-and-colds", "/immunity/how-to-boost-immunity"],
+    },
+  },
+  {
+    slug: "calcium",
+    emoji: "🦴",
+    category: "supplements",
+    name: {
+      ru: "Кальций",
+      en: "Calcium",
+    },
+    tagline: {
+      ru: "Сколько нужно для костей, почему еда лучше таблеток и когда добавка оправдана",
+      en: "How much you need for bones, why food beats pills and when a supplement is justified",
+    },
+    related: {
+      ru: ["/supplements/vitamin-d-normy-i-dozirovki", "/supplements/magniy-formy-i-dozy"],
+      en: ["/supplements/vitamin-d-dosage", "/supplements/magnesium-forms-doses"],
+    },
+  },
+  {
+    slug: "coenzyme-q10",
+    emoji: "⚡",
+    category: "supplements",
+    name: {
+      ru: "Коэнзим Q10",
+      en: "Coenzyme Q10",
+    },
+    tagline: {
+      ru: "Где доказательства реальны, а где это дорогой антиэйдж-миф",
+      en: "Where the evidence is real, and where it's an expensive anti-ageing myth",
+    },
+    related: {
+      ru: ["/heart/statiny-polza-i-mify", "/heart/kak-snizit-serdechno-sosudistyy-risk"],
+      en: ["/heart/how-to-lower-cardiovascular-risk", "/supplements/do-multivitamins-work"],
+    },
+  },
 ];
 
 export function getRefItem(slug: string): RefItem | undefined {
