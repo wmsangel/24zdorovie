@@ -76,3 +76,4 @@ safe-weight-loss-rate, chitmily-i-refidy / cheat-meals-refeeds), рецепты
 - 2026-09-29: слот забронирован за https://24zdorovie.com/en/fitness/progressive-overload/ (было «URL неизвестен Google»).
 - 2026-09-30: слот забронирован за https://24zdorovie.com/en/heart/oral-health/ (было «Обнаружена, не проиндексирована»).
 - 2026-10-01: слот забронирован за https://24zdorovie.com/en/mental-health/how-to-lower-cortisol/ (было «URL неизвестен Google»).
+- 2026-10-06: 4 EN-сироты (были 0 входящих внутренних ссылок → «URL неизвестен Google») получили контекстные ReadAlso с обходимых страниц: eggs-per-day ← how-much-protein-per-day; tofu-veggie-stir-fry ← overnight-oats; blue-light-and-sleep ← sleep-hygiene-basics; curcumin-turmeric ← do-multivitamins-work. Приоритет на ручную подачу в GSC + пинг IndexNow (Bing/Yandex).
