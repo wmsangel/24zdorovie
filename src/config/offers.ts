@@ -75,7 +75,7 @@ export const OFFERS: Offer[] = [
     href: "https://yknhc.com/g/j121kp52md1d9ff0ed903cdca90c0a/?erid=2bL9aMPo2e49hMef4rqyS8BgEh",
     price: { ru: "скидка до 50% на первый приём", en: "up to 50% off the first visit" },
     erid: "2bL9aMPo2e49hMef4rqyS8BgEh",
-    advertiser: "СберЗдоровье",
+    advertiser: "ООО «ДокДок», ИНН 9710011437",
   },
   {
     id: "doctronic-telehealth",
@@ -149,7 +149,7 @@ export const OFFERS: Offer[] = [
     cta: { ru: "Смотреть рационы", en: "See plans" },
     href: "https://tywhh.com/g/l7h3l7fb7d1d9ff0ed90b6fd49dbd9/?erid=2bL9aMPo2e49hMef4peznKd8xa",
     erid: "2bL9aMPo2e49hMef4peznKd8xa",
-    advertiser: "Польза",
+    advertiser: "ООО «ГПК», ИНН 7813650417",
   },
 ];
 
