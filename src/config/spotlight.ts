@@ -1,0 +1,137 @@
+import type { Locale } from "./site";
+
+/**
+ * Spotlight — внутренний ротационный промо-слот. Раз в неделю показывает одно
+ * наше промо (новый инструмент / недооценённый старый / важная статья / support),
+ * чтобы продвигать собственные страницы без закупки трафика.
+ *
+ * Ротация детерминированная: индекс = ISO-неделя % длина пула. Так все читатели
+ * в одну неделю видят одно и то же, а набор меняется сам каждую неделю без правок.
+ *
+ * Ручной форс: у записи можно задать `from`/`until` (YYYY-MM-DD) — пока «сегодня»
+ * в этом окне, показывается именно она, минуя ротацию. Удобно подсветить запуск.
+ */
+export type SpotlightItem = {
+  /** Уникальный id — уходит в аналитику (spotlight_click, data-track-item) */
+  id: string;
+  icon: string;
+  /** Разные слаги в локалях, поэтому ссылка задаётся на каждую */
+  href: Record<Locale, string>;
+  title: Record<Locale, string>;
+  blurb: Record<Locale, string>;
+  cta: Record<Locale, string>;
+  /** Необязательное окно ручного форса (ISO-дата YYYY-MM-DD, включительно) */
+  from?: string;
+  until?: string;
+};
+
+export const SPOTLIGHT: SpotlightItem[] = [
+  {
+    id: "phq9",
+    icon: "🧠",
+    href: { ru: "/ru/tools/phq-9-depression-test", en: "/en/tools/phq-9-depression-test" },
+    title: { ru: "Тест на депрессию (PHQ-9)", en: "Depression Test (PHQ-9)" },
+    blurb: {
+      ru: "Валидированная 2-минутная самопроверка настроения. Не диагноз — ориентир.",
+      en: "A validated 2-minute mood self-check. Not a diagnosis — a guide.",
+    },
+    cta: { ru: "Пройти", en: "Take it" },
+  },
+  {
+    id: "gad7",
+    icon: "😮‍💨",
+    href: { ru: "/ru/tools/gad-7-anxiety-test", en: "/en/tools/gad-7-anxiety-test" },
+    title: { ru: "Тест на тревожность (GAD-7)", en: "Anxiety Test (GAD-7)" },
+    blurb: {
+      ru: "Короткий опросник уровня тревоги — помогает понять, нужна ли помощь.",
+      en: "A short anxiety-level questionnaire — helps you see if to seek help.",
+    },
+    cta: { ru: "Пройти", en: "Take it" },
+  },
+  {
+    id: "findrisc",
+    icon: "🩸",
+    href: { ru: "/ru/tools/findrisc-calculator", en: "/en/tools/findrisc-calculator" },
+    title: { ru: "Риск диабета (FINDRISC)", en: "Diabetes Risk (FINDRISC)" },
+    blurb: {
+      ru: "Оцените риск диабета 2 типа без анализов — по валидированной шкале.",
+      en: "Gauge your type 2 diabetes risk with no blood test, on a validated scale.",
+    },
+    cta: { ru: "Рассчитать", en: "Calculate" },
+  },
+  {
+    id: "bioage",
+    icon: "⏳",
+    href: {
+      ru: "/ru/tools/biological-age-calculator",
+      en: "/en/tools/biological-age-calculator",
+    },
+    title: { ru: "Калькулятор биовозраста", en: "Biological Age Calculator" },
+    blurb: {
+      ru: "Насколько привычки вас старят или молодят — цифра за 2 минуты.",
+      en: "How much your habits age or rejuvenate you — a number in 2 minutes.",
+    },
+    cta: { ru: "Узнать", en: "Find out" },
+  },
+  {
+    id: "reference",
+    icon: "💊",
+    href: { ru: "/ru/reference", en: "/en/reference" },
+    title: { ru: "Справочник добавок", en: "Supplement Guide" },
+    blurb: {
+      ru: "Что доказано, а что реклама — коротко, по полкам и с источниками.",
+      en: "What's proven vs marketing — short, structured and with sources.",
+    },
+    cta: { ru: "Открыть", en: "Open" },
+  },
+  {
+    id: "insulin-resistance",
+    icon: "📉",
+    href: { ru: "/ru/weight/insulinorezistentnost", en: "/en/weight/insulin-resistance" },
+    title: { ru: "Инсулинорезистентность", en: "Insulin Resistance" },
+    blurb: {
+      ru: "Обратимое состояние задолго до диабета — и что с ним делать.",
+      en: "A reversible state years before diabetes — and what to do about it.",
+    },
+    cta: { ru: "Читать", en: "Read" },
+  },
+  {
+    id: "support",
+    icon: "☕",
+    href: { ru: "/ru/support", en: "/en/support" },
+    title: { ru: "Поддержать проект", en: "Support the project" },
+    blurb: {
+      ru: "Если материалы полезны — помогите выпускать их дальше.",
+      en: "If this is useful, help us keep publishing it.",
+    },
+    cta: { ru: "Поддержать", en: "Support" },
+  },
+];
+
+/** ISO-номер недели (1..53) по дате */
+export function isoWeek(date: Date): number {
+  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  const dayNum = (d.getUTCDay() + 6) % 7; // Пн=0 … Вс=6
+  d.setUTCDate(d.getUTCDate() - dayNum + 3); // ближайший четверг
+  const firstThursday = new Date(Date.UTC(d.getUTCFullYear(), 0, 4));
+  const diff = d.getTime() - firstThursday.getTime();
+  return 1 + Math.round(diff / (7 * 24 * 3600 * 1000));
+}
+
+/**
+ * Выбор промо на дату: сперва активный ручной форс (from/until), иначе —
+ * детерминированная ротация по ISO-неделе среди записей без окна.
+ */
+export function pickSpotlight(now: Date): SpotlightItem | null {
+  const forced = SPOTLIGHT.find(
+    (s) =>
+      s.from &&
+      s.until &&
+      now >= new Date(`${s.from}T00:00:00`) &&
+      now <= new Date(`${s.until}T23:59:59`),
+  );
+  if (forced) return forced;
+  const pool = SPOTLIGHT.filter((s) => !s.from && !s.until);
+  if (pool.length === 0) return null;
+  return pool[isoWeek(now) % pool.length];
+}

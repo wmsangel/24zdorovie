@@ -24,6 +24,7 @@ const DICT = {
     tools_other: "Другие инструменты",
     tools_open: "Открыть",
     tools_privacy: "Данные не покидают ваш браузер",
+    spotlight_label: "Советуем",
     nav_reference: "Справочник",
     reference_title: "Справочник добавок",
     reference_lede:
@@ -117,6 +118,7 @@ const DICT = {
     tools_other: "More tools",
     tools_open: "Open",
     tools_privacy: "Your data never leaves your browser",
+    spotlight_label: "Featured",
     nav_reference: "Reference",
     reference_title: "Supplement Guide",
     reference_lede:
