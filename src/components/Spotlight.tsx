@@ -14,7 +14,8 @@ import { translator } from "@/lib/i18n";
 export function Spotlight({ locale }: { locale: Locale }) {
   const [item, setItem] = useState<SpotlightItem | null>(null);
   useEffect(() => {
-    setItem(pickSpotlight(new Date()));
+    // Исключаем текущую страницу, чтобы промо не вело само на себя.
+    setItem(pickSpotlight(new Date(), window.location.pathname));
   }, []);
 
   if (!item) return null;

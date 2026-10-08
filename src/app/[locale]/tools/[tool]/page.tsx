@@ -8,6 +8,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { Mdx } from "@/components/mdx/Mdx";
 import { Newsletter } from "@/components/Newsletter";
 import { ShareBar } from "@/components/ShareBar";
+import { Spotlight } from "@/components/Spotlight";
 import { OfferBlock } from "@/components/OfferBlock";
 import { ToolWidget } from "@/components/tools/registry";
 import { TrackView } from "@/components/TrackView";
@@ -185,6 +186,8 @@ export default async function ToolPage({
           <div className="mt-8 border-t border-[var(--line)] pt-6">
             <ShareBar url={url} title={page.title} locale={locale} />
           </div>
+
+          <Spotlight locale={locale} />
 
           <AdSlot placement="article-end" locale={locale} className="mt-10" seed={tool.slug} />
         </div>

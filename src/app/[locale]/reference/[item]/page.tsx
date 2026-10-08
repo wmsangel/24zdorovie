@@ -8,6 +8,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { Mdx } from "@/components/mdx/Mdx";
 import { Newsletter } from "@/components/Newsletter";
 import { ShareBar } from "@/components/ShareBar";
+import { Spotlight } from "@/components/Spotlight";
 import { getCategory } from "@/config/categories";
 import { LOCALES, SITE, type Locale } from "@/config/site";
 import { REFERENCE, getRefItem } from "@/config/reference";
@@ -172,6 +173,8 @@ export default async function ReferencePage({
           <div className="mt-8 border-t border-[var(--line)] pt-6">
             <ShareBar url={url} title={page.title} locale={locale} />
           </div>
+
+          <Spotlight locale={locale} />
 
           <AdSlot placement="article-end" locale={locale} className="mt-10" seed={item.slug} />
         </div>
