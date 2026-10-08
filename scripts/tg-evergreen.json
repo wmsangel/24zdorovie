@@ -1,315 +1,697 @@
 {
-  "_note": "Оригинальные вечнозелёные посты для Telegram. Подмешиваются в ленту (каждый 3-й пост). Каждый: id (уникальный, для трекинга), title (с эмодзи), body (2-3 предложения), tags, link (путь на сайт без домена — цель клика). Правится вручную; порядок = порядок публикации.",
-  "ru": [
-    {
-      "id": "ru-metabolism-frequency",
-      "title": "🧬 Миф: чтобы «разогнать» метаболизм, надо есть часто и маленькими порциями",
-      "body": "Частота приёмов пищи почти не влияет на суточный расход энергии — это показывают контролируемые исследования. Реально двигают обмен мышечная масса, движение и достаточный сон. Ешьте 3 раза или 6 — по удобству и голоду, а не по мифу о «разгоне».",
-      "tags": ["метаболизм", "мифы", "питание"],
-      "link": "/ru/weight/mify-o-metabolizme"
-    },
-    {
-      "id": "ru-thirst-late-signal",
-      "title": "💧 Жажда — это поздний сигнал, а не ранний",
-      "body": "Когда вы почувствовали жажду, лёгкий дефицит жидкости уже есть. Проверка проще любого правила «8 стаканов» — цвет мочи: светло-соломенный это норма, тёмно-жёлтый значит пора попить. Считать стаканы не нужно.",
-      "tags": ["вода", "гидратация"],
-      "link": "/ru/tools/water-intake-calculator"
-    },
-    {
-      "id": "ru-stretching-doms",
-      "title": "🤸 Растяжка перед тренировкой не спасает от крепатуры",
-      "body": "Обзоры показывают: статическая растяжка до нагрузки почти не влияет на боль в мышцах на следующий день, а перед силовой ещё и временно снижает силу. От крепатуры помогает не растяжка, а постепенное наращивание нагрузки.",
-      "tags": ["фитнес", "крепатура", "мифы"],
-      "link": "/ru/fitness/krepatura-posle-trenirovki"
-    },
-    {
-      "id": "ru-eggs-cholesterol",
-      "title": "🥚 Яйца не «забивают сосуды холестерином»",
-      "body": "У большинства людей холестерин из еды слабо влияет на холестерин крови — печень подстраивает собственный синтез. Здоровым взрослым яйцо в день вписывается в рацион без вреда для сердца. Куда важнее общий фон: насыщенные жиры, клетчатка, вес.",
-      "tags": ["питание", "холестерин", "мифы"],
-      "link": "/ru/nutrition/skolko-yaits-v-den"
-    },
-    {
-      "id": "ru-10000-steps",
-      "title": "👟 10 000 шагов — маркетинг, а не медицинская норма",
-      "body": "Цифра пришла из рекламы японского шагомера 1960-х, а не из исследований. Польза для смертности заметно растёт уже с 4000–7000 шагов и выходит на плато примерно к 8000–10000. Меньше «десятки» — это тоже много пользы.",
-      "tags": ["движение", "шаги", "мифы"],
-      "link": "/ru/fitness/skolko-shagov-v-den"
-    },
-    {
-      "id": "ru-sleep-8h",
-      "title": "😴 «Спать ровно 8 часов всем» — миф",
-      "body": "Норма взрослого — диапазон 7–9 часов, и внутри него у людей разная потребность. Ориентируйтесь не на цифру, а на самочувствие днём: если вы бодры без будильника по выходным, скорее всего высыпаетесь. Гоняться именно за восьмёркой не нужно.",
-      "tags": ["сон", "мифы"],
-      "link": "/ru/sleep/skolko-nuzhno-spat"
-    },
-    {
-      "id": "ru-caffeine-cutoff",
-      "title": "☕ Кофе после обеда может испортить ночной сон, даже если вы уснули",
-      "body": "Период полувыведения кофеина 5–6 часов, поэтому чашка в 16:00 к полуночи ещё наполовину «в крови» и снижает глубину сна. Многим стоит ставить точку за 8–10 часов до отбоя. Точный час можно прикинуть по калькулятору.",
-      "tags": ["кофеин", "сон"],
-      "link": "/ru/tools/caffeine-calculator"
-    },
-    {
-      "id": "ru-juice-sugar",
-      "title": "🧃 «Натуральный» сок — это тоже сахар",
-      "body": "В стакане апельсинового сока примерно столько же сахара, сколько в коле, только без клетчатки, которая тормозит его всасывание. Целый фрукт насыщает лучше и поднимает сахар мягче. Сок — не «полезная» замена воде.",
-      "tags": ["сахар", "питание", "мифы"],
-      "link": "/ru/nutrition/sahar-skolko-mozhno"
-    },
-    {
-      "id": "ru-immunity-pill",
-      "title": "🛡️ Иммунитет нельзя «поднять» таблеткой",
-      "body": "Иммунитет — не мышца и не батарейка, а сеть из сотен типов клеток; накрутить её добавкой невозможно. Работает скучное: сон, движение, еда, отказ от курения и прививки. «Иммуномодуляторы» и мегадозы витаминов в лучшем случае бесполезны.",
-      "tags": ["иммунитет", "мифы", "добавки"],
-      "link": "/ru/immunity/kak-ukrepit-immunitet"
-    },
-    {
-      "id": "ru-protein-amount",
-      "title": "🍗 Белка большинству нужно больше, чем кажется",
-      "body": "Минимум «чтобы не заболеть» — 0,8 г на кг веса, но при нагрузках, похудении и после 60 исследования показывают преимущество 1,2–1,6 г на кг, а при силовых — до 2,0. Посчитать свою норму под цель можно за минуту.",
-      "tags": ["белок", "питание"],
-      "link": "/ru/tools/protein-calculator"
-    },
-    {
-      "id": "ru-vitamin-d-winter",
-      "title": "🌥️ Витамин D — единственная добавка, которую многим и правда стоит обсудить зимой",
-      "body": "С октября по март на широте большей части России солнце почти не даёт витамина D в коже, а из еды его мало. Это одна из немногих добавок с реальными основаниями — но дозу лучше подбирать по анализу, а не «на всякий случай».",
-      "tags": ["витамин_d", "добавки"],
-      "link": "/ru/supplements/vitamin-d-normy-i-dozirovki"
-    },
-    {
-      "id": "ru-burnout-vacation",
-      "title": "🔥 Отпуск не лечит выгорание",
-      "body": "Отдых надёжно снижает истощение — и так же надёжно всё возвращается через пару недель, если на работе ничего не изменилось. Отпуск это передышка, чтобы что-то поменять, а не само изменение. Где вы сейчас по трём шкалам — можно проверить.",
-      "tags": ["выгорание", "психика"],
-      "link": "/ru/tools/burnout-test"
-    },
-    {
-      "id": "ru-alcohol-no-safe-dose",
-      "title": "🍷 «Бокал красного полезен для сердца» — устаревший миф",
-      "body": "Крупные свежие обзоры не подтверждают защитного эффекта алкоголя: ранние данные искажались тем, что в «непьющих» попадали бросившие по болезни. Безопасной для здоровья дозы нет — есть допустимый риск, и он тем ниже, чем меньше вы пьёте.",
-      "tags": ["алкоголь", "сердце", "мифы"],
-      "link": "/ru/longevity/alkogol-i-zdorovie"
-    },
-    {
-      "id": "ru-blue-zones",
-      "title": "🗺️ «Голубые зоны»: секрет долголетия не в ягодах годжи",
-      "body": "В регионах-долгожителях нет чудо-продукта. Общее у них скучное и бесплатное: много бытового движения, растительная основа рациона, крепкие социальные связи и смысл дня. Продают вам добавку — а работает образ жизни.",
-      "tags": ["долголетие", "мифы"],
-      "link": "/ru/longevity/golubye-zony-pravda"
-    },
-    {
-      "id": "ru-vo2max",
-      "title": "🫀 Самый недооценённый маркер долголетия — не холестерин, а выносливость",
-      "body": "VO2max (максимальное потребление кислорода) связан с риском смерти сильнее, чем курение или давление. Хорошая новость: он тренируем в любом возрасте — регулярное кардио и интервалы поднимают его за месяцы.",
-      "tags": ["долголетие", "vo2max", "кардио"],
-      "link": "/ru/longevity/vo2max-i-prodolzhitelnost-zhizni"
-    },
-    {
-      "id": "ru-intermittent-fasting",
-      "title": "⏱️ Интервальное голодание не волшебнее обычного дефицита калорий",
-      "body": "Исследования с равной калорийностью показывают: 16/8 не даёт преимущества в жиросжигании перед обычным питанием. Оно просто помогает некоторым есть меньше, ограничив окно. Работает как удобная рамка, а не как отдельный жиросжигатель.",
-      "tags": ["голодание", "вес", "мифы"],
-      "link": "/ru/weight/intervalnoe-golodanie"
-    },
-    {
-      "id": "ru-cheat-meals",
-      "title": "🍕 Один «читмил» не перечеркнёт неделю дефицита",
-      "body": "Набрать жир за один приём пищи физически трудно: скачок веса наутро — это вода и содержимое кишечника, а не жир. Проблема не в разовом отступлении, а в том, что оно тянет за собой несколько дней срыва. Планируйте, а не наказывайте себя.",
-      "tags": ["питание", "вес", "мифы"],
-      "link": "/ru/weight/chitmily-i-refidy"
-    },
-    {
-      "id": "ru-salt",
-      "title": "🧂 Соль: проблема не в солонке, а в готовой еде",
-      "body": "До 70–80% натрия мы получаем не из солонки, а из промышленной еды: хлеба, колбас, соусов, полуфабрикатов. Поэтому «не досаливать» помогает мало — куда сильнее работает сдвиг в сторону домашней готовки и цельных продуктов.",
-      "tags": ["соль", "питание", "давление"],
-      "link": "/ru/nutrition/sol-skolko-v-den"
-    },
-    {
-      "id": "ru-fiber",
-      "title": "🌾 Клетчатки почти все едят вдвое меньше нормы",
-      "body": "Норма — около 25–30 г в день, а типичный рацион даёт 12–15. Между тем это один из самых доказанных факторов здоровья кишечника, сахара и холестерина. Добавляйте постепенно и пейте воду — иначе живот ответит вздутием.",
-      "tags": ["клетчатка", "кишечник", "питание"],
-      "link": "/ru/nutrition/kletchatka-skolko-nuzhno"
-    },
-    {
-      "id": "ru-zone-2",
-      "title": "🚶 Не вся польза кардио — в высоком пульсе",
-      "body": "Спокойное кардио во «второй зоне» (можете говорить, но не петь) развивает выносливость сердца и митохондрии не хуже, а восстанавливаться после него легче. Большую часть кардио разумно делать именно на низком пульсе, а не всегда «до отказа».",
-      "tags": ["кардио", "пульс", "фитнес"],
-      "link": "/ru/fitness/zona-2-trenirovki"
-    },
-    {
-      "id": "ru-sunscreen",
-      "title": "🧴 Главный антивозрастной уход — это SPF, а не крем за 10 000",
-      "body": "До 80% видимого старения кожи — от ультрафиолета, а не от возраста. Ни одна сыворотка не сравнится по доказательной базе с ежедневным солнцезащитным кремом. Всё остальное в уходе работает только поверх этой основы.",
-      "tags": ["кожа", "spf", "долголетие"],
-      "link": "/ru/longevity/dokazatelnyy-uhod-za-kozhey"
-    },
-    {
-      "id": "ru-panic-attacks",
-      "title": "😮‍💨 Паническая атака ужасна на ощупь, но не опасна для жизни",
-      "body": "Сердцебиение, нехватка воздуха и страх смерти — это ложная тревога вегетативной системы, а не инфаркт. Атака достигает пика за минуты и спадает сама. Медленный выдох длиннее вдоха помогает переждать — а частые атаки стоит обсудить со специалистом.",
-      "tags": ["тревога", "паника", "психика"],
-      "link": "/ru/mental-health/panicheskie-ataki"
-    }
-  ],
-  "en": [
-    {
-      "id": "en-metabolism-frequency",
-      "title": "🧬 Myth: eating small, frequent meals «boosts» your metabolism",
-      "body": "Meal frequency barely changes your daily energy expenditure — controlled studies are clear on this. What actually moves your metabolism is muscle mass, movement and enough sleep. Eat 3 meals or 6 by preference and hunger, not by a myth.",
-      "tags": ["metabolism", "myths", "nutrition"],
-      "link": "/en/weight/metabolism-myths"
-    },
-    {
-      "id": "en-thirst-late-signal",
-      "title": "💧 Thirst is a late signal, not an early one",
-      "body": "By the time you feel thirsty you're already mildly low on fluids. A check that beats any «8 glasses» rule — urine colour: pale straw is fine, dark yellow means drink up. No need to count glasses.",
-      "tags": ["hydration", "water"],
-      "link": "/en/tools/water-intake-calculator"
-    },
-    {
-      "id": "en-stretching-doms",
-      "title": "🤸 Stretching before a workout won't spare you soreness",
-      "body": "Reviews show static stretching before exercise barely affects next-day muscle soreness — and before lifting it temporarily lowers strength. What prevents soreness isn't stretching but building load gradually.",
-      "tags": ["fitness", "soreness", "myths"],
-      "link": "/en/fitness/muscle-soreness-doms"
-    },
-    {
-      "id": "en-eggs-cholesterol",
-      "title": "🥚 Eggs don't «clog your arteries with cholesterol»",
-      "body": "For most people, dietary cholesterol has little effect on blood cholesterol — the liver adjusts its own output. For healthy adults an egg a day fits a normal diet without harming the heart. The bigger levers are saturated fat, fibre and weight.",
-      "tags": ["nutrition", "cholesterol", "myths"],
-      "link": "/en/nutrition/eggs-per-day"
-    },
-    {
-      "id": "en-10000-steps",
-      "title": "👟 10,000 steps is marketing, not a medical target",
-      "body": "The number came from a 1960s Japanese pedometer ad, not research. Mortality benefit rises steeply from just 4,000–7,000 steps and largely plateaus around 8,000–10,000. Under «10k» is still a lot of benefit.",
-      "tags": ["movement", "steps", "myths"],
-      "link": "/en/fitness/how-many-steps-per-day"
-    },
-    {
-      "id": "en-sleep-8h",
-      "title": "😴 «Everyone needs exactly 8 hours» is a myth",
-      "body": "The adult range is 7–9 hours, and need varies within it. Judge by how you feel in the day, not by a number: if you wake refreshed without an alarm on days off, you're probably getting enough. Chasing exactly eight isn't the point.",
-      "tags": ["sleep", "myths"],
-      "link": "/en/sleep/how-much-sleep-do-you-need"
-    },
-    {
-      "id": "en-caffeine-cutoff",
-      "title": "☕ Afternoon coffee can wreck your sleep even if you fall asleep fine",
-      "body": "Caffeine's half-life is 5–6 hours, so a 4 pm cup is still half «in your system» at midnight, cutting deep sleep. Many people should stop 8–10 hours before bed. You can estimate your own cut-off time with the calculator.",
-      "tags": ["caffeine", "sleep"],
-      "link": "/en/tools/caffeine-calculator"
-    },
-    {
-      "id": "en-juice-sugar",
-      "title": "🧃 «Natural» juice is still sugar",
-      "body": "A glass of orange juice holds about as much sugar as cola, just without the fibre that slows its absorption. Whole fruit fills you up better and raises blood sugar more gently. Juice isn't a «healthy» swap for water.",
-      "tags": ["sugar", "nutrition", "myths"],
-      "link": "/en/nutrition/how-much-sugar-per-day"
-    },
-    {
-      "id": "en-immunity-pill",
-      "title": "🛡️ You can't «boost» immunity with a pill",
-      "body": "Immunity isn't a muscle or a battery — it's a network of hundreds of cell types, and no supplement cranks it up. What works is boring: sleep, movement, food, not smoking, vaccines. «Immune boosters» and vitamin megadoses are useless at best.",
-      "tags": ["immunity", "myths", "supplements"],
-      "link": "/en/immunity/how-to-boost-immunity"
-    },
-    {
-      "id": "en-protein-amount",
-      "title": "🍗 Most people need more protein than they think",
-      "body": "The «don't get sick» minimum is 0.8 g per kg, but with training, weight loss and past 60 the evidence favours 1.2–1.6 g per kg, and up to 2.0 with strength work. You can work out your own target for your goal in a minute.",
-      "tags": ["protein", "nutrition"],
-      "link": "/en/tools/protein-calculator"
-    },
-    {
-      "id": "en-vitamin-d-winter",
-      "title": "🌥️ Vitamin D is one of the few supplements genuinely worth considering in winter",
-      "body": "From autumn to spring at higher latitudes the sun is too weak to make vitamin D in your skin, and food supplies little. It's one of the few supplements with a real case — but dose it by a blood test, not «just in case».",
-      "tags": ["vitamin_d", "supplements"],
-      "link": "/en/supplements/vitamin-d-dosage"
-    },
-    {
-      "id": "en-burnout-vacation",
-      "title": "🔥 A holiday doesn't fix burnout",
-      "body": "Time off reliably lowers exhaustion — and it reliably comes back within weeks if nothing about the job changed. A holiday is breathing room to change something, not the change itself. You can check where you sit across the three dimensions.",
-      "tags": ["burnout", "mental_health"],
-      "link": "/en/tools/burnout-test"
-    },
-    {
-      "id": "en-alcohol-no-safe-dose",
-      "title": "🍷 «A glass of red is good for your heart» is an outdated myth",
-      "body": "Large recent reviews find no protective effect of alcohol: earlier data was skewed because «non-drinkers» included people who quit due to illness. There's no safe-for-health dose — only a level of risk, and it's lower the less you drink.",
-      "tags": ["alcohol", "heart", "myths"],
-      "link": "/en/longevity/alcohol-and-health"
-    },
-    {
-      "id": "en-blue-zones",
-      "title": "🗺️ Blue Zones: the longevity secret isn't a superfood",
-      "body": "The world's longest-lived regions share no magic ingredient. What they have is boring and free: lots of incidental movement, a mostly plant-based diet, strong social ties and a sense of purpose. Someone sells you a supplement — what works is the lifestyle.",
-      "tags": ["longevity", "myths"],
-      "link": "/en/longevity/blue-zones-truth"
-    },
-    {
-      "id": "en-vo2max",
-      "title": "🫀 The most underrated longevity marker isn't cholesterol — it's fitness",
-      "body": "VO2max (your max oxygen uptake) is tied to death risk more strongly than smoking or blood pressure. The good news: it's trainable at any age — regular cardio and intervals raise it within months.",
-      "tags": ["longevity", "vo2max", "cardio"],
-      "link": "/en/longevity/vo2max-and-lifespan"
-    },
-    {
-      "id": "en-intermittent-fasting",
-      "title": "⏱️ Intermittent fasting isn't more magic than a plain calorie deficit",
-      "body": "Studies matched for calories show 16/8 has no fat-loss edge over regular eating. It simply helps some people eat less by narrowing the window. It works as a convenient frame, not as a standalone fat burner.",
-      "tags": ["fasting", "weight", "myths"],
-      "link": "/en/weight/intermittent-fasting"
-    },
-    {
-      "id": "en-cheat-meals",
-      "title": "🍕 One «cheat meal» won't undo a week of deficit",
-      "body": "Gaining fat from a single meal is physically hard: the jump on the scale next morning is water and gut contents, not fat. The risk isn't one meal — it's when it drags a few days of slipping behind it. Plan it, don't punish yourself.",
-      "tags": ["nutrition", "weight", "myths"],
-      "link": "/en/weight/cheat-meals-refeeds"
-    },
-    {
-      "id": "en-salt",
-      "title": "🧂 Salt: the problem isn't the shaker, it's packaged food",
-      "body": "Up to 70–80% of sodium comes not from the salt shaker but from processed food — bread, deli meats, sauces, ready meals. That's why «not adding salt» does little; shifting toward home cooking and whole foods does far more.",
-      "tags": ["salt", "nutrition", "blood_pressure"],
-      "link": "/en/nutrition/salt-how-much-per-day"
-    },
-    {
-      "id": "en-fiber",
-      "title": "🌾 Almost everyone eats half the fibre they should",
-      "body": "The target is around 25–30 g a day; a typical diet delivers 12–15. Yet it's one of the best-evidenced levers for gut health, blood sugar and cholesterol. Add it gradually and drink water, or your gut answers with bloating.",
-      "tags": ["fiber", "gut", "nutrition"],
-      "link": "/en/nutrition/fiber-how-much-you-need"
-    },
-    {
-      "id": "en-zone-2",
-      "title": "🚶 Not all the value of cardio is in a high heart rate",
-      "body": "Easy «zone 2» cardio (you can talk but not sing) builds heart endurance and mitochondria just as well, and it's easier to recover from. Most of your cardio is best done at a low heart rate, not always «all out».",
-      "tags": ["cardio", "heart_rate", "fitness"],
-      "link": "/en/fitness/zone-2-training"
-    },
-    {
-      "id": "en-sunscreen",
-      "title": "🧴 The top anti-ageing product is SPF, not a $100 cream",
-      "body": "Up to 80% of visible skin ageing comes from UV, not from age itself. No serum matches daily sunscreen for evidence. Everything else in a routine only works on top of that foundation.",
-      "tags": ["skin", "spf", "longevity"],
-      "link": "/en/longevity/evidence-based-skincare"
-    },
-    {
-      "id": "en-panic-attacks",
-      "title": "😮‍💨 A panic attack feels terrifying but isn't life-threatening",
-      "body": "The pounding heart, breathlessness and fear of dying are a false alarm from your nervous system, not a heart attack. An attack peaks within minutes and subsides on its own. A slow exhale longer than the inhale helps you ride it out — and frequent attacks are worth discussing with a professional.",
-      "tags": ["anxiety", "panic", "mental_health"],
-      "link": "/en/mental-health/panic-attacks"
-    }
-  ]
+ "_note": "Оригинальные вечнозелёные посты для Telegram. Подмешиваются в ленту (каждый 3-й пост). Каждый: id (уникальный, для трекинга), title (с эмодзи), body (2-3 предложения), tags, link (путь на сайт без домена — цель клика). Правится вручную; порядок = порядок публикации.",
+ "ru": [
+  {
+   "id": "ru-metabolism-frequency",
+   "title": "🧬 Миф: чтобы «разогнать» метаболизм, надо есть часто и маленькими порциями",
+   "body": "Частота приёмов пищи почти не влияет на суточный расход энергии — это показывают контролируемые исследования. Реально двигают обмен мышечная масса, движение и достаточный сон. Ешьте 3 раза или 6 — по удобству и голоду, а не по мифу о «разгоне».",
+   "tags": [
+    "метаболизм",
+    "мифы",
+    "питание"
+   ],
+   "link": "/ru/weight/mify-o-metabolizme"
+  },
+  {
+   "id": "ru-thirst-late-signal",
+   "title": "💧 Жажда — это поздний сигнал, а не ранний",
+   "body": "Когда вы почувствовали жажду, лёгкий дефицит жидкости уже есть. Проверка проще любого правила «8 стаканов» — цвет мочи: светло-соломенный это норма, тёмно-жёлтый значит пора попить. Считать стаканы не нужно.",
+   "tags": [
+    "вода",
+    "гидратация"
+   ],
+   "link": "/ru/tools/water-intake-calculator"
+  },
+  {
+   "id": "ru-stretching-doms",
+   "title": "🤸 Растяжка перед тренировкой не спасает от крепатуры",
+   "body": "Обзоры показывают: статическая растяжка до нагрузки почти не влияет на боль в мышцах на следующий день, а перед силовой ещё и временно снижает силу. От крепатуры помогает не растяжка, а постепенное наращивание нагрузки.",
+   "tags": [
+    "фитнес",
+    "крепатура",
+    "мифы"
+   ],
+   "link": "/ru/fitness/krepatura-posle-trenirovki"
+  },
+  {
+   "id": "ru-eggs-cholesterol",
+   "title": "🥚 Яйца не «забивают сосуды холестерином»",
+   "body": "У большинства людей холестерин из еды слабо влияет на холестерин крови — печень подстраивает собственный синтез. Здоровым взрослым яйцо в день вписывается в рацион без вреда для сердца. Куда важнее общий фон: насыщенные жиры, клетчатка, вес.",
+   "tags": [
+    "питание",
+    "холестерин",
+    "мифы"
+   ],
+   "link": "/ru/nutrition/skolko-yaits-v-den"
+  },
+  {
+   "id": "ru-10000-steps",
+   "title": "👟 10 000 шагов — маркетинг, а не медицинская норма",
+   "body": "Цифра пришла из рекламы японского шагомера 1960-х, а не из исследований. Польза для смертности заметно растёт уже с 4000–7000 шагов и выходит на плато примерно к 8000–10000. Меньше «десятки» — это тоже много пользы.",
+   "tags": [
+    "движение",
+    "шаги",
+    "мифы"
+   ],
+   "link": "/ru/fitness/skolko-shagov-v-den"
+  },
+  {
+   "id": "ru-sleep-8h",
+   "title": "😴 «Спать ровно 8 часов всем» — миф",
+   "body": "Норма взрослого — диапазон 7–9 часов, и внутри него у людей разная потребность. Ориентируйтесь не на цифру, а на самочувствие днём: если вы бодры без будильника по выходным, скорее всего высыпаетесь. Гоняться именно за восьмёркой не нужно.",
+   "tags": [
+    "сон",
+    "мифы"
+   ],
+   "link": "/ru/sleep/skolko-nuzhno-spat"
+  },
+  {
+   "id": "ru-caffeine-cutoff",
+   "title": "☕ Кофе после обеда может испортить ночной сон, даже если вы уснули",
+   "body": "Период полувыведения кофеина 5–6 часов, поэтому чашка в 16:00 к полуночи ещё наполовину «в крови» и снижает глубину сна. Многим стоит ставить точку за 8–10 часов до отбоя. Точный час можно прикинуть по калькулятору.",
+   "tags": [
+    "кофеин",
+    "сон"
+   ],
+   "link": "/ru/tools/caffeine-calculator"
+  },
+  {
+   "id": "ru-juice-sugar",
+   "title": "🧃 «Натуральный» сок — это тоже сахар",
+   "body": "В стакане апельсинового сока примерно столько же сахара, сколько в коле, только без клетчатки, которая тормозит его всасывание. Целый фрукт насыщает лучше и поднимает сахар мягче. Сок — не «полезная» замена воде.",
+   "tags": [
+    "сахар",
+    "питание",
+    "мифы"
+   ],
+   "link": "/ru/nutrition/sahar-skolko-mozhno"
+  },
+  {
+   "id": "ru-immunity-pill",
+   "title": "🛡️ Иммунитет нельзя «поднять» таблеткой",
+   "body": "Иммунитет — не мышца и не батарейка, а сеть из сотен типов клеток; накрутить её добавкой невозможно. Работает скучное: сон, движение, еда, отказ от курения и прививки. «Иммуномодуляторы» и мегадозы витаминов в лучшем случае бесполезны.",
+   "tags": [
+    "иммунитет",
+    "мифы",
+    "добавки"
+   ],
+   "link": "/ru/immunity/kak-ukrepit-immunitet"
+  },
+  {
+   "id": "ru-protein-amount",
+   "title": "🍗 Белка большинству нужно больше, чем кажется",
+   "body": "Минимум «чтобы не заболеть» — 0,8 г на кг веса, но при нагрузках, похудении и после 60 исследования показывают преимущество 1,2–1,6 г на кг, а при силовых — до 2,0. Посчитать свою норму под цель можно за минуту.",
+   "tags": [
+    "белок",
+    "питание"
+   ],
+   "link": "/ru/tools/protein-calculator"
+  },
+  {
+   "id": "ru-vitamin-d-winter",
+   "title": "🌥️ Витамин D — единственная добавка, которую многим и правда стоит обсудить зимой",
+   "body": "С октября по март на широте большей части России солнце почти не даёт витамина D в коже, а из еды его мало. Это одна из немногих добавок с реальными основаниями — но дозу лучше подбирать по анализу, а не «на всякий случай».",
+   "tags": [
+    "витамин_d",
+    "добавки"
+   ],
+   "link": "/ru/supplements/vitamin-d-normy-i-dozirovki"
+  },
+  {
+   "id": "ru-burnout-vacation",
+   "title": "🔥 Отпуск не лечит выгорание",
+   "body": "Отдых надёжно снижает истощение — и так же надёжно всё возвращается через пару недель, если на работе ничего не изменилось. Отпуск это передышка, чтобы что-то поменять, а не само изменение. Где вы сейчас по трём шкалам — можно проверить.",
+   "tags": [
+    "выгорание",
+    "психика"
+   ],
+   "link": "/ru/tools/burnout-test"
+  },
+  {
+   "id": "ru-alcohol-no-safe-dose",
+   "title": "🍷 «Бокал красного полезен для сердца» — устаревший миф",
+   "body": "Крупные свежие обзоры не подтверждают защитного эффекта алкоголя: ранние данные искажались тем, что в «непьющих» попадали бросившие по болезни. Безопасной для здоровья дозы нет — есть допустимый риск, и он тем ниже, чем меньше вы пьёте.",
+   "tags": [
+    "алкоголь",
+    "сердце",
+    "мифы"
+   ],
+   "link": "/ru/longevity/alkogol-i-zdorovie"
+  },
+  {
+   "id": "ru-blue-zones",
+   "title": "🗺️ «Голубые зоны»: секрет долголетия не в ягодах годжи",
+   "body": "В регионах-долгожителях нет чудо-продукта. Общее у них скучное и бесплатное: много бытового движения, растительная основа рациона, крепкие социальные связи и смысл дня. Продают вам добавку — а работает образ жизни.",
+   "tags": [
+    "долголетие",
+    "мифы"
+   ],
+   "link": "/ru/longevity/golubye-zony-pravda"
+  },
+  {
+   "id": "ru-vo2max",
+   "title": "🫀 Самый недооценённый маркер долголетия — не холестерин, а выносливость",
+   "body": "VO2max (максимальное потребление кислорода) связан с риском смерти сильнее, чем курение или давление. Хорошая новость: он тренируем в любом возрасте — регулярное кардио и интервалы поднимают его за месяцы.",
+   "tags": [
+    "долголетие",
+    "vo2max",
+    "кардио"
+   ],
+   "link": "/ru/longevity/vo2max-i-prodolzhitelnost-zhizni"
+  },
+  {
+   "id": "ru-intermittent-fasting",
+   "title": "⏱️ Интервальное голодание не волшебнее обычного дефицита калорий",
+   "body": "Исследования с равной калорийностью показывают: 16/8 не даёт преимущества в жиросжигании перед обычным питанием. Оно просто помогает некоторым есть меньше, ограничив окно. Работает как удобная рамка, а не как отдельный жиросжигатель.",
+   "tags": [
+    "голодание",
+    "вес",
+    "мифы"
+   ],
+   "link": "/ru/weight/intervalnoe-golodanie"
+  },
+  {
+   "id": "ru-cheat-meals",
+   "title": "🍕 Один «читмил» не перечеркнёт неделю дефицита",
+   "body": "Набрать жир за один приём пищи физически трудно: скачок веса наутро — это вода и содержимое кишечника, а не жир. Проблема не в разовом отступлении, а в том, что оно тянет за собой несколько дней срыва. Планируйте, а не наказывайте себя.",
+   "tags": [
+    "питание",
+    "вес",
+    "мифы"
+   ],
+   "link": "/ru/weight/chitmily-i-refidy"
+  },
+  {
+   "id": "ru-salt",
+   "title": "🧂 Соль: проблема не в солонке, а в готовой еде",
+   "body": "До 70–80% натрия мы получаем не из солонки, а из промышленной еды: хлеба, колбас, соусов, полуфабрикатов. Поэтому «не досаливать» помогает мало — куда сильнее работает сдвиг в сторону домашней готовки и цельных продуктов.",
+   "tags": [
+    "соль",
+    "питание",
+    "давление"
+   ],
+   "link": "/ru/nutrition/sol-skolko-v-den"
+  },
+  {
+   "id": "ru-fiber",
+   "title": "🌾 Клетчатки почти все едят вдвое меньше нормы",
+   "body": "Норма — около 25–30 г в день, а типичный рацион даёт 12–15. Между тем это один из самых доказанных факторов здоровья кишечника, сахара и холестерина. Добавляйте постепенно и пейте воду — иначе живот ответит вздутием.",
+   "tags": [
+    "клетчатка",
+    "кишечник",
+    "питание"
+   ],
+   "link": "/ru/nutrition/kletchatka-skolko-nuzhno"
+  },
+  {
+   "id": "ru-zone-2",
+   "title": "🚶 Не вся польза кардио — в высоком пульсе",
+   "body": "Спокойное кардио во «второй зоне» (можете говорить, но не петь) развивает выносливость сердца и митохондрии не хуже, а восстанавливаться после него легче. Большую часть кардио разумно делать именно на низком пульсе, а не всегда «до отказа».",
+   "tags": [
+    "кардио",
+    "пульс",
+    "фитнес"
+   ],
+   "link": "/ru/fitness/zona-2-trenirovki"
+  },
+  {
+   "id": "ru-sunscreen",
+   "title": "🧴 Главный антивозрастной уход — это SPF, а не крем за 10 000",
+   "body": "До 80% видимого старения кожи — от ультрафиолета, а не от возраста. Ни одна сыворотка не сравнится по доказательной базе с ежедневным солнцезащитным кремом. Всё остальное в уходе работает только поверх этой основы.",
+   "tags": [
+    "кожа",
+    "spf",
+    "долголетие"
+   ],
+   "link": "/ru/longevity/dokazatelnyy-uhod-za-kozhey"
+  },
+  {
+   "id": "ru-panic-attacks",
+   "title": "😮‍💨 Паническая атака ужасна на ощупь, но не опасна для жизни",
+   "body": "Сердцебиение, нехватка воздуха и страх смерти — это ложная тревога вегетативной системы, а не инфаркт. Атака достигает пика за минуты и спадает сама. Медленный выдох длиннее вдоха помогает переждать — а частые атаки стоит обсудить со специалистом.",
+   "tags": [
+    "тревога",
+    "паника",
+    "психика"
+   ],
+   "link": "/ru/mental-health/panicheskie-ataki"
+  },
+  {
+   "id": "ru-creatine-proven",
+   "title": "💪 Креатин — не стероид и не вредит почкам",
+   "body": "Это самая изученная спортивная добавка: доказано повышает силу и сухую массу в связке с тренировками. Миф о вреде для почек у здоровых людей не подтверждается — креатин лишь повышает креатинин в анализах, не повреждая почки. Рабочая доза — 3–5 г в день.",
+   "tags": [
+    "креатин",
+    "добавки",
+    "мифы"
+   ],
+   "link": "/ru/reference/creatine"
+  },
+  {
+   "id": "ru-vitamin-c-megadose",
+   "title": "🍊 Витамин C не защищает от простуды",
+   "body": "Регулярный приём чуть сокращает длительность простуды (~8%), но не частоту, а приём уже заболевшим почти бесполезен. Организм насыщается примерно на 200 мг, остальное уходит с мочой — мегадозы это дорогая моча. Норма 75–90 мг легко закрывается едой.",
+   "tags": [
+    "витамин c",
+    "иммунитет",
+    "мифы"
+   ],
+   "link": "/ru/reference/vitamin-c"
+  },
+  {
+   "id": "ru-zinc-excess",
+   "title": "🛡️ «Цинка побольше для иммунитета» — вредный совет",
+   "body": "Постоянные дозы выше 40 мг в день вытесняют медь и со временем ослабляют иммунитет — ровно обратное ожидаемому. Норма 8–11 мг закрывается обычной едой. Интраназальный цинк опасен для обоняния.",
+   "tags": [
+    "цинк",
+    "иммунитет",
+    "мифы"
+   ],
+   "link": "/ru/reference/zinc"
+  },
+  {
+   "id": "ru-calcium-food",
+   "title": "🦴 Кальций: еда лучше таблеток",
+   "body": "Пищевой кальций усваивается хорошо и не связан с рисками, которые обсуждают для добавок. Таблетки имеют смысл только чтобы закрыть разницу до нормы (1000–1200 мг), а не поверх достаточного рациона. Для усвоения нужен витамин D.",
+   "tags": [
+    "кальций",
+    "кости",
+    "добавки"
+   ],
+   "link": "/ru/reference/calcium"
+  },
+  {
+   "id": "ru-coq10-hype",
+   "title": "⚡ Коэнзим Q10 «для энергии» — маркетинг",
+   "body": "У здоровых людей доказательств пользы Q10 «от усталости» и «против старения» нет — организм синтезирует его сам. Реальные (умеренные) данные есть только при сердечной недостаточности как дополнение к лечению. При мышечных болях на статинах эффект не подтверждён.",
+   "tags": [
+    "коэнзим q10",
+    "добавки",
+    "мифы"
+   ],
+   "link": "/ru/reference/coenzyme-q10"
+  },
+  {
+   "id": "ru-phq9-selfcheck",
+   "title": "🧠 Подавленность две недели подряд — не «просто устал»",
+   "body": "Если интерес и настроение снижены почти каждый день две недели и дольше, это повод проверить себя. PHQ-9 — валидированная 2-минутная самопроверка: не диагноз, но понятный сигнал, когда стоит обратиться к врачу.",
+   "tags": [
+    "депрессия",
+    "ментальное здоровье",
+    "тест"
+   ],
+   "link": "/ru/tools/phq-9-depression-test"
+  },
+  {
+   "id": "ru-gad7-anxiety",
+   "title": "😮‍💨 Тревога, которая мешает жить, — измерима",
+   "body": "Постоянное беспокойство, которое трудно контролировать, бьёт по сну и работе. GAD-7 — короткий валидированный опросник: помогает понять уровень тревоги и нужна ли помощь. Это ориентир, а не диагноз.",
+   "tags": [
+    "тревога",
+    "ментальное здоровье",
+    "тест"
+   ],
+   "link": "/ru/tools/gad-7-anxiety-test"
+  },
+  {
+   "id": "ru-bioage-habits",
+   "title": "⏳ Биологический возраст двигают привычки, а не гены",
+   "body": "Курение, движение, вес, сон, давление и алкоголь влияют на срок жизни сильнее генетики — разницу между худшим и лучшим сценарием считают годами. Прикиньте свой биологический возраст за 2 минуты.",
+   "tags": [
+    "долголетие",
+    "биовозраст",
+    "профилактика"
+   ],
+   "link": "/ru/tools/biological-age-calculator"
+  },
+  {
+   "id": "ru-findrisc-diabetes",
+   "title": "🩸 Риск диабета 2 типа во многом предсказуем",
+   "body": "Возраст, окружность талии, вес, давление и активность складываются в оценку риска. FINDRISC — валидированный опросник без анализов: показывает, пора ли проверить сахар. Раннее выявление меняет исход.",
+   "tags": [
+    "диабет",
+    "профилактика",
+    "тест"
+   ],
+   "link": "/ru/tools/findrisc-calculator"
+  },
+  {
+   "id": "ru-insulin-resistance",
+   "title": "📉 Инсулинорезистентность — задолго до диабета",
+   "body": "Клетки хуже отвечают на инсулин за годы до того, как сахар выйдет за норму. Хорошая новость: она обратима — вес, движение и сон влияют сильнее любых добавок. Разбираем признаки и что делать.",
+   "tags": [
+    "инсулинорезистентность",
+    "вес",
+    "метаболизм"
+   ],
+   "link": "/ru/weight/insulinorezistentnost"
+  }
+ ],
+ "en": [
+  {
+   "id": "en-metabolism-frequency",
+   "title": "🧬 Myth: eating small, frequent meals «boosts» your metabolism",
+   "body": "Meal frequency barely changes your daily energy expenditure — controlled studies are clear on this. What actually moves your metabolism is muscle mass, movement and enough sleep. Eat 3 meals or 6 by preference and hunger, not by a myth.",
+   "tags": [
+    "metabolism",
+    "myths",
+    "nutrition"
+   ],
+   "link": "/en/weight/metabolism-myths"
+  },
+  {
+   "id": "en-thirst-late-signal",
+   "title": "💧 Thirst is a late signal, not an early one",
+   "body": "By the time you feel thirsty you're already mildly low on fluids. A check that beats any «8 glasses» rule — urine colour: pale straw is fine, dark yellow means drink up. No need to count glasses.",
+   "tags": [
+    "hydration",
+    "water"
+   ],
+   "link": "/en/tools/water-intake-calculator"
+  },
+  {
+   "id": "en-stretching-doms",
+   "title": "🤸 Stretching before a workout won't spare you soreness",
+   "body": "Reviews show static stretching before exercise barely affects next-day muscle soreness — and before lifting it temporarily lowers strength. What prevents soreness isn't stretching but building load gradually.",
+   "tags": [
+    "fitness",
+    "soreness",
+    "myths"
+   ],
+   "link": "/en/fitness/muscle-soreness-doms"
+  },
+  {
+   "id": "en-eggs-cholesterol",
+   "title": "🥚 Eggs don't «clog your arteries with cholesterol»",
+   "body": "For most people, dietary cholesterol has little effect on blood cholesterol — the liver adjusts its own output. For healthy adults an egg a day fits a normal diet without harming the heart. The bigger levers are saturated fat, fibre and weight.",
+   "tags": [
+    "nutrition",
+    "cholesterol",
+    "myths"
+   ],
+   "link": "/en/nutrition/eggs-per-day"
+  },
+  {
+   "id": "en-10000-steps",
+   "title": "👟 10,000 steps is marketing, not a medical target",
+   "body": "The number came from a 1960s Japanese pedometer ad, not research. Mortality benefit rises steeply from just 4,000–7,000 steps and largely plateaus around 8,000–10,000. Under «10k» is still a lot of benefit.",
+   "tags": [
+    "movement",
+    "steps",
+    "myths"
+   ],
+   "link": "/en/fitness/how-many-steps-per-day"
+  },
+  {
+   "id": "en-sleep-8h",
+   "title": "😴 «Everyone needs exactly 8 hours» is a myth",
+   "body": "The adult range is 7–9 hours, and need varies within it. Judge by how you feel in the day, not by a number: if you wake refreshed without an alarm on days off, you're probably getting enough. Chasing exactly eight isn't the point.",
+   "tags": [
+    "sleep",
+    "myths"
+   ],
+   "link": "/en/sleep/how-much-sleep-do-you-need"
+  },
+  {
+   "id": "en-caffeine-cutoff",
+   "title": "☕ Afternoon coffee can wreck your sleep even if you fall asleep fine",
+   "body": "Caffeine's half-life is 5–6 hours, so a 4 pm cup is still half «in your system» at midnight, cutting deep sleep. Many people should stop 8–10 hours before bed. You can estimate your own cut-off time with the calculator.",
+   "tags": [
+    "caffeine",
+    "sleep"
+   ],
+   "link": "/en/tools/caffeine-calculator"
+  },
+  {
+   "id": "en-juice-sugar",
+   "title": "🧃 «Natural» juice is still sugar",
+   "body": "A glass of orange juice holds about as much sugar as cola, just without the fibre that slows its absorption. Whole fruit fills you up better and raises blood sugar more gently. Juice isn't a «healthy» swap for water.",
+   "tags": [
+    "sugar",
+    "nutrition",
+    "myths"
+   ],
+   "link": "/en/nutrition/how-much-sugar-per-day"
+  },
+  {
+   "id": "en-immunity-pill",
+   "title": "🛡️ You can't «boost» immunity with a pill",
+   "body": "Immunity isn't a muscle or a battery — it's a network of hundreds of cell types, and no supplement cranks it up. What works is boring: sleep, movement, food, not smoking, vaccines. «Immune boosters» and vitamin megadoses are useless at best.",
+   "tags": [
+    "immunity",
+    "myths",
+    "supplements"
+   ],
+   "link": "/en/immunity/how-to-boost-immunity"
+  },
+  {
+   "id": "en-protein-amount",
+   "title": "🍗 Most people need more protein than they think",
+   "body": "The «don't get sick» minimum is 0.8 g per kg, but with training, weight loss and past 60 the evidence favours 1.2–1.6 g per kg, and up to 2.0 with strength work. You can work out your own target for your goal in a minute.",
+   "tags": [
+    "protein",
+    "nutrition"
+   ],
+   "link": "/en/tools/protein-calculator"
+  },
+  {
+   "id": "en-vitamin-d-winter",
+   "title": "🌥️ Vitamin D is one of the few supplements genuinely worth considering in winter",
+   "body": "From autumn to spring at higher latitudes the sun is too weak to make vitamin D in your skin, and food supplies little. It's one of the few supplements with a real case — but dose it by a blood test, not «just in case».",
+   "tags": [
+    "vitamin_d",
+    "supplements"
+   ],
+   "link": "/en/supplements/vitamin-d-dosage"
+  },
+  {
+   "id": "en-burnout-vacation",
+   "title": "🔥 A holiday doesn't fix burnout",
+   "body": "Time off reliably lowers exhaustion — and it reliably comes back within weeks if nothing about the job changed. A holiday is breathing room to change something, not the change itself. You can check where you sit across the three dimensions.",
+   "tags": [
+    "burnout",
+    "mental_health"
+   ],
+   "link": "/en/tools/burnout-test"
+  },
+  {
+   "id": "en-alcohol-no-safe-dose",
+   "title": "🍷 «A glass of red is good for your heart» is an outdated myth",
+   "body": "Large recent reviews find no protective effect of alcohol: earlier data was skewed because «non-drinkers» included people who quit due to illness. There's no safe-for-health dose — only a level of risk, and it's lower the less you drink.",
+   "tags": [
+    "alcohol",
+    "heart",
+    "myths"
+   ],
+   "link": "/en/longevity/alcohol-and-health"
+  },
+  {
+   "id": "en-blue-zones",
+   "title": "🗺️ Blue Zones: the longevity secret isn't a superfood",
+   "body": "The world's longest-lived regions share no magic ingredient. What they have is boring and free: lots of incidental movement, a mostly plant-based diet, strong social ties and a sense of purpose. Someone sells you a supplement — what works is the lifestyle.",
+   "tags": [
+    "longevity",
+    "myths"
+   ],
+   "link": "/en/longevity/blue-zones-truth"
+  },
+  {
+   "id": "en-vo2max",
+   "title": "🫀 The most underrated longevity marker isn't cholesterol — it's fitness",
+   "body": "VO2max (your max oxygen uptake) is tied to death risk more strongly than smoking or blood pressure. The good news: it's trainable at any age — regular cardio and intervals raise it within months.",
+   "tags": [
+    "longevity",
+    "vo2max",
+    "cardio"
+   ],
+   "link": "/en/longevity/vo2max-and-lifespan"
+  },
+  {
+   "id": "en-intermittent-fasting",
+   "title": "⏱️ Intermittent fasting isn't more magic than a plain calorie deficit",
+   "body": "Studies matched for calories show 16/8 has no fat-loss edge over regular eating. It simply helps some people eat less by narrowing the window. It works as a convenient frame, not as a standalone fat burner.",
+   "tags": [
+    "fasting",
+    "weight",
+    "myths"
+   ],
+   "link": "/en/weight/intermittent-fasting"
+  },
+  {
+   "id": "en-cheat-meals",
+   "title": "🍕 One «cheat meal» won't undo a week of deficit",
+   "body": "Gaining fat from a single meal is physically hard: the jump on the scale next morning is water and gut contents, not fat. The risk isn't one meal — it's when it drags a few days of slipping behind it. Plan it, don't punish yourself.",
+   "tags": [
+    "nutrition",
+    "weight",
+    "myths"
+   ],
+   "link": "/en/weight/cheat-meals-refeeds"
+  },
+  {
+   "id": "en-salt",
+   "title": "🧂 Salt: the problem isn't the shaker, it's packaged food",
+   "body": "Up to 70–80% of sodium comes not from the salt shaker but from processed food — bread, deli meats, sauces, ready meals. That's why «not adding salt» does little; shifting toward home cooking and whole foods does far more.",
+   "tags": [
+    "salt",
+    "nutrition",
+    "blood_pressure"
+   ],
+   "link": "/en/nutrition/salt-how-much-per-day"
+  },
+  {
+   "id": "en-fiber",
+   "title": "🌾 Almost everyone eats half the fibre they should",
+   "body": "The target is around 25–30 g a day; a typical diet delivers 12–15. Yet it's one of the best-evidenced levers for gut health, blood sugar and cholesterol. Add it gradually and drink water, or your gut answers with bloating.",
+   "tags": [
+    "fiber",
+    "gut",
+    "nutrition"
+   ],
+   "link": "/en/nutrition/fiber-how-much-you-need"
+  },
+  {
+   "id": "en-zone-2",
+   "title": "🚶 Not all the value of cardio is in a high heart rate",
+   "body": "Easy «zone 2» cardio (you can talk but not sing) builds heart endurance and mitochondria just as well, and it's easier to recover from. Most of your cardio is best done at a low heart rate, not always «all out».",
+   "tags": [
+    "cardio",
+    "heart_rate",
+    "fitness"
+   ],
+   "link": "/en/fitness/zone-2-training"
+  },
+  {
+   "id": "en-sunscreen",
+   "title": "🧴 The top anti-ageing product is SPF, not a $100 cream",
+   "body": "Up to 80% of visible skin ageing comes from UV, not from age itself. No serum matches daily sunscreen for evidence. Everything else in a routine only works on top of that foundation.",
+   "tags": [
+    "skin",
+    "spf",
+    "longevity"
+   ],
+   "link": "/en/longevity/evidence-based-skincare"
+  },
+  {
+   "id": "en-panic-attacks",
+   "title": "😮‍💨 A panic attack feels terrifying but isn't life-threatening",
+   "body": "The pounding heart, breathlessness and fear of dying are a false alarm from your nervous system, not a heart attack. An attack peaks within minutes and subsides on its own. A slow exhale longer than the inhale helps you ride it out — and frequent attacks are worth discussing with a professional.",
+   "tags": [
+    "anxiety",
+    "panic",
+    "mental_health"
+   ],
+   "link": "/en/mental-health/panic-attacks"
+  },
+  {
+   "id": "en-creatine-proven",
+   "title": "💪 Creatine isn't a steroid and doesn't harm your kidneys",
+   "body": "It's the most-researched sports supplement: proven to raise strength and lean mass alongside training. The kidney myth doesn't hold in healthy people — creatine only raises creatinine on lab tests without damaging the kidneys. The working dose is 3–5 g a day.",
+   "tags": [
+    "creatine",
+    "supplements",
+    "myths"
+   ],
+   "link": "/en/reference/creatine"
+  },
+  {
+   "id": "en-vitamin-c-megadose",
+   "title": "🍊 Vitamin C doesn't prevent colds",
+   "body": "Taken regularly it slightly shortens a cold (~8%) but doesn't reduce how often you get one, and starting it once ill does almost nothing. The body saturates around 200 mg and excretes the rest — megadoses are expensive urine. 75–90 mg is easily met from food.",
+   "tags": [
+    "vitamin c",
+    "immunity",
+    "myths"
+   ],
+   "link": "/en/reference/vitamin-c"
+  },
+  {
+   "id": "en-zinc-excess",
+   "title": "🛡️ 'More zinc for immunity' backfires",
+   "body": "Chronic doses above 40 mg a day displace copper and eventually weaken immunity — the opposite of what's intended. The 8–11 mg requirement is met from food. Intranasal zinc can damage your sense of smell.",
+   "tags": [
+    "zinc",
+    "immunity",
+    "myths"
+   ],
+   "link": "/en/reference/zinc"
+  },
+  {
+   "id": "en-calcium-food",
+   "title": "🦴 Calcium: food beats pills",
+   "body": "Dietary calcium is well absorbed and isn't tied to the risks debated for supplements. Pills only make sense to fill the gap to the 1000–1200 mg requirement, not on top of an adequate diet. Vitamin D is needed to absorb it.",
+   "tags": [
+    "calcium",
+    "bones",
+    "supplements"
+   ],
+   "link": "/en/reference/calcium"
+  },
+  {
+   "id": "en-coq10-hype",
+   "title": "⚡ CoQ10 'for energy' is marketing",
+   "body": "In healthy people there's no evidence Q10 helps with fatigue or ageing — the body makes its own. The only real (moderate) evidence is as an add-on in heart failure. For statin muscle pain the effect is unproven.",
+   "tags": [
+    "coenzyme q10",
+    "supplements",
+    "myths"
+   ],
+   "link": "/en/reference/coenzyme-q10"
+  },
+  {
+   "id": "en-phq9-selfcheck",
+   "title": "🧠 Two weeks of low mood isn't 'just tired'",
+   "body": "If your interest and mood are down nearly every day for two weeks or more, it's worth checking. PHQ-9 is a validated 2-minute self-check — not a diagnosis, but a clear signal of when to talk to a doctor.",
+   "tags": [
+    "depression",
+    "mental health",
+    "test"
+   ],
+   "link": "/en/tools/phq-9-depression-test"
+  },
+  {
+   "id": "en-gad7-anxiety",
+   "title": "😮‍💨 Anxiety that gets in the way is measurable",
+   "body": "Constant worry you can't control hits your sleep and work. GAD-7 is a short validated questionnaire that helps gauge your anxiety level and whether to seek help. It's a guide, not a diagnosis.",
+   "tags": [
+    "anxiety",
+    "mental health",
+    "test"
+   ],
+   "link": "/en/tools/gad-7-anxiety-test"
+  },
+  {
+   "id": "en-bioage-habits",
+   "title": "⏳ Biological age is driven by habits, not genes",
+   "body": "Smoking, movement, weight, sleep, blood pressure and alcohol affect lifespan more than genetics — the gap between the worst and best scenario is measured in years. Estimate your biological age in 2 minutes.",
+   "tags": [
+    "longevity",
+    "biological age",
+    "prevention"
+   ],
+   "link": "/en/tools/biological-age-calculator"
+  },
+  {
+   "id": "en-findrisc-diabetes",
+   "title": "🩸 Type 2 diabetes risk is largely predictable",
+   "body": "Age, waist, weight, blood pressure and activity add up to a risk score. FINDRISC is a validated questionnaire — no blood test — that shows whether it's time to check your blood sugar. Early detection changes the outcome.",
+   "tags": [
+    "diabetes",
+    "prevention",
+    "test"
+   ],
+   "link": "/en/tools/findrisc-calculator"
+  },
+  {
+   "id": "en-insulin-resistance",
+   "title": "📉 Insulin resistance comes years before diabetes",
+   "body": "Cells respond worse to insulin long before blood sugar leaves the normal range. The good news: it's reversible — weight, movement and sleep matter more than any supplement. The signs, and what to do.",
+   "tags": [
+    "insulin resistance",
+    "weight",
+    "metabolism"
+   ],
+   "link": "/en/weight/insulin-resistance"
+  }
+ ]
 }
