@@ -1,224 +1,163 @@
-<title>Дорожная карта 24zdorovie</title>
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>24zdorovie — дорожная карта</title>
+<meta name="description" content="Дорожная карта проекта 24zdorovie: очередь работ, сделанное, идеи и монетизация.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  /* Layout: одна колонка, липкий заголовок, сетка плиток статуса, затем разделы-карточки.
-     Токены — фирменные цвета 24zdorovie (зелёный leaf + бумага), шрифт Manrope. */
-  :root {
-    --bg: #fbfaf6;
-    --surface: #ffffff;
-    --surface-2: #f2f1ea;
-    --line: #e4e2d8;
-    --ink: #14201a;
-    --ink-soft: #4d5c54;
-    --ink-faint: #8a938c;
-    --brand: #1fa268;
-    --brand-strong: #17784d;
-    --brand-tint: #e6f4ec;
-    --amber: #a9731810;
-    --warn: #b8790a;
-    --owner: #1f7fa2;
-    --shadow: 0 1px 2px rgba(20,32,26,.05), 0 6px 20px rgba(20,32,26,.04);
-    --font: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #0e1512; --surface: #16201b; --surface-2: #1c2822; --line: #2a3830;
-      --ink: #eaf0ec; --ink-soft: #a9b6ad; --ink-faint: #7d8a82;
-      --brand: #45c98c; --brand-strong: #7fe0ae; --brand-tint: #17352690;
-      --warn: #e0a94a; --owner: #5cb6d6;
-      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.25);
-      color-scheme: dark;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #0e1512; --surface: #16201b; --surface-2: #1c2822; --line: #2a3830;
-    --ink: #eaf0ec; --ink-soft: #a9b6ad; --ink-faint: #7d8a82;
-    --brand: #45c98c; --brand-strong: #7fe0ae; --brand-tint: #17352690;
-    --warn: #e0a94a; --owner: #5cb6d6;
-    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.25);
-    color-scheme: dark;
-  }
-
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--bg); color: var(--ink);
-    font-family: var(--font); line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-    font-variant-numeric: tabular-nums;
-  }
-  .wrap { max-width: 900px; margin: 0 auto; padding-inline: 20px; padding-block: 0 56px; }
-
-  header {
-    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
-    background: color-mix(in oklab, var(--bg) 88%, transparent);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--line);
-  }
-  .head-in { max-width: 900px; margin: 0 auto; padding: 16px 20px;
-    display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-  h1 { font-size: 1.4rem; font-weight: 800; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
-  .logo-dot { display: inline-block; width: 12px; height: 12px; border-radius: 4px;
-    background: var(--brand); margin-right: 8px; vertical-align: middle; }
-  .updated { font-size: .8rem; color: var(--ink-faint); white-space: nowrap; }
-
-  .lead { color: var(--ink-soft); font-size: .95rem; margin: 22px 0 4px; }
-  .lead code { background: var(--surface-2); padding: 1px 6px; border-radius: 6px; font-size: .85em; }
-
-  /* плитки статуса */
-  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin: 22px 0 8px; }
-  .tile { background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
-    padding: 14px 16px; box-shadow: var(--shadow); min-width: 0; }
-  .tile .n { font-size: 1.7rem; font-weight: 800; line-height: 1.1; color: var(--brand-strong); }
-  .tile .l { font-size: .78rem; color: var(--ink-faint); margin-top: 3px; text-transform: uppercase; letter-spacing: .04em; }
-
-  section { margin-top: 34px; }
-  h2 { font-size: 1.05rem; font-weight: 800; margin: 0 0 12px; display: flex; align-items: center; gap: 8px; }
-  h2 .rule { flex: 1; height: 1px; background: var(--line); }
-
-  ol.plan { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: run; }
-  ol.plan > li { background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
-    padding: 13px 15px 13px 48px; position: relative; box-shadow: var(--shadow); min-width: 0; }
-  ol.plan > li::before { counter-increment: run; content: counter(run);
-    position: absolute; left: 12px; top: 12px; width: 26px; height: 26px; border-radius: 8px;
-    background: var(--brand-tint); color: var(--brand-strong); font-weight: 800; font-size: .85rem;
-    display: grid; place-items: center; }
-  .t { font-weight: 700; }
-  .d { color: var(--ink-soft); font-size: .9rem; margin-top: 3px; }
-
-  ul.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
-  ul.list > li { background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
-    padding: 11px 14px; font-size: .92rem; box-shadow: var(--shadow); min-width: 0; }
-  ul.list.done > li { border-left: 3px solid var(--brand); }
-  ul.list.ideas > li { border-left: 3px solid var(--warn); }
-  ul.list.owner > li { border-left: 3px solid var(--owner); }
-  ul.list b { font-weight: 700; }
-  .muted { color: var(--ink-soft); }
-
-  .pill { display: inline-block; font-size: .72rem; font-weight: 700; padding: 2px 8px; border-radius: 999px;
-    vertical-align: middle; }
-  .pill.q { background: var(--surface-2); color: var(--ink-soft); }
-  .pill.owner { background: color-mix(in oklab, var(--owner) 18%, transparent); color: var(--owner); }
-
-  .bg-note { background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px;
-    padding: 14px 16px; font-size: .9rem; color: var(--ink-soft); }
-  .bg-note b { color: var(--ink); }
-
-  footer { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line);
-    font-size: .82rem; color: var(--ink-faint); }
-  footer code { background: var(--surface-2); padding: 1px 6px; border-radius: 6px; }
-  a { color: var(--brand-strong); }
+/* Графит: холодный нейтраль, IBM Plex, один акцент под сайт.
+   Светлая + тёмная тема. Одна читаемая колонка ≤860px. */
+:root{
+  --bg:#fbfbfc; --surface:#f4f5f8; --surface2:#eceef3;
+  --ink:#1b1e26; --muted:#6a6f7d; --line:#e6e8ee; --line2:#d6d9e2;
+  --accent:#3f8f63; --accent-soft:color-mix(in srgb,var(--accent) 10%,transparent);
+  --good:#3f8f63; --warn:#9c7620; --bad:#b5494a;
+  --font-display:'IBM Plex Mono',ui-monospace,monospace;
+  --font-body:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#14161b; --surface:#1b1e25; --surface2:#222630;
+  --ink:#e7e9ef; --muted:#959bab; --line:#282c35; --line2:#353a45;
+  --accent:#79c89b; /* ← тёмный вариант акцента, светлее основного */
+  --good:#6bbd8e; --warn:#d7ab5c; --bad:#e08383; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#14161b; --surface:#1b1e25; --surface2:#222630;
+  --ink:#e7e9ef; --muted:#959bab; --line:#282c35; --line2:#353a45;
+  --accent:#79c89b; /* ← тот же тёмный вариант акцента */
+  --good:#6bbd8e; --warn:#d7ab5c; --bad:#e08383; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);
+  font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;
+  font-variant-numeric:tabular-nums}
+.wrap{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+.kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);font-weight:500}
+h1{margin:10px 0 0;font-family:var(--font-display);font-weight:600;
+  font-size:clamp(32px,6vw,46px);line-height:1.05;letter-spacing:-.01em;text-wrap:balance}
+.sub{color:var(--muted);font-size:16px;max-width:60ch;margin:10px 0 0}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:32px 0 40px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
+.tile .n{font-family:var(--font-mono);font-weight:600;font-size:27px;line-height:1;letter-spacing:-.02em}
+.tile .n.accent{color:var(--accent)}
+.tile .c{display:block;margin-top:8px;font-size:13px;color:var(--muted);line-height:1.35}
+section{margin-bottom:38px}
+.s-head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;
+  padding-bottom:9px;border-bottom:1px solid var(--line)}
+.s-head h2{margin:0;font-family:var(--font-display);font-weight:600;font-size:21px;letter-spacing:-.01em}
+.s-head .count{font-family:var(--font-mono);font-size:13px;color:var(--muted)}
+.q{display:grid;grid-template-columns:34px 1fr;gap:14px;padding:14px 4px;border-bottom:1px solid var(--line)}
+.q:last-child{border-bottom:none}
+.q .idx{font-family:var(--font-mono);font-weight:600;font-size:15px;color:var(--accent);padding-top:2px}
+.q .t{font-weight:600;font-size:17px}
+.q .d{color:var(--muted);font-size:15.5px;margin-top:3px}
+.q .tag{display:inline-block;margin-top:8px;font-family:var(--font-mono);font-size:11px;
+  letter-spacing:.04em;text-transform:uppercase;color:var(--accent);
+  background:var(--accent-soft);padding:3px 8px;border-radius:6px}
+.done,.ideas{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.done li,.ideas li{display:grid;grid-template-columns:22px 1fr;gap:12px;font-size:16.5px}
+.done .mk{color:var(--good);font-weight:700;font-family:var(--font-mono)}
+.ideas .bx{width:15px;height:15px;border:1.5px solid var(--line2);border-radius:4px;margin-top:5px}
+.note{color:var(--muted);font-size:14.5px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+table{width:100%;border-collapse:collapse;font-size:15.5px;min-width:380px}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:none}
+th{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;background:var(--surface)}
+.st{font-family:var(--font-mono);font-size:12px;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.st.on{color:var(--good);background:color-mix(in srgb,var(--good) 14%,transparent)}
+.st.wait{color:var(--warn);background:color-mix(in srgb,var(--warn) 16%,transparent)}
+.st.soon{color:var(--muted);background:var(--surface2)}
+td.num{font-family:var(--font-mono);text-align:right}
+footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media(max-width:620px){body{font-size:17px}.tiles{grid-template-columns:repeat(2,1fr)}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
-
-<header>
-  <div class="head-in">
-    <h1><span class="logo-dot"></span>Дорожная карта 24zdorovie</h1>
-    <span class="updated">обновлено 08.10.2026</span>
-  </div>
-</header>
-
+</head>
+<body>
 <div class="wrap">
-  <p class="lead">
-    Живой статус проекта: очередь работ, сделанное и копилка идей. Источник правды —
-    <code>docs/WEEK-PLAN.md</code> в репозитории; эта страница — витрина поверх него.
-    Стадия: домен молодой, потолок — авторитет/позиции и монетизация в рамках ограничений
-    (органика, статик, приём денег через ИП КГ, курс на повторный AdSense).
-  </p>
+  <header>
+    <span class="kicker">Дорожная карта · обновлено 9 октября 2026</span>
+    <h1>24zdorovie</h1>
+    <p class="sub">Доказательный сайт о здоровье, питании и ЗОЖ (RU/EN): статьи, калькуляторы и справочник. Эта страница — живой статус работ.</p>
+  </header>
 
   <div class="tiles">
-    <div class="tile"><div class="n">1</div><div class="l">в очереди (по данным)</div></div>
-    <div class="tile"><div class="n">25</div><div class="l">калькуляторов</div></div>
-    <div class="tile"><div class="n">130+</div><div class="l">статьи ×2 языка</div></div>
-    <div class="tile"><div class="n">14</div><div class="l">сайта в кросс-промо</div></div>
-    <div class="tile"><div class="n">7</div><div class="l">решений за владельцем</div></div>
-    <div class="tile"><div class="n">9</div><div class="l">идей в копилке</div></div>
+    <div class="tile"><span class="n">~300</span><span class="c">визитов за 30 дней</span></div>
+    <div class="tile"><span class="n">268<span style="color:var(--muted)">/537</span></span><span class="c">страниц в индексе</span></div>
+    <div class="tile"><span class="n accent">3</span><span class="c">задач в очереди</span></div>
+    <div class="tile"><span class="n">3</span><span class="c">кликов из поиска (28д)</span></div>
   </div>
 
   <section>
-    <h2>Очередь работ <span class="rule"></span></h2>
-    <ol class="plan">
-      <li><span class="t">Новая статья RU+EN — по мере появления контент-пробела</span> <span class="pill q">по готовности</span>
-        <div class="d">План из 11 запусков закрыт. Разбор данных 06–08.10 показал: узкое место сейчас не новый контент, а CTR/индексация уже существующих страниц (их докручиваем по данным). Полноценную новую статью пишем, когда в срезе проявится явный спрос без нашего ответа.</div></li>
-    </ol>
+    <div class="s-head"><h2>Очередь</h2><span class="count">по приоритету · 3</span></div>
+    <div class="q"><span class="idx">01</span><div>
+      <div class="t">Написать статью «Депрессия: признаки и что помогает» (RU+EN)</div>
+      <div class="d">Отдельной статьи нет — станет домом для теста PHQ-9; mental-health — кластер высокого спроса.</div>
+      <span class="tag">контент</span></div></div>
+    <div class="q"><span class="idx">02</span><div>
+      <div class="t">Докручивать CTR существующих страниц по дельте GSC</div>
+      <div class="d">Ранжируемся на поз. 5–11 с ~0 кликов; title/description/перелинковка под проявившиеся запросы, не вслепую.</div>
+      <span class="tag">трафик</span></div></div>
+    <div class="q"><span class="idx">03</span><div>
+      <div class="t">Расширять справочник /reference по пробелам</div>
+      <div class="d">Добавки без своих лонгридов; оценить отдачу пилота (5 карточек) перед масштабированием.</div>
+      <span class="tag">контент</span></div></div>
   </section>
 
   <section>
-    <h2>Фон каждого запуска <span class="rule"></span></h2>
-    <div class="bg-note">
-      <b>GSC</b> — следующая десятка из <code>research/gsc-queue.md</code> (вручную, ~10/сутки). ·
-      <b>Быстрые победы</b> — докрутка title/ReadAlso по проявившимся запросам (поз. ~6–15, 0 кликов). ·
-      <b>Edge-здоровье</b> — <code>npm run traffic</code> (наши 404 / спайк 5xx). ·
-      <b>Telegram</b> — автопостинг сам. · <b>Деплой</b> — <code>npm run deploy</code>, перед ним зелёный build.
-    </div>
-  </section>
-
-  <section>
-    <h2>✅ Сделано (13 сентября – 5 октября) <span class="rule"></span></h2>
-    <ul class="list done">
-      <li><b>Инфраструктура:</b> IndexNow в Pages-деплое; миграция на Cloudflare Pages завершена.</li>
-      <li><b>Контент под спрос:</b> инсулинорезистентность (RU+EN); докрутка SCORE2-калькулятора (worked examples).</li>
-      <li><b>Новый инструмент:</b> FINDRISC — риск диабета 2 типа (RU+EN).</li>
-      <li><b>CTR-докрутка:</b> biological-age («Yale») и burnout («questionnaire») под спрос.</li>
-      <li><b>Быстрые победы:</b> кофеин, витамин D, сон, EN-ИМТ (перелинковка/title).</li>
-      <li><b>Поддержка:</b> страница <code>/support</code> (крипто-донат + беклинк-блок) и плавашка «Связь и поддержка».</li>
-      <li><b>Полиш:</b> фирменная OG главной; фикс мобильного горизонтального скролла; фикс i18n ReadAlso (EN).</li>
-      <li><b>Бег и стопы:</b> 3 статьи RU+EN (кроссовки, колени, плантарный фасциит) + баннер Crocs (EN).</li>
-      <li><b>anti-age pillar</b> (RU+EN) — дом под оффер Beautiful People.</li>
-      <li><b>Кросс-промо:</b> вся семья сети (14 сайтов) в house-ads.</li>
-      <li><b>Разбор:</b> конкурентный анализ RU/EN + монетизация; аудит контактов.</li>
-      <li><b>PHQ-9</b> — тест на депрессию (RU+EN) с safety-обработкой пункта про самоповреждение <span class="muted">· 29.09</span></li>
-      <li><b>GAD-7</b> — тест на тревожность (RU+EN), взаимная перелинковка с PHQ-9 <span class="muted">· 29.09</span></li>
-      <li><b>E-E-A-T:</b> подпись автора → ссылка на редполитику, раздел «Экспертам»; YMYL-схема уже была <span class="muted">· 01.10</span></li>
-      <li><b>Аналитика событий</b> (GA4 + Метрика): affiliate_click, tool_view, share, donate_copy, support_fab, internal_link <span class="muted">· 01.10</span></li>
-      <li><b>Биовозраст:</b> блок «Что дальше» в результате — внутренние ссылки под соцтрафик, меньше отказов <span class="muted">· 02.10</span></li>
-      <li><b>Schema ItemList</b> на архиве статей и пагинации (по schema-аудиту) <span class="muted">· 03.10</span></li>
-      <li><b>Email-рассылка готова полностью:</b> форма MailerLite (главная/статьи/инструменты/футер) + PDF-магнит + welcome-письмо с чек-листом — цикл подписки работает сам <span class="muted">· 06.10</span></li>
-      <li><b>PDF-лид-магнит:</b> «Что реально снижает биологический возраст» (RU+EN, 8 привычек с источниками) — генератор в сборке, файлы в проде, оффер над формой <span class="muted">· 05.10</span></li>
-      <li><b>Контекстные ссылки на сеть:</b> 2 do-follow из «Гигиены сна» на ДомЭксперт (карниз/шторы, акустические панели); calclumen отменён как конкурент <span class="muted">· 05.10</span></li>
-      <li><b>SEO-победа (EN):</b> BMI-калькулятор — «free online BMI test» в description; перелинковка калькуляторов BMI и пульсовых зон из двух топ-10 статей <span class="muted">· 05.10</span></li>
-      <li><b>Справочник /reference (пилот готов):</b> раздел + 5 карточек RU+EN — Креатин, Витамин C, Цинк, Кальций, Коэнзим Q10 (по пробелам, без каннибализации лонгридов); schema DietarySupplement, источники, FAQ <span class="muted">· 05.10</span></li>
-      <li><b>SEO по свежим данным:</b> открыт доступ к срезу GSC/GA4/Bing; EN sleep-калькулятор → «for Women & Men» в title + раздел (крупнейший источник показов, был 0% CTR); RU овуляция → «рассчитать онлайн»; IndexNow пингнут <span class="muted">· 06.10</span></li>
-      <li><b>Индексация:</b> 4 EN-сироты (0 входящих → «URL неизвестен Google») получили контекстные ссылки с обходимых страниц + IndexNow + очередь GSC <span class="muted">· 06.10</span></li>
-      <li><b>Admitad API подключён:</b> аудит 17 подключённых программ (статусы, deeplink+erid программно, без скриншотов); размещён Beautiful People в anti-age pillar; подтверждено, что остальные активные с фитом уже стоят <span class="muted">· 07.10</span></li>
-      <li><b>Комплаенс маркировки (через API):</b> поставлен BABOR (уход за кожей) + исправлен его ИНН; добавлены юрлица+ИНН в маркировку Сбера и Польза; сверка — остальные ИНН совпали с ОРД <span class="muted">· 07.10</span></li>
-      <li><b>SEO trailing-slash:</b> диагностика — на нашей стороне всё верно (308, самоссылочный canonical, sitemap и внутренние ссылки со слэшем); легаси-canonical Google с GoDaddy, пнут переобход (IndexNow + очередь GSC) <span class="muted">· 07.10</span></li>
-      <li><b>Аудит индексации (331/525 без показов):</b> проблема НЕ структурная — сирот нет (мин. 5 входящих, обычно 12–19), noindex/robots/canonical чисты, боты активно ходят. Причина — молодой домен + переезд с GoDaddy + время; рычаг = ручная подача в GSC (свежие ценные занесены) <span class="muted">· 07.10</span></li>
-      <li><b>Telegram +10 постов + перелинковка справочника:</b> пул 22→32 на локаль (справочник/тесты/биовозраст/FINDRISC/инсулинорезистентность); 8 ReadAlso из статей на карточки справочника <span class="muted">· 08.10</span></li>
-      <li><b>Spotlight — ротационный промо-слот:</b> клиентский компонент, ротация по ISO-неделе, аналитика spotlight_click. Расширен: в статьях + инструментах + справочнике; 10 промо; исключение текущей страницы; форс «Справочника» на 08–21.10 <span class="muted">· 08.10</span></li>
-      <li><b>Ревизия карты:</b> дельта-аудит после сессии — сирот 0, sitemap 525→537, canonical/schema чисты; цифры сняты; план из 11 запусков закрыт <span class="muted">· 08.10</span></li>
+    <div class="s-head"><h2>Сделано</h2><span class="count">за 2 недели</span></div>
+    <ul class="done">
+      <li><span class="mk">✓</span><span>Email-рассылка: форма MailerLite + PDF-лид-магнит «биовозраст» + welcome-письмо — цикл работает сам</span></li>
+      <li><span class="mk">✓</span><span>Справочник /reference: 5 карточек RU+EN (креатин, витамин C, цинк, кальций, Q10), schema DietarySupplement</span></li>
+      <li><span class="mk">✓</span><span>SEO-победы: sleep «for Women & Men», BMI «online test», овуляция «рассчитать онлайн»</span></li>
+      <li><span class="mk">✓</span><span>Контекстные do-follow на сеть — 2 ссылки из «Гигиены сна» на ДомЭксперт</span></li>
+      <li><span class="mk">✓</span><span>Аудит индексации (342/537 без показов): сирот 0, техника чиста — причина в возрасте домена, не структуре</span></li>
+      <li><span class="mk">✓</span><span>Admitad API: аудит 11 офферов, размещён Beautiful People, комплаенс-правка маркировки (ИНН BABOR, Сбер/Польза)</span></li>
+      <li><span class="mk">✓</span><span>Telegram: пул вечнозелёных постов 22→32 на локаль + 8 перелинковок на справочник</span></li>
+      <li><span class="mk">✓</span><span>Spotlight: ротационный промо-слот (10 промо, ISO-неделя, аналитика) в статьях+инструментах+справочнике</span></li>
+      <li><span class="mk">✓</span><span>trailing-slash проверен; инвентарь рекламы (ADVERTISING.md); доки приведены к стандарту сети</span></li>
     </ul>
   </section>
 
   <section>
-    <h2>💡 Входящие идеи (копилка) <span class="rule"></span></h2>
-    <ul class="list ideas">
-      <li>Bing быстрая победа: «пульс покоя бегуны норма» (поз. 6) — довести title/описание.</li>
-      <li>vo2max / кофеин: подогнать title, когда GSC покажет конкретные запросы (не вслепую).</li>
-      <li>«Детектор репостов» (FB/TG/WhatsApp/VK/X) в дневном отчёте + кнопка «поделиться результатом».</li>
-      <li>AdMob-приложение — обёртка вокруг калькуляторов (Play-merchant для КГ закрыт → только реклама).</li>
-      <li>Платные PDF — только через Paddle (не Lemon Squeezy) и после проверки выплат в КГ.</li>
-      <li>Детская тема (сон/питание/экранное время) → откроет донора для ссылки на bilimjol.</li>
-      <li>Щитовидка/ТТГ — кандидат в контент (нет чистой рубрики — решить, куда класть).</li>
-      <li>Статья «Депрессия: признаки и что помогает» (RU+EN) — станет домом для PHQ-9.</li>
-      <li>Соцтрафик (01.10): Instagram гонит на биовозраст (отказ 90.9%). Внутренние ссылки в результат — ✅ сделано 02.10; осталось «поделиться результатом».</li>
-      <li>301 <code>/covers/*.jpg → .webp</code> в middleware (файл «не трогать без причины»).</li>
+    <div class="s-head"><h2>Идеи</h2><span class="count">инбокс · не в работе</span></div>
+    <ul class="ideas">
+      <li><span class="bx"></span><span>Статья щитовидка/ТТГ <span class="note">— нет чистой рубрики, решить куда класть</span></span></li>
+      <li><span class="bx"></span><span>«Детектор репостов» + кнопка «поделиться результатом» <span class="note">— соцтрафик идёт как (direct)</span></span></li>
+      <li><span class="bx"></span><span>AdMob-приложение — обёртка вокруг калькуляторов <span class="note">— мобильная стратегия «под рекламу»</span></span></li>
+      <li><span class="bx"></span><span>Платные PDF через Paddle <span class="note">— после проверки выплат в КГ</span></span></li>
+      <li><span class="bx"></span><span>301 /covers/*.jpg → .webp в middleware <span class="note">— старые JPG дают 404; решает владелец</span></span></li>
+      <li><span class="bx"></span><span>Детская тема (сон/питание/экранное время) <span class="note">— откроет донора для do-follow на bilimjol</span></span></li>
+      <li><span class="bx"></span><span>Bing «пульс покоя бегуны норма» (поз. 6) <span class="note">— довести title/описание</span></span></li>
+      <li><span class="bx"></span><span>vo2max / кофеин / вода — title по проявившимся запросам <span class="note">— вслепую не переписывать</span></span></li>
+      <li><span class="bx"></span><span>WAF-челлендж для бот-всплесков <span class="note">— искажают CF-аналитику; настройка зоны за владельцем</span></span></li>
     </ul>
   </section>
 
   <section>
-    <h2>🔵 Ждёт решения владельца <span class="rule"></span></h2>
-    <ul class="list owner">
-      <li><b>Карта контекстных ссылок</b> — первая пара внедрена ✅ (ДомЭксперт). Новые доноры появятся с ростом контента; буду предлагать точечно.</li>
-      <li><b>Beautiful People</b> — ✅ размещён 07.10 (оффер активен в Admitad; deeplink+erid через API, карточка в anti-age pillar).</li>
-      <li><b>Токены GSC/Bing/Яндекс.Вебмастер/Метрика</b> — включат авто-аналитику и модуль «Проекты» izn.crm.</li>
-      <li><b>Пульс по возрасту</b> — делать ли инструмент (нужны перцентили NHANES).</li>
-      <li><b>Перенос регистратора домена</b> в Cloudflare (было отложено).</li>
-      <li><b>Цели в Метрике (reachGoal)</b> под события аналитики + конверсии в GA4 (affiliate_click, donate_copy).</li>
-      <li><b>Email-рассылка</b> — подписка + PDF-магнит + welcome-письмо в проде ✅ (цикл работает сам). Опц. на будущее: русская форма (тексты сейчас EN), стили формы под бренд, цель подписки в Метрике/GA4, end-to-end тест.</li>
-    </ul>
+    <div class="s-head"><h2>Реклама и офферы</h2><span class="count">монетизация</span></div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Канал</th><th>Статус</th><th class="num">Доход / мес</th></tr></thead>
+      <tbody>
+        <tr><td>Партнёрки Admitad (11 офферов)</td><td><span class="st on">активна</span></td><td class="num">$0</td></tr>
+        <tr><td>Crocs (EN)</td><td><span class="st on">активна</span></td><td class="num">$0</td></tr>
+        <tr><td>Крипто-донат (/support)</td><td><span class="st on">активна</span></td><td class="num">—</td></tr>
+        <tr><td>AdSense</td><td><span class="st wait">рано</span></td><td class="num">—</td></tr>
+        <tr><td>РСЯ (Яндекс)</td><td><span class="st soon">нет</span></td><td class="num">—</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note" style="margin-top:12px">Клики по партнёркам есть, конверсий пока 0 — молодой трафик. Полный инвентарь (офферы, размещения, do-follow/nofollow, маркировка) — <code>docs/ADVERTISING.md</code>.</p>
   </section>
 
-  <footer>
-    Источник правды — <code>docs/WEEK-PLAN.md</code> в репозитории 24zdorovie. Эта страница
-    переопубликовывается на тот же URL после каждой значимой правки; пин и ссылка сохраняются.
-    Приватный артефакт — виден только владельцу.
-  </footer>
+  <footer>Витрина проекта 24zdorovie. Обновляется вместе с планом (<code>docs/WEEK-PLAN.md</code>).</footer>
 </div>
+</body>
+</html>
