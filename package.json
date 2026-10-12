@@ -16,7 +16,8 @@
     "tg": "node scripts/tg-daily.mjs",
     "tg:status": "node scripts/tg-daily.mjs --status",
     "tg:dry": "node scripts/tg-daily.mjs --dry-run",
-    "adsense-ready": "node scripts/adsense-ready.mjs"
+    "adsense-ready": "node scripts/adsense-ready.mjs",
+    "offers:check": "node scripts/offers-check.mjs"
   },
   "dependencies": {
     "github-slugger": "^2.0.0",
