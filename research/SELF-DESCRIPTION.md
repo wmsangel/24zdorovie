@@ -1,0 +1,29 @@
+## 24zdorovie
+- **URL:** https://24zdorovie.com
+- **Languages:** ru, en (both served on prod with full hreflang pairing)
+- **One-liner:** A bilingual (RU/EN) evidence-based health site — cited articles plus 25 health calculators and self-tests that compute entirely in your browser.
+- **What it is:** A content site about health, nutrition, sleep, mental health and longevity. It pairs long-form, source-backed articles with interactive calculators/tests and a small reference section of evidence-based supplement cards. The editorial angle is "proven vs hyped": every health claim is backed by a cited source, and every calculator uses a published formula with its reference stated. It's a static site (Next.js export on Cloudflare Pages), ad/affiliate-supported, with no user accounts.
+- **Who it's for:** Russian- and English-speaking people who want practical, no-hype health information and quick tools — to compute a health metric (BMI, biological age, diabetes risk), self-screen mood or anxiety, plan sleep/nutrition, or check whether a popular supplement actually works. They usually arrive from search for a specific question or calculator.
+- **What you can actually do (features):**
+  - Use **25 calculators and self-tests**, all computed client-side: biological age (Levine PhenoAge), cardiovascular risk (SCORE2), type-2-diabetes risk (FINDRISC), PHQ-9 depression and GAD-7 anxiety screeners, burnout self-check, BMI/ideal weight, calorie & macro, sleep/bedtime, heart-rate zones, running pace, caffeine, fiber, water, protein, blood-test unit converter, blood-pressure checker, ovulation/period/due-date/pregnancy-weight, cold-flu-covid checker, vitamin D, 1-rep-max.
+  - Read **137 articles in each language** across 12 categories (nutrition, recipes, fitness, sleep, mental-health, supplements, weight, longevity, heart, gut, women's-health, immunity).
+  - Browse a **supplement reference** ("Supplement Guide", pilot of 5 cards: creatine, vitamin C, zinc, calcium, coenzyme Q10) with evidence levels, dosing, food sources and myth-busting, marked up as schema.org DietarySupplement.
+  - Get results instantly with no sign-up; each tool shows a short answer, the underlying formula and an honest note on its limits.
+  - Subscribe to a weekly email digest (MailerLite) and download a free PDF checklist ("What actually lowers your biological age").
+  - Each article/tool has FAQ and structured data (MedicalWebPage / WebApplication / FAQPage), RSS feeds, and auto-generated OG images.
+- **Why it stands out:** Honest, evidence-first framing. Calculators use **published scientific formulas with the source cited** (Mifflin-St Jeor, Levine PhenoAge, SCORE2, FINDRISC, Tanaka/Karvonen, PHQ-9/GAD-7) rather than invented scales, and they run **entirely in the browser — the numbers you enter are never sent to a server or stored**. Fully bilingual RU/EN. Free and without registration.
+- **Access:** Free, no registration, no paid tier. Supported by ads/affiliate links (sidebar/in-article) and partner product cards. (Note: Google AdSense is configured but not currently serving.)
+- **Privacy / data:** Calculator inputs (weight, lab values, questionnaire answers) are processed in-browser and are not sent to a server or saved; theme preference lives in localStorage. There are no accounts and no health questionnaires tied to identity. Third-party analytics (Google Analytics, Yandex Metrica) and advertising/affiliate links run on the site under their own policies; the newsletter stores only the email address you give (MailerLite).
+- **Best use cases (examples):**
+  - Estimate your biological age from lifestyle (and optional blood markers) and see which habits move it most.
+  - Quietly self-screen low mood or anxiety with the validated PHQ-9 / GAD-7 and learn when it's worth seeing a professional.
+  - Figure out a sensible bedtime/wake time, daily calorie & macro targets, or your 10-year type-2-diabetes risk (no blood test).
+  - Check whether a supplement (creatine, vitamin C, zinc…) is actually proven or just marketing, with cited sources.
+- **Key pages / entry points:**
+  - https://24zdorovie.com/en/tools/ — all 25 calculators and tests
+  - https://24zdorovie.com/en/reference/ — the supplement guide
+  - https://24zdorovie.com/en/tools/biological-age-calculator/ — flagship tool
+  - https://24zdorovie.com/en/mental-health/depression-signs-and-what-helps/ — cited long-form with an embedded test
+- **Suggested tags/categories:** health, nutrition, evidence-based, health-calculators, supplements, mental-health, sleep, longevity, bilingual, free-tools
+- **Short blurb (~40 words):** 24zdorovie is a bilingual (Russian/English) evidence-based health site: 137 cited articles per language on nutrition, sleep, mental health and longevity, plus 25 calculators and self-tests — from biological age to PHQ-9 — that run entirely in your browser, free and without sign-up.
+- **Do NOT claim:** No mobile app (only a parked idea). No paid subscriptions, premium content or paid PDFs — everything is free; a paid-PDF option is only a future idea. It is **not a telehealth or medical service**: it provides information and tools, not diagnosis or doctor consultations (some pages link to third-party telehealth partners, but the site itself gives no medical care). AdSense is not currently serving ads. The RU newsletter form's own UI text is currently in English. There is no named expert/review board yet (content is bylined as the "24zdorovie Editorial"). Traffic is still small (young domain, migrated Sep 2026) — don't imply a large audience; exact visitor numbers are not stated here.
