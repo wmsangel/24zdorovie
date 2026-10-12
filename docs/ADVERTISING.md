@@ -10,7 +10,7 @@
 
 | Канал | Статус | Доход/мес | Условия / ссылка |
 |---|---|---|---|
-| Партнёрки Admitad (11 RU/EN офферов) | активна | $0 | клики есть, конверсий 0 — молодой трафик; см. §1 |
+| Партнёрки Admitad (10 RU/EN офферов) | активна | $0 | клики есть, конверсий 0 — молодой трафик; см. §1 |
 | Crocs (gettracker, EN) | активна | $0 | баннер в `plantar-fasciitis`; см. §2 |
 | Крипто-донат (`/support`) | активна | — | TRON/Solana/ETH |
 | AdSense | рано | — | NEEDS_ATTENTION, порог трафика не достигнут |
@@ -37,7 +37,6 @@ Website ID в Admitad: **2988053**. Все RU-офферы с erid и юрлиц
 | **СберЗдоровье** | RU | ООО «ДокДок», 9710011437 | …S8BgEh | мед-калькуляторы: biological-age, cvd-risk, cold-flu-covid, blood-test-converter, blood-pressure | OfferBlock (авто) + **баннеры** (house-ad, direct) |
 | **iHerb** (Iherb.group) | RU | ООО «Форест», 7814817732 | …YmiQPz | калькуляторы vitamin-d/protein/fiber + **8 статей-добавок** (ashvaganda, kurkumin, b12, магний, креатин, витамин D, омега-3, пробиотики) | OfferBlock + ProductCard |
 | **Польза** | RU | ООО «ГПК», 7813650417 | …znKd8xa | калькуляторы calorie-macro, bmi, ideal-weight | OfferBlock (авто) |
-| **Doctronic** | US/EN | — | — (EN) | EN мед-калькуляторы (biological-age, cvd-risk, cold-flu, converter, bp, due-date) | OfferBlock (авто) |
 | **Smartlife** (липосомальные) | RU | ООО «СМАРТЛАЙФ», 7714977147 | …piUd2z31s | `supplements/zhelezo-i-ferritin`, `supplements/multivitaminy-nuzhny-li` | ProductCard |
 | **DoctorSlon** (полость рта) | RU | ООО «ДОКТОРСЛОН.РУ», 7813215573 | …z6VfpGb | `heart/zdorove-polosti-rta` | ProductCard |
 | **happylook** (оптика) | RU | ООО «ВЕРИТАС ВЬЮ», 7810396402 | …zfKGah6 | `longevity/zdorove-glaz-zrenie` | ProductCard |
@@ -63,8 +62,9 @@ iHerb WW, iHerb MENA, **Wilson**, **Diagnostyka PL**, **Gold Apple KZ** — `con
 
 ## 4. Приостановлено / убрано (не возвращать без проверки)
 
-- **Планета Спорт** (grfpr.com) и **СпросиВрача** (rkdro.com) — «Program is suspended»,
-  удалены из кода. Единичные клики по grfpr — внешний кэш старых страниц, безвредны.
+- **Планета Спорт** (grfpr.com), **СпросиВрача** (rkdro.com), **Doctronic** (tsygg.com,
+  убран 12.10) — «Program is suspended», удалены из кода. Единичные повторные клики
+  (grfpr/tsygg) — внешний кэш старых страниц, безвредны ($0).
 
 ## 5. Куда подать ещё (аудит каталога Admitad, 775 кампаний)
 
