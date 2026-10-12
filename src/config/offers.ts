@@ -77,34 +77,9 @@ export const OFFERS: Offer[] = [
     erid: "2bL9aMPo2e49hMef4rqyS8BgEh",
     advertiser: "ООО «ДокДок», ИНН 9710011437",
   },
-  {
-    id: "doctronic-telehealth",
-    // EN-зеркало Сбера: под теми же медкалькуляторами, где логичный следующий
-    // шаг — «спросить врача». Doctronic — US-телемедицина, поэтому locales только
-    // en и erid не нужен (это не реклама для РФ). US-only гео отрабатывает Admitad.
-    tools: [
-      "biological-age-calculator",
-      "cvd-risk-calculator",
-      "cold-flu-covid-checker",
-      "blood-test-unit-converter",
-      "blood-pressure-checker",
-      "due-date-calculator",
-    ],
-    locales: ["en"],
-    kind: "medical",
-    title: {
-      ru: "Спросить врача онлайн — Doctronic",
-      en: "Talk to a doctor online — Doctronic",
-    },
-    description: {
-      ru: "ИИ-консультация о здоровье 24/7 и приём лицензированного врача США по видео, когда нужно.",
-      en: "Free AI health guidance 24/7, plus a licensed US doctor by video when you need one. Insurance accepted.",
-    },
-    cta: { ru: "Спросить", en: "Ask a doctor" },
-    href: "https://tsygg.com/g/7r1pt1n1fo1d9ff0ed90abb0242f2d/",
-    price: { ru: "визит от $39", en: "free AI consult · visits from $39" },
-    advertiser: "Doctronic (US)",
-  },
+  // Doctronic (tsygg.com) убран 2026-10-12: программа приостановлена (Program is
+  // suspended) и пропала из подключённых в Admitad. Был EN-оффер на мед-калькуляторах.
+  // Вернуть, если программа возобновится и снова появится в advcampaigns.
   {
     id: "iherb-supplements",
     // Под калькуляторами добавок/питания: витамин D → купить витамин D,
