@@ -134,14 +134,14 @@ export const TOOLS: Tool[] = [
     },
     related: {
       ru: [
+        "/mental-health/depressiya-priznaki-i-chto-pomogaet",
         "/mental-health/kpt-osnovy",
         "/mental-health/sport-i-nastroenie",
-        "/mental-health/kak-spravlyatsya-so-stressom",
       ],
       en: [
+        "/mental-health/depression-signs-and-what-helps",
         "/mental-health/cbt-basics",
         "/mental-health/exercise-and-mental-health",
-        "/mental-health/how-to-manage-stress",
       ],
     },
   },
