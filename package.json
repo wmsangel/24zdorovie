@@ -7,6 +7,8 @@
     "build": "node scripts/gen-og.mjs && node scripts/gen-lead-magnet.mjs && next build",
     "start": "next start",
     "lint": "eslint",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "deploy": "node scripts/deploy-pages.mjs",
     "deploy:cpanel": "node scripts/deploy.mjs",
     "deploy:cpanel:dry": "node scripts/deploy.mjs --dry-run --no-build",
@@ -41,6 +43,7 @@
     "pdf-lib": "^1.17.1",
     "sharp": "^0.34.5",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^3.2.4"
   }
 }
