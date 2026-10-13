@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Locale } from "@/config/site";
+import { ShareBar, useShareUrl } from "@/components/ShareBar";
 import {
   CONVERT,
   LIFESTYLE_FACTORS,
@@ -81,6 +82,7 @@ const COPY = {
     },
     units: { lymphocytes: "%", mcv: "фл", rdw: "%", alp: "Ед/л", wbc: "×10⁹/л" },
     resultTitle: "Ваш PhenoAge",
+    shareResult: (n: string) => `Мой биологический возраст — ${n} лет. А ваш?`,
     chronological: "Хронологический возраст",
     deltaYounger: (y: string) => `на ${y} года(лет) моложе паспортного`,
     deltaOlder: (y: string) => `на ${y} года(лет) старше паспортного`,
@@ -203,6 +205,7 @@ const COPY = {
     },
     units: { lymphocytes: "%", mcv: "fL", rdw: "%", alp: "U/L", wbc: "×10³/µL" },
     resultTitle: "Your PhenoAge",
+    shareResult: (n: string) => `My biological age is ${n}. What's yours?`,
     chronological: "Chronological age",
     deltaYounger: (y: string) => `${y} years younger than your birth certificate`,
     deltaOlder: (y: string) => `${y} years older than your birth certificate`,
@@ -437,6 +440,7 @@ export function BiologicalAgeCalculator({ locale = "ru" }: { locale?: Locale }) 
   }, [age, values, toFormula]);
 
   const life = useMemo(() => lifestyleOffset(lifestyle), [lifestyle]);
+  const shareUrl = useShareUrl();
 
   const accent =
     mode === "lifestyle"
@@ -621,6 +625,18 @@ export function BiologicalAgeCalculator({ locale = "ru" }: { locale?: Locale }) 
                     </ul>
                   )}
                 </div>
+
+                {shareUrl && (
+                  <div className="mt-6">
+                    <ShareBar
+                      url={shareUrl}
+                      title={c.shareResult(nf(blood.result))}
+                      text={c.shareResult(nf(blood.result))}
+                      locale={locale}
+                      tool="biological-age-calculator"
+                    />
+                  </div>
+                )}
               </>
             )}
           </div>

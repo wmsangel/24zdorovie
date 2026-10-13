@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Locale } from "@/config/site";
+import { ShareBar, useShareUrl } from "@/components/ShareBar";
 import {
   ageBand,
   bedtimesForWake,
@@ -50,6 +51,8 @@ const COPY = {
       "90 минут — среднее по популяции. Если вы знаете, что просыпаетесь легче при другом интервале, поставьте своё значение: разброс у здоровых взрослых 70–120 минут.",
     resultWake: "Ложитесь в одно из этих окон",
     resultBed: "Тогда вставать лучше в одно из этих окон",
+    shareResult: (time: string) =>
+      `Чтобы выспаться, мне стоит лечь в ${time}. Рассчитайте своё время:`,
     cycles: (n: number) => `${n} ${n === 1 ? "цикл" : n < 5 ? "цикла" : "циклов"}`,
     sleepTime: (h: string) => `${h} ч сна`,
     window: (from: string, to: string) => `при цикле 70–120 мин: ${from}–${to}`,
@@ -101,6 +104,8 @@ const COPY = {
       "90 minutes is the population average. If you know you wake more easily on a different interval, set your own: the healthy adult range is 70–120 minutes.",
     resultWake: "Go to bed in one of these windows",
     resultBed: "Then aim to wake in one of these windows",
+    shareResult: (time: string) =>
+      `To get enough sleep, I should go to bed at ${time}. Calculate yours:`,
     cycles: (n: number) => `${n} ${n === 1 ? "cycle" : "cycles"}`,
     sleepTime: (h: string) => `${h} h of sleep`,
     window: (from: string, to: string) => `at 70–120 min cycles: ${from}–${to}`,
@@ -163,6 +168,12 @@ export function SleepCycleCalculator({ locale = "ru" }: { locale?: Locale }) {
   const debt = useMemo(() => sleepDebt(actualSleep, age), [actualSleep, age]);
 
   const anchor = mode === "wake" ? parseTime(wake) : parseTime(bed);
+  const shareUrl = useShareUrl();
+  // В режиме «знаю подъём» результат — время отбоя. Берём первое окно внутри нормы сна.
+  const bedtime =
+    mode === "wake"
+      ? (options.find((o) => o.sleepMinutes / 60 >= need.min) ?? options[0])
+      : null;
 
   return (
     <section
@@ -309,6 +320,18 @@ export function SleepCycleCalculator({ locale = "ru" }: { locale?: Locale }) {
             );
           })}
         </div>
+
+        {bedtime && shareUrl && (
+          <div className="mt-6">
+            <ShareBar
+              url={shareUrl}
+              title={c.shareResult(formatTime(bedtime.time))}
+              text={c.shareResult(formatTime(bedtime.time))}
+              locale={locale}
+              tool="sleep-calculator"
+            />
+          </div>
+        )}
 
         {/* Норма */}
         <div className="mt-7 grid gap-4 sm:grid-cols-2">

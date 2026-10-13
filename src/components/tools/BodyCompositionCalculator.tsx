@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Locale } from "@/config/site";
+import { ShareBar, useShareUrl } from "@/components/ShareBar";
 import {
   assessComposition,
   type BmiCategory,
@@ -53,6 +54,7 @@ const COPY = {
     hip: "Бёдра",
     neck: "Шея",
     bmiTitle: "Индекс массы тела",
+    shareResult: (n: string) => `Мой ИМТ — ${n}. Проверьте свой:`,
     categories: {
       underweight: "Дефицит массы",
       normal: "Норма",
@@ -132,6 +134,7 @@ const COPY = {
     hip: "Hips",
     neck: "Neck",
     bmiTitle: "Body mass index",
+    shareResult: (n: string) => `My BMI is ${n}. Check yours:`,
     categories: {
       underweight: "Underweight",
       normal: "Healthy weight",
@@ -254,6 +257,8 @@ export function BodyCompositionCalculator({ locale = "ru" }: { locale?: Locale }
   }, [scale]);
 
   const belowRange = weight < r.healthyWeight.min ? r.healthyWeight.min - weight : 0;
+  const shareUrl = useShareUrl();
+  const bmiReady = r.bmi > 0;
 
   return (
     <section
@@ -524,6 +529,18 @@ export function BodyCompositionCalculator({ locale = "ru" }: { locale?: Locale }
         </div>
 
         <p className="mt-5 text-[0.8rem] leading-relaxed text-[var(--ink-faint)]">{c.disclaimer}</p>
+
+        {bmiReady && shareUrl && (
+          <div className="mt-6">
+            <ShareBar
+              url={shareUrl}
+              title={c.shareResult(nf(r.bmi, 1))}
+              text={c.shareResult(nf(r.bmi, 1))}
+              locale={locale}
+              tool="bmi-calculator"
+            />
+          </div>
+        )}
       </div>
     </section>
   );
