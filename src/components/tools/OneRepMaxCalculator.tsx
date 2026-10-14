@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Locale } from "@/config/site";
+import { ShareBar, useShareUrl } from "@/components/ShareBar";
 import { oneRepMax } from "@/lib/one-rep-max";
 
 /**
@@ -22,6 +23,7 @@ const COPY = {
     unitKg: "кг",
     unitLb: "фунты",
     resultTitle: "Ваш 1RM (оценка)",
+    shareResult: (n: string, unit: string) => `Мой 1ПМ — ${n} ${unit}. Проверьте свой:`,
     resultHint:
       "Это среднее по трём классическим формулам (Epley, Brzycki, Lombardi). Прямой замер 1RM новичкам не нужен и травмоопасен — субмаксимальная оценка безопаснее и почти так же точна.",
     formulasTitle: "По формулам",
@@ -43,6 +45,7 @@ const COPY = {
     unitKg: "kg",
     unitLb: "lb",
     resultTitle: "Your 1RM (estimate)",
+    shareResult: (n: string, unit: string) => `My 1RM is ${n} ${unit}. Check yours:`,
     resultHint:
       "This is the average of three classic formulas (Epley, Brzycki, Lombardi). A true 1RM test is unnecessary for beginners and carries injury risk — a submaximal estimate is safer and nearly as accurate.",
     formulasTitle: "By formula",
@@ -72,6 +75,8 @@ export function OneRepMaxCalculator({ locale = "ru" }: { locale?: Locale }) {
 
   const r = useMemo(() => oneRepMax(weight, reps), [weight, reps]);
   const u = unit === "kg" ? c.unitKg : c.unitLb;
+  const shareUrl = useShareUrl();
+  const ready = r.average > 0;
 
   return (
     <section
@@ -216,6 +221,18 @@ export function OneRepMaxCalculator({ locale = "ru" }: { locale?: Locale }) {
         <p className="mt-6 max-w-2xl text-[0.85rem] leading-relaxed text-[var(--ink-faint)]">
           {c.disclaimer}
         </p>
+
+        {ready && shareUrl && (
+          <div className="mt-6">
+            <ShareBar
+              url={shareUrl}
+              title={c.shareResult(nf(r.average), u)}
+              text={c.shareResult(nf(r.average), u)}
+              locale={locale}
+              tool="one-rep-max-calculator"
+            />
+          </div>
+        )}
       </div>
     </section>
   );

@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Locale } from "@/config/site";
+import { ShareBar, useShareUrl } from "@/components/ShareBar";
 import { idealWeight, type Sex } from "@/lib/ideal-weight";
 
 /**
@@ -21,6 +22,8 @@ const COPY = {
     cm: "см",
     kg: "кг",
     rangeTitle: "Здоровый диапазон веса",
+    shareResult: (a: string, b: string) =>
+      `Мой здоровый диапазон веса — ${a}–${b} кг. Узнайте свой:`,
     rangeHint:
       "Это ориентир по ИМТ (18,5–24,9). Единой «идеальной» цифры не существует: здоровым считается диапазон, а не одно число. У людей с большой мышечной массой верхняя граница может быть выше без вреда.",
     clinicalTitle: "Классические формулы «идеального веса»",
@@ -39,6 +42,8 @@ const COPY = {
     cm: "cm",
     kg: "kg",
     rangeTitle: "Healthy weight range",
+    shareResult: (a: string, b: string) =>
+      `My healthy weight range is ${a}–${b} kg. Find yours:`,
     rangeHint:
       "This is the BMI-based range (18.5–24.9). There is no single 'ideal' number: a range is healthy, not one figure. People with high muscle mass can sit above the upper bound without harm.",
     clinicalTitle: "Classic 'ideal weight' formulas",
@@ -61,6 +66,8 @@ export function IdealWeightCalculator({ locale = "ru" }: { locale?: Locale }) {
   const [height, setHeight] = useState(175);
 
   const r = useMemo(() => idealWeight(sex, height), [sex, height]);
+  const shareUrl = useShareUrl();
+  const ready = r.healthyLow > 0 && r.healthyHigh > 0;
 
   return (
     <section
@@ -162,6 +169,18 @@ export function IdealWeightCalculator({ locale = "ru" }: { locale?: Locale }) {
         <p className="mt-6 max-w-2xl text-[0.85rem] leading-relaxed text-[var(--ink-faint)]">
           {c.disclaimer}
         </p>
+
+        {ready && shareUrl && (
+          <div className="mt-6">
+            <ShareBar
+              url={shareUrl}
+              title={c.shareResult(nf(r.healthyLow), nf(r.healthyHigh))}
+              text={c.shareResult(nf(r.healthyLow), nf(r.healthyHigh))}
+              locale={locale}
+              tool="ideal-weight-calculator"
+            />
+          </div>
+        )}
       </div>
     </section>
   );

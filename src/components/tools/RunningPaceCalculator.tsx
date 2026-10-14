@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Locale } from "@/config/site";
+import { ShareBar, useShareUrl } from "@/components/ShareBar";
 import { computePace, formatDuration, formatPace, toSeconds } from "@/lib/running-pace";
 
 /**
@@ -19,6 +20,7 @@ const COPY = {
     m: "мин",
     s: "сек",
     pace: "Темп",
+    shareResult: (pace: string) => `Мой темп — ${pace}/км. А ваш?`,
     perKm: "мин/км",
     speed: "Скорость",
     kmh: "км/ч",
@@ -36,6 +38,7 @@ const COPY = {
     m: "min",
     s: "sec",
     pace: "Pace",
+    shareResult: (pace: string) => `My pace is ${pace}/km. What's yours?`,
     perKm: "min/km",
     speed: "Speed",
     kmh: "km/h",
@@ -58,6 +61,7 @@ export function RunningPaceCalculator({ locale = "ru" }: { locale?: Locale }) {
   const totalSeconds = toSeconds(h, m, s);
   const r = useMemo(() => computePace(distance, totalSeconds), [distance, totalSeconds]);
   const valid = distance > 0 && totalSeconds > 0;
+  const shareUrl = useShareUrl();
 
   const numField =
     "mt-2 w-full rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3 py-2.5 font-display text-xl font-semibold tabular-nums";
@@ -132,6 +136,18 @@ export function RunningPaceCalculator({ locale = "ru" }: { locale?: Locale }) {
           <p className="mt-1 text-[0.85rem] text-[var(--ink-faint)]">{c.kmh}</p>
         </div>
       </div>
+
+      {valid && shareUrl && (
+        <div className="border-t border-[var(--line)] bg-[var(--accent-tint)] px-5 py-5 md:px-7 md:py-7">
+          <ShareBar
+            url={shareUrl}
+            title={c.shareResult(formatPace(r.paceSec))}
+            text={c.shareResult(formatPace(r.paceSec))}
+            locale={locale}
+            tool="running-pace-calculator"
+          />
+        </div>
+      )}
 
       {/* Прогноз по дистанциям */}
       <div className="border-t border-[var(--line)] p-5 md:p-7">

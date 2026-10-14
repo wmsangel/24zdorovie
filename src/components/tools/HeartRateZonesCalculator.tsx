@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Locale } from "@/config/site";
+import { ShareBar, useShareUrl } from "@/components/ShareBar";
 import {
   foxMax,
   heartRateReserve,
@@ -63,6 +64,7 @@ const COPY = {
     methodHint:
       "Карвонен учитывает пульс покоя и потому точнее описывает нагрузку. Часы обычно считают по проценту от максимума — переключите, чтобы сверить цифры с экраном.",
     maxTitle: "Расчётный максимум",
+    shareResult: (n: string) => `Мой максимум пульса — ${n} уд/мин. Рассчитайте свои зоны:`,
     reserve: "Резерв пульса",
     foxDiff: (n: string) => `Устаревшая формула «220 − возраст» дала бы ${n} уд/мин`,
     restTitle: "Пульс покоя",
@@ -133,6 +135,7 @@ const COPY = {
     methodHint:
       "Karvonen accounts for your resting heart rate and describes real effort more accurately. Watches usually use percentage of max — switch to compare with what your screen shows.",
     maxTitle: "Estimated maximum",
+    shareResult: (n: string) => `My max heart rate is ${n} bpm. Find your zones:`,
     reserve: "Heart rate reserve",
     foxDiff: (n: string) => `The outdated “220 − age” would give ${n} bpm`,
     restTitle: "Resting heart rate",
@@ -210,6 +213,9 @@ export function HeartRateZonesCalculator({ locale = "ru" }: { locale?: Locale })
       plan: weeklyPlan(weekly),
     };
   }, [age, sex, rest, formula, method, useKnownMax, knownMax, weekly]);
+
+  const shareUrl = useShareUrl();
+  const ready = r.hrMax > 0;
 
   const planByZone = Object.fromEntries(r.plan.map((p) => [p.id, p.minutes])) as Record<
     ZoneId,
@@ -489,6 +495,18 @@ export function HeartRateZonesCalculator({ locale = "ru" }: { locale?: Locale })
         </div>
 
         <p className="mt-5 text-[0.8rem] leading-relaxed text-[var(--ink-faint)]">{c.disclaimer}</p>
+
+        {ready && shareUrl && (
+          <div className="mt-6">
+            <ShareBar
+              url={shareUrl}
+              title={c.shareResult(nf(r.hrMax))}
+              text={c.shareResult(nf(r.hrMax))}
+              locale={locale}
+              tool="heart-rate-zones-calculator"
+            />
+          </div>
+        )}
       </div>
     </section>
   );

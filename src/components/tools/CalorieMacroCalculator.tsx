@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Locale } from "@/config/site";
+import { ShareBar, useShareUrl } from "@/components/ShareBar";
 import {
   ACTIVITY_LEVELS,
   RATE_LIMITS,
@@ -63,6 +64,7 @@ const COPY = {
     fatShareHint: "Углеводы считаются как остаток. Меняйте, если знаете, как вам комфортнее",
 
     resultTitle: "Ваша норма",
+    shareResult: (n: string) => `Моя суточная норма — ${n} ккал. Рассчитайте свою:`,
     perDay: "ккал в день",
     bmr: "Основной обмен",
     tdee: "Суточный расход",
@@ -144,6 +146,7 @@ const COPY = {
     fatShareHint: "Carbs are whatever is left. Move it if you know what suits you",
 
     resultTitle: "Your daily target",
+    shareResult: (n: string) => `My daily target is ${n} kcal. Calculate yours:`,
     perDay: "kcal per day",
     bmr: "Basal rate",
     tdee: "Daily burn",
@@ -289,6 +292,9 @@ export function CalorieMacroCalculator({ locale = "ru" }: { locale?: Locale }) {
   }
 
   const limits = goal === "maintain" ? RATE_LIMITS.lose : RATE_LIMITS[goal];
+
+  const shareUrl = useShareUrl();
+  const caloriesReady = Number.isFinite(r.target) && r.target > 0;
 
   const warnings = [
     r.floored && c.warnFloor,
@@ -713,6 +719,18 @@ export function CalorieMacroCalculator({ locale = "ru" }: { locale?: Locale }) {
         ))}
 
         <p className="mt-5 text-[0.8rem] leading-relaxed text-[var(--ink-faint)]">{c.disclaimer}</p>
+
+        {caloriesReady && shareUrl && (
+          <div className="mt-6">
+            <ShareBar
+              url={shareUrl}
+              title={c.shareResult(nf(r.target))}
+              text={c.shareResult(nf(r.target))}
+              locale={locale}
+              tool="calorie-macro-calculator"
+            />
+          </div>
+        )}
       </div>
     </section>
   );
