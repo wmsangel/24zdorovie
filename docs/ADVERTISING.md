@@ -12,7 +12,7 @@
 |---|---|---|---|
 | Партнёрки Admitad (10 RU/EN офферов) | активна | $0 | клики есть, конверсий 0 — молодой трафик; см. §1 |
 | Crocs (gettracker, EN) | активна | $0 | баннер в `plantar-fasciitis`; см. §2 |
-| **Amazon Associates** (EN) | активна | $0 | рельс выплат ПОДТВЕРЖДЁН 14.10 (Payoneer USD → Citibank). ⚠️ 180 дней / 3 продажи — ссылки расставить; см. §2 |
+| **Amazon Associates** (EN) | активна | $0 | рельс ПОДТВЕРЖДЁН 14.10 (Payoneer USD → Citibank); **17 товарных карточек live** в EN-статьях. ⚠️ 180 дней / 3 продажи — следим; см. §2 |
 | Крипто-донат (`/support`) | активна | — | TRON/Solana/ETH |
 | AdSense | рано | — | NEEDS_ATTENTION, порог трафика не достигнут |
 | РСЯ (Яндекс) | нет | — | не подключена |
@@ -57,16 +57,27 @@ Website ID в Admitad: **2988053**. Все RU-офферы с erid и юрлиц
 | **Crocs** | EN | gettracker.net/6aba953412a92 | `en/fitness/plantar-fasciitis` (баннер 300×250) | Свои креативы запрещены — используем их баннер |
 | **Amazon Associates** | EN | tag в ссылке `?tag=<store-id>` | через `<ProductCard href="amazon.com/dp/ASIN?tag=…" />` | Выплата: Payoneer USD (Citibank), подтверждена 14.10. ProductCard уже даёт `rel=sponsored` + `affiliate_click`, erid НЕ нужен. ⚠️ **180 дней / 3 продажи** иначе аккаунт закроют. Только девайсы/книги/оборудование, НЕ добавки (iHerb сильнее). Нужен store-id (tag) |
 
-**План размещений Amazon (EN, под правило 3 продаж)** — высокорелевантные девайсы, где карточка реально помогает читателю:
+**Размещено Amazon (EN) — 17 карточек в 17 статьях** (ASIN `tag=24zdorovie-20`, без цены, авто-дисклеймер; коммит `a1f5398`). Высокорелевантные девайсы/книги, где карточка реально помогает читателю:
 
-| Статья | Товар |
-|---|---|
-| `en/heart/blood-pressure-explained` | валидированный домашний тонометр |
-| `en/fitness/heart-rate-training-zones` | нагрудный пульсометр |
-| `en/weight/bmi-and-body-composition` | умные весы-анализатор состава тела |
-| `en/fitness/strength-training-for-beginners` | набор эспандеров / разборные гантели |
-| `en/fitness/muscle-soreness-doms` | массажный ролик (foam roller) |
-| `en/sleep/sleep-hygiene-basics` | световой будильник (sunrise alarm) |
+| Статья | Товар | ASIN |
+|---|---|---|
+| heart/blood-pressure-explained | тонометр A&D Medical UA-767F (валидир.) | `B00ZTTAV5Q` |
+| fitness/heart-rate-training-zones | Polar H10 пульсометр | `B07PM54P4N` |
+| weight/bmi-and-body-composition | RENPHO Elis 1 весы | `B01N1UX8RW` |
+| fitness/strength-training-for-beginners | WHATAFIT эспандеры | `B07DWSPQQY` |
+| fitness/muscle-soreness-doms | Amazon Basics ролик | `B00XM2MRGI` |
+| sleep/sleep-hygiene-basics | Philips SmartSleep будильник | `B0093162RM` |
+| sleep/blue-light-and-sleep | Sleep ZM очки (amber) | `B086WQ1CL8` |
+| sleep/jet-lag | LitBear маска для сна | `B09H7FZ5JM` |
+| sleep/insomnia-what-to-do | YnM утяжелённое одеяло | `B073429DV2` |
+| fitness/stretching-and-mobility | Amazon Basics коврик | `B01LP0U5X0` |
+| nutrition/how-much-protein-per-day | Etekcity кухонные весы | `B0113UZJE2` |
+| longevity/vo2max-and-lifespan | Garmin Forerunner 165 | `B0CT3SGHXL` |
+| nutrition/how-much-water-per-day | Enerbone бутылка воды | `B097SDP3R4` |
+| longevity/blue-zones-truth | книга «The Blue Zones Secrets» | `1426223471` |
+| longevity/how-to-lower-biological-age | книга «Outlive» (Attia) | `0593236599` |
+| nutrition/mediterranean-diet | книга «The Mediterranean Dish» | `0593234278` |
+| weight/visceral-fat | GDMINLO сантиметр | `B07MT89MCW` |
 
 ## 3. Подключено, но ОТКЛОНЕНО (нельзя использовать)
 
