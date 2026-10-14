@@ -118,6 +118,13 @@ export function ProductCard({
   cta?: string;
   note?: string;
 }) {
+  // Amazon Associates требует явный дисклеймер рядом со ссылкой (на англ.).
+  const isAmazon = /(^|\.)amazon\./i.test(href);
+  const disclosure =
+    note ??
+    (isAmazon
+      ? "As an Amazon Associate, 24zdorovie earns from qualifying purchases."
+      : "Ссылка партнёрская: цена для вас не меняется, мы получаем комиссию.");
   return (
     <aside className="not-prose group my-8 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow-soft)] transition-[box-shadow,border-color] duration-300 hover:border-[var(--brand)] hover:shadow-[var(--shadow-lift)]">
       <div className="flex flex-col gap-4 p-5 sm:flex-row sm:items-center">
@@ -158,7 +165,7 @@ export function ProductCard({
         </a>
       </div>
       <p className="border-t border-[var(--line)] bg-[var(--surface-2)] px-5 py-2.5 text-[0.72rem] text-[var(--ink-faint)]">
-        {note ?? "Ссылка партнёрская: цена для вас не меняется, мы получаем комиссию."}
+        {disclosure}
       </p>
     </aside>
   );
