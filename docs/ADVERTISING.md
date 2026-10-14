@@ -12,6 +12,7 @@
 |---|---|---|---|
 | Партнёрки Admitad (10 RU/EN офферов) | активна | $0 | клики есть, конверсий 0 — молодой трафик; см. §1 |
 | Crocs (gettracker, EN) | активна | $0 | баннер в `plantar-fasciitis`; см. §2 |
+| **Amazon Associates** (EN) | активна | $0 | рельс выплат ПОДТВЕРЖДЁН 14.10 (Payoneer USD → Citibank). ⚠️ 180 дней / 3 продажи — ссылки расставить; см. §2 |
 | Крипто-донат (`/support`) | активна | — | TRON/Solana/ETH |
 | AdSense | рано | — | NEEDS_ATTENTION, порог трафика не достигнут |
 | РСЯ (Яндекс) | нет | — | не подключена |
@@ -54,6 +55,18 @@ Website ID в Admitad: **2988053**. Все RU-офферы с erid и юрлиц
 | Оффер | Гео | Трекер | Где | Примечание |
 |---|---|---|---|---|
 | **Crocs** | EN | gettracker.net/6aba953412a92 | `en/fitness/plantar-fasciitis` (баннер 300×250) | Свои креативы запрещены — используем их баннер |
+| **Amazon Associates** | EN | tag в ссылке `?tag=<store-id>` | через `<ProductCard href="amazon.com/dp/ASIN?tag=…" />` | Выплата: Payoneer USD (Citibank), подтверждена 14.10. ProductCard уже даёт `rel=sponsored` + `affiliate_click`, erid НЕ нужен. ⚠️ **180 дней / 3 продажи** иначе аккаунт закроют. Только девайсы/книги/оборудование, НЕ добавки (iHerb сильнее). Нужен store-id (tag) |
+
+**План размещений Amazon (EN, под правило 3 продаж)** — высокорелевантные девайсы, где карточка реально помогает читателю:
+
+| Статья | Товар |
+|---|---|
+| `en/heart/blood-pressure-explained` | валидированный домашний тонометр |
+| `en/fitness/heart-rate-training-zones` | нагрудный пульсометр |
+| `en/weight/bmi-and-body-composition` | умные весы-анализатор состава тела |
+| `en/fitness/strength-training-for-beginners` | набор эспандеров / разборные гантели |
+| `en/fitness/muscle-soreness-doms` | массажный ролик (foam roller) |
+| `en/sleep/sleep-hygiene-basics` | световой будильник (sunrise alarm) |
 
 ## 3. Подключено, но ОТКЛОНЕНО (нельзя использовать)
 
