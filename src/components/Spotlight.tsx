@@ -15,6 +15,8 @@ export function Spotlight({ locale }: { locale: Locale }) {
   const [item, setItem] = useState<SpotlightItem | null>(null);
   useEffect(() => {
     // Исключаем текущую страницу, чтобы промо не вело само на себя.
+    // Намеренная клиентская инициализация после mount (нужны window/Date) — SSR-safe.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setItem(pickSpotlight(new Date(), window.location.pathname));
   }, []);
 

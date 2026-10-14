@@ -112,6 +112,7 @@ export function DueDateCalculator({ locale = "ru" }: { locale?: Locale }) {
   const [cycle, setCycle] = useState(DEFAULT_CYCLE);
   // «Сегодня» только на клиенте — иначе SSR подставит дату сборки.
   const [today, setToday] = useState<Day | null>(null);
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setToday(todayDay()), []);
 
   const lmp = useMemo(() => (lmpInput ? parseDay(lmpInput) : null), [lmpInput]);
