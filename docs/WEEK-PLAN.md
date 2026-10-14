@@ -35,7 +35,7 @@
 
 **🔵 Хвосты владельца (не код):**
 - Ручная подача URL в GSC из `research/gsc-queue.md` (справочник, PHQ-9/GAD-7, слэш-URL) — главный рычаг для Google.
-- Цели в Метрике/GA4 (reachGoal + конверсии) на события: affiliate_click, donate_copy, spotlight_click, подписка.
+- Цели в Метрике/GA4 (reachGoal + конверсии) на события. Полный список, что шлёт сайт: `affiliate_click`, `house_ad_click` (кросс-промо сети, параметры ad+placement), `tool_view` / `tool_result` (воронка «открыл тест → прошёл»: phq-9, gad-7, findrisc, burnout), `search` (параметр search_term — включает отчёт site-search в GA4), `spotlight_click`, `donate_copy`, `share`, `internal_link`, `support_*`. Ключевыми в GA4 отметить: `tool_result`, `affiliate_click`, подписку; custom dimension завести на `tool` и (опц.) `placement`.
 - Welcome-письмо MailerLite — проверить end-to-end; опц. русская форма рассылки (`SITE.newsletter.formRu`).
 - AdSense NEEDS_ATTENTION (выдача выключена, $0) — повторно с ростом органики.
 - Финализация ветки `main` (ждёт фикса git на хосте, лицензия Xcode CLT); перенос регистратора домена в Cloudflare.

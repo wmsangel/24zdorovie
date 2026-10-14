@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import type { Locale } from "@/config/site";
 import { translator } from "@/lib/i18n";
+import { track } from "@/lib/track";
 
 export type SearchItem = {
   t: string; // title
@@ -62,6 +63,17 @@ export function SearchClient({ index, locale }: { index: SearchItem[]; locale: L
       .slice(0, 40)
       .map((r) => r.item);
   }, [query, index]);
+
+  // Событие поиска: шлём один раз через 700 мс после остановки набора.
+  // Имя `search` + `search_term` — конвенция GA4 (включает отчёт site-search).
+  useEffect(() => {
+    const q = query.trim();
+    if (q.length < 2) return;
+    const t = setTimeout(() => {
+      track("search", { search_term: q, results: results.length, locale });
+    }, 700);
+    return () => clearTimeout(t);
+  }, [query, results.length, locale]);
 
   return (
     <div>

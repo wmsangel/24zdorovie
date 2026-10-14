@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Locale } from "@/config/site";
+import { useToolResult } from "@/lib/use-tool-result";
 import {
   PHQ9_ITEMS,
   PHQ9_MAX,
@@ -141,6 +142,7 @@ export function Phq9Calculator({ locale = "ru" }: { locale?: Locale }) {
   }, [answers, complete]);
 
   const accent = result ? ACCENT[result.sev.key] : "ocean";
+  useToolResult("phq-9-depression-test", !!result);
 
   return (
     <section

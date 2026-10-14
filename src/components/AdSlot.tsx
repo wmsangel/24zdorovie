@@ -127,6 +127,9 @@ function HouseAdCard({
       href={houseHref(ad)}
       rel="sponsored noopener"
       target="_blank"
+      data-track="house_ad_click"
+      data-track-ad={ad.id}
+      data-track-placement={placement}
       style={{ minHeight, ["--ad-accent" as string]: ad.accent }}
       className={`group flex overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow-soft)] transition-[box-shadow,border-color] duration-300 hover:border-[var(--ad-accent)] hover:shadow-[var(--shadow-lift)] ${
         vertical

@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Locale } from "@/config/site";
+import { useToolResult } from "@/lib/use-tool-result";
 import {
   FINDRISC_MAX,
   FINDRISC_QUESTIONS,
@@ -192,6 +193,7 @@ export function FindriscCalculator({ locale = "ru" }: { locale?: Locale }) {
   }, [answers, complete]);
 
   const accent = result ? ACCENT[result.cat.key] : "ocean";
+  useToolResult("findrisc-calculator", !!result);
 
   function optionsFor(q: FindriscQuestion): readonly string[] {
     if (q === "waist") return sex === "female" ? c.options.waistFemale : c.options.waistMale;

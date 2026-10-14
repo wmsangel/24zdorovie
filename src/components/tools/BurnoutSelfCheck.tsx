@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Locale } from "@/config/site";
+import { useToolResult } from "@/lib/use-tool-result";
 
 /**
  * Самопроверка на выгорание.
@@ -196,6 +197,8 @@ export function BurnoutSelfCheck({ locale = "ru" }: { locale?: Locale }) {
 
     return { scores, levels, verdict };
   }, [answers, complete]);
+
+  useToolResult("burnout-test", complete);
 
   const accent = !result
     ? "berry"

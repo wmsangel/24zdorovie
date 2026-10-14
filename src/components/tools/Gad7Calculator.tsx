@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Locale } from "@/config/site";
+import { useToolResult } from "@/lib/use-tool-result";
 import {
   GAD7_ITEMS,
   GAD7_MAX,
@@ -131,6 +132,7 @@ export function Gad7Calculator({ locale = "ru" }: { locale?: Locale }) {
   }, [answers, complete]);
 
   const accent = result ? ACCENT[result.sev.key] : "ocean";
+  useToolResult("gad-7-anxiety-test", !!result);
 
   return (
     <section
