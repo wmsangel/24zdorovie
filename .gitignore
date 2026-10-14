@@ -62,3 +62,6 @@ tg-daily.log
 # локальные настройки Claude Code (разрешения — машинно-специфичны)
 .claude/settings.local.json
 .indexnow-pages-state.json
+
+# Временные файлы wrangler (Cloudflare Pages)
+.wrangler/
