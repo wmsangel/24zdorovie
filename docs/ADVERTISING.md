@@ -12,7 +12,7 @@
 |---|---|---|---|
 | Партнёрки Admitad (10 RU/EN офферов) | активна | $0 | клики есть, конверсий 0 — молодой трафик; см. §1 |
 | Crocs (gettracker, EN) | активна | $0 | баннер в `plantar-fasciitis`; см. §2 |
-| **Amazon Associates** (EN) | активна | $0 | рельс ПОДТВЕРЖДЁН 14.10 (Payoneer USD → Citibank); **17 товарных карточек live** в EN-статьях. ⚠️ 180 дней / 3 продажи — следим; см. §2 |
+| **Amazon Associates** (EN) | активна | $0 | рельс ПОДТВЕРЖДЁН 14.10 (Payoneer USD → Citibank); **22 товарных карточки live** в EN-статьях. ⚠️ 180 дней / 3 продажи — следим; см. §2 |
 | Крипто-донат (`/support`) | активна | — | TRON/Solana/ETH |
 | AdSense | рано | — | NEEDS_ATTENTION, порог трафика не достигнут |
 | РСЯ (Яндекс) | нет | — | не подключена |
@@ -57,7 +57,7 @@ Website ID в Admitad: **2988053**. Все RU-офферы с erid и юрлиц
 | **Crocs** | EN | gettracker.net/6aba953412a92 | `en/fitness/plantar-fasciitis` (баннер 300×250) | Свои креативы запрещены — используем их баннер |
 | **Amazon Associates** | EN | tag в ссылке `?tag=<store-id>` | через `<ProductCard href="amazon.com/dp/ASIN?tag=…" />` | Выплата: Payoneer USD (Citibank), подтверждена 14.10. ProductCard уже даёт `rel=sponsored` + `affiliate_click`, erid НЕ нужен. ⚠️ **180 дней / 3 продажи** иначе аккаунт закроют. Только девайсы/книги/оборудование, НЕ добавки (iHerb сильнее). Нужен store-id (tag) |
 
-**Размещено Amazon (EN) — 17 карточек в 17 статьях** (ASIN `tag=24zdorovie-20`, без цены, авто-дисклеймер; коммит `a1f5398`). Высокорелевантные девайсы/книги, где карточка реально помогает читателю:
+**Размещено Amazon (EN) — 22 карточки в 22 статьях** (ASIN `tag=24zdorovie-20`, без цены, авто-дисклеймер; коммит `a1f5398`). Высокорелевантные девайсы/книги, где карточка реально помогает читателю:
 
 | Статья | Товар | ASIN |
 |---|---|---|
@@ -78,6 +78,11 @@ Website ID в Admitad: **2988053**. Все RU-офферы с erid и юрлиц
 | longevity/how-to-lower-biological-age | книга «Outlive» (Attia) | `0593236599` |
 | nutrition/mediterranean-diet | книга «The Mediterranean Dish» | `0593234278` |
 | weight/visceral-fat | GDMINLO сантиметр | `B07MT89MCW` |
+| sleep/chronotypes | Circadian Optics лампа 10000 lux | `B01IU9MMPI` |
+| sleep/how-much-sleep-do-you-need | книга «Why We Sleep» (Walker) | `1501144324` |
+| mental-health/how-to-lower-cortisol | книга «Why Zebras Don't Get Ulcers» | `0805073698` |
+| fitness/progressive-overload | PowerBlock разборные гантели | `B00A21NRNO` |
+| mental-health/understanding-anxiety | книга «The Anxiety and Phobia Workbook» | `164848557X` |
 
 ## 3. Подключено, но ОТКЛОНЕНО (нельзя использовать)
 
