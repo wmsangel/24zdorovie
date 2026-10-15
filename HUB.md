@@ -1,6 +1,7 @@
 # 24zdorovie — хаб
 
 Витрина: https://claude.ai/artifact/QXPGqnjvv9oAqrAq1cTWfH
+Соцсети (контент-хаб): https://claude.ai/artifact/VgtF7HpHicysC6caz38m39
 Акцент: #3f8f63
 
 Доказательный сайт о здоровье, питании и ЗОЖ (RU/EN): статьи, калькуляторы, справочник.

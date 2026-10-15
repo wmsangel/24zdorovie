@@ -270,7 +270,7 @@ function buildEvergreenMessage(item, locale) {
     .filter((t) => t.length > 2)
     .join(" ");
 
-  const cta = CTA[locale] ?? CTA.ru;
+  const cta = item.cta ?? CTA[locale] ?? CTA.ru;
   const url = item.link ? `${SITE_URL}${item.link}` : "";
 
   return [
