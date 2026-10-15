@@ -20,7 +20,7 @@
 
 За последние ~2 недели (план из 11 запусков закрыт 08.10):
 
-- **Аналитика событий** ✅ 13.10 — `tool_result` (прохождение тестов PHQ-9/GAD-7/FINDRISC/Burnout), `house_ad_click` (баннеры сети), `search` (site-search). Воронка tool_view→tool_result. В GA4 завести dimensions `tool`/`placement` + отметить ключевые.
+- **Аналитика событий** ✅ 13.10 — `tool_result` (прохождение тестов PHQ-9/GAD-7/FINDRISC/Burnout), `house_ad_click` (баннеры сети), `search` (site-search). Воронка tool_view→tool_result. Сетевой параметр `item` на всех событиях (главный разрез) ✅ 15.10. **Custom dimensions в GA4 заведены** ✅ 15.10: `item`, `tool`, `placement`, `ad`, `offer`, `target`, `kind` (event-scoped, свойство 548362750). Осталось владельцу — отметить ключевые события конверсиями.
 - **Юнит-тесты (vitest)** ✅ 13.10 — 144 теста на формульные модули `src/lib`, ожидания из опубликованных формул. Найдено 5 расхождений код/комментарий (не баги расчёта — см. ниже), оставлены как `it.skip`. Задача Cursor.
 - **Кнопка «Поделиться результатом»** ✅ 13.10 — пилот на 3 нейтральных калькуляторах (биовозраст, ИМТ, сон); URL без query, без ввода пользователя; психика/риски исключены. Задача Cursor. Раскатка остального — в Очереди #6.
 - **Статья «Депрессия» (RU+EN)** ✅ 12.10 — дом для PHQ-9 (признаки по DSM-5, кризисный блок, встроенный тест, доказательное «что помогает»); тест теперь ведёт на неё.
@@ -58,7 +58,7 @@
 
 **🔵 Хвосты владельца (не код):**
 - Ручная подача URL в GSC из `research/gsc-queue.md` (справочник, PHQ-9/GAD-7, слэш-URL) — главный рычаг для Google.
-- Цели в Метрике/GA4 (reachGoal + конверсии) на события. Полный список, что шлёт сайт: `affiliate_click`, `house_ad_click` (кросс-промо сети, параметры ad+placement), `tool_view` / `tool_result` (воронка «открыл тест → прошёл»: phq-9, gad-7, findrisc, burnout), `search` (параметр search_term — включает отчёт site-search в GA4), `spotlight_click`, `donate_copy`, `share`, `internal_link`, `support_*`. Ключевыми в GA4 отметить: `tool_result`, `affiliate_click`, подписку. Custom dimensions (event-scoped) завести: **`item`** (главный, сетевой — по нему центральная система строит разбивку «что именно жмут»; есть у ВСЕХ событий), затем `tool`, `placement`, `ad`, `offer`, `target`, `kind`. Регистр/написание — как в коде. Данные копятся с момента регистрации.
+- Цели в Метрике/GA4 (reachGoal + конверсии) на события. Полный список, что шлёт сайт: `affiliate_click`, `house_ad_click` (кросс-промо сети, параметры ad+placement), `tool_view` / `tool_result` (воронка «открыл тест → прошёл»: phq-9, gad-7, findrisc, burnout), `search` (параметр search_term — включает отчёт site-search в GA4), `spotlight_click`, `donate_copy`, `share`, `internal_link`, `support_*`. Ключевыми в GA4 отметить: `tool_result`, `affiliate_click`, подписку. Custom dimensions (event-scoped) **заведены 15.10**: **`item`** (главный, сетевой — по нему центральная система строит разбивку «что именно жмут»; есть у ВСЕХ событий), `tool`, `placement`, `ad`, `offer`, `target`, `kind` (свойство 548362750). Данные копятся с момента регистрации (15.10). Осталось только отметить ключевые события конверсиями.
 - Welcome-письмо MailerLite — проверить end-to-end; опц. русская форма рассылки (`SITE.newsletter.formRu`).
 - AdSense NEEDS_ATTENTION (выдача выключена, $0) — повторно с ростом органики.
 - Финализация ветки `main` (ждёт фикса git на хосте, лицензия Xcode CLT); перенос регистратора домена в Cloudflare.
