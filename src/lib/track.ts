@@ -18,6 +18,23 @@ type TrackParams = Record<string, string | number | boolean | undefined>;
 
 export function track(name: string, params: TrackParams = {}) {
   if (!name || typeof window === "undefined") return;
+  // Сетевое соглашение: у каждого события есть строковый `item` — главный разрез
+  // «что именно произошло» (слаг инструмента, оффер, канал…). По нему центральная
+  // система сети строит разбивку. Если явно не задан — выводим из основного параметра.
+  const p: TrackParams = { ...params };
+  if (p.item == null) {
+    const primary =
+      params.offer ??
+      params.ad ??
+      params.tool ??
+      params.target ??
+      params.kind ??
+      params.search_term ??
+      params.action ??
+      params.where ??
+      name;
+    p.item = typeof primary === "string" ? primary : String(primary);
+  }
   try {
     const w = window as unknown as {
       dataLayer?: unknown[];
@@ -29,10 +46,10 @@ export function track(name: string, params: TrackParams = {}) {
       // eslint-disable-next-line prefer-rest-params
       dataLayer.push(arguments);
     } as (...args: unknown[]) => void;
-    gtagPush("event", name, params);
+    gtagPush("event", name, p);
 
     const id = SITE.analytics.yandexMetrikaId;
-    if (typeof w.ym === "function" && id) w.ym(Number(id), "reachGoal", name, params);
+    if (typeof w.ym === "function" && id) w.ym(Number(id), "reachGoal", name, p);
   } catch {
     /* аналитика не должна ломать страницу */
   }
