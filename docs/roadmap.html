@@ -60,6 +60,24 @@ section{margin-bottom:38px}
 .q .tag{display:inline-block;margin-top:8px;font-family:var(--font-mono);font-size:11px;
   letter-spacing:.04em;text-transform:uppercase;color:var(--accent);
   background:var(--accent-soft);padding:3px 8px;border-radius:6px}
+.q .mode{display:inline-block;margin:8px 0 0 6px;font-family:var(--font-mono);font-size:11px;
+  letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:6px;border:1px solid transparent}
+.mode.cursor{color:var(--accent);background:var(--accent-soft);border-color:color-mix(in srgb,var(--accent) 32%,transparent)}
+.mode.self{color:var(--muted);background:var(--surface2)}
+.mode.hybrid{color:var(--warn);background:color-mix(in srgb,var(--warn) 15%,transparent)}
+details.prompt{margin-top:11px;border:1px solid var(--line);border-radius:8px;background:var(--surface);overflow:hidden}
+details.prompt>summary{cursor:pointer;padding:9px 12px;font-family:var(--font-mono);font-size:13px;
+  color:var(--accent);list-style:none;user-select:none}
+details.prompt>summary::-webkit-details-marker{display:none}
+details.prompt[open]>summary{border-bottom:1px solid var(--line)}
+.pbody{position:relative}
+.prompt pre{margin:0;padding:14px;overflow-x:auto;font-family:var(--font-mono);font-size:12.5px;
+  line-height:1.55;white-space:pre-wrap;word-break:break-word;color:var(--ink)}
+.copy{position:absolute;top:8px;right:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);background:var(--bg);border:1px solid var(--line2);
+  border-radius:6px;padding:4px 10px;cursor:pointer}
+.copy:active{transform:translateY(1px)}
+.copy.ok{color:var(--good);border-color:var(--good)}
 .done,.ideas{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
 .done li,.ideas li{display:grid;grid-template-columns:22px 1fr;gap:12px;font-size:16.5px}
 .done .mk{color:var(--good);font-weight:700;font-family:var(--font-mono)}
@@ -84,7 +102,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);color:v
 <body>
 <div class="wrap">
   <header>
-    <span class="kicker">Дорожная карта · обновлено 12 октября 2026 (вечер)</span>
+    <span class="kicker">Дорожная карта · обновлено 16 октября 2026</span>
     <h1>24zdorovie</h1>
     <p class="sub">Доказательный сайт о здоровье, питании и ЗОЖ (RU/EN): статьи, калькуляторы и справочник. Эта страница — живой статус работ.</p>
   </header>
@@ -92,36 +110,84 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);color:v
   <div class="tiles">
     <div class="tile"><span class="n">~300</span><span class="c">визитов за 30 дней</span></div>
     <div class="tile"><span class="n">268<span style="color:var(--muted)">/537</span></span><span class="c">страниц в индексе</span></div>
-    <div class="tile"><span class="n accent">6</span><span class="c">задач в очереди</span></div>
+    <div class="tile"><span class="n accent">7</span><span class="c">задач в очереди</span></div>
     <div class="tile"><span class="n">3</span><span class="c">кликов из поиска (28д)</span></div>
   </div>
 
   <section>
-    <div class="s-head"><h2>Очередь</h2><span class="count">по приоритету · 6</span></div>
+    <div class="s-head"><h2>Очередь</h2><span class="count">по приоритету · 7</span></div>
+    <p class="note" style="margin:-4px 0 14px">Бейдж исполнителя — кто делает дешевле по токенам:
+      <span class="mode cursor">→cursor</span> отдаём Cursor (я пишу промт + спот-чек) ·
+      <span class="mode self">→сам</span> делаю в чате (решения / контент / конвенции репо) ·
+      <span class="mode hybrid">→гибрид</span> решение и каркас за мной, тираж — Cursor.</p>
     <div class="q"><span class="idx">01</span><div>
+      <div class="t">Закрыть 404 на /ru/tag/</div>
+      <div class="d">1 011 запросов/нед улетают в 404 на корне тегов (страницы отдельных тегов живые). Решение: индекс-страница тегов, а не 301. Проверить и /en/tag/.</div>
+      <span class="tag">баг</span><span class="mode hybrid">→гибрид</span></div></div>
+    <div class="q"><span class="idx">02</span><div>
       <div class="t">sleep-calculator EN — вотч до 20.10</div>
       <div class="d">Выпал из топ-10 по «sleep calculator for women» (поз. 5.8 → 61.7 → 0 показов). Техника чиста; показы рухнули 01.10 (до правок), позиция — 07.10 (после title «for Women & Men»). Если к 20.10 не вернётся — откатить title.</div>
-      <span class="tag">трафик</span></div></div>
-    <div class="q"><span class="idx">02</span><div>
-      <div class="t">Кнопка «Поделиться результатом» на калькуляторах</div>
-      <div class="d">Соцтрафик (Instagram → биовозраст) уже работает; шаринг готового результата усилит его сам. Переиспользует движок событий.</div>
-      <span class="tag">трафик</span></div></div>
+      <span class="tag">трафик</span><span class="mode self">→сам</span></div></div>
     <div class="q"><span class="idx">03</span><div>
       <div class="t">Докручивать CTR/title по дельте GSC</div>
       <div class="d">Поз. 5–11 с ~0 кликов; под проявившиеся запросы. Кандидаты: Bing «пульс покоя бегуны норма», vo2max/кофеин/вода.</div>
-      <span class="tag">трафик</span></div></div>
+      <span class="tag">трафик</span><span class="mode self">→сам</span></div></div>
     <div class="q"><span class="idx">04</span><div>
       <div class="t">Написать статью «Щитовидка / ТТГ» (RU+EN)</div>
       <div class="d">Пробел в контенте, устойчивый спрос; рубрика — longevity или weight, решить при написании.</div>
-      <span class="tag">контент</span></div></div>
+      <span class="tag">контент</span><span class="mode self">→сам</span></div></div>
     <div class="q"><span class="idx">05</span><div>
       <div class="t">Расширять справочник /reference по пробелам</div>
       <div class="d">Добавки без своих лонгридов; оценить отдачу пилота (5 карточек) перед масштабированием.</div>
-      <span class="tag">контент</span></div></div>
+      <span class="tag">контент</span><span class="mode self">→сам</span></div></div>
     <div class="q"><span class="idx">06</span><div>
       <div class="t">Пилот детской темы (сон/питание/экранное время)</div>
       <div class="d">1–2 статьи; заодно откроет тематического донора для do-follow на bilimjol. Ниже приоритетом.</div>
-      <span class="tag">контент</span></div></div>
+      <span class="tag">контент</span><span class="mode self">→сам</span></div></div>
+    <div class="q"><span class="idx">07</span><div>
+      <div class="t">Шаринг результата — добить vitamin-d</div>
+      <div class="d">5 из 6 калькуляторов уже раскатаны (коммит f0c3b71); ShareBar нет только в VitaminDCalculator. Одна правка по готовому образцу — последний нейтральный калькулятор.</div>
+      <span class="tag">трафик</span><span class="mode cursor">→cursor</span>
+      <details class="prompt"><summary>📋 Промт для Cursor — ShareBar в vitamin-d</summary><div class="pbody"><button class="copy">Копировать</button><pre>Задача: добавить панель «Поделиться результатом» (ShareBar) в калькулятор витамина D —
+единственный нейтральный калькулятор, где её ещё нет. Делай строго по уже внедрённому
+образцу, ничего в общем компоненте ShareBar не меняй.
+
+Файл: src/components/tools/VitaminDCalculator.tsx
+Эталон (копируй паттерн 1-в-1): src/components/tools/IdealWeightCalculator.tsx
+
+Что сделать:
+1. Импорт рядом с другими импортами в начале файла:
+   import { ShareBar, useShareUrl } from "@/components/ShareBar";
+2. Внутри компонента VitaminDCalculator (после строки `const c = COPY[locale] ?? COPY.ru;`)
+   получить адрес:  const shareUrl = useShareUrl();
+3. В БЛОКЕ РЕЗУЛЬТАТА (div с `bg-[var(--accent-tint)]`, рендерится под условием `r.status`),
+   в самом конце этого блока, добавить:
+     {shareUrl &amp;&amp; (
+       &lt;div className="mt-6"&gt;
+         &lt;ShareBar
+           url={shareUrl}
+           title={c.shareResult}
+           text={c.shareResult}
+           locale={locale}
+           tool="vitamin-d-calculator"
+         /&gt;
+       &lt;/div&gt;
+     )}
+4. Добавить ключ shareResult в объект COPY в ОБЕИХ локалях (ru и en). Фраза —
+   НЕЙТРАЛЬНО-ПРИГЛАШАЮЩАЯ, БЕЗ личного статуса пользователя (не «у меня дефицит»):
+     ru: shareResult: "Проверь свой уровень витамина D — бесплатный калькулятор"
+     en: shareResult: "Check your vitamin D level — free calculator"
+
+Жёсткие требования:
+- ShareBar рендерить ТОЛЬКО когда есть результат (под тем же условием, что и блок `r.status`)
+  и когда `shareUrl` непустой (на сервере он "" — SSR-safe, как в эталоне).
+- Общий компонент ShareBar.tsx НЕ трогать. useShareUrl уже кладёт чистый URL
+  (origin+pathname, без query и ввода пользователя) — ничего не добавлять в адрес.
+- Не менять формулы/логику калькулятора, только добавить UI-панель и ключ COPY.
+- После правки: npm run build должен пройти без ошибок, npm run lint — чисто.
+
+В ответе: какие строки добавил и подтверждение, что build/lint зелёные.</pre></div></details>
+      </div></div>
   </section>
 
   <section>
@@ -166,7 +232,111 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);color:v
     <p class="note" style="margin-top:12px">Клики по партнёркам есть, конверсий пока 0 — молодой трафик. Полный инвентарь (офферы, размещения, do-follow/nofollow, маркировка) — <code>docs/ADVERTISING.md</code>.</p>
   </section>
 
-  <footer>Витрина проекта 24zdorovie. Обновляется вместе с планом (<code>docs/WEEK-PLAN.md</code>).</footer>
+  <section>
+    <div class="s-head"><h2>Промты</h2><span class="count">готовые задания</span></div>
+    <p class="note" style="margin:-4px 0 14px">Самодостаточные промты — вставляются в чат проекта. Полный набор сети — <code>izn.project.stats/prompts/</code>. Здесь лежат те, что рассылаются по проектам прямо сейчас.</p>
+    <details class="prompt"><summary>📋 task-triage — разметить очередь по исполнителю (Cursor / чат)</summary><div class="pbody"><button class="copy">Копировать</button><pre># Промт: разметка задач по исполнителю (Cursor vs ты) — экономия токенов
+
+Вставь в чат проекта (одного сайта). Самодостаточный. Задача: пройтись по дорожной
+карте / очереди задач этого проекта и у каждой открытой задачи проставить режим
+исполнения — кто её делает дешевле для владельца по токенам: Cursor (отдельная
+подписка владельца) или ты (этот чат). Цель — чтобы владелец не жёг токены там,
+где работу дешевле отдать Cursor, и не терял качество там, где отдавать нельзя.
+
+Это разметка плана, а не выполнение задач. Ничего из очереди сейчас не делаешь —
+только оцениваешь и проставляешь теги. Деплой/код не трогаешь.
+
+## Логика деления (с обоснованием — держи его при оценке)
+
+Токены владельца жрёт в основном чтение контекста + написание кода в этом чате.
+Cursor работает на своей подписке → вынеся туда «тяжёлое писательство», владелец снимает
+его со своего бюджета. Но проверка тоже стоит токенов: честно проверить = прочитать
+дифф и часть того же контекста. Поэтому выгода = (сэкономил на написании) − (потратил
+на промт + ревью + цикл правок).
+
+Три режима:
+- →cursor — механика / большой объём однотипного письма, конвенции простые и
+  стабильные. Ты пишешь Cursor промт, он делает, ты — спот-чек (выборочно + сборка/
+  линт), не полное ревью. Примеры: тираж готового паттерна на N файлов, boilerplate.
+- →сам — делаешь в этом чате. Когда трудное — решить что делать, а не напечатать:
+  судейские решения, контент (текст — это и есть продукт), или завязка на
+  нестандартный стек/конвенции проекта, где Cursor промахнётся. Промт = почти вся работа.
+- →гибрид — решение и каркас за тобой, тиражирование по образцу — Cursor.
+
+Глубина проверки под режим: →cursor — спот-чек; →сам и всё рискованное — полное ревью.
+
+## Критично: перед пометкой →cursor — проверь текущее состояние
+
+Задача в плане может быть уже частично/полностью сделана — план отстаёт от кода.
+Бегло сверься с репозиторием, прежде чем помечать. Пометить вслепую = отправить Cursor
+дублировать или ломать уже готовое → чистый минус.
+И наоборот: очень мелкая механика (1 файл) — экономии почти нет. Выигрыш — на объёме.
+
+## Что сделать
+
+1. Найди файл плана/очереди проекта (docs/WEEK-PLAN.md, TODO.md, *-backlog.md…), адаптируйся.
+2. Добавь в начало очереди короткую легенду трёх режимов + правило глубины проверки.
+3. У каждой открытой задачи проставь тег →cursor / →сам / →гибрид с короткой причиной.
+4. Где помечаешь →cursor — сначала сверься с кодом; если задача устарела, поправь формулировку.
+5. Правки плана закоммить одним коммитом. Код не трогай.
+
+## В ответе
+- Сводка: сколько задач →cursor / →сам / →гибрид.
+- По →cursor — одной строкой, что можно отдать (кандидаты под готовые промты).
+- Что при сверке оказалось уже сделано/устарело — отдельным списком.</pre></div></details>
+    <details class="prompt"><summary>📋 crawl-errors — аудит и починка 404 / ошибок обхода</summary><div class="pbody"><button class="copy">Копировать</button><pre># Промт: аудит и починка 404 / ошибок обхода (по своему сайту)
+
+Вставь в чат проекта (одного сайта). Самодостаточный. Задача: чтобы запросы людей и
+краулеров не улетали в 404, а структурные «пустые» URL (корни листингов, пагинация,
+старые адреса после миграции) отдавали нормальную страницу или честный 301.
+
+## Данные (откуда брать свои 404)
+- Cloudflare — коды ответа по реальному трафику (у проекта может быть `npm run traffic`;
+  иначе срез сети в izn.project.stats/context/&lt;домен&gt;.md и cf_stats.py).
+- Google Search Console — отчёт «Индексирование → Страницы» (404, Soft 404) + топ URL с показами.
+- Свой sitemap и роутинг — что сайт обещает/линкует, но не отдаёт.
+
+Главное — отделить настоящие 404 от шума ботов (/wp-login.php, .env — НЕ чиним). Чиним то,
+что бьют реальные люди/краулеры, имеет внешние ссылки/спрос, или структурно должно быть.
+
+## Частые структурные 404
+- Корни листингов, которые 404-ят, пока дочерние живы (напр. /{locale}/tag/ при живых
+  /{locale}/tag/&lt;тег&gt;/ — реальная находка, 1 011 запросов/нед на /ru/tag/).
+- Пагинация, старые URL после миграции, варианты слеша/регистра, битые ссылки в sitemap.
+
+## Как чинить (по ценности URL)
+1. Реальная страница, если URL структурно нужен и несёт SEO-ценность (корень листинга →
+   индекс-хаб со ссылками на дочерние). По образцу существующего роута, с порогом тонкого контента.
+2. 301 на ближайшую релевантную страницу (в конфиге хостинга — .htaccess/_redirects/headers).
+3. 410 Gone — если контент удалён навсегда.
+Не оставлять soft-404, не плодить пустышки, не ломать существующие редиректы.
+
+## Рамки
+Не менять живые слаги; обе локали симметрично; проверить сборкой/экспортом.
+
+## В ответе
+Какие 404 нашёл (с числом запросов/показов), что по каждому сделал (страница/301/410/бот-шум),
+какие файлы изменил, результат сборки, что отложил.</pre></div></details>
+  </section>
+
+  <footer>Витрина проекта 24zdorovie. Обновляется вместе с планом (<code>docs/WEEK-PLAN.md</code>). Промты — <code>izn.project.stats/prompts/</code>.</footer>
 </div>
+<script>
+document.querySelectorAll('.copy').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var pre=btn.parentElement.querySelector('pre');
+    if(!pre)return;
+    var txt=pre.innerText;
+    function ok(){var prev=btn.textContent;btn.textContent='Скопировано';btn.classList.add('ok');
+      setTimeout(function(){btn.textContent=prev;btn.classList.remove('ok')},1600);}
+    function fallback(){try{var r=document.createRange();r.selectNodeContents(pre);
+      var s=getSelection();s.removeAllRanges();s.addRange(r);document.execCommand('copy');
+      s.removeAllRanges();ok();}catch(e){}}
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(ok).catch(fallback);
+    }else fallback();
+  });
+});
+</script>
 </body>
 </html>
