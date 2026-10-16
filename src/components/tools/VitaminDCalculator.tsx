@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Locale } from "@/config/site";
+import { ShareBar, useShareUrl } from "@/components/ShareBar";
 import { plural } from "@/lib/i18n";
 import {
   DROP_IU,
@@ -117,6 +118,7 @@ const COPY = {
     sunTitle: "Почему солнце не входит в расчёт",
     sun:
       "Синтез в коже зависит от угла солнца, а не от количества часов на улице: севернее 40-й параллели — это вся территория России, Мадрид, Стамбул — с ноября по март ультрафиолет B до земли практически не доходит, и кожа не производит витамин D независимо от погоды. Летом 15–20 минут в полдень дают порядка 10 000 МЕ, но крем с SPF 30 снижает синтез более чем на 95%, тёмной коже нужно в 3–6 раз больше времени, а после 65 лет способность кожи падает примерно вчетверо. Предсказать вклад солнца по анкете невозможно — его показывает только анализ.",
+    shareResult: "Проверь свой уровень витамина D — бесплатный калькулятор",
     disclaimer:
       "Расчёт не подходит при саркоидозе и других гранулематозных заболеваниях, первичном гиперпаратиреозе, гиперкальциемии любого происхождения, тяжёлой почечной недостаточности и кальциевом нефролитиазе: там витамин D назначают иначе и только под наблюдением. Детям, беременным и кормящим дозу подбирает врач. Тиазидные диуретики вместе с высокими дозами повышают риск гиперкальциемии.",
   },
@@ -207,6 +209,7 @@ const COPY = {
     sunTitle: "Why sunlight is not in the calculation",
     sun:
       "Skin synthesis depends on the angle of the sun, not on hours spent outdoors: above the 40th parallel — Madrid, Istanbul, all of Russia, most of Europe — UVB barely reaches the ground from November to March, and skin makes no vitamin D whatever the weather. In summer, 15–20 midday minutes can produce on the order of 10,000 IU, but SPF 30 cuts synthesis by over 95%, darker skin needs 3–6 times longer, and past 65 the skin's capacity drops roughly fourfold. No questionnaire can predict that contribution — only a blood test shows it.",
+    shareResult: "Check your vitamin D level — free calculator",
     disclaimer:
       "This does not apply in sarcoidosis and other granulomatous disease, primary hyperparathyroidism, hypercalcaemia of any cause, severe renal failure or calcium nephrolithiasis: there vitamin D is dosed differently and only under supervision. Children, pregnancy and breastfeeding need a clinician's dose. Thiazide diuretics combined with high doses raise the risk of hypercalcaemia.",
   },
@@ -236,6 +239,7 @@ const STATUS_COLOR: Record<VitaminDStatus, string> = {
 
 export function VitaminDCalculator({ locale = "ru" }: { locale?: Locale }) {
   const c = COPY[locale] ?? COPY.ru;
+  const shareUrl = useShareUrl();
 
   const [weight, setWeight] = useState(75);
   const [height, setHeight] = useState(175);
@@ -631,6 +635,18 @@ export function VitaminDCalculator({ locale = "ru" }: { locale?: Locale }) {
         </div>
 
         <p className="mt-5 text-[0.8rem] leading-relaxed text-[var(--ink-faint)]">{c.disclaimer}</p>
+
+        {shareUrl && (
+          <div className="mt-6">
+            <ShareBar
+              url={shareUrl}
+              title={c.shareResult}
+              text={c.shareResult}
+              locale={locale}
+              tool="vitamin-d-calculator"
+            />
+          </div>
+        )}
       </div>
     </section>
   );
