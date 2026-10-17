@@ -110,7 +110,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);color:v
   <div class="tiles">
     <div class="tile"><span class="n">~300</span><span class="c">визитов за 30 дней</span></div>
     <div class="tile"><span class="n">268<span style="color:var(--muted)">/537</span></span><span class="c">страниц в индексе</span></div>
-    <div class="tile"><span class="n accent">6</span><span class="c">задач в очереди</span></div>
+    <div class="tile"><span class="n accent">5</span><span class="c">задач в очереди</span></div>
     <div class="tile"><span class="n">3</span><span class="c">кликов из поиска (28д)</span></div>
   </div>
 
@@ -121,9 +121,9 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);color:v
       <span class="mode self">→сам</span> делаю в чате (решения / контент / конвенции репо) ·
       <span class="mode hybrid">→гибрид</span> решение и каркас за мной, тираж — Cursor.</p>
     <div class="q"><span class="idx">01</span><div>
-      <div class="t">Закрыть 404 на /ru/tag/</div>
-      <div class="d">1 011 запросов/нед улетают в 404 на корне тегов (страницы отдельных тегов живые). Решение: индекс-страница тегов, а не 301. Проверить и /en/tag/.</div>
-      <span class="tag">баг</span><span class="mode hybrid">→гибрид</span></div></div>
+      <div class="t">Закрыть 404 на /ru/tag/ ✅ сделано 17.10</div>
+      <div class="d">Был 404 на корне тегов (1 011 запросов/нед). Решение — индекс-страница (не 301): новый роут со списком 74 тегов и перелинковкой, /tag в sitemap, canonical+hreflang+CollectionPage. RU/EN проверены, build зелёный.</div>
+      <span class="tag">баг</span><span class="mode hybrid">→гибрид ✓</span></div></div>
     <div class="q"><span class="idx">02</span><div>
       <div class="t">sleep-calculator EN — вотч до 20.10</div>
       <div class="d">Выпал из топ-10 по «sleep calculator for women» (поз. 5.8 → 61.7 → 0 показов). Техника чиста; показы рухнули 01.10 (до правок), позиция — 07.10 (после title «for Women & Men»). Если к 20.10 не вернётся — откатить title.</div>
