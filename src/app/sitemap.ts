@@ -25,6 +25,7 @@ const STATIC_PATHS = [
   "/articles",
   "/tools",
   "/reference",
+  "/tag",
   "/about",
   "/authors",
   "/contacts",
