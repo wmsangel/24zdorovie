@@ -62,6 +62,15 @@ export async function onRequest(context) {
     });
   }
 
+  // 1b. Партнёрский редирект Amazon: /go/amazon-<ASIN> → Amazon с тегом проекта.
+  //     302 (временный), /go/ закрыт в robots.txt — чтобы боты, идущие по прямой
+  //     ссылке, не засчитывались как клики в Amazon Associates. Должно стоять до
+  //     правила «без локали» (#4), иначе /go/… увело бы на /ru/go/….
+  const amazonGo = p.match(/^\/go\/amazon-([A-Za-z0-9]{10})\/?$/i);
+  if (amazonGo) {
+    return redirect(`https://www.amazon.com/dp/${amazonGo[1]}?tag=24zdorovie-20`, 302);
+  }
+
   // 2. Старые адреса фида → русский RSS (до правила «без локали», иначе оно
   //    увело бы /rss на /ru/rss).
   if (/^\/(rss|feed)\/?$/.test(p)) {

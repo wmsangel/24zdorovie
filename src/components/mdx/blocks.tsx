@@ -120,6 +120,15 @@ export function ProductCard({
 }) {
   // Amazon Associates требует явный дисклеймер рядом со ссылкой (на англ.).
   const isAmazon = /(^|\.)amazon\./i.test(href);
+  // Amazon-ссылки ведём через внутренний редирект /go/amazon-<ASIN>; тег проекта
+  // добавляется уже на редиректе (functions/_middleware.js). Боты, ходящие по
+  // прямым ссылкам ?tag=, засоряли статистику Associates — /go/ закрыт в robots.txt.
+  // Ссылку НЕ маскируем: CTA и дисклеймер про Amazon остаются как есть.
+  const asin = isAmazon ? href.match(/\/dp\/([A-Za-z0-9]{10})(?:[/?]|$)/i)?.[1] : undefined;
+  const linkHref = asin ? `/go/amazon-${asin}` : href;
+  const linkRel = isAmazon
+    ? "sponsored nofollow noopener noreferrer"
+    : "sponsored noopener noreferrer";
   const disclosure =
     note ??
     (isAmazon
@@ -147,9 +156,9 @@ export function ProductCard({
           )}
         </div>
         <a
-          href={href}
+          href={linkHref}
           target="_blank"
-          rel="sponsored noopener noreferrer"
+          rel={linkRel}
           className="btn btn-primary shrink-0 self-start sm:self-center"
           data-track="affiliate_click"
           data-track-offer={title}
