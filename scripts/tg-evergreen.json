@@ -458,6 +458,105 @@
         "метаболизм"
       ],
       "link": "/ru/weight/insulinorezistentnost"
+    },
+    {
+      "id": "ru-calc-caffeine",
+      "title": "☕ Сколько кофеина вам можно?",
+      "body": "Безопасный порог — около 400 мг в день, но у каждого он свой: вес, беременность, чувствительность. Калькулятор посчитает вашу норму и когда остановиться, чтобы не портить сон.",
+      "tags": [
+        "кофеин",
+        "сон"
+      ],
+      "link": "/ru/tools/caffeine-calculator",
+      "cta": "👉 Рассчитать норму кофеина"
+    },
+    {
+      "id": "ru-calc-water",
+      "title": "💧 Сколько воды пить именно вам?",
+      "body": "«8 стаканов всем» — миф. Норма зависит от веса, активности и жары. Калькулятор прикинет вашу по данным EFSA — и честно скажет, насколько это вообще точно.",
+      "tags": [
+        "вода",
+        "питание"
+      ],
+      "link": "/ru/tools/water-intake-calculator",
+      "cta": "👉 Рассчитать норму воды"
+    },
+    {
+      "id": "ru-calc-hrzones",
+      "title": "❤️‍🔥 В какой пульсовой зоне тренироваться?",
+      "body": "Аэробная, пороговая, максимальная — калькулятор посчитает ваши зоны по пульсу и подскажет, в какой работать под вашу цель. Без мифов про «зону жиросжигания».",
+      "tags": [
+        "пульс",
+        "фитнес"
+      ],
+      "link": "/ru/tools/heart-rate-zones-calculator",
+      "cta": "👉 Рассчитать зоны пульса"
+    },
+    {
+      "id": "ru-calc-idealweight",
+      "title": "⚖️ Какой вес для вас здоровый?",
+      "body": "«Идеальный вес» — не одна цифра, а диапазон. Калькулятор покажет здоровый коридор по росту и сложению — без гонки за картинкой из соцсетей.",
+      "tags": [
+        "вес",
+        "здоровье"
+      ],
+      "link": "/ru/tools/ideal-weight-calculator",
+      "cta": "👉 Узнать здоровый вес"
+    },
+    {
+      "id": "ru-calc-pace",
+      "title": "🏃 С каким темпом бежать?",
+      "body": "Введите дистанцию и цель — калькулятор даст темп на км, финишное время и раскладку. Удобно готовиться к 5 км, 10 км или полумарафону.",
+      "tags": [
+        "бег",
+        "фитнес"
+      ],
+      "link": "/ru/tools/running-pace-calculator",
+      "cta": "👉 Рассчитать темп бега"
+    },
+    {
+      "id": "ru-calc-ovulation",
+      "title": "🌸 Когда овуляция и фертильное окно?",
+      "body": "Калькулятор прикинет день овуляции и дни наибольшей вероятности зачатия по вашему циклу. Это оценка по календарю, а не тест — но для планирования удобно.",
+      "tags": [
+        "овуляция",
+        "женское"
+      ],
+      "link": "/ru/tools/ovulation-calculator",
+      "cta": "👉 Рассчитать овуляцию"
+    },
+    {
+      "id": "ru-calc-period",
+      "title": "📅 Когда следующие месячные?",
+      "body": "Введите дату начала и длину цикла — калькулятор покажет даты следующих месячных на несколько циклов вперёд. Просто и без приложений с подпиской.",
+      "tags": [
+        "цикл",
+        "женское"
+      ],
+      "link": "/ru/tools/period-calculator",
+      "cta": "👉 Рассчитать цикл"
+    },
+    {
+      "id": "ru-calc-duedate",
+      "title": "👶 Предполагаемая дата родов",
+      "body": "Калькулятор посчитает ПДР и срок беременности по последней менструации или дате зачатия — по правилу Негеле, как это делают врачи.",
+      "tags": [
+        "беременность",
+        "женское"
+      ],
+      "link": "/ru/tools/due-date-calculator",
+      "cta": "👉 Рассчитать дату родов"
+    },
+    {
+      "id": "ru-calc-fiber",
+      "title": "🌾 Хватает ли вам клетчатки?",
+      "body": "Большинство недобирает клетчатку, а она — про сытость, сахар и кишечник. Калькулятор посчитает вашу норму и покажет, сколько это в реальной еде.",
+      "tags": [
+        "клетчатка",
+        "питание"
+      ],
+      "link": "/ru/tools/fiber-calculator",
+      "cta": "👉 Рассчитать норму клетчатки"
     }
   ],
   "en": [
@@ -914,6 +1013,105 @@
         "metabolism"
       ],
       "link": "/en/weight/insulin-resistance"
+    },
+    {
+      "id": "en-calc-caffeine",
+      "title": "☕ How much caffeine is OK for you?",
+      "body": "The usual safe ceiling is about 400 mg a day — but yours depends on weight, pregnancy and sensitivity. The calculator finds your limit and when to stop so it doesn't wreck your sleep.",
+      "tags": [
+        "caffeine",
+        "sleep"
+      ],
+      "link": "/en/tools/caffeine-calculator",
+      "cta": "👉 Check your caffeine limit"
+    },
+    {
+      "id": "en-calc-water",
+      "title": "💧 How much water do YOU need?",
+      "body": "«8 glasses for everyone» is a myth — it depends on your weight, activity and the heat. The calculator estimates yours against the EFSA reference and is honest about how precise that is.",
+      "tags": [
+        "water",
+        "nutrition"
+      ],
+      "link": "/en/tools/water-intake-calculator",
+      "cta": "👉 Calculate your water"
+    },
+    {
+      "id": "en-calc-hrzones",
+      "title": "❤️‍🔥 Which heart-rate zone should you train in?",
+      "body": "Aerobic, threshold, max — the calculator sets your zones from your heart rate and shows which one fits your goal. No myths about a magic «fat-burning zone».",
+      "tags": [
+        "heartrate",
+        "fitness"
+      ],
+      "link": "/en/tools/heart-rate-zones-calculator",
+      "cta": "👉 Find your HR zones"
+    },
+    {
+      "id": "en-calc-idealweight",
+      "title": "⚖️ What's a healthy weight for you?",
+      "body": "«Ideal weight» isn't one number — it's a range. The calculator shows a healthy band for your height and build, without chasing a social-media picture.",
+      "tags": [
+        "weight",
+        "health"
+      ],
+      "link": "/en/tools/ideal-weight-calculator",
+      "cta": "👉 See your healthy range"
+    },
+    {
+      "id": "en-calc-pace",
+      "title": "🏃 What pace should you run?",
+      "body": "Enter your distance and goal — the calculator gives pace per km, finish time and splits. Handy for a 5K, 10K or half marathon.",
+      "tags": [
+        "running",
+        "fitness"
+      ],
+      "link": "/en/tools/running-pace-calculator",
+      "cta": "👉 Calculate your pace"
+    },
+    {
+      "id": "en-calc-ovulation",
+      "title": "🌸 When are you ovulating?",
+      "body": "The calculator estimates your ovulation day and fertile window from your cycle. It's a calendar estimate, not a medical test — but handy for planning.",
+      "tags": [
+        "ovulation",
+        "womenshealth"
+      ],
+      "link": "/en/tools/ovulation-calculator",
+      "cta": "👉 Calculate ovulation"
+    },
+    {
+      "id": "en-calc-period",
+      "title": "📅 When is your next period?",
+      "body": "Enter your start date and cycle length — the calculator maps your next periods several cycles ahead. Simple, no subscription app needed.",
+      "tags": [
+        "cycle",
+        "womenshealth"
+      ],
+      "link": "/en/tools/period-calculator",
+      "cta": "👉 Track your cycle"
+    },
+    {
+      "id": "en-calc-duedate",
+      "title": "👶 Your estimated due date",
+      "body": "The calculator works out your due date and how far along you are from your last period or conception date — by Naegele's rule, the way clinics do it.",
+      "tags": [
+        "pregnancy",
+        "womenshealth"
+      ],
+      "link": "/en/tools/due-date-calculator",
+      "cta": "👉 Calculate your due date"
+    },
+    {
+      "id": "en-calc-fiber",
+      "title": "🌾 Are you getting enough fiber?",
+      "body": "Most people fall short, and fiber drives fullness, blood sugar and gut health. The calculator sets your target and shows what it looks like in real food.",
+      "tags": [
+        "fiber",
+        "nutrition"
+      ],
+      "link": "/en/tools/fiber-calculator",
+      "cta": "👉 Calculate your fiber"
     }
   ]
 }
