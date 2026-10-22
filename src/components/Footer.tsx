@@ -49,7 +49,7 @@ export function Footer({ locale }: { locale: Locale }) {
             </div>
           </div>
 
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             <nav aria-label={tr("footer_rubrics")}>
               <h2 className="font-display text-base font-semibold">{tr("footer_rubrics")}</h2>
               <ul className="mt-4 space-y-2.5 text-[0.9rem]">
@@ -60,22 +60,6 @@ export function Footer({ locale }: { locale: Locale }) {
                       className="text-[var(--ink-soft)] transition-colors hover:text-[var(--brand-strong)]"
                     >
                       {c.name[locale]}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-
-            <nav aria-label={tr("tools_title")}>
-              <h2 className="font-display text-base font-semibold">{tr("tools_title")}</h2>
-              <ul className="mt-4 space-y-2.5 text-[0.9rem]">
-                {toolLinks.map((l) => (
-                  <li key={l.href}>
-                    <Link
-                      href={localePath(locale, l.href)}
-                      className="text-[var(--ink-soft)] transition-colors hover:text-[var(--brand-strong)]"
-                    >
-                      {l.label}
                     </Link>
                   </li>
                 ))}
@@ -142,6 +126,22 @@ export function Footer({ locale }: { locale: Locale }) {
             </nav>
           </div>
         </div>
+
+        <nav aria-label={tr("tools_title")} className="mt-12 border-t border-[var(--line)] pt-10">
+          <h2 className="font-display text-base font-semibold">{tr("tools_title")}</h2>
+          <ul className="mt-4 columns-2 gap-x-8 text-[0.9rem] sm:columns-3 lg:columns-4 [&>li]:mb-2.5 [&>li]:break-inside-avoid">
+            {toolLinks.map((l) => (
+              <li key={l.href}>
+                <Link
+                  href={localePath(locale, l.href)}
+                  className="text-[var(--ink-soft)] transition-colors hover:text-[var(--brand-strong)]"
+                >
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
         <div className="mt-12 flex flex-col gap-4 border-t border-[var(--line)] pt-6 text-[0.82rem] text-[var(--ink-faint)] sm:flex-row sm:items-center sm:justify-between">
           <p>
