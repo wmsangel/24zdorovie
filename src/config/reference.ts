@@ -117,6 +117,40 @@ export const REFERENCE: RefItem[] = [
       en: ["/heart/how-to-lower-cardiovascular-risk", "/supplements/do-multivitamins-work"],
     },
   },
+  {
+    slug: "magnesium",
+    emoji: "🧲",
+    category: "supplements",
+    name: {
+      ru: "Магний",
+      en: "Magnesium",
+    },
+    tagline: {
+      ru: "Нужен ли в добавках, какие формы усваиваются и почему от судорог он не помогает",
+      en: "Do you need a supplement, which forms absorb, and why it doesn't fix cramps",
+    },
+    related: {
+      ru: ["/supplements/magniy-formy-i-dozy", "/supplements/vitamin-d-normy-i-dozirovki"],
+      en: ["/supplements/magnesium-forms-doses", "/supplements/vitamin-d-dosage"],
+    },
+  },
+  {
+    slug: "omega-3",
+    emoji: "🐟",
+    category: "supplements",
+    name: {
+      ru: "Омега-3",
+      en: "Omega-3",
+    },
+    tagline: {
+      ru: "Нужен ли рыбий жир, сколько EPA и DHA и кому добавка действительно оправдана",
+      en: "Do you need fish oil, how much EPA and DHA, and who the supplement is really for",
+    },
+    related: {
+      ru: ["/supplements/omega-3-kak-vybrat", "/heart/kak-snizit-serdechno-sosudistyy-risk"],
+      en: ["/supplements/omega-3-how-to-choose", "/heart/how-to-lower-cardiovascular-risk"],
+    },
+  },
 ];
 
 export function getRefItem(slug: string): RefItem | undefined {
