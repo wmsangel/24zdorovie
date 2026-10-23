@@ -125,7 +125,7 @@ function HouseAdCard({
   return (
     <a
       href={houseHref(ad)}
-      rel="sponsored noopener"
+      rel="sponsored nofollow noopener"
       target="_blank"
       data-track="house_ad_click"
       data-track-ad={ad.id}
