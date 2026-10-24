@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Автозапуск дневной соц-рассылки 24zdorovie раз в день ~08:05.
+  Подставь свои абсолютные пути (node и папка social), скопируй в
+  ~/Library/LaunchAgents/ и загрузи:
+    cp social/com.24zdorovie.social-daily.plist.example ~/Library/LaunchAgents/com.24zdorovie.social-daily.plist
+    launchctl load ~/Library/LaunchAgents/com.24zdorovie.social-daily.plist
+  Мак должен быть включён около 08:05 (launchd не будит из сна гарантированно;
+  при пропуске задача выполнится при ближайшем пробуждении).
+  Отдельно от автопостинга в каналы (scripts/tg-daily.mjs) — это разные задачи.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.24zdorovie.social-daily</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/igorzagorodnyi/.nvm/versions/node/v20.18.0/bin/node</string>
+    <string>scripts/telegram-daily.mjs</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/igorzagorodnyi/Sites/izn.health/social</string>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>8</integer>
+    <key>Minute</key>
+    <integer>5</integer>
+  </dict>
+  <key>StandardOutPath</key>
+  <string>/tmp/24zdorovie-social-daily.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/24zdorovie-social-daily.err</string>
+</dict>
+</plist>
