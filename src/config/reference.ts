@@ -151,6 +151,23 @@ export const REFERENCE: RefItem[] = [
       en: ["/supplements/omega-3-how-to-choose", "/heart/how-to-lower-cardiovascular-risk"],
     },
   },
+  {
+    slug: "iron",
+    emoji: "🩸",
+    category: "supplements",
+    name: {
+      ru: "Железо",
+      en: "Iron",
+    },
+    tagline: {
+      ru: "Нормы, кому не хватает и почему добавки только при подтверждённом дефиците",
+      en: "Daily targets, who runs low, and why supplements only make sense with confirmed deficiency",
+    },
+    related: {
+      ru: ["/supplements/zhelezo-i-ferritin", "/womens-health/zhelezo-u-zhenshchin"],
+      en: ["/supplements/iron-and-ferritin", "/womens-health/iron-for-women"],
+    },
+  },
 ];
 
 export function getRefItem(slug: string): RefItem | undefined {
