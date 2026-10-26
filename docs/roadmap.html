@@ -102,7 +102,7 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);color:v
 <body>
 <div class="wrap">
   <header>
-    <span class="kicker">Дорожная карта · обновлено 16 октября 2026</span>
+    <span class="kicker">Дорожная карта · обновлено 26 октября 2026</span>
     <h1>24zdorovie</h1>
     <p class="sub">Доказательный сайт о здоровье, питании и ЗОЖ (RU/EN): статьи, калькуляторы и справочник. Эта страница — живой статус работ.</p>
   </header>
@@ -110,111 +110,88 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);color:v
   <div class="tiles">
     <div class="tile"><span class="n">~300</span><span class="c">визитов за 30 дней</span></div>
     <div class="tile"><span class="n">268<span style="color:var(--muted)">/537</span></span><span class="c">страниц в индексе</span></div>
-    <div class="tile"><span class="n accent">5</span><span class="c">задач в очереди</span></div>
-    <div class="tile"><span class="n">3</span><span class="c">кликов из поиска (28д)</span></div>
+    <div class="tile"><span class="n accent">9</span><span class="c">задач в очереди</span></div>
+    <div class="tile"><span class="n">8</span><span class="c">карточек справочника</span></div>
   </div>
 
   <section>
-    <div class="s-head"><h2>Очередь</h2><span class="count">по приоритету · 7</span></div>
+    <div class="s-head"><h2>Очередь</h2><span class="count">по приоритету · 9</span></div>
     <p class="note" style="margin:-4px 0 14px">Бейдж исполнителя — кто делает дешевле по токенам:
       <span class="mode cursor">→cursor</span> отдаём Cursor (я пишу промт + спот-чек) ·
       <span class="mode self">→сам</span> делаю в чате (решения / контент / конвенции репо) ·
       <span class="mode hybrid">→гибрид</span> решение и каркас за мной, тираж — Cursor.</p>
+
     <div class="q"><span class="idx">01</span><div>
-      <div class="t">Закрыть 404 на /ru/tag/ ✅ сделано 17.10</div>
-      <div class="d">Был 404 на корне тегов (1 011 запросов/нед). Решение — индекс-страница (не 301): новый роут со списком 74 тегов и перелинковкой, /tag в sitemap, canonical+hreflang+CollectionPage. RU/EN проверены, build зелёный.</div>
-      <span class="tag">баг</span><span class="mode hybrid">→гибрид ✓</span></div></div>
+      <div class="t">sleep-calculator EN — title откатан ✅ 20.10</div>
+      <div class="d">«sleep calculator for women» выпал из топ-запросов (показы −95%), в топ-10 не вернулся. Откатил title «for Women & Men» → нейтральный, нейтрализовал description. Задеплоено, IndexNow + переобход запрошены. Вотч: вернётся ли по «sleep calculator» к ~05.11 после переоценки.</div>
+      <span class="tag">трафик</span><span class="mode self">→сам ✓</span></div></div>
+
     <div class="q"><span class="idx">02</span><div>
-      <div class="t">sleep-calculator EN — вотч до 20.10</div>
-      <div class="d">Выпал из топ-10 по «sleep calculator for women» (поз. 5.8 → 61.7 → 0 показов). Техника чиста; показы рухнули 01.10 (до правок), позиция — 07.10 (после title «for Women & Men»). Если к 20.10 не вернётся — откатить title.</div>
-      <span class="tag">трафик</span><span class="mode self">→сам</span></div></div>
-    <div class="q"><span class="idx">03</span><div>
-      <div class="t">Докручивать CTR/title по дельте GSC</div>
-      <div class="d">Поз. 5–11 с ~0 кликов; под проявившиеся запросы. Кандидаты: Bing «пульс покоя бегуны норма», vo2max/кофеин/вода.</div>
-      <span class="tag">трафик</span><span class="mode self">→сам</span></div></div>
-    <div class="q"><span class="idx">04</span><div>
-      <div class="t">Написать статью «Щитовидка / ТТГ» (RU+EN)</div>
-      <div class="d">Пробел в контенте, устойчивый спрос; рубрика — longevity или weight, решить при написании.</div>
-      <span class="tag">контент</span><span class="mode self">→сам</span></div></div>
-    <div class="q"><span class="idx">05</span><div>
       <div class="t">Расширять справочник /reference по пробелам</div>
-      <div class="d">Добавки без своих лонгридов; оценить отдачу пилота (5 карточек) перед масштабированием. Делегируем через бриф: я пишу бриф с проверенными источниками, Cursor разворачивает прозу, я проверяю (стандарт content-delegation). Первый пилот — карточка «Магний» (бриф в плане).</div>
+      <div class="d">Доказательные карточки добавок. Порции: Магний + Омега-3 (23.10), Железо (26.10) — справочник 5→8 карточек (ответ-первым; NIH ODS / Cochrane / WHO; schema DietarySupplement; перелинковка на лонгриды). «Железо» — via Cursor по брифу + YMYL-ревью. Следующая — мелатонин по спросу.</div>
       <span class="tag">контент</span><span class="mode hybrid">→гибрид</span></div></div>
+
+    <div class="q"><span class="idx">03</span><div>
+      <div class="t">Написать статью «Щитовидка / ТТГ» (RU+EN)</div>
+      <div class="d">Пробел в контенте, устойчивый спрос; рубрика — longevity (решено владельцем). Текст и E-E-A-T — это и есть продукт.</div>
+      <span class="tag">контент</span><span class="mode self">→сам</span></div></div>
+
+    <div class="q"><span class="idx">04</span><div>
+      <div class="t">Усилить перелинковку кластеров ✅ 26.10</div>
+      <div class="d">burnout и biological age давали показы при 0 кликов (2–3 стр.). Кластер был заполнен на ~80%, добиты 3 пробела via Cursor (vo2max→biological-age-calculator; инструмент биовозраста→how-to-lower; burnout-test→student-burnout). Рычаг исчерпан, дальше — наблюдение позиций.</div>
+      <span class="tag">трафик</span><span class="mode hybrid">→гибрид ✓</span></div></div>
+
+    <div class="q"><span class="idx">05</span><div>
+      <div class="t">Докручивать CTR/title по дельте GSC</div>
+      <div class="d">Поз. 5–11 с ~0 кликов; под проявившиеся запросы, не вслепую. Крупные кластеры уже заточены — это позиция, не контент. Кандидаты по дельте: Bing «пульс покоя бегуны норма», vo2max/кофеин/вода. Низкая срочность, зависит от данных.</div>
+      <span class="tag">трафик</span><span class="mode self">→сам</span></div></div>
+
     <div class="q"><span class="idx">06</span><div>
       <div class="t">Пилот детской темы (сон/питание/экранное время)</div>
-      <div class="d">1–2 статьи; заодно откроет тематического донора для do-follow на bilimjol. Ниже приоритетом.</div>
+      <div class="d">1–2 статьи; заодно откроет тематического донора для do-follow на bilimjol (сеть). Ниже приоритетом.</div>
       <span class="tag">контент</span><span class="mode self">→сам</span></div></div>
+
     <div class="q"><span class="idx">07</span><div>
-      <div class="t">Шаринг результата — vitamin-d ✅ сделано 16.10</div>
-      <div class="d">Все 6 нейтральных калькуляторов закрыты. vitamin-d сделал Cursor, спот-чек пройден (build/lint зелёные). Первая задача, обкатавшая цикл промт → Cursor → спот-чек. Промт ниже — референс для сети.</div>
-      <span class="tag">трафик</span><span class="mode cursor">→cursor ✓</span>
-      <details class="prompt"><summary>📋 Промт для Cursor — ShareBar в vitamin-d</summary><div class="pbody"><button class="copy">Копировать</button><pre>Задача: добавить панель «Поделиться результатом» (ShareBar) в калькулятор витамина D —
-единственный нейтральный калькулятор, где её ещё нет. Делай строго по уже внедрённому
-образцу, ничего в общем компоненте ShareBar не меняй.
+      <div class="t">AdMob-приложение — MVP в работе</div>
+      <div class="d">Capacitor-обёртка ~8 нейтральных калькуляторов офлайн + баннер/интерстишл AdMob (мобилки под рекламу — самая широкая география выплат для КГ, merchant не нужен). Фазы P1–P5: shell → AdMob → Play-листинг/ASO → закрытый тест (≥12 тестировщиков, 14 дней) → production. Рельсы для КГ проверены. Размещение — папка app/ в репо. Публикация → конец ноября.</div>
+      <span class="tag">деньги</span><span class="mode self">→сам</span></div></div>
 
-Файл: src/components/tools/VitaminDCalculator.tsx
-Эталон (копируй паттерн 1-в-1): src/components/tools/IdealWeightCalculator.tsx
+    <div class="q"><span class="idx">08</span><div>
+      <div class="t">Платные PDF через Paddle</div>
+      <div class="d">1–2 платных PDF (расширенный гайд по биовозрасту/сну на базе лид-магнита) + Paddle Checkout (merchant of record — подходит для КГ, серверная часть не нужна) + выдача файла после оплаты. ⚠️ Реквизиты выплат в Paddle не заполнены — доход блокирован до этого (хвост владельца).</div>
+      <span class="tag">деньги</span><span class="mode self">→сам</span></div></div>
 
-Что сделать:
-1. Импорт рядом с другими импортами в начале файла:
-   import { ShareBar, useShareUrl } from "@/components/ShareBar";
-2. Внутри компонента VitaminDCalculator (после строки `const c = COPY[locale] ?? COPY.ru;`)
-   получить адрес:  const shareUrl = useShareUrl();
-3. В БЛОКЕ РЕЗУЛЬТАТА (div с `bg-[var(--accent-tint)]`, рендерится под условием `r.status`),
-   в самом конце этого блока, добавить:
-     {shareUrl &amp;&amp; (
-       &lt;div className="mt-6"&gt;
-         &lt;ShareBar
-           url={shareUrl}
-           title={c.shareResult}
-           text={c.shareResult}
-           locale={locale}
-           tool="vitamin-d-calculator"
-         /&gt;
-       &lt;/div&gt;
-     )}
-4. Добавить ключ shareResult в объект COPY в ОБЕИХ локалях (ru и en). Фраза —
-   НЕЙТРАЛЬНО-ПРИГЛАШАЮЩАЯ, БЕЗ личного статуса пользователя (не «у меня дефицит»):
-     ru: shareResult: "Проверь свой уровень витамина D — бесплатный калькулятор"
-     en: shareResult: "Check your vitamin D level — free calculator"
-
-Жёсткие требования:
-- ShareBar рендерить ТОЛЬКО когда есть результат (под тем же условием, что и блок `r.status`)
-  и когда `shareUrl` непустой (на сервере он "" — SSR-safe, как в эталоне).
-- Общий компонент ShareBar.tsx НЕ трогать. useShareUrl уже кладёт чистый URL
-  (origin+pathname, без query и ввода пользователя) — ничего не добавлять в адрес.
-- Не менять формулы/логику калькулятора, только добавить UI-панель и ключ COPY.
-- После правки: npm run build должен пройти без ошибок, npm run lint — чисто.
-
-В ответе: какие строки добавил и подтверждение, что build/lint зелёные.</pre></div></details>
-      </div></div>
+    <div class="q"><span class="idx">09</span><div>
+      <div class="t">Ревизия качества: «ответ-первым» + вырезать воду</div>
+      <div class="d">Фидбэк реального читателя: местами много воды, прямого ответа на вопрос заголовка нет. Вынести вердикт наверх (первый абзац / первый KeyPoints) + подрезать воду. Приоритет — статьи, которые отметит жена владельца (реальный сигнал). Стандарт закреплён в AGENTS.md.</div>
+      <span class="tag">контент</span><span class="mode hybrid">→гибрид</span></div></div>
   </section>
 
   <section>
-    <div class="s-head"><h2>Сделано</h2><span class="count">за 2 недели</span></div>
+    <div class="s-head"><h2>Сделано</h2><span class="count">за ~2 недели</span></div>
     <ul class="done">
-      <li><span class="mk">✓</span><span>Статья «Депрессия» (RU+EN) — дом для PHQ-9: признаки по DSM-5, кризисный блок, встроенный тест, доказательное «что помогает»</span></li>
+      <li><span class="mk">✓</span><span>Карточка «Железо» (RU+EN) + добита перелинковка EN-кластеров burnout/biological age (26.10) — via Cursor + YMYL-ревью, задеплоено</span></li>
+      <li><span class="mk">✓</span><span>Справочник /reference: 5→8 карточек RU+EN (+Магний, Омега-3, Железо), schema DietarySupplement</span></li>
+      <li><span class="mk">✓</span><span>Соц-рассылка: дневная система готова (генератор слайдов + Telegram-бот, автозапуск launchd); каналы @zdorovie24Ru / @zdorovie24En работают</span></li>
+      <li><span class="mk">✓</span><span>Amazon-ссылки через редирект /go/amazon-&lt;ASIN&gt; — тег на 302, rel sponsored nofollow, отсекает ботов (22 оффера)</span></li>
+      <li><span class="mk">✓</span><span>Закрыт 404 на /{locale}/tag/ — индекс-страница тегов (1 011 запросов/нед), canonical+hreflang+CollectionPage, в sitemap</span></li>
+      <li><span class="mk">✓</span><span>Privacy → Google AdSense (убрана привязка к Ezoic), RU+EN; аналитика событий + custom dimensions в GA4</span></li>
+      <li><span class="mk">✓</span><span>Юнит-тесты (vitest): 144 теста на формульные модули src/lib</span></li>
+      <li><span class="mk">✓</span><span>Статья «Депрессия» (RU+EN) — дом для PHQ-9; кнопка «Поделиться результатом» на 6 нейтральных калькуляторах</span></li>
       <li><span class="mk">✓</span><span>Email-рассылка: форма MailerLite + PDF-лид-магнит «биовозраст» + welcome-письмо — цикл работает сам</span></li>
-      <li><span class="mk">✓</span><span>Справочник /reference: 5 карточек RU+EN (креатин, витамин C, цинк, кальций, Q10), schema DietarySupplement</span></li>
-      <li><span class="mk">✓</span><span>SEO-победы: sleep «for Women & Men», BMI «online test», овуляция «рассчитать онлайн»</span></li>
-      <li><span class="mk">✓</span><span>Контекстные do-follow на сеть — 2 ссылки из «Гигиены сна» на ДомЭксперт</span></li>
-      <li><span class="mk">✓</span><span>Аудит индексации (342/537 без показов): сирот 0, техника чиста — причина в возрасте домена, не структуре</span></li>
-      <li><span class="mk">✓</span><span>Admitad API: аудит 11 офферов, размещён Beautiful People, комплаенс-правка маркировки (ИНН BABOR, Сбер/Польза)</span></li>
-      <li><span class="mk">✓</span><span>Telegram: пул вечнозелёных постов 22→32 на локаль + 8 перелинковок на справочник</span></li>
-      <li><span class="mk">✓</span><span>Spotlight: ротационный промо-слот (10 промо, ISO-неделя, аналитика) в статьях+инструментах+справочнике</span></li>
-      <li><span class="mk">✓</span><span>trailing-slash проверен; инвентарь рекламы (ADVERTISING.md); доки приведены к стандарту сети</span></li>
+      <li><span class="mk">✓</span><span>Telegram: вечнозелёные посты 22→42 на локаль (+посты-калькуляторы) + перелинковки на справочник</span></li>
+      <li><span class="mk">✓</span><span>Spotlight (ротационный промо-слот); инвентарь рекламы (ADVERTISING.md); доки и витрина по стандарту сети</span></li>
     </ul>
   </section>
 
   <section>
-    <div class="s-head"><h2>Отложено</h2><span class="count">крупное / заблокированное</span></div>
+    <div class="s-head"><h2>Отклонено</h2><span class="count">не делаем — с причиной</span></div>
     <ul class="ideas">
-      <li><span class="bx"></span><span>AdMob-приложение — обёртка вокруг калькуляторов <span class="note">— мобильная стратегия «под рекламу»; крупная задача, позже</span></span></li>
-      <li><span class="bx"></span><span>Платные PDF через Paddle <span class="note">— заблокировано до проверки выплат в КГ</span></span></li>
-      <li><span class="bx"></span><span>«Детектор репостов» в дневном отчёте <span class="note">— фича аналитика, не сайта</span></span></li>
-      <li><span class="bx"></span><span>301 /covers/*.jpg → .webp в middleware <span class="note">— единичные заходы из кэшей; решает владелец</span></span></li>
+      <li><span class="bx"></span><span>«Детектор репостов» (FB/TG/WhatsApp/VK/X) <span class="note">— фича сетевого аналитика, не сайта; соцтрафик и так идёт как (direct)</span></span></li>
+      <li><span class="bx"></span><span>301 /covers/*.jpg → .webp в middleware <span class="note">— единичные заходы из кэшей соцсетей, выгода мала; файл «не трогать без причины»</span></span></li>
       <li><span class="bx"></span><span>WAF-челлендж для бот-всплесков <span class="note">— только при повторении; настройка зоны за владельцем</span></span></li>
     </ul>
+    <p class="note" style="margin-top:12px">AdMob-приложение и платные PDF через Paddle больше не «отложены» — переведены в активную очередь (#07 и #08).</p>
   </section>
 
   <section>
@@ -222,19 +199,20 @@ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);color:v
     <div class="tbl-wrap"><table>
       <thead><tr><th>Канал</th><th>Статус</th><th class="num">Доход / мес</th></tr></thead>
       <tbody>
-        <tr><td>Партнёрки Admitad (10 офферов)</td><td><span class="st on">активна</span></td><td class="num">$0</td></tr>
-        <tr><td>Crocs (EN)</td><td><span class="st on">активна</span></td><td class="num">$0</td></tr>
+        <tr><td>Партнёрки Admitad</td><td><span class="st on">активна</span></td><td class="num">$0</td></tr>
+        <tr><td>Amazon Associates (EN, через /go/)</td><td><span class="st on">активна</span></td><td class="num">$0</td></tr>
+        <tr><td>WAU бьюти-девайсы (EN)</td><td><span class="st on">активна</span></td><td class="num">$0</td></tr>
         <tr><td>Крипто-донат (/support)</td><td><span class="st on">активна</span></td><td class="num">—</td></tr>
-        <tr><td>AdSense</td><td><span class="st wait">рано</span></td><td class="num">—</td></tr>
+        <tr><td>AdSense</td><td><span class="st wait">рано · NEEDS_ATTENTION</span></td><td class="num">—</td></tr>
         <tr><td>РСЯ (Яндекс)</td><td><span class="st soon">нет</span></td><td class="num">—</td></tr>
       </tbody>
     </table></div>
-    <p class="note" style="margin-top:12px">Клики по партнёркам есть, конверсий пока 0 — молодой трафик. Полный инвентарь (офферы, размещения, do-follow/nofollow, маркировка) — <code>docs/ADVERTISING.md</code>.</p>
+    <p class="note" style="margin-top:12px">Клики по партнёркам есть, конверсий пока 0 — молодой трафик. Полный инвентарь (офферы, размещения, do-follow/nofollow, маркировка, erid) — <code>docs/ADVERTISING.md</code>.</p>
   </section>
 
   <section>
     <div class="s-head"><h2>Промты</h2><span class="count">готовые задания</span></div>
-    <p class="note" style="margin:-4px 0 14px">Самодостаточные промты — вставляются в чат проекта. Полный набор сети — <code>izn.project.stats/prompts/</code>. Здесь лежат те, что рассылаются по проектам прямо сейчас.</p>
+    <p class="note" style="margin:-4px 0 14px">Самодостаточные промты — вставляются в чат проекта. Полный набор сети — <code>izn.project.stats/prompts/</code>, разовые промты под открытые задачи — <code>docs/cursor-prompts/</code>. Здесь лежат те, что рассылаются по проектам прямо сейчас.</p>
     <details class="prompt"><summary>📋 task-triage — разметить очередь по исполнителю (Cursor / чат)</summary><div class="pbody"><button class="copy">Копировать</button><pre># Промт: разметка задач по исполнителю (Cursor vs ты) — экономия токенов
 
 Вставь в чат проекта (одного сайта). Самодостаточный. Задача: пройтись по дорожной
@@ -360,7 +338,7 @@ frontmatter валиден, слаг не менялся, пара RU/EN на м
 мала (бриф ≈ 60–70% работы), реальный выигрыш — на шаблонных типах (карточки, рецепты).</pre></div></details>
   </section>
 
-  <footer>Витрина проекта 24zdorovie. Обновляется вместе с планом (<code>docs/WEEK-PLAN.md</code>). Промты — <code>izn.project.stats/prompts/</code>.</footer>
+  <footer>Витрина проекта 24zdorovie. Обновляется вместе с планом (<code>docs/WEEK-PLAN.md</code>). Промты — <code>izn.project.stats/prompts/</code> и <code>docs/cursor-prompts/</code>.</footer>
 </div>
 <script>
 document.querySelectorAll('.copy').forEach(function(btn){
