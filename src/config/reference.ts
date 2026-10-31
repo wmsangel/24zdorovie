@@ -168,6 +168,23 @@ export const REFERENCE: RefItem[] = [
       en: ["/supplements/iron-and-ferritin", "/womens-health/iron-for-women"],
     },
   },
+  {
+    slug: "melatonin",
+    emoji: "🌙",
+    category: "supplements",
+    name: {
+      ru: "Мелатонин",
+      en: "Melatonin",
+    },
+    tagline: {
+      ru: "Не снотворное, а сигнал циркадных часов: когда реально помогает, доза и тайминг",
+      en: "Not a sleeping pill but a circadian signal: when it really helps, dose and timing",
+    },
+    related: {
+      ru: ["/sleep/melatonin-rabotaet-li", "/sleep/dzhetlag"],
+      en: ["/sleep/does-melatonin-work", "/sleep/jet-lag"],
+    },
+  },
 ];
 
 export function getRefItem(slug: string): RefItem | undefined {
