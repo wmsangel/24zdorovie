@@ -6,7 +6,7 @@
 
 | Файл | Пункт плана | Что делает | Режим | Статус |
 |---|---|---|---|---|
-| [reference-melatonin.md](./reference-melatonin.md) | #2 `/reference` | Карточка «Мелатонин» (RU+EN) + запись в `reference.ts` по эталону креатина; YMYL-бриф с источниками NCCIH/Cochrane/AASM | `→гибрид` | 🆕 НОВЫЙ, 2026-10-31 |
+| [reference-melatonin.md](./reference-melatonin.md) | #2 `/reference` | Карточка «Мелатонин» (RU+EN) + запись в `reference.ts` по эталону креатина; YMYL-бриф с источниками NCCIH/Cochrane/AASM | `→гибрид` | ✅ ВЫПОЛНЕНО 2026-11-01 — cd4ecab (YMYL-ревью пройдено, задеплоено) |
 | [reference-iron.md](./reference-iron.md) | #2 `/reference` | Карточка «Железо» (RU+EN) + запись в `reference.ts` по эталону креатина/брифу «Магний» | `→гибрид` | ✅ ВЫПОЛНЕНО 26.10.2026 — 811749f (YMYL-ревью, задеплоено) |
 | [cluster-linking.md](./cluster-linking.md) | #4 перелинковка | Добить 3 недостающих `<ReadAlso/>` в EN-кластерах burnout / biological age (остальное уже стоит) | `→гибрид` | ✅ ВЫПОЛНЕНО 26.10.2026 — 811749f (задеплоено) |
 
