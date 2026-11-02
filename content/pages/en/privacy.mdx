@@ -1,7 +1,7 @@
 ---
 title: "Privacy Policy"
 description: "What data 24zdorovie collects, why it is needed, who it is shared with and how to opt out: analytics, advertising, the newsletter and your rights."
-updated: "2026-10-03"
+updated: "2026-11-02"
 ---
 
 This policy explains what data **24zdorovie.com** collects, why it is needed, who it is shared with and how to limit it. We have tried to write it in plain English rather than legal cipher. If anything remains unclear, email [info@24zdorovie.com](mailto:info@24zdorovie.com).
@@ -47,9 +47,11 @@ The 24zdorovie.com website and the 24zdorovie editorial team. For any question a
 
 **Technical.** The site stores your chosen colour theme in `localStorage` (key `24zdorovie-theme`). It is not a cookie, never leaves your device and is not shared with anyone.
 
-**Analytics.** Set by statistics services to tell a returning visitor from a new one.
+**Analytics.** Google Analytics 4 sets `_ga` cookies and Yandex Metrica sets `_ym*` cookies to tell a returning visitor from a new one. Metrica includes Webvisor — anonymised session recording (mouse movement, clicks, scrolling) so we can see where the layout trips people up; Webvisor does not record input fields or sensitive data.
 
-**Advertising.** Set by ad networks to serve ads and cap how often you see the same one.
+**Advertising.** Google AdSense and its partners set cookies to serve ads and cap how often you see the same one.
+
+**In the EEA, the UK and Switzerland** analytics and advertising cookies are denied by default (Google Consent Mode): GA4 and AdSense run cookieless there, and Yandex Metrica is not loaded in those regions at all. The region is determined from the request country (Cloudflare); if it cannot be determined, no cookies are set either. That is why there is no separate consent banner.
 
 Analytics and advertising cookies can be switched off in your browser settings or with an ad blocker. This does not affect reading — all content stays available.
 
@@ -60,17 +62,16 @@ We do not hand your data to third parties for their own purposes, but parts of t
 <DataTable
   head={["Service", "Purpose", "Policy"]}
   rows={[
-    ["Google Analytics", "traffic statistics", "policies.google.com/privacy"],
-    ["Yandex Metrica", "traffic statistics", "yandex.com/legal/confidential"],
+    ["Google Analytics 4", "traffic statistics (_ga cookies)", "policies.google.com/privacy"],
+    ["Yandex Metrica + Webvisor", "statistics and anonymised session recording (_ym* cookies)", "yandex.com/legal/confidential"],
     ["Google AdSense", "advertising", "policies.google.com/technologies/ads"],
-    ["Yandex Advertising Network", "advertising", "yandex.com/legal/confidential"],
     ["MailerLite", "storing your address and sending the newsletter (if you subscribed)", "mailerlite.com/legal/privacy-policy"],
-    ["Hosting provider", "serving the site, server logs", "per provider agreement"],
+    ["Cloudflare Pages", "hosting, site delivery, server logs", "cloudflare.com/privacypolicy"],
   ]}
-  caption="The set of services may change; this table always reflects the current list"
+  caption="This is the full set of services currently running on the site. The Yandex Advertising Network is present in the code but is switched off and loads nothing right now; if we enable it, it will be added here."
 />
 
-Ads on this site are served by **Google AdSense**. For visitors from the EEA, the UK and US states with privacy laws, consent for advertising cookies is collected by a Google-certified consent management platform (CMP), which passes your choice to advertising partners. Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve ads based on your visits. You can opt out of personalisation in Google Ad Settings (`adssettings.google.com`) and in Yandex settings — ads will still appear, just less relevant ones. To opt out of third-party advertising cookies entirely, use `aboutads.info`, or `youronlinechoices.eu` in the EU.
+Ads on this site are served by **Google AdSense**. Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this and other websites. In the EEA, the UK and Switzerland advertising cookies are denied by default through Google Consent Mode: ads there are shown without personalisation and without cookies, so there is no separate banner. Elsewhere you can opt out of personalisation in Google Ad Settings (`adssettings.google.com`) — ads will still appear, just less relevant ones. To opt out of third-party advertising cookies entirely, use `aboutads.info`, or `youronlinechoices.eu` in the EU.
 
 ## Affiliate links
 

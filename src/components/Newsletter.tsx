@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import { SITE, type Locale } from "@/config/site";
 import { translator } from "@/lib/i18n";
 
@@ -55,11 +56,23 @@ export function Newsletter({
   // Форма MailerLite самодостаточна (свои заголовок/поля/кнопка/согласие).
   const embed = <div className="ml-embedded" data-form={formCode} />;
 
+  // Подпись хранит и отправляет письма MailerLite — ссылка на privacy у самой формы.
+  const privacyNote = (
+    <p className="mt-3 text-xs text-ink-soft">
+      {locale === "ru" ? "Подписываясь, вы соглашаетесь с " : "By subscribing you agree to our "}
+      <Link href={`/${locale}/privacy`} className="underline underline-offset-2">
+        {locale === "ru" ? "политикой конфиденциальности" : "privacy policy"}
+      </Link>
+      {locale === "ru" ? ". Адрес хранит и обрабатывает MailerLite." : ". Your address is stored and processed by MailerLite."}
+    </p>
+  );
+
   if (variant === "compact") {
     return (
       <div>
         <p className="text-sm font-semibold">{tr("newsletter_title")}</p>
         <div className="mt-3">{embed}</div>
+        {privacyNote}
       </div>
     );
   }
@@ -74,6 +87,7 @@ export function Newsletter({
         <p className="text-lg font-bold md:text-xl">{tr("newsletter_title")}</p>
         <p className="mt-2 max-w-xl text-sm text-ink-soft">{tr("newsletter_magnet")}</p>
         <div className="mt-4">{embed}</div>
+        {privacyNote}
       </div>
     </section>
   );

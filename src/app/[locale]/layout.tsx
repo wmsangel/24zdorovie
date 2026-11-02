@@ -9,7 +9,7 @@ import { SupportFab } from "@/components/SupportFab";
 import { JsonLd } from "@/components/JsonLd";
 import { themeScript } from "@/components/ThemeToggle";
 import { ADS } from "@/config/ads";
-import { LOCALES, SITE, SITE_META, type Locale } from "@/config/site";
+import { CONSENT_REQUIRED_REGIONS, LOCALES, SITE, SITE_META, type Locale } from "@/config/site";
 import { isLocale } from "@/lib/i18n";
 import { absolute, organizationLd, websiteLd } from "@/lib/seo";
 import "../globals.css";
@@ -167,6 +167,23 @@ export default async function LocaleLayout({
           до того, как в DOM появится хоть что-то отрисовываемое.
         */}
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        {/*
+          Consent Mode по умолчанию. В <body>, а не в <head>, по той же причине,
+          что и скрипт темы: асинхронный adsbygoogle дописывает в <head> свои теги
+          до гидратации и ломает сопоставление позиционных инлайн-скриптов (см.
+          коммент к теме выше). Здесь скрипт выполняется при разборе <body> —
+          раньше gtag('config') из <Analytics/> (конец body) и раньше, чем
+          асинхронный adsbygoogle успеет загрузиться и исполниться.
+          Глобально хранилище разрешено; для ЕЭЗ, Великобритании и Швейцарии
+          (CONSENT_REQUIRED_REGIONS) — denied по region-параметру: реклама и
+          аналитика работают там без cookies, поэтому баннер не нужен.
+          Человекочитаемое описание — на странице privacy, держать синхронно.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];window.gtag=window.gtag||function(){dataLayer.push(arguments)};gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',region:${JSON.stringify([...CONSENT_REQUIRED_REGIONS])}});`,
+          }}
+        />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-[var(--brand)] focus:px-4 focus:py-2 focus:text-white"

@@ -43,6 +43,14 @@ export async function onRequest(context) {
   const url = new URL(request.url);
   const p = url.pathname;
 
+  // 0. Зеркало *.pages.dev → боевой домен. Один канонический хост: копия на
+  //    pages.dev иначе отдаёт тот же контент и ту же аналитику (дубль + лишний
+  //    счётчик). 301 с сохранением пути и query. Боевой апекс под правило не
+  //    попадает, поэтому петли нет. Образец сети: prodom, pawdget, almanackit.
+  if (url.hostname.endsWith(".pages.dev")) {
+    return redirect("https://24zdorovie.com" + url.pathname + url.search, 301);
+  }
+
   // 1. Корень: выбор локали. Ответ индивидуален (кука/язык) — не кэшируем.
   if (p === "/") {
     const cookie = request.headers.get("Cookie") || "";

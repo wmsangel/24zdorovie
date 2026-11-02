@@ -37,6 +37,27 @@ export const SITE = {
   },
 } as const;
 
+/**
+ * Боевой хост. Счётчики и реклама считают только на нём; зеркало на
+ * `*.pages.dev`, превью и локальная сборка отдают тот же HTML и иначе
+ * слились бы в ту же проперти GA/Метрики. См. src/components/Analytics.tsx
+ * (клиентская проверка) и functions/_middleware.js (301 с зеркала).
+ */
+export const PROD_HOST = "24zdorovie.com";
+
+/**
+ * ЕЭЗ плюс Великобритания и Швейцария — там аналитические и рекламные cookies
+ * требуют согласия. GA4/AdSense получают этот список в Consent Mode (region-
+ * параметр) и сами уходят в режим без cookies; у Яндекс.Метрики region-
+ * параметра нет, поэтому страну спрашиваем у Cloudflare (`/cdn-cgi/trace`) и
+ * в этих странах не грузим её вовсе. Описание для людей — на странице privacy,
+ * держать синхронно.
+ */
+export const CONSENT_REQUIRED_REGIONS = [
+  "AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV",
+  "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "IS", "LI", "NO", "GB", "CH",
+] as const;
+
 export type Locale = "ru" | "en";
 
 export const LOCALES: Locale[] = ["ru", "en"];
