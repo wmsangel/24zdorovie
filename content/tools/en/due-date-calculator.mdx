@@ -1,7 +1,7 @@
 ---
 title: "Due Date Calculator: Pregnancy Weeks and Trimesters"
 description: "Estimate your due date from your last period and see how many weeks pregnant you are, your trimester and key dates. Adjusted for cycle length."
-updated: "2026-08-27"
+updated: "2026-11-06"
 lede: "The estimated due date (EDD) uses Naegele's rule: the first day of your last period plus 280 days (40 weeks) for a 28-day cycle. A longer or shorter cycle shifts the date by the difference. Pregnancy is also dated from the last period, so 'gestational' weeks run about two weeks ahead of weeks from conception. On accuracy: only about 4% give birth exactly on the due date, and 37–42 weeks is considered normal."
 faq:
   - q: "How do I calculate my due date from my last period?"
@@ -34,6 +34,24 @@ The rule assumes a regular **28-day cycle**. If your cycle is longer or shorter,
 <Callout type="info" title="Gestational weeks vs from conception">
   In obstetrics, pregnancy is dated from the first day of the last period, not from conception. Conception happens about 2 weeks later, so the "gestational" age is always about 2 weeks ahead of the "embryonic" age. When people say "40 weeks," they mean gestational weeks.
 </Callout>
+
+## Due date and cycle length
+
+Naegele's rule assumes a 28-day cycle. On a longer or shorter cycle ovulation lands later or earlier, so the estimate shifts by the difference (cycle length minus 28 days). The table shows the shift relative to the plain LMP-plus-280-days date:
+
+<DataTable
+  head={["Cycle length", "Shift vs 28-day estimate"]}
+  rows={[
+    ["21 days", "−7 days (earlier)"],
+    ["24 days", "−4 days"],
+    ["26 days", "−2 days"],
+    ["28 days", "no shift (standard)"],
+    ["30 days", "+2 days"],
+    ["32 days", "+4 days"],
+    ["35 days", "+7 days (later)"],
+  ]}
+  caption="Cycle adjustment to Naegele's rule; an estimate, not a diagnosis. A first-trimester ultrasound dates the pregnancy more accurately."
+/>
 
 ## Why it is an estimate
 
