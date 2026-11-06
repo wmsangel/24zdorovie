@@ -1,7 +1,7 @@
 ---
 title: "Blood Test Unit Converter: mmol/L to mg/dL"
 description: "Convert cholesterol, glucose, triglycerides, HbA1c and more between mmol/L and mg/dL, both directions. With conversion factors, reference ranges and the formulas."
-updated: "2026-08-24"
+updated: "2026-11-06"
 lede: "To convert cholesterol and other lipids from mmol/L to mg/dL, multiply by 38.67; to go back, divide. For example, 5.09 mmol/L × 38.67 ≈ 196.8 mg/dL. Glucose uses a factor of 18.02 and triglycerides 88.57. The units differ because Europe and most of the world report molar concentration (mmol/L) while the US uses mass concentration (mg/dL)."
 faq:
   - q: "How do I convert cholesterol from mmol/L to mg/dL?"
@@ -28,6 +28,65 @@ sources:
   - title: "American Diabetes Association. Classification and Diagnosis of Diabetes: Standards of Care in Diabetes"
     url: "https://diabetesjournals.org/care/issue/47/Supplement_1"
 ---
+
+## Convert mmol/L to mg/dL: ready values
+
+The table below converts a value in mmol/L to mg/dL for the three most-searched markers, using the standard factors below (glucose × 18.02, cholesterol × 38.67, triglycerides × 88.57). For a value outside 3.5–8.0 mmol/L, or for HbA1c, uric acid and creatinine, use the calculator at the top of the page.
+
+<DataTable
+  head={["mmol/L", "Glucose (mg/dL)", "Cholesterol (mg/dL)", "Triglycerides (mg/dL)"]}
+  rows={[
+    ["3.5", "63", "135", "310"],
+    ["3.6", "65", "139", "319"],
+    ["3.7", "67", "143", "328"],
+    ["3.8", "68", "147", "337"],
+    ["3.9", "70", "151", "345"],
+    ["4.0", "72", "155", "354"],
+    ["4.1", "74", "159", "363"],
+    ["4.2", "76", "162", "372"],
+    ["4.3", "77", "166", "381"],
+    ["4.4", "79", "170", "390"],
+    ["4.5", "81", "174", "399"],
+    ["4.6", "83", "178", "407"],
+    ["4.7", "85", "182", "416"],
+    ["4.8", "86", "186", "425"],
+    ["4.9", "88", "189", "434"],
+    ["5.0", "90", "193", "443"],
+    ["5.1", "92", "197", "452"],
+    ["5.2", "94", "201", "461"],
+    ["5.3", "96", "205", "469"],
+    ["5.4", "97", "209", "478"],
+    ["5.5", "99", "213", "487"],
+    ["5.6", "101", "217", "496"],
+    ["5.7", "103", "220", "505"],
+    ["5.8", "105", "224", "514"],
+    ["5.9", "106", "228", "523"],
+    ["6.0", "108", "232", "531"],
+    ["6.1", "110", "236", "540"],
+    ["6.2", "112", "240", "549"],
+    ["6.3", "114", "244", "558"],
+    ["6.4", "115", "247", "567"],
+    ["6.5", "117", "251", "576"],
+    ["6.6", "119", "255", "585"],
+    ["6.7", "121", "259", "593"],
+    ["6.8", "123", "263", "602"],
+    ["6.9", "124", "267", "611"],
+    ["7.0", "126", "271", "620"],
+    ["7.1", "128", "275", "629"],
+    ["7.2", "130", "278", "638"],
+    ["7.3", "132", "282", "647"],
+    ["7.4", "133", "286", "655"],
+    ["7.5", "135", "290", "664"],
+    ["7.6", "137", "294", "673"],
+    ["7.7", "139", "298", "682"],
+    ["7.8", "141", "302", "691"],
+    ["7.9", "142", "305", "700"],
+    ["8.0", "144", "309", "709"],
+  ]}
+  caption="Pure unit conversion (value × molar-mass factor), not an interpretation of a test result. Which column applies depends on the marker on your report; compare the figure against that report's own reference range."
+/>
+
+So, for example, **5.7 mmol/L converts to 103 mg/dL as glucose, 220 mg/dL as cholesterol, or 505 mg/dL as triglycerides** — the same reading becomes a different mg/dL number depending on which marker it is.
 
 ## How the conversion works
 
