@@ -1,7 +1,7 @@
 ---
 title: "Running Pace Calculator: Pace, Speed and Race Predictions"
 description: "Work out your running pace (min/km) and speed from a distance and time, plus predicted finish times for 5K, 10K, half and full marathon using Riegel's formula."
-updated: "2026-09-07"
+updated: "2026-11-06"
 lede: "Running pace is your time per kilometre: 10 km in 50 minutes is a pace of 5:00 min/km and a speed of 12 km/h. Enter the distance and time of your run — the calculator gives your pace, speed and predicted finish times for 5K, 10K, half and full marathon."
 faq:
   - q: "How do I calculate running pace?"
@@ -28,6 +28,24 @@ From a single run it answers three questions.
 **Speed** — kilometres per hour (km/h). The same thing, but the familiar form for a gym treadmill, which is set in km/h.
 
 **Predicted times** for 5K, 10K, half and full marathon — an estimate of what to expect at other distances on your current form.
+
+## Pace chart: speed and finish times
+
+Finish times if you hold the pace evenly across the whole distance. This is straight arithmetic (pace × distance) — a real race is usually a little slower over the longer ones, which is what Riegel's formula below adjusts for:
+
+<DataTable
+  head={["Pace (min/km)", "Speed", "5K", "10K", "Half", "Marathon"]}
+  rows={[
+    ["4:00", "15.0 km/h", "20:00", "40:00", "1:24:23", "2:48:47"],
+    ["4:30", "13.3 km/h", "22:30", "45:00", "1:34:56", "3:09:53"],
+    ["5:00", "12.0 km/h", "25:00", "50:00", "1:45:29", "3:30:58"],
+    ["5:30", "10.9 km/h", "27:30", "55:00", "1:56:02", "3:52:04"],
+    ["6:00", "10.0 km/h", "30:00", "60:00", "2:06:35", "4:13:10"],
+    ["6:30", "9.2 km/h", "32:30", "65:00", "2:17:08", "4:34:16"],
+    ["7:00", "8.6 km/h", "35:00", "70:00", "2:27:41", "4:55:22"],
+  ]}
+  caption="Constant-pace times (pace × distance); half = 21.0975 km, marathon = 42.195 km"
+/>
 
 ## How the prediction works: Riegel's formula
 
