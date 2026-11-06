@@ -1,7 +1,7 @@
 ---
 title: "Type 2 Diabetes Risk Test (FINDRISC)"
 description: "Estimate your 10-year risk of type 2 diabetes with the validated FINDRISC score. 8 questions, no blood test — based on age, weight, waist, lifestyle and family history."
-updated: "2026-09-25"
+updated: "2026-11-06"
 lede: "FINDRISC is a validated questionnaire that estimates your chance of developing type 2 diabetes within the next 10 years from eight factors: age, body mass index, waist circumference, physical activity, vegetables and fruit in your diet, blood-pressure medication, past episodes of high blood glucose, and diabetes in blood relatives. A total of 0 to 26 points maps to a risk category — from low (~1%) to very high (~50%). No blood test is needed to take it; it tells you whether you should get one."
 faq:
   - q: "What does FINDRISC show?"
@@ -39,6 +39,26 @@ FINDRISC adds up points across eight items. The heaviest weights go to the facto
     ["21–26", "Very high", "≈ 1 in 2 (~50%)"],
   ]}
   caption="Thresholds and probabilities per Lindström & Tuomilehto, 2003"
+/>
+
+## How each question is scored
+
+FINDRISC totals points across eight items. This is the full scoring, so you can see what drives your number and roughly reproduce it by hand:
+
+<DataTable
+  head={["Item", "Points"]}
+  rows={[
+    ["Age — under 45 / 45–54 / 55–64 / over 64", "0 / 2 / 3 / 4"],
+    ["BMI — under 25 / 25–30 / over 30", "0 / 1 / 3"],
+    ["Waist, men — under 94 / 94–102 / over 102 cm", "0 / 3 / 4"],
+    ["Waist, women — under 80 / 80–88 / over 88 cm", "0 / 3 / 4"],
+    ["Physically active ≥ 30 min a day", "yes 0 / no 2"],
+    ["Vegetables and fruit every day", "yes 0 / no 1"],
+    ["Blood-pressure medication", "no 0 / yes 2"],
+    ["Ever had high blood glucose (test, pregnancy, illness)", "no 0 / yes 5"],
+    ["Family diabetes — none / grandparent, aunt, cousin / parent, sibling, child", "0 / 3 / 5"],
+  ]}
+  caption="Scoring per Lindström & Tuomilehto, 2003; maximum 26 points"
 />
 
 ## What to do with your result
