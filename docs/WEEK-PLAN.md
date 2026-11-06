@@ -125,6 +125,7 @@ name{ru,en}, tagline{ru,en}, related{ru,en} — пути без локали, т
 
 За последние ~2 недели (план из 11 запусков закрыт 08.10):
 
+- **Дораще́ние тонких tool-страниц под AdSense «бесполезный контент» (13 шт., EN+RU)** ✅ 06.11 — по образцу конвертера: содержательная сорсная справочная секция на каждую (gad-7/phq-9 — вопросы шкал Spitzer/Kroenke; findrisc — баллы Lindström; blood-pressure — грид ESC/ESH; period/due-date — овуляция и ПДР по циклу; pregnancy — прибавка по неделям IOM; ideal-weight — вес по росту BMI; running-pace — pace-чарт; one-rep-max — %1RM по NSCA; fiber — норма IOM/EFSA; protein — граммы по цели/весу ISSN). Числа из первоисточников, медподпись «не диагноз», без воды. Каждая проверена на проде (EN→RU). 9 коммитов (6be7fdb…962962d). Повторную заявку в AdSense подаёт владелец. <!-- crm:0mw4jx69ue779c6e0a3f9cfef -->
 - **Быстрая победа /tools/caffeine-calculator/ EN+RU (SEO, 2026-10-27)** (30.10) <!-- crm:0mvrz45z4fb034ef441c5d299 -->
 - **Шаринг результата на всех нейтральных калькуляторах** ✅ 16.10 — vitamin-d (Cursor + спот-чек: build/lint зелёные, чистый канонический URL) закрыл последний; 6/6. Первая задача цикла промт→Cursor→спот-чек.
 - **Закрыть 404 на `/{locale}/tag/`** ✅ 17.10 — индекс-страница тегов вместо 404 (1 011 запросов/нед), список тегов (count ≥ TAG_INDEX_MIN) + перелинковка, `/tag` в sitemap, canonical+hreflang+CollectionPage, задеплоено + подано на переобход в GSC. Коммит `8513e82`. <!-- crm:0mvarrqlmdd7b1bd8b4de0d63 -->
