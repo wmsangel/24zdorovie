@@ -1,7 +1,7 @@
 ---
 title: "Daily Protein Intake Calculator"
 description: "Work out your daily protein target as a g/kg range for your activity and goal. Split across meals, with the reasoning behind every number — based on systematic reviews, not guesswork."
-updated: "2026-08-17"
+updated: "2026-11-06"
 lede: "A healthy adult needs 1.2–1.6 g of protein per kilogram of body weight per day, not the old 0.8 g RDA — that figure is a floor against deficiency, not an optimum. For a 75 kg person that is roughly 90–120 g a day. Strength training and a calorie deficit push the range up to 1.6–2.2 g/kg; after 65 the minimum rises because ageing muscle needs more."
 faq:
   - q: "How much protein do I need per day?"
@@ -46,6 +46,21 @@ A calorie deficit adds a margin to preserve muscle; muscle gain sits at the top 
 </Callout>
 
 <ProteinCalculator locale="en" />
+
+## Protein per day by goal and body weight
+
+The same g/kg ranges turned into grams for common body weights — find your weight and goal:
+
+<DataTable
+  head={["Goal", "g/kg/day", "Grams/day at 60 / 70 / 80 / 90 kg"]}
+  rows={[
+    ["Sedentary (RDA floor)", "0.8–1.0", "48–60 / 56–70 / 64–80 / 72–90"],
+    ["Regular training", "1.2–1.6", "72–96 / 84–112 / 96–128 / 108–144"],
+    ["Strength / muscle / deficit", "1.6–2.2", "96–132 / 112–154 / 128–176 / 144–198"],
+    ["Age 65+ (minimum)", "1.0–1.2", "60–72 / 70–84 / 80–96 / 90–108"],
+  ]}
+  caption="Grams = g/kg × body weight; for healthy adults, and not for the conditions noted at the end"
+/>
 
 ## How to spread protein across the day
 
