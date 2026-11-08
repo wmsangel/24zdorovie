@@ -28,6 +28,7 @@ import { RunningPaceCalculator } from "../tools/RunningPaceCalculator";
 import { SleepCycleCalculator } from "../tools/SleepCycleCalculator";
 import { SymptomChecker } from "../tools/SymptomChecker";
 import { VitaminDCalculator } from "../tools/VitaminDCalculator";
+import { VitaminDUnitConverter } from "../tools/VitaminDUnitConverter";
 import { WaterIntakeCalculator } from "../tools/WaterIntakeCalculator";
 import { SupportWidget } from "../SupportWidget";
 import {
@@ -79,6 +80,7 @@ const components = {
   WaterIntakeCalculator,
   SleepCycleCalculator,
   VitaminDCalculator,
+  VitaminDUnitConverter,
   OvulationCalculator,
   ProteinCalculator,
   FiberCalculator,

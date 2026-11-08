@@ -388,6 +388,31 @@ export const TOOLS: Tool[] = [
     },
   },
   {
+    slug: "vitamin-d-unit-converter",
+    emoji: "🔆",
+    category: "supplements",
+    name: {
+      ru: "Конвертер единиц витамина D",
+      en: "Vitamin D Unit Converter",
+    },
+    tagline: {
+      ru: "Мкг ↔ МЕ ↔ мг в обе стороны: 1 мкг = 40 МЕ, с частыми дозами — пересчёт с этикетки, не доза",
+      en: "mcg ↔ IU ↔ mg both ways: 1 mcg = 40 IU, with common doses — read your label, not a dosing tool",
+    },
+    related: {
+      ru: [
+        "/supplements/vitamin-d-normy-i-dozirovki",
+        "/supplements/vitamin-d-detyam",
+        "/longevity/chekap-po-vozrastam",
+      ],
+      en: [
+        "/supplements/vitamin-d-dosage",
+        "/nutrition/calcium-daily-needs",
+        "/longevity/health-checkups-by-age",
+      ],
+    },
+  },
+  {
     slug: "ovulation-calculator",
     emoji: "🌸",
     category: "womens-health",

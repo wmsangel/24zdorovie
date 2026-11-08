@@ -23,6 +23,7 @@ import { RunningPaceCalculator } from "./RunningPaceCalculator";
 import { SleepCycleCalculator } from "./SleepCycleCalculator";
 import { SymptomChecker } from "./SymptomChecker";
 import { VitaminDCalculator } from "./VitaminDCalculator";
+import { VitaminDUnitConverter } from "./VitaminDUnitConverter";
 import { WaterIntakeCalculator } from "./WaterIntakeCalculator";
 
 /**
@@ -41,6 +42,7 @@ const WIDGETS: Record<string, (props: { locale: Locale }) => React.ReactElement>
   "water-intake-calculator": WaterIntakeCalculator,
   "sleep-calculator": SleepCycleCalculator,
   "vitamin-d-calculator": VitaminDCalculator,
+  "vitamin-d-unit-converter": VitaminDUnitConverter,
   "ovulation-calculator": OvulationCalculator,
   "protein-calculator": ProteinCalculator,
   "fiber-calculator": FiberCalculator,
