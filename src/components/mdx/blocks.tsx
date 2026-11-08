@@ -251,3 +251,48 @@ export function ReadAlso({ href, title }: { href: string; title: string }) {
     </p>
   );
 }
+
+/**
+ * CTA скачивания бесплатного чек-листа (PDF). Без обязательной подписки по
+ * email — для чистого замера спроса (готовность отдать почту мешает мерить
+ * сам спрос). Клик шлёт событие `file_download` через глобальный TrackClicks
+ * (data-track → GA4 + Метрика) с именем файла и локалью.
+ */
+export function DownloadChecklist({
+  locale = "ru",
+  where,
+}: {
+  locale?: "ru" | "en";
+  where?: string;
+}) {
+  const file = `biological-age-checklist-${locale}.pdf`;
+  const t =
+    locale === "en"
+      ? {
+          title: "Download the checklist (PDF)",
+          sub: "The 8 habits that lower biological age — one page, with the “up to N years” figures from our calculator. No email required.",
+          cta: "Download the checklist (PDF)",
+        }
+      : {
+          title: "Скачать чек-лист (PDF)",
+          sub: "8 привычек, которые снижают биологический возраст, — одной страницей, с цифрами «до N лет» из нашего калькулятора. Без подписки.",
+          cta: "Скачать чек-лист (PDF)",
+        };
+  return (
+    <div className="not-prose my-8 rounded-2xl border border-[var(--line)] bg-[var(--brand-tint)] p-5">
+      <p className="m-0 text-base font-semibold text-[var(--brand-strong)]">{t.title}</p>
+      <p className="mb-4 mt-1 text-[0.95rem] text-[var(--ink-soft)]">{t.sub}</p>
+      <a
+        href={`/downloads/${file}`}
+        download
+        className="inline-flex items-center gap-2 rounded-xl bg-[var(--brand)] px-5 py-2.5 font-semibold text-white no-underline hover:opacity-90"
+        data-track="file_download"
+        data-track-file={file}
+        data-track-where={where ?? "article"}
+        data-track-locale={locale}
+      >
+        ⬇ {t.cta}
+      </a>
+    </div>
+  );
+}

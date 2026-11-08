@@ -33,6 +33,7 @@ import { SupportWidget } from "../SupportWidget";
 import {
   Callout,
   DataTable,
+  DownloadChecklist,
   Figure,
   KeyPoints,
   ProductCard,
@@ -66,6 +67,7 @@ const components = {
   RecipeFacts,
   Figure,
   ReadAlso,
+  DownloadChecklist,
   // Интерактив: те же виджеты, что и на страницах /tools/, но врезкой в статью.
   // Локаль передаётся пропом явно — MDX не знает, из какой папки его прочитали.
   CaffeineCalculator,
