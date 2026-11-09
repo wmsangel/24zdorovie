@@ -30,6 +30,7 @@ import { SymptomChecker } from "../tools/SymptomChecker";
 import { VitaminDCalculator } from "../tools/VitaminDCalculator";
 import { VitaminDUnitConverter } from "../tools/VitaminDUnitConverter";
 import { WaterIntakeCalculator } from "../tools/WaterIntakeCalculator";
+import { Zone2Calculator } from "../tools/Zone2Calculator";
 import { SupportWidget } from "../SupportWidget";
 import {
   Callout,
@@ -97,6 +98,7 @@ const components = {
   RunningPaceCalculator,
   PeriodCalculator,
   PregnancyWeightCalculator,
+  Zone2Calculator,
   SupportWidget,
 };
 

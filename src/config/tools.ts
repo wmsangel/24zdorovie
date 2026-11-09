@@ -338,6 +338,23 @@ export const TOOLS: Tool[] = [
     },
   },
   {
+    slug: "zone-2-heart-rate-calculator",
+    emoji: "🏃",
+    category: "fitness",
+    name: {
+      ru: "Калькулятор зоны 2 пульса",
+      en: "Zone 2 Heart Rate Calculator",
+    },
+    tagline: {
+      ru: "Диапазон пульса зоны 2 (60–70%) по возрасту и пульсу покоя — Карвонен, согласован с калькулятором всех зон",
+      en: "Your Zone 2 heart-rate range (60–70%) from age and resting pulse — Karvonen, consistent with the full-zones tool",
+    },
+    related: {
+      ru: ["/fitness/zona-2-trenirovki", "/fitness/pulsovye-zony-kardio", "/fitness/beg-s-nulya"],
+      en: ["/fitness/zone-2-training", "/fitness/heart-rate-training-zones", "/fitness/running-for-beginners"],
+    },
+  },
+  {
     slug: "water-intake-calculator",
     emoji: "💧",
     category: "nutrition",

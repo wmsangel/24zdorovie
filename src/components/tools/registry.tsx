@@ -25,6 +25,7 @@ import { SymptomChecker } from "./SymptomChecker";
 import { VitaminDCalculator } from "./VitaminDCalculator";
 import { VitaminDUnitConverter } from "./VitaminDUnitConverter";
 import { WaterIntakeCalculator } from "./WaterIntakeCalculator";
+import { Zone2Calculator } from "./Zone2Calculator";
 
 /**
  * Слаг инструмента → компонент.
@@ -59,6 +60,7 @@ const WIDGETS: Record<string, (props: { locale: Locale }) => React.ReactElement>
   "running-pace-calculator": RunningPaceCalculator,
   "period-calculator": PeriodCalculator,
   "pregnancy-weight-gain-calculator": PregnancyWeightCalculator,
+  "zone-2-heart-rate-calculator": Zone2Calculator,
 };
 
 export function ToolWidget({ slug, locale }: { slug: string; locale: Locale }) {
