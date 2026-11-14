@@ -20,16 +20,16 @@ import {
  */
 
 const ANXIETY = {
-  ru: "/ru/mental-health/trevoga-kak-rabotaet",
-  en: "/en/mental-health/understanding-anxiety",
+  ru: "/ru/mental-health/trevoga-kak-rabotaet/",
+  en: "/en/mental-health/understanding-anxiety/",
 };
 const PANIC = {
-  ru: "/ru/mental-health/panicheskie-ataki",
-  en: "/en/mental-health/panic-attacks",
+  ru: "/ru/mental-health/panicheskie-ataki/",
+  en: "/en/mental-health/panic-attacks/",
 };
 const DEPRESSION_TOOL = {
-  ru: "/ru/tools/phq-9-depression-test",
-  en: "/en/tools/phq-9-depression-test",
+  ru: "/ru/tools/phq-9-depression-test/",
+  en: "/en/tools/phq-9-depression-test/",
 };
 
 const COPY = {

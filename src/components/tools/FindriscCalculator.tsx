@@ -24,16 +24,16 @@ import {
 type Sex = "male" | "female";
 
 const ARTICLE = {
-  ru: "/ru/weight/insulinorezistentnost",
-  en: "/en/weight/insulin-resistance",
+  ru: "/ru/weight/insulinorezistentnost/",
+  en: "/en/weight/insulin-resistance/",
 };
 const CONVERTER = {
-  ru: "/ru/tools/blood-test-unit-converter",
-  en: "/en/tools/blood-test-unit-converter",
+  ru: "/ru/tools/blood-test-unit-converter/",
+  en: "/en/tools/blood-test-unit-converter/",
 };
 const BMI_TOOL = {
-  ru: "/ru/tools/ideal-weight-calculator",
-  en: "/en/tools/ideal-weight-calculator",
+  ru: "/ru/tools/ideal-weight-calculator/",
+  en: "/en/tools/ideal-weight-calculator/",
 };
 
 const COPY = {

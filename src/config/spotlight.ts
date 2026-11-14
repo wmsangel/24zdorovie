@@ -29,7 +29,7 @@ export const SPOTLIGHT: SpotlightItem[] = [
   {
     id: "phq9",
     icon: "🧠",
-    href: { ru: "/ru/tools/phq-9-depression-test", en: "/en/tools/phq-9-depression-test" },
+    href: { ru: "/ru/tools/phq-9-depression-test/", en: "/en/tools/phq-9-depression-test/" },
     title: { ru: "Тест на депрессию (PHQ-9)", en: "Depression Test (PHQ-9)" },
     blurb: {
       ru: "Валидированная 2-минутная самопроверка настроения. Не диагноз — ориентир.",
@@ -40,7 +40,7 @@ export const SPOTLIGHT: SpotlightItem[] = [
   {
     id: "gad7",
     icon: "😮‍💨",
-    href: { ru: "/ru/tools/gad-7-anxiety-test", en: "/en/tools/gad-7-anxiety-test" },
+    href: { ru: "/ru/tools/gad-7-anxiety-test/", en: "/en/tools/gad-7-anxiety-test/" },
     title: { ru: "Тест на тревожность (GAD-7)", en: "Anxiety Test (GAD-7)" },
     blurb: {
       ru: "Короткий опросник уровня тревоги — помогает понять, нужна ли помощь.",
@@ -51,7 +51,7 @@ export const SPOTLIGHT: SpotlightItem[] = [
   {
     id: "findrisc",
     icon: "🩸",
-    href: { ru: "/ru/tools/findrisc-calculator", en: "/en/tools/findrisc-calculator" },
+    href: { ru: "/ru/tools/findrisc-calculator/", en: "/en/tools/findrisc-calculator/" },
     title: { ru: "Риск диабета (FINDRISC)", en: "Diabetes Risk (FINDRISC)" },
     blurb: {
       ru: "Оцените риск диабета 2 типа без анализов — по валидированной шкале.",
@@ -63,8 +63,8 @@ export const SPOTLIGHT: SpotlightItem[] = [
     id: "bioage",
     icon: "⏳",
     href: {
-      ru: "/ru/tools/biological-age-calculator",
-      en: "/en/tools/biological-age-calculator",
+      ru: "/ru/tools/biological-age-calculator/",
+      en: "/en/tools/biological-age-calculator/",
     },
     title: { ru: "Калькулятор биовозраста", en: "Biological Age Calculator" },
     blurb: {
@@ -76,7 +76,7 @@ export const SPOTLIGHT: SpotlightItem[] = [
   {
     id: "reference",
     icon: "💊",
-    href: { ru: "/ru/reference", en: "/en/reference" },
+    href: { ru: "/ru/reference/", en: "/en/reference/" },
     title: { ru: "Справочник добавок", en: "Supplement Guide" },
     blurb: {
       ru: "Что доказано, а что реклама — коротко, по полкам и с источниками.",
@@ -90,7 +90,7 @@ export const SPOTLIGHT: SpotlightItem[] = [
   {
     id: "insulin-resistance",
     icon: "📉",
-    href: { ru: "/ru/weight/insulinorezistentnost", en: "/en/weight/insulin-resistance" },
+    href: { ru: "/ru/weight/insulinorezistentnost/", en: "/en/weight/insulin-resistance/" },
     title: { ru: "Инсулинорезистентность", en: "Insulin Resistance" },
     blurb: {
       ru: "Обратимое состояние задолго до диабета — и что с ним делать.",
@@ -101,7 +101,7 @@ export const SPOTLIGHT: SpotlightItem[] = [
   {
     id: "support",
     icon: "☕",
-    href: { ru: "/ru/support", en: "/en/support" },
+    href: { ru: "/ru/support/", en: "/en/support/" },
     title: { ru: "Поддержать проект", en: "Support the project" },
     blurb: {
       ru: "Если материалы полезны — помогите выпускать их дальше.",
@@ -112,7 +112,7 @@ export const SPOTLIGHT: SpotlightItem[] = [
   {
     id: "creatine",
     icon: "💪",
-    href: { ru: "/ru/reference/creatine", en: "/en/reference/creatine" },
+    href: { ru: "/ru/reference/creatine/", en: "/en/reference/creatine/" },
     title: { ru: "Креатин: без мифов", en: "Creatine, myth-free" },
     blurb: {
       ru: "Самая изученная добавка: что доказано, доза и почему не вредит почкам.",
@@ -124,8 +124,8 @@ export const SPOTLIGHT: SpotlightItem[] = [
     id: "cvd-risk",
     icon: "❤️",
     href: {
-      ru: "/ru/heart/kak-snizit-serdechno-sosudistyy-risk",
-      en: "/en/heart/how-to-lower-cardiovascular-risk",
+      ru: "/ru/heart/kak-snizit-serdechno-sosudistyy-risk/",
+      en: "/en/heart/how-to-lower-cardiovascular-risk/",
     },
     title: { ru: "Как снизить риск для сердца", en: "How to lower cardiovascular risk" },
     blurb: {
@@ -137,7 +137,7 @@ export const SPOTLIGHT: SpotlightItem[] = [
   {
     id: "caffeine",
     icon: "☕",
-    href: { ru: "/ru/tools/caffeine-calculator", en: "/en/tools/caffeine-calculator" },
+    href: { ru: "/ru/tools/caffeine-calculator/", en: "/en/tools/caffeine-calculator/" },
     title: { ru: "Калькулятор кофеина", en: "Caffeine Calculator" },
     blurb: {
       ru: "Сколько кофеина останется ко сну и до какого часа можно пить кофе.",

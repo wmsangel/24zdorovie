@@ -346,29 +346,29 @@ const NEXT_LINKS: Record<Locale, { title: string; href: string }[]> = {
   ru: [
     {
       title: "Как снизить биологический возраст: что работает",
-      href: "/ru/longevity/kak-snizit-biologicheskiy-vozrast",
+      href: "/ru/longevity/kak-snizit-biologicheskiy-vozrast/",
     },
-    { title: "Тест на риск диабета 2 типа (FINDRISC)", href: "/ru/tools/findrisc-calculator" },
+    { title: "Тест на риск диабета 2 типа (FINDRISC)", href: "/ru/tools/findrisc-calculator/" },
     {
       title: "Калькулятор риска инфаркта и инсульта (SCORE2)",
-      href: "/ru/tools/cvd-risk-calculator",
+      href: "/ru/tools/cvd-risk-calculator/",
     },
     {
       title: "Конвертер единиц анализов крови",
-      href: "/ru/tools/blood-test-unit-converter",
+      href: "/ru/tools/blood-test-unit-converter/",
     },
   ],
   en: [
     {
       title: "How to lower your biological age: what works",
-      href: "/en/longevity/how-to-lower-biological-age",
+      href: "/en/longevity/how-to-lower-biological-age/",
     },
-    { title: "Type 2 Diabetes Risk Test (FINDRISC)", href: "/en/tools/findrisc-calculator" },
+    { title: "Type 2 Diabetes Risk Test (FINDRISC)", href: "/en/tools/findrisc-calculator/" },
     {
       title: "Heart Attack & Stroke Risk Calculator (SCORE2)",
-      href: "/en/tools/cvd-risk-calculator",
+      href: "/en/tools/cvd-risk-calculator/",
     },
-    { title: "Blood test unit converter", href: "/en/tools/blood-test-unit-converter" },
+    { title: "Blood test unit converter", href: "/en/tools/blood-test-unit-converter/" },
   ],
 };
 

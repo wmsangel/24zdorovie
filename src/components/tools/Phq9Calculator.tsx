@@ -22,12 +22,12 @@ import {
  */
 
 const ARTICLE = {
-  ru: "/ru/mental-health/kpt-osnovy",
-  en: "/en/mental-health/cbt-basics",
+  ru: "/ru/mental-health/kpt-osnovy/",
+  en: "/en/mental-health/cbt-basics/",
 };
 const EXERCISE = {
-  ru: "/ru/mental-health/sport-i-nastroenie",
-  en: "/en/mental-health/exercise-and-mental-health",
+  ru: "/ru/mental-health/sport-i-nastroenie/",
+  en: "/en/mental-health/exercise-and-mental-health/",
 };
 
 const COPY = {
