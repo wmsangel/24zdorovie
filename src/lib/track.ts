@@ -35,6 +35,20 @@ export function track(name: string, params: TrackParams = {}) {
       name;
     p.item = typeof primary === "string" ? primary : String(primary);
   }
+  // Сетевой маячок без куки (b.izntools.com) — шлём ПЕРВЫМ, до GA4: у посетителей
+  // с блокировщиком gtag теряется чаще, а ранний выход на проверке gtag срезал бы
+  // ровно их. Пока b.js не загрузился, копим в iznTrackQ — маячок разберёт очередь.
+  // Без куки и персональных данных; маячок сам отбрасывает нестандартные ключи.
+  try {
+    const wi = window as unknown as {
+      iznTrack?: (event: string, params?: TrackParams) => void;
+      iznTrackQ?: unknown[];
+    };
+    if (typeof wi.iznTrack === "function") wi.iznTrack(name, p);
+    else (wi.iznTrackQ = wi.iznTrackQ || []).push([name, p]);
+  } catch {
+    /* маячок не должен ломать страницу */
+  }
   try {
     const w = window as unknown as {
       dataLayer?: unknown[];

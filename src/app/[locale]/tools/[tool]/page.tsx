@@ -123,7 +123,7 @@ export default async function ToolPage({
             </p>
           )}
 
-          <TrackView event="tool_view" params={{ tool: tool.slug }} />
+          <TrackView event="tool_opened" params={{ tool: tool.slug }} />
           <ToolWidget slug={tool.slug} locale={locale} />
 
           {/* Оффер идёт сразу под результатом: человек уже получил цифру */}

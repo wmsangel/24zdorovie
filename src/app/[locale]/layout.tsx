@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Manrope } from "next/font/google";
 import { notFound } from "next/navigation";
 import { Analytics } from "@/components/Analytics";
@@ -196,6 +197,13 @@ export default async function LocaleLayout({
         <SupportFab locale={locale} />
         <JsonLd data={[organizationLd(locale), websiteLd(locale)]} />
         <Analytics />
+        {/*
+          Сетевой маячок событий без куки (izn-beacon). Согласия не требует: без
+          cookies, IP и идентификаторов. Приёмник b.izntools.com (не workers.dev —
+          его режут адблоки); на не-боевых хостах Worker отвечает 403. Вызовы идут
+          через src/lib/track.ts (window.iznTrack / очередь iznTrackQ).
+        */}
+        <Script id="izn-beacon" src="https://b.izntools.com/b.js" strategy="afterInteractive" />
         <TrackClicks />
       </body>
     </html>
