@@ -11,6 +11,7 @@ import { ShareBar } from "@/components/ShareBar";
 import { Spotlight } from "@/components/Spotlight";
 import { OfferBlock } from "@/components/OfferBlock";
 import { ToolWidget } from "@/components/tools/registry";
+import { ToolUsed } from "@/components/ToolUsed";
 import { TrackView } from "@/components/TrackView";
 import { getCategory } from "@/config/categories";
 import { LOCALES, SITE, type Locale } from "@/config/site";
@@ -124,7 +125,9 @@ export default async function ToolPage({
           )}
 
           <TrackView event="tool_opened" params={{ tool: tool.slug }} />
-          <ToolWidget slug={tool.slug} locale={locale} />
+          <ToolUsed tool={tool.slug}>
+            <ToolWidget slug={tool.slug} locale={locale} />
+          </ToolUsed>
 
           {/* Оффер идёт сразу под результатом: человек уже получил цифру */}
           <OfferBlock toolSlug={tool.slug} locale={locale} />
