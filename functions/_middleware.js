@@ -38,6 +38,96 @@ function redirect(location, status) {
   return new Response(null, { status, headers: { Location: location } });
 }
 
+/**
+ * Жест-гейт партнёрского перехода /go (сетевой стандарт 20.11.2026, образец —
+ * pawdget functions/go). Редирект получает только настоящий клик человека:
+ * боты и префетч иначе засчитываются сетью как клики без единой продажи.
+ *
+ * Возвращает "click" / "click-legacy" (пропустить) либо причину отказа (→ 204).
+ */
+function goVerdict(request, url) {
+  const h = request.headers;
+  const ua = h.get("user-agent") || "";
+
+  // 1. Не браузер или назвавшийся бот.
+  if (!/Mozilla/i.test(ua) || /\b(bot|crawler|spider|scrape|preview|headless|monitor)\b/i.test(ua)) {
+    return "bot-ua";
+  }
+
+  // 2. Префетч и пререндер — не клик, даже из настоящего браузера.
+  const purpose = [h.get("sec-purpose"), h.get("purpose"), h.get("x-moz"), h.get("x-purpose")]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+  if (/prefetch|prerender|preview|preload/.test(purpose)) return "prefetch";
+
+  // 3. Переход по ссылке — всегда navigate/document, и в новой вкладке тоже.
+  const mode = h.get("sec-fetch-mode");
+  const dest = h.get("sec-fetch-dest");
+  const site = h.get("sec-fetch-site");
+  if ((mode && mode !== "navigate") || (dest && dest !== "document")) return "not-navigation";
+
+  let sameHost = false;
+  try {
+    sameHost = new URL(h.get("referer") || "").host === url.host;
+  } catch {
+    /* Referer пуст или битый */
+  }
+
+  // 4. Sec-Fetch-* шлют Chrome 76+, Firefox 90+, Safari 16.4+ (и все iOS-браузеры
+  //    на его движке). Без них пропускаем только действительно старую версию —
+  //    и только со своим Referer; современный UA без заголовков — подделка.
+  if (!mode && !dest && !site) {
+    return sameHost && isLegacyBrowser(ua) ? "click-legacy" : "ua-mismatch";
+  }
+
+  // 5. `Sec-Fetch-User: ?1` приходит только после действия человека (клик, тап,
+  //    Enter), в том числе по ссылке с target="_blank".
+  if (h.get("sec-fetch-user") !== "?1") return "no-user-gesture";
+
+  // 6. Клик должен прийти со страницы самого сайта.
+  if (!(site === "same-origin" || site === "same-site" || sameHost)) return "no-referer";
+
+  return "click";
+}
+
+/** Версия браузера старше той, с которой он шлёт Sec-Fetch-*. */
+function isLegacyBrowser(ua) {
+  let m;
+  // iOS-браузеры (CriOS/FxiOS/Safari) — все на WebKit, версия = версия iOS.
+  if ((m = ua.match(/\bOS (\d+)[_.](\d+)[\d_.]* like Mac OS X/))) {
+    return Number(m[1]) < 16 || (Number(m[1]) === 16 && Number(m[2]) < 4);
+  }
+  if ((m = ua.match(/\b(?:Chrome|Chromium)\/(\d+)/))) return Number(m[1]) < 76;
+  if ((m = ua.match(/\bFirefox\/(\d+)/))) return Number(m[1]) < 90;
+  if ((m = ua.match(/\bVersion\/(\d+)\.(\d+).*\bSafari\//))) {
+    return Number(m[1]) < 16 || (Number(m[1]) === 16 && Number(m[2]) < 4);
+  }
+  return false;
+}
+
+/**
+ * Метка источника для партнёрской ссылки: слаг страницы, с которой кликнули.
+ * `/en/sleep/jet-lag/` → `en_sleep_jet-lag`. Только [a-z0-9_-], до 64 знаков.
+ */
+function goSubId(src, referer, host) {
+  let raw = src || "";
+  if (!raw && referer) {
+    try {
+      const r = new URL(referer);
+      if (r.host === host) raw = r.pathname;
+    } catch {
+      /* битый Referer — метки не будет */
+    }
+  }
+  return raw
+    .toLowerCase()
+    .replace(/^\/+|\/+$/g, "")
+    .replace(/\//g, "_")
+    .replace(/[^a-z0-9_-]/g, "")
+    .slice(0, 64);
+}
+
 export async function onRequest(context) {
   const { request, next } = context;
   const url = new URL(request.url);
@@ -76,7 +166,20 @@ export async function onRequest(context) {
   //     правила «без локали» (#4), иначе /go/… увело бы на /ru/go/….
   const amazonGo = p.match(/^\/go\/amazon-([A-Za-z0-9]{10})\/?$/i);
   if (amazonGo) {
-    return redirect(`https://www.amazon.com/dp/${amazonGo[1]}?tag=24zdorovie-20`, 302);
+    const verdict = goVerdict(request, url);
+    // Строка в логах Pages (Real-time Logs): счётчика в БД у проекта нет.
+    console.log(JSON.stringify({ go: "amazon", asin: amazonGo[1], verdict }));
+    const noStore = { "Cache-Control": "no-store", "X-Robots-Tag": "noindex, nofollow" };
+    if (verdict !== "click" && verdict !== "click-legacy") {
+      return new Response(null, { status: 204, headers: noStore });
+    }
+    // Метка страницы-источника: аккаунт Associates общий на сеть, без неё отчёт
+    // не говорит, какая статья дала клик. Явный ?src= важнее Referer.
+    const sub = goSubId(url.searchParams.get("src"), request.headers.get("referer"), url.host);
+    const target =
+      `https://www.amazon.com/dp/${amazonGo[1]}?tag=24zdorovie-20` +
+      (sub ? `&ascsubtag=${sub}` : "");
+    return new Response(null, { status: 302, headers: { Location: target, ...noStore } });
   }
 
   // 2. Старые адреса фида → русский RSS (до правила «без локали», иначе оно

@@ -35,6 +35,15 @@ function accentFor(toolSlug: string): string {
  * Офферы задаются в src/config/offers.ts. Если подходящего нет, блок
  * не рендерится вовсе — кроме dev, где показывается образец вёрстки.
  */
+/**
+ * Метка источника в партнёрской ссылке Admitad (`subid`): аккаунт общий на
+ * сеть, без неё отчёт не говорит, какая страница дала клик. До 50 знаков.
+ */
+function withSubId(href: string, sub: string): string {
+  if (/[?&]subid=/.test(href)) return href;
+  return `${href}${href.includes("?") ? "&" : "?"}subid=${encodeURIComponent(sub.slice(0, 50))}`;
+}
+
 export function OfferBlock({ toolSlug, locale }: { toolSlug: string; locale: Locale }) {
   const offer = pickOffer(toolSlug, locale) ?? devSample(locale);
   if (!offer) return null;
@@ -78,7 +87,7 @@ export function OfferBlock({ toolSlug, locale }: { toolSlug: string; locale: Loc
           )}
         </div>
         <a
-          href={offer.href}
+          href={withSubId(offer.href, `${locale}_tool_${toolSlug}`)}
           target="_blank"
           rel="sponsored noopener noreferrer"
           className="btn btn-primary shrink-0 self-start sm:self-center"

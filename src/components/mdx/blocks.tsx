@@ -126,8 +126,12 @@ export function ProductCard({
   // Ссылку НЕ маскируем: CTA и дисклеймер про Amazon остаются как есть.
   const asin = isAmazon ? href.match(/\/dp\/([A-Za-z0-9]{10})(?:[/?]|$)/i)?.[1] : undefined;
   const linkHref = asin ? `/go/amazon-${asin}` : href;
+  // У Amazon-ссылок нет noreferrer: первый хоп идёт на наш же /go/, и редирект
+  // по Referer ставит ascsubtag со слагом страницы (метка источника в отчёте
+  // Associates). Наружу при этом уходит только origin — политика
+  // strict-origin-when-cross-origin.
   const linkRel = isAmazon
-    ? "sponsored nofollow noopener noreferrer"
+    ? "sponsored nofollow noopener"
     : "sponsored noopener noreferrer";
   const disclosure =
     note ??
@@ -255,8 +259,9 @@ export function ReadAlso({ href, title }: { href: string; title: string }) {
 /**
  * CTA скачивания бесплатного чек-листа (PDF). Без обязательной подписки по
  * email — для чистого замера спроса (готовность отдать почту мешает мерить
- * сам спрос). Клик шлёт событие `file_download` через глобальный TrackClicks
- * (data-track → GA4 + Метрика) с именем файла и локалью.
+ * сам спрос). Клик шлёт событие `download{tool, format}` (сетевой стандарт,
+ * до 26.11.2026 называлось `file_download`) через глобальный TrackClicks —
+ * в GA4, Метрику и маячок. При замере спроса складывать оба имени.
  */
 export function DownloadChecklist({
   locale = "ru",
@@ -286,8 +291,9 @@ export function DownloadChecklist({
         href={`/downloads/${file}`}
         download
         className="inline-flex items-center gap-2 rounded-xl bg-[var(--brand)] px-5 py-2.5 font-semibold text-white no-underline hover:opacity-90"
-        data-track="file_download"
-        data-track-file={file}
+        data-track="download"
+        data-track-tool="biological-age-calculator"
+        data-track-format="pdf"
         data-track-where={where ?? "article"}
         data-track-locale={locale}
       >
