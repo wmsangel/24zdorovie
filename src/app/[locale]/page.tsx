@@ -177,7 +177,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       )}
 
       <div className="container-page mt-10">
-        <AdSlot placement="header" locale={locale} seed="home" />
+        <AdSlot placement="header" locale={locale} seed="home" houseOk />
       </div>
 
       {/* ── Свежее: горизонтальная лента ─────────────────────── */}
@@ -229,7 +229,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             {gridItems.map((article, i) => (
               <Fragment key={article.url}>
                 <ArticleCard article={article} locale={locale} />
-                {i === 4 && <AdSlot placement="in-feed" locale={locale} className="h-full" seed="home" />}
+                {i === 4 && <AdSlot placement="in-feed" locale={locale} className="h-full" seed="home" houseOk />}
               </Fragment>
             ))}
           </div>

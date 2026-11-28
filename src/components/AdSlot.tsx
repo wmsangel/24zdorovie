@@ -20,12 +20,19 @@ export function AdSlot({
   locale,
   className = "",
   seed,
+  houseOk = false,
 }: {
   placement: AdPlacement;
   locale: Locale;
   className?: string;
   /** Ключ страницы (обычно слаг) — прокручивает домовые баннеры по сайту */
   seed?: string;
+  /**
+   * Кросс-промо сети (house-ad) показываем только там, где это разрешено явно —
+   * на главной. Решение владельца 24.11.2026: сквозных ссылок на соседние сайты
+   * в шаблоне всех страниц нет (риск схемы ссылок).
+   */
+  houseOk?: boolean;
 }) {
   const spec = SLOTS[placement];
   const direct = pickDirectBanner(placement, locale);
@@ -63,7 +70,7 @@ export function AdSlot({
     );
   }
 
-  const house = pickHouseAd(placement, locale, seed);
+  const house = houseOk ? pickHouseAd(placement, locale, seed) : undefined;
   if (house) {
     return (
       <aside className={`not-prose ${className}`} aria-label={t(locale, "ad_label")}>
