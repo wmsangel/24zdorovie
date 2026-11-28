@@ -125,11 +125,12 @@ export function ProductCard({
   // прямым ссылкам ?tag=, засоряли статистику Associates — /go/ закрыт в robots.txt.
   // Ссылку НЕ маскируем: CTA и дисклеймер про Amazon остаются как есть.
   const asin = isAmazon ? href.match(/\/dp\/([A-Za-z0-9]{10})(?:[/?]|$)/i)?.[1] : undefined;
-  const linkHref = asin ? `/go/amazon-${asin}` : href;
-  // У Amazon-ссылок нет noreferrer: первый хоп идёт на наш же /go/, и редирект
-  // по Referer ставит ascsubtag со слагом страницы (метка источника в отчёте
-  // Associates). Наружу при этом уходит только origin — политика
-  // strict-origin-when-cross-origin.
+  // Amazon — вариант B': в HTML только data-go, подписанный /go-адрес и метка
+  // страницы вписывает TrackClicks при доверенном нажатии. Без ASIN (не /dp/)
+  // ссылку не прячем — она остаётся обычной партнёрской.
+  const goId = asin ? `amazon-${asin}` : undefined;
+  const linkHref = goId ? "#" : href;
+  // У Amazon-ссылок нет noreferrer: гейт /go сверяет источник по Sec-Fetch-Site.
   const linkRel = isAmazon
     ? "sponsored nofollow noopener"
     : "sponsored noopener noreferrer";
@@ -161,6 +162,7 @@ export function ProductCard({
         </div>
         <a
           href={linkHref}
+          data-go={goId}
           target="_blank"
           rel={linkRel}
           className="btn btn-primary shrink-0 self-start sm:self-center"
@@ -300,5 +302,53 @@ export function DownloadChecklist({
         ⬇ {t.cta}
       </a>
     </div>
+  );
+}
+
+/**
+ * Блок «чем усложнить»: несколько недорогих категорий с поиском на Amazon.
+ * Ссылки ведут не на конкретный товар, а на поиск по запросу (data-go-q): так
+ * мы не называем и не обещаем ничего про отдельную модель. Адреса в HTML нет —
+ * подписанный /go-адрес вписывает TrackClicks при доверенном нажатии (B').
+ */
+export function AmazonPicks({
+  title,
+  items,
+}: {
+  title: string;
+  items: { name: string; why: string; q: string }[];
+}) {
+  return (
+    <aside className="not-prose my-8 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-soft)]">
+      <p className="font-display text-lg font-semibold">{title}</p>
+      <ul className="mt-3 divide-y divide-[var(--line)]">
+        {items.map((it) => (
+          <li key={it.q} className="flex flex-col gap-2 py-3 sm:flex-row sm:items-center sm:justify-between">
+            <div className="min-w-0">
+              <p className="font-semibold">{it.name}</p>
+              <p className="mt-0.5 text-[0.92rem] leading-relaxed text-[var(--ink-soft)]">{it.why}</p>
+            </div>
+            <a
+              href="#"
+              data-go="amazon-search"
+              data-go-q={it.q}
+              target="_blank"
+              rel="sponsored nofollow noopener"
+              className="btn btn-primary shrink-0 self-start sm:self-center"
+              data-track="affiliate_click"
+              data-track-offer={it.q}
+              data-track-network="amazon"
+              data-track-placement="amazonpicks"
+            >
+              Browse on Amazon
+              <span aria-hidden="true" className="ml-1.5">→</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-3 text-[0.8rem] text-[var(--ink-faint)]">
+        As an Amazon Associate, 24zdorovie earns from qualifying purchases. Links open a search, not a specific product.
+      </p>
+    </aside>
   );
 }

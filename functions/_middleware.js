@@ -107,25 +107,65 @@ function isLegacyBrowser(ua) {
 }
 
 /**
- * Метка источника для партнёрской ссылки: слаг страницы, с которой кликнули.
- * `/en/sleep/jet-lag/` → `en_sleep_jet-lag`. Только [a-z0-9_-], до 64 знаков.
+ * Метка страницы-источника: слаг, который JS посчитал по location.pathname и
+ * подписал. `en_sleep_jet-lag`; только [a-z0-9_-], до 64 знаков.
  */
-function goSubId(src, referer, host) {
-  let raw = src || "";
-  if (!raw && referer) {
-    try {
-      const r = new URL(referer);
-      if (r.host === host) raw = r.pathname;
-    } catch {
-      /* битый Referer — метки не будет */
-    }
-  }
-  return raw
+function goSubId(slug) {
+  return String(slug || "")
     .toLowerCase()
-    .replace(/^\/+|\/+$/g, "")
-    .replace(/\//g, "_")
     .replace(/[^a-z0-9_-]/g, "")
     .slice(0, 64);
+}
+
+// Click-time token B'. Тот же алгоритм и соль, что в src/lib/gotoken.ts —
+// менять синхронно (проверка: node scripts/test-gotoken.mjs).
+const GO_SALT = "24zdorovie/go/v1/5e9b30a7c4d2";
+const GO_TTL_S = 900;
+
+function fnv1a(str, seed) {
+  let h = seed >>> 0;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  return h >>> 0;
+}
+
+function goSig(id, slug, q, t) {
+  const s = `${GO_SALT}|${id}|${slug}|${q}|${t}`;
+  const r = s.split("").reverse().join("");
+  return fnv1a(s, 0x811c9dc5).toString(36) + fnv1a(r, 0x9747b28c).toString(36);
+}
+
+function goTokenValid(id, slug, q, url) {
+  const t = url.searchParams.get("t");
+  const k = url.searchParams.get("k");
+  if (!t || !k || !/^[0-9a-z]{1,12}$/.test(t)) return false;
+  const secs = parseInt(t, 36);
+  if (!Number.isFinite(secs)) return false;
+  if (Math.abs(Date.now() / 1000 - secs) > GO_TTL_S) return false;
+  return k === goSig(id, slug, q, t);
+}
+
+/**
+ * Серверный отчёт исхода в сетевой маячок (событие go_hit). Маячок молча
+ * отбрасывает запросы без User-Agent, поэтому он задан явно; Origin нужен для
+ * сопоставления с сайтом. Без IP, заголовков и содержимого запроса.
+ */
+async function goReport(verdict, id) {
+  try {
+    await fetch("https://b.izntools.com/e", {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain",
+        Origin: "https://24zdorovie.com",
+        "User-Agent": "24zdorovie-go/1.0",
+      },
+      body: JSON.stringify({ e: "go_hit", p: "/go", d: { outcome: verdict, network: "amazon", item: id.slice(0, 20) } }),
+    });
+  } catch {
+    /* отчёт не должен ломать редирект */
+  }
 }
 
 export async function onRequest(context) {
@@ -164,21 +204,34 @@ export async function onRequest(context) {
   //     302 (временный), /go/ закрыт в robots.txt — чтобы боты, идущие по прямой
   //     ссылке, не засчитывались как клики в Amazon Associates. Должно стоять до
   //     правила «без локали» (#4), иначе /go/… увело бы на /ru/go/….
-  const amazonGo = p.match(/^\/go\/amazon-([A-Za-z0-9]{10})\/?$/i);
+  const amazonGo = p.match(/^\/go\/(amazon-search|amazon-[A-Za-z0-9]{10})\/?$/i);
   if (amazonGo) {
-    const verdict = goVerdict(request, url);
-    // Строка в логах Pages (Real-time Logs): счётчика в БД у проекта нет.
-    console.log(JSON.stringify({ go: "amazon", asin: amazonGo[1], verdict }));
+    const id = amazonGo[1];
+    const slug = (url.searchParams.get("s") || "").slice(0, 64);
+    const q = (url.searchParams.get("q") || "").slice(0, 80);
+    let verdict = goVerdict(request, url);
+    // B': адреса в HTML нет, JS вписывает свежую подпись при доверенном нажатии.
+    // Голый, просроченный или чужой адрес → 204, даже с идеальными заголовками.
+    if ((verdict === "click" || verdict === "click-legacy") && !goTokenValid(id, slug, q, url)) {
+      verdict = "no-token";
+    }
     const noStore = { "Cache-Control": "no-store", "X-Robots-Tag": "noindex, nofollow" };
+    context.waitUntil(goReport(verdict, id));
     if (verdict !== "click" && verdict !== "click-legacy") {
       return new Response(null, { status: 204, headers: noStore });
     }
-    // Метка страницы-источника: аккаунт Associates общий на сеть, без неё отчёт
-    // не говорит, какая статья дала клик. Явный ?src= важнее Referer.
-    const sub = goSubId(url.searchParams.get("src"), request.headers.get("referer"), url.host);
-    const target =
-      `https://www.amazon.com/dp/${amazonGo[1]}?tag=24zdorovie-20` +
-      (sub ? `&ascsubtag=${sub}` : "");
+    // sub-id: аккаунт Associates общий на сеть, метка = 24zdorovie-<страница>.
+    const sub = goSubId(slug);
+    const tag = "24zdorovie-20";
+    let target;
+    if (id === "amazon-search") {
+      const kw = q.replace(/[^a-zA-Z0-9 +-]/g, "").trim();
+      if (!kw) return new Response(null, { status: 204, headers: noStore });
+      target = `https://www.amazon.com/s?k=${encodeURIComponent(kw)}&tag=${tag}`;
+    } else {
+      target = `https://www.amazon.com/dp/${id.slice(7)}?tag=${tag}`;
+    }
+    if (sub) target += `&ascsubtag=24zdorovie-${sub}`;
     return new Response(null, { status: 302, headers: { Location: target, ...noStore } });
   }
 

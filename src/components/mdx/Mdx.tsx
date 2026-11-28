@@ -39,6 +39,7 @@ import {
   Figure,
   KeyPoints,
   ProductCard,
+  AmazonPicks,
   ReadAlso,
   RecipeFacts,
 } from "./blocks";
@@ -66,6 +67,7 @@ const components = {
   KeyPoints,
   DataTable,
   ProductCard,
+  AmazonPicks,
   RecipeFacts,
   Figure,
   ReadAlso,
